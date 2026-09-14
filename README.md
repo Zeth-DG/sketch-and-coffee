@@ -1,4 +1,4 @@
-# Sketch & Coffee ☕🎨
+# Sketch & Coffee ☕✏️
 
 Bienvenido al repositorio oficial de **Sketch & Coffee**, una cafetería que sale del papel al mundo 3D, combinando el amor por el café de especialidad con un espacio creativo para dibujar, diseñar y dejar volar la imaginación.
 
