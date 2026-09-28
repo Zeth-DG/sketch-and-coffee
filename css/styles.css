@@ -1,0 +1,869 @@
+:root {
+ 
+  /* ---------------------------------------------------------------------
+     PALETA DE COLORES
+     --------------------------------------------------------------------- */
+ 
+  /* Blanco: base neutra para formularios y secciones */
+  --color-blanco-puro:            #FFFFFF;
+  --color-blanco-formularios:     var(--color-blanco-puro);
+  --color-blanco-secciones:       var(--color-blanco-puro);
+ 
+  /* Negro: se conserva para detalles y sombras.
+     OJO: para párrafos y encabezados usen --color-texto (más abajo). */
+  --color-negro:                  #000000;
+  --color-negro-txtprincipal:     var(--color-negro);
+ 
+  /* Magenta: botones destacados y enlaces activos */
+  --color-magenta:                #9E1E4C;
+  --color-magenta-btn:            var(--color-magenta);
+  --color-magenta-enlaces-act:    var(--color-magenta);
+ 
+  /* Púrpura oscuro: bordes decorativos */
+  --color-purpura-oscuro:         #680148;
+  --color-purpura-gral:           var(--color-purpura-oscuro);
+ 
+  /* Marrón púrpura muy oscuro: footer y fondos contrastantes */
+  --color-marron-purpura-oscuro:  #25020F;
+  --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
+ 
+ 
+  /* ---------------------------------------------------------------------
+     AGREGADO · 
+     --------------------------------------------------------------------- */
+  --color-magenta-hover:          #7E1840;   /* hover/pressed del botón      */
+  --color-magenta-tenue:          #F3E4EA;   /* fondo de etiquetas y avisos  */
+  --color-gris-perla:             #F7F5F6;   /* fondo alterno de sección     */
+  --color-gris-borde:             #E6E1E3;   /* bordes y divisores           */
+  --color-gris-texto:             #8A8085;   /* texto secundario             */
+ 
+  --color-texto:                  var(--color-marron-purpura-oscuro);
+  --color-texto-suave:            var(--color-gris-texto);
+  --color-texto-inverso:          var(--color-blanco-puro);
+ 
+  /* AGREGADO · estados del sistema (formularios, carrito, confirmaciones) */
+  --color-exito:                  #2E7D5B;
+  --color-error:                  #C0392B;
+  --color-aviso:                  #C99700;
+  --color-info:                   #2F5D8C;
+ 
+ 
+  /* ---------------------------------------------------------------------
+     TIPOGRAFÍAS Y FUENTES
+     --------------------------------------------------------------------- */
+  --fuente-titulo-principal: 'Tropical Avenue', Georgia, serif;
+  --fuente-subtitulo:        'Sparkling Valentine', 'Brush Script MT', cursive;
+  --fuente-cuerpo:           'Lorestta', system-ui, -apple-system, sans-serif;
+  --fuente-numeros:          'Comic Neue', system-ui, sans-serif;
+ 
+  /* Pesos */
+  --peso-ligero:       300;
+  --peso-regular:      400;
+  --peso-seminegrita:  600;
+  --peso-negrita:      700;
+ 
+ 
+  /* ---------------------------------------------------------------------
+     TAMAÑOS DE FUENTE
+     --------------------------------------------------------------------- */
+  --tamano-titulo-principal:   2rem;      /* H1 de la página               */
+  --tamano-titulo-seccion:     1.75rem;   /* AGREGADO · H2 de cada sección */
+  --tamano-subtitulo:          1.25rem;
+  --tamano-parrafo-destacado:  1.125rem;
+  --tamano-parrafos:           1rem;
+  --tamano-boton:              1rem;
+  --tamano-auxiliar:           0.9rem;
+  --tamano-footer:             0.9rem;
+  --tamano-micro:              0.75rem;   /* AGREGADO · etiquetas, kickers */
+ 
+  /* Alias con ñ (compatibilidad con lo que ya esté escrito) */
+  --tamano-subtitulo:          var(--tamano-subtitulo);
+  --tamano-parrafos:           var(--tamano-parrafos);
+  --tamano-parrafo-destacado:  var(--tamano-parrafo-destacado);
+  --tamano-boton:              var(--tamano-boton);
+  --tamano-auxiliar:           var(--tamano-auxiliar);
+  --tamano-footer:             var(--tamano-footer);
+ 
+ 
+  /* ---------------------------------------------------------------------
+     ESPACIADO Y MEDIDAS
+     --------------------------------------------------------------------- */
+  --espaciados-margenes:  1rem;
+  --iconos-imagenes:      25px;
+ 
+  --espaciado-xs:  0.25rem;
+  --espaciado-sm:  0.5rem;
+  --espaciado-md:  1rem;
+  --espaciado-lg:  1.5rem;
+  --espaciado-xl:  2.5rem;
+ 
+  --ancho-contenedor-sm:   540px;
+  --ancho-contenedor-md:   720px;
+  --ancho-contenedor-lg:   960px;
+  --ancho-contenedor-xl:  1140px;
+  --ancho-contenedor-xxl: 1320px;
+ 
+ 
+  /* ---------------------------------------------------------------------
+     AGREGADO · forma, sombra y movimiento
+     --------------------------------------------------------------------- */
+  --radio:          10px;
+  --radio-sm:       6px;
+  --sombra:         0 2px 12px rgba(37, 2, 15, .07);
+  --sombra-hover:   0 10px 26px rgba(37, 2, 15, .14);
+  --transicion:     .25s ease;
+}
+ 
+ 
+/* ==========================================================================
+   2. BASE GLOBAL
+   ========================================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+ 
+body {
+  margin: 0;
+  background-color: var(--color-blanco-puro);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  font-weight: var(--peso-regular);
+  line-height: 1.6;
+}
+ 
+img { max-width: 100%; height: auto; }
+
+/* ==========================================================================
+   3. HEADER (NAVBAR)
+   ========================================================================== */
+
+/* Fondo y bordes de la navbar */
+.navbar {
+  background-color: var(--color-blanco-secciones);
+  border-bottom: 1px solid var(--color-gris-borde);
+  padding-top: var(--espaciado-sm);
+  padding-bottom: var(--espaciado-sm);
+}
+
+/* Logo / marca */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-sm);
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: var(--peso-seminegrita);
+}
+
+.navbar-brand:hover {
+  color: var(--color-magenta);
+}
+
+/* Enlaces de navegación */
+.nav-link {
+  color: var(--color-texto);
+  font-weight: var(--peso-regular);
+  transition: color var(--transicion);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-magenta-enlaces-act);
+}
+
+/* Botones del header (buscar, idioma, carrito, cuenta) */
+.navbar .btn {
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+  border: 1.5px solid var(--color-negro);
+  border-radius: var(--radio-sm);
+  padding: 0.5rem 1rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+  transition: var(--transicion);
+  white-space: nowrap;
+}
+
+.navbar .btn:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra);
+  transform: translateY(-1px);
+}
+
+/* Input de búsqueda en la navbar */
+.navbar .form-control {
+  border: 1.5px solid var(--color-negro);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-formularios);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+}
+
+.navbar .form-control:focus {
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+}
+
+
+/* ==========================================================================
+   4. HERO
+   ========================================================================== */
+
+.hero-section {
+  background-color: var(--color-gris-perla);
+  padding: var(--espaciado-xl) var(--espaciado-md);
+  border-bottom: 1px solid var(--color-gris-borde);
+}
+
+/* Título principal del hero */
+.hero-section h1 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-principal);
+  font-weight: var(--peso-negrita);
+  color: var(--color-texto);
+  margin-bottom: var(--espaciado-md);
+  line-height: 1.2;
+}
+
+/* Párrafos del hero */
+.hero-section p {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+  margin-bottom: var(--espaciado-md);
+  max-width: 60ch;
+}
+
+/* Botones del hero */
+.hero-section button {
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+  border: 1.5px solid var(--color-negro);
+  border-radius: var(--radio-sm);
+  padding: 0.5rem 1.25rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+  margin-right: var(--espaciado-sm);
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+.hero-section button:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra);
+  transform: translateY(-1px);
+}
+
+/* Imagen del hero */
+#img-hero {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+/* Ajuste responsive para el hero */
+@media (max-width: 767.98px) {
+  .hero-section {
+    text-align: center;
+  }
+
+  .hero-section p {
+    margin-inline: auto;
+  }
+
+  .hero-section button {
+    margin-right: var(--espaciado-xs);
+    margin-bottom: var(--espaciado-xs);
+  }
+
+  #img-hero {
+    margin-top: var(--espaciado-lg);
+  }
+}
+ 
+/* ==========================================================================
+   4. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
+ 
+/* ---- 3.1 Variables locales -------------------------------------------- */
+.gv-scope {
+  --gv-superficie:    var(--color-blanco-secciones);
+  --gv-fondo-alt:     var(--color-gris-perla);
+  --gv-texto:         var(--color-texto);
+  --gv-texto-suave:   var(--color-texto-suave);
+  --gv-texto-inverso: var(--color-texto-inverso);
+  --gv-borde:         var(--color-gris-borde);
+  --gv-accion:        var(--color-magenta-btn);
+  --gv-accion-hover:  var(--color-magenta-hover);
+  --gv-acento:        var(--color-purpura-gral);
+  --gv-tenue:         var(--color-magenta-tenue);
+  --gv-oscuro:        var(--color-marron-purpura-oscuro);
+ 
+  color: var(--gv-texto);
+}
+ 
+/* ---- 4.2 Blindaje ------------------------------------------------------            */
+.gv-scope .row     { display: flex; flex-wrap: wrap; }
+.gv-scope .row > * { flex-shrink: 0; max-width: 100%; }
+ 
+.gv-scope .row > .col { width: 100%; }
+@media (min-width: 576px) { .gv-scope .row > .col { width: 50%; } }
+@media (min-width: 992px) { .gv-scope .row > .col { width: 25%; } }
+ 
+/* Foco visible: requisito de accesibilidad, no quitar */
+.gv-scope :focus-visible {
+  outline: 3px solid var(--gv-acento);
+  outline-offset: 3px;
+  border-radius: var(--radio-sm);
+}
+ 
+/* ---- 4.3 Contenedor y sección ----------------------------------------- */
+.gv-contenedor {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: .75rem;
+}
+ 
+@media (min-width: 576px)  { .gv-contenedor { max-width: var(--ancho-contenedor-sm);  } }
+@media (min-width: 768px)  { .gv-contenedor { max-width: var(--ancho-contenedor-md);  } }
+@media (min-width: 992px)  { .gv-contenedor { max-width: var(--ancho-contenedor-lg);  } }
+@media (min-width: 1200px) { .gv-contenedor { max-width: var(--ancho-contenedor-xl);  } }
+@media (min-width: 1400px) { .gv-contenedor { max-width: var(--ancho-contenedor-xxl); } }
+ 
+.gv-scope.gv-seccion {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  background-color: var(--gv-superficie);
+}
+ 
+.gv-scope.gv-seccion--alt {
+  background-color: var(--gv-fondo-alt);
+}
+ 
+.gv-scope .gv-seccion__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-lg);
+}
+ 
+.gv-scope .gv-seccion__titulo {
+  margin: 0;
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: var(--peso-negrita);
+  line-height: 1.2;
+  color: var(--gv-texto);
+}
+ 
+.gv-scope .gv-seccion__enlace {
+  color: var(--gv-accion);
+  font-size: var(--tamano-auxiliar);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transicion);
+}
+ 
+.gv-scope .gv-seccion__enlace:hover,
+.gv-scope .gv-seccion__enlace:focus {
+  color: var(--gv-acento);
+  text-decoration: underline;
+}
+ 
+/* ---- 4.4 Tarjeta de producto ------------------------------------------ */
+.gv-scope .gv-producto {
+  height: 100%;                    /* iguala la altura de todas las tarjetas */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gv-superficie);
+  border: 1px solid var(--gv-borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform var(--transicion),
+              box-shadow var(--transicion),
+              border-color var(--transicion);
+}
+ 
+.gv-scope .gv-producto:hover,
+.gv-scope .gv-producto:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+  border-color: var(--gv-accion);
+}
+ 
+/* aspect-ratio reserva el espacio antes de que cargue la foto, así el
+   layout no "salta" mientras se descarga */
+.gv-scope .gv-producto__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: var(--gv-fondo-alt);
+  overflow: hidden;
+}
+ 
+.gv-scope .gv-producto__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+ 
+.gv-scope .gv-producto:hover .gv-producto__img {
+  transform: scale(1.04);
+}
+ 
+/* Marcador mientras no exista la foto definitiva */
+.gv-scope .gv-producto__media--vacio::after {
+  content: "Imagen del producto";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-micro);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--gv-texto-suave);
+  background:
+    repeating-linear-gradient(45deg,
+      var(--gv-fondo-alt) 0 10px,
+      var(--gv-superficie) 10px 20px);
+}
+ 
+/* Etiqueta sobre la foto: Nuevo, Temporada, Más vendido… */
+.gv-scope .gv-producto__etiqueta {
+  position: absolute;
+  z-index: 2;
+  top: .75rem;
+  left: .75rem;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  background-color: var(--gv-tenue);
+  color: var(--gv-acento);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-micro);
+  font-weight: var(--peso-negrita);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+ 
+.gv-scope .gv-producto__cuerpo {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-xs);
+  padding: var(--espaciado-md) 1.1rem 1.2rem;
+}
+ 
+.gv-scope .gv-producto__nombre {
+  margin: 0;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafo-destacado);
+  font-weight: var(--peso-negrita);
+  line-height: 1.3;
+  color: var(--gv-texto);
+}
+ 
+/* Recorta la descripción a dos líneas para que la retícula no se desalinee */
+.gv-scope .gv-producto__desc {
+  margin: 0;
+  font-size: var(--tamano-auxiliar);
+  color: var(--gv-texto-suave);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+          line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+ 
+.gv-scope .gv-producto__precio {
+  margin: var(--espaciado-xs) 0 0;
+  font-family: var(--fuente-numeros);
+  font-size: var(--tamano-subtitulo);
+  font-weight: var(--peso-negrita);
+  color: var(--gv-texto);
+}
+ 
+.gv-scope .gv-producto__precio small {
+  font-size: var(--tamano-micro);
+  font-weight: var(--peso-regular);
+  color: var(--gv-texto-suave);
+}
+ 
+/* margin-top:auto empuja el botón al fondo: todas las tarjetas lo alinean */
+.gv-scope .gv-producto .gv-btn {
+  margin-top: auto;
+}
+ 
+/* ---- 4.5 Botones -------------------------------------------------------
+   Se llaman gv-btn, NO btn, para no pelear con Bootstrap ni con nadie.   */
+.gv-scope .gv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaciado-sm);
+  padding: .75rem 1.4rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: var(--radio-sm);
+  transition: background-color var(--transicion),
+              color var(--transicion),
+              border-color var(--transicion);
+}
+ 
+.gv-scope .gv-btn--primario {
+  background-color: var(--gv-accion);
+  color: var(--gv-texto-inverso);
+}
+ 
+.gv-scope .gv-btn--primario:hover,
+.gv-scope .gv-btn--primario:focus {
+  background-color: var(--gv-accion-hover);
+  color: var(--gv-texto-inverso);
+}
+ 
+.gv-scope .gv-btn--secundario {
+  background-color: transparent;
+  color: var(--gv-acento);
+  border-color: var(--gv-acento);
+}
+ 
+.gv-scope .gv-btn--secundario:hover,
+.gv-scope .gv-btn--secundario:focus {
+  background-color: var(--gv-acento);
+  color: var(--gv-texto-inverso);
+}
+ 
+/* Sobre fondo oscuro el botón se invierte para no perder contraste */
+.gv-scope .gv-btn--claro {
+  background-color: var(--gv-superficie);
+  color: var(--gv-acento);
+}
+ 
+.gv-scope .gv-btn--claro:hover,
+.gv-scope .gv-btn--claro:focus {
+  background-color: var(--gv-tenue);
+  color: var(--gv-acento);
+}
+ 
+.gv-scope .gv-btn--bloque { width: 100%; }
+ 
+/* ---- 4.6 Promoción de temporada --------------------------------------- */
+.gv-scope .gv-promo {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--radio);
+  background-color: var(--gv-oscuro);
+  color: var(--gv-texto-inverso);
+}
+ 
+.gv-scope .gv-promo::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 6px;
+  background-color: var(--gv-accion);
+}
+ 
+.gv-scope .gv-promo__interior {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-lg);
+}
+ 
+.gv-scope .gv-promo__kicker {
+  margin: 0 0 .4rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-micro);
+  font-weight: var(--peso-negrita);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gv-tenue);
+}
+ 
+.gv-scope .gv-promo__titulo {
+  margin: 0 0 var(--espaciado-sm);
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: var(--peso-negrita);
+  line-height: 1.2;
+  color: var(--gv-texto-inverso);
+}
+ 
+.gv-scope .gv-promo__texto {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--tamano-parrafos);
+  color: #D8CBD1;                  /* blanco atenuado sobre el fondo oscuro */
+}
+ 
+.gv-scope .gv-promo__vigencia {
+  display: inline-block;
+  margin-top: .9rem;
+  padding: .3rem .85rem;
+  border: 1px solid rgba(243, 228, 234, .35);
+  border-radius: 999px;
+  font-size: var(--tamano-auxiliar);
+  color: var(--gv-tenue);
+}
+ 
+.gv-scope .gv-promo__accion { flex-shrink: 0; }
+ 
+/* ---- 4.7 Responsivo ---------------------------------------------------- */
+ 
+/* Desde tablet, la promoción pasa a fila */
+@media (min-width: 768px) {
+  .gv-scope .gv-promo__interior {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+ 
+/* Móvil: foto más baja y promoción centrada */
+@media (max-width: 575.98px) {
+  .gv-scope .gv-producto__media { aspect-ratio: 16 / 10; }
+ 
+  .gv-scope .gv-promo { text-align: center; }
+ 
+  .gv-scope .gv-promo::before {
+    inset-block: auto;
+    top: 0;
+    width: 100%;
+    height: 5px;
+  }
+ 
+  .gv-scope .gv-promo__texto { margin-inline: auto; }
+}
+ 
+/* Respeta la preferencia de "menos movimiento" del sistema operativo */
+@media (prefers-reduced-motion: reduce) {
+  .gv-scope .gv-producto,
+  .gv-scope .gv-producto__img,
+  .gv-scope .gv-btn { transition: none; }
+ 
+  .gv-scope .gv-producto:hover { transform: none; }
+  .gv-scope .gv-producto:hover .gv-producto__img { transform: none; }
+}
+ 
+/* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
+
+/* ==========================================================================
+   5. TARJETAS
+   ========================================================================== */
+
+/*5.1 TARJETAS*/
+
+@font-face{
+  font-family:'Sparkling Valentine';
+  src: url('SparklingValentine.ttf') format('truetype');
+}
+
+.titulo-seccion-acercade{
+  font-family: var(--fuente-titulo-principal) ;
+  font-size: var(--tamano-titulo-principal);
+  font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  margin-bottom: 0.5rem;
+}
+
+.subtitulo-seccion-acercade{
+  font-family: var(--fuente-subtitulo) ;
+  font-size: var(--tamano-subtitulo);
+  font-weight: var(--peso-seminegrita);
+  color: var(--color-purpura-oscuro);
+}
+
+
+
+
+/*5.Tarjetas de foto de perfil*/
+.card-title{
+  font-family:'Sparkling Valentine';
+}
+
+.card-text{
+  font-family: 'Lorestta', system-ui, -apple-system, sans-serif;
+}
+
+.card {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+
+
+
+
+
+
+
+/* ===== FIN DEL BLOQUE TARJETAS ======================================== */
+
+
+
+
+
+
+
+
+/* =========================SECCIÓN NEWSLETTER======================== */
+.section-newsletter {
+  background-color: var(--color-gris-perla);
+  border-top: 1px solid var(--color-gris-borde);
+  border-bottom: 1px solid var(--color-gris-borde);
+  padding: var(--espaciado-xl) var(--espaciado-md);
+}
+
+.section-newsletter h2 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+}
+
+/* Campo de entrada de correo */
+.newsletter-input {
+  min-width: 280px;
+  border: 1.5px solid var(--color-negro) !important;
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-formularios);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+}
+
+.newsletter-input:focus {
+  border-color: var(--color-magenta) !important;
+  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+}
+
+/* Botón personalizado Magenta */
+.btn-custom-magenta {
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+  border-radius: var(--radio-sm);
+  border: 1.5px solid var(--color-negro);
+  padding: 0.5rem 1.75rem;
+  transition: var(--transicion);
+}
+
+.btn-custom-magenta:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra);
+  transform: translateY(-1px);
+}
+
+
+/* ==========================FOOTER GLOBAL========================= */
+.footer-global {
+  background-color: var(--color-blanco-secciones);
+  border-top: 2px solid var(--color-negro); /* Línea divisoria negra */
+  color: var(--color-texto);
+  font-size: var(--tamano-footer);
+  padding-top: var(--espaciado-xl);
+  padding-bottom: var(--espaciado-lg);
+}
+
+.footer-global h3 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-subtitulo);
+  font-weight: var(--peso-negrita);
+  color: var(--color-texto);
+  margin-bottom: var(--espaciado-md);
+}
+
+.footer-global ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.footer-global ul li {
+  margin-bottom: var(--espaciado-sm);
+}
+
+.footer-global ul li a {
+  color: var(--color-texto);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+.footer-global ul li a:hover {
+  color: var(--color-magenta);
+}
+
+/* Redes sociales con iconos */
+.footer-global ul li a i {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  transition: var(--transicion);
+}
+
+.footer-global ul li a:hover i {
+  color: var(--color-magenta);
+  transform: scale(1.15);
+}
+
+/* Alineación y tamaño del SVG del icono */
+.footer-global ul li a .icon-uber {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: var(--color-texto);
+  transition: var(--transicion);
+}
+
+/* Efecto Hover idéntico a Bootstrap Icons */
+.footer-global ul li a:hover .icon-uber {
+  fill: var(--color-magenta);
+  transform: scale(1.15);
+}
+
+/* Barra inferior (Legales y Derechos) */
+.footer-bottom {
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto-suave);
+  border-top: 1px solid var(--color-gris-borde);
+  margin-top: var(--espaciado-xl);
+  padding-top: var(--espaciado-md);
+}
+
+.footer-bottom p {
+  color: var(--color-texto-suave);
+}
+
+.footer-bottom a {
+  color: var(--color-texto-suave);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+.footer-bottom a:hover {
+  color: var(--color-texto);
+  text-decoration: underline;
+}
+
+.footer-bottom .separator {
+  color: var(--color-gris-borde);
+}
