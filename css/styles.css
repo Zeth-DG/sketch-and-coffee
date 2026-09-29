@@ -28,7 +28,7 @@
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
 
   /*Header*/
-  --color-header: #4A1029;
+  --color-header: black; /*color previo: #4A1029*/
   --color-header-hover: #651535;
   --color-header-borde: #C65A83;
  
