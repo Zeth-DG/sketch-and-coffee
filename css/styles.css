@@ -733,69 +733,214 @@ img { max-width: 100%; height: auto; }
 /* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
 
 /* ==========================================================================
-   5. TARJETAS
+                              TARJETAS
    ========================================================================== */
 
-/*5.1 TARJETAS*/
 
-@font-face{
-  font-family:'Sparkling Valentine';
+/* ==========================================================================
+                        FUENTES Y TIPOGRAFÍAS
+   ========================================================================== */
+@font-face {
+  font-family: 'Sparkling Valentine';
   src: url('SparklingValentine.ttf') format('truetype');
+  font-display: swap; /* Optimización de rendimiento para dispositivos móviles */
 }
 
-.titulo-seccion-acercade{
-  font-family: var(--fuente-titulo-principal) ;
-  font-size: var(--tamano-titulo-principal);
+/* ==========================================================================
+   ACCESIBILIDAD ARIA, NAVEGACIÓN POR TECLADO Y PREFERENCIAS DE USUARIO
+   ========================================================================== */
+
+/* Foco accesible de alto contraste (Cumplimiento WCAG / ARIA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px dashed var(--color-magenta) !important;
+  outline-offset: 4px;
+}
+
+/* Respeto a las preferencias del usuario si reduce animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Evita desbordamiento horizontal en pantallas pequeñas de smartphones */
+body {
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   5.1 SECCIÓN ACERCA DE NOSOTROS (ESTILO DIBUJO 2D & TINTA)
+   ========================================================================== */
+
+.titulo-seccion-acercade {
+  font-family: var(--fuente-titulo-principal);
+  font-size: clamp(2rem, 5vw, var(--tamano-titulo-principal)); /* Fluido en móviles */
   font-weight: var(--peso-negrita);
   color: var(--color-magenta);
   margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0px var(--color-negro); /* Efecto trazo sólido 2D */
+  letter-spacing: 1px;
 }
 
-.subtitulo-seccion-acercade{
-  font-family: var(--fuente-subtitulo) ;
-  font-size: var(--tamano-subtitulo);
+.subtitulo-seccion-acercade {
+  font-family: var(--fuente-subtitulo);
+  font-size: clamp(1rem, 2.5vw, var(--tamano-subtitulo)); /* Fluido en móviles */
   font-weight: var(--peso-seminegrita);
+  color: var(--color-purpura-oscuro);
+  display: inline-block;
+  border-bottom: 3px dashed var(--color-negro); 
+  padding-bottom: 4px;
+}
+
+/* Contenedor general*/
+.contenedor-tarjetas,
+.container.border.rounded {
+  background-color: var(--color-blanco) !important;
+  border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
+  box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
+}
+
+/* ==========================================================================
+                          TARJETAS INDIVIDUALES
+   ========================================================================== */
+
+.card {
+  background-color: var(--color-blanco) !important;
+  /* Trazo entintado imperfecto de boceto */
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+  box-shadow: 4px 4px 0px var(--color-negro) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+/* Efecto Hover condicional para dispositivos con puntero (PC / Laptop) */
+@media (hover: hover) {
+  .card:hover {
+    transform: translate(-3px, -3px) rotate(-1deg); /* Ligera inclinación tipo viñeta */
+    box-shadow: 7px 7px 0px var(--color-magenta) !important; /* Destaque de color al interactuar */
+  }
+}
+
+
+.card-img-top {
+  height: clamp(180px, 30vw, 230px); /* Adaptable a pantallas táctiles chicas */
+  object-fit: contain; /* Muestra la imagen completa sin cortar */
+  object-position: center;
+  background-color: var(--color-blanco-secciones, #f8f9fa); /* Fondo neutro para rellenar */
+  padding: 0.5rem; /* Margen interno tipo marco de fotografía */
+  border-bottom: 2.5px solid var(--color-negro); /* Separación entintada */
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-blanco);
+}
+
+.card-title {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 1.25rem;
+  font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-negro);
+  line-height: 1.5;
+  flex-grow: 1; /* Permite alineación vertical fluida */
+}
+
+/* Pie de la tarjeta */
+.card-footer {
+  background-color: var(--color-blanco) !important;
+  border-top: 2px dashed var(--color-negro) !important; /* Punteado de tinta */
+  padding: 0.75rem 1rem !important;
+}
+
+.card-footer a {
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-magenta) !important;
+  font-weight: var(--peso-seminegrita);
+  font-size: var(--tamano-auxiliar);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .card-footer a:hover {
+    color: var(--color-marron-purpura-oscuro) !important;
+    transform: scale(1.05);
+    text-decoration: underline !important;
+  }
+}
+
+/* ================ FIN DEL BLOQUE TARJETAS ================================= */
+
+/* ==========================================================================
+               NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
+   ========================================================================== */
+
+.seccion-proyecto,
+.seccion-mision-vision {
+  background-color: var(--color-blanco);
+  border: 2.5px solid var(--color-negro);
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  padding: clamp(1.25rem, 4vw, 2rem); /* Relleno dinámico según la pantalla */
+  box-shadow: 5px 5px 0px var(--color-purpura-oscuro);
+  margin-bottom: 3rem;
+}
+
+.titulo-seccion {
+  font-family: var(--fuente-titulo-principal);
+  color: var(--color-magenta);
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--color-negro);
+}
+
+.subtitulo-seccion {
+  font-family: var(--fuente-subtitulo);
+  color: var(--color-purpura-oscuro);
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  margin-bottom: 0.75rem;
+}
+
+.texto-seccion {
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-negro);
+}
+
+.lista-valores ol {
+  padding-left: 1.2rem;
+}
+
+.lista-valores li strong {
   color: var(--color-purpura-oscuro);
 }
 
+/* ==========================================================================
+                          SECCIÓN NEWSLETTER 
+   ========================================================================== */
 
-
-
-/*5.Tarjetas de foto de perfil*/
-.card-title{
-  font-family:'Sparkling Valentine';
-}
-
-.card-text{
-  font-family: 'Lorestta', system-ui, -apple-system, sans-serif;
-}
-
-.card {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-
-
-
-
-
-
-
-/* ===== FIN DEL BLOQUE TARJETAS ======================================== */
-
-
-
-
-
-
-
-
-/* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
   background-color: var(--color-gris-perla);
-  border-top: 1px solid var(--color-gris-borde);
-  border-bottom: 1px solid var(--color-gris-borde);
+  border-top: 3px solid var(--color-negro);
+  border-bottom: 3px solid var(--color-negro);
   padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
@@ -809,17 +954,20 @@ img { max-width: 100%; height: auto; }
 /* Campo de entrada de correo */
 .newsletter-input {
   min-width: 280px;
-  border: 1.5px solid var(--color-negro) !important;
-  border-radius: var(--radio-sm);
+  max-width: 100%;
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   background-color: var(--color-blanco-formularios);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-parrafos);
   color: var(--color-texto);
+  box-shadow: 3px 3px 0px var(--color-negro);
 }
 
 .newsletter-input:focus {
   border-color: var(--color-magenta) !important;
-  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+  box-shadow: 3px 3px 0px var(--color-magenta);
+  outline: none;
 }
 
 /* Botón personalizado Magenta */
@@ -829,24 +977,34 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
-  border-radius: var(--radio-sm);
-  border: 1.5px solid var(--color-negro);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 2.5px solid var(--color-negro);
   padding: 0.5rem 1.75rem;
-  transition: var(--transicion);
+  box-shadow: 3px 3px 0px var(--color-negro);
+  transition: all 0.15s ease-in-out;
 }
 
-.btn-custom-magenta:hover {
-  background-color: var(--color-magenta-hover);
-  color: var(--color-texto-inverso);
-  box-shadow: var(--sombra);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .btn-custom-magenta:hover {
+    background-color: var(--color-magenta-hover);
+    color: var(--color-texto-inverso);
+    box-shadow: 5px 5px 0px var(--color-negro);
+    transform: translate(-2px, -2px);
+  }
 }
 
+.btn-custom-magenta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--color-negro);
+}
 
-/* ==========================FOOTER GLOBAL========================= */
+/* ==========================================================================
+                                FOOTER GLOBAL
+   ========================================================================== */
+
 .footer-global {
   background-color: var(--color-blanco-secciones);
-  border-top: 2px solid var(--color-negro); /* Línea divisoria negra */
+  border-top: 3px solid var(--color-negro); /* Línea divisoria gruesa */
   color: var(--color-texto);
   font-size: var(--tamano-footer);
   padding-top: var(--espaciado-xl);
@@ -877,8 +1035,10 @@ img { max-width: 100%; height: auto; }
   transition: var(--transicion);
 }
 
-.footer-global ul li a:hover {
-  color: var(--color-magenta);
+@media (hover: hover) {
+  .footer-global ul li a:hover {
+    color: var(--color-magenta);
+  }
 }
 
 /* Redes sociales con iconos */
@@ -888,9 +1048,11 @@ img { max-width: 100%; height: auto; }
   transition: var(--transicion);
 }
 
-.footer-global ul li a:hover i {
-  color: var(--color-magenta);
-  transform: scale(1.15);
+@media (hover: hover) {
+  .footer-global ul li a:hover i {
+    color: var(--color-magenta);
+    transform: scale(1.2);
+  }
 }
 
 /* Alineación y tamaño del SVG del icono */
@@ -901,17 +1063,18 @@ img { max-width: 100%; height: auto; }
   transition: var(--transicion);
 }
 
-/* Efecto Hover idéntico a Bootstrap Icons */
-.footer-global ul li a:hover .icon-uber {
-  fill: var(--color-magenta);
-  transform: scale(1.15);
+@media (hover: hover) {
+  .footer-global ul li a:hover .icon-uber {
+    fill: var(--color-magenta);
+    transform: scale(1.2);
+  }
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
   font-size: var(--tamano-auxiliar);
   color: var(--color-texto-suave);
-  border-top: 1px solid var(--color-gris-borde);
+  border-top: 2px dashed var(--color-gris-borde);
   margin-top: var(--espaciado-xl);
   padding-top: var(--espaciado-md);
 }
@@ -933,4 +1096,22 @@ img { max-width: 100%; height: auto; }
 
 .footer-bottom .separator {
   color: var(--color-gris-borde);
+}
+
+/* ==========================================================================
+   PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
+   ========================================================================== */
+
+@media (max-width: 576px) {
+  /* Suavizado leve en dispositivos móviles muy estrechos sin perder estética  */
+  .contenedor-tarjetas,
+  .seccion-proyecto,
+  .seccion-mision-vision {
+    border-radius: 18px !important;
+  }
+
+  .newsletter-input,
+  .btn-custom-magenta {
+    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
+  }
 }
