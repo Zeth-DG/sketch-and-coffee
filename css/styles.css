@@ -1039,7 +1039,7 @@ img { max-width: 100%; height: auto; }
 
 /* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
-  background-color: var(--color-gris-perla);
+  background-color: var(--color-negro); /* Si usas fondo oscuro */
   border-top: 1px solid var(--color-gris-borde);
   border-bottom: 1px solid var(--color-gris-borde);
   padding: var(--espaciado-xl) var(--espaciado-md);
@@ -1048,7 +1048,7 @@ img { max-width: 100%; height: auto; }
 .section-newsletter h2 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-titulo-seccion);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso) !important; /* Blanco para máxima legibilidad */
   font-weight: var(--peso-seminegrita);
 }
 
@@ -1091,9 +1091,9 @@ img { max-width: 100%; height: auto; }
 
 /* ==========================FOOTER GLOBAL========================= */
 .footer-global {
-  background-color: var(--color-blanco-secciones);
-  border-top: 2px solid var(--color-negro); /* Línea divisoria negra */
-  color: var(--color-texto);
+  background-color: var(--color-negro);
+  border-top: 2px solid var(--color-gris-borde);
+  color: var(--color-texto-inverso);
   font-size: var(--tamano-footer);
   padding-top: var(--espaciado-xl);
   padding-bottom: var(--espaciado-lg);
@@ -1103,7 +1103,7 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-subtitulo);
   font-weight: var(--peso-negrita);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso);
   margin-bottom: var(--espaciado-md);
 }
 
@@ -1118,65 +1118,53 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-global ul li a {
-  color: var(--color-texto);
+  color: var(--color-gris-perla);
   text-decoration: none;
   transition: var(--transicion);
 }
 
 .footer-global ul li a:hover {
-  color: var(--color-magenta);
+  color: var(--color-magenta-hover); 
 }
 
 /* Redes sociales con iconos */
 .footer-global ul li a i {
-  font-size: 1.1rem;
-  color: var(--color-texto);
+color: var(--color-gris-perla);
+  fill: var(--color-gris-perla);
   transition: var(--transicion);
 }
 
 .footer-global ul li a:hover i {
-  color: var(--color-magenta);
-  transform: scale(1.15);
-}
-
-/* Alineación y tamaño del SVG del icono */
-.footer-global ul li a .icon-uber {
-  width: 1.1rem;
-  height: 1.1rem;
-  fill: var(--color-texto);
-  transition: var(--transicion);
-}
-
-/* Efecto Hover idéntico a Bootstrap Icons */
-.footer-global ul li a:hover .icon-uber {
-  fill: var(--color-magenta);
-  transform: scale(1.15);
+color: var(--color-magenta-hover);
+  fill: var(--color-magenta-hover);
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
-  font-size: var(--tamano-auxiliar);
-  color: var(--color-texto-suave);
+font-size: var(--tamano-auxiliar);
+  color: var(--color-gris-perla);
   border-top: 1px solid var(--color-gris-borde);
   margin-top: var(--espaciado-xl);
   padding-top: var(--espaciado-md);
 }
 
 .footer-bottom p {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
+  text-decoration: none;
 }
 
 .footer-bottom a {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
   text-decoration: none;
-  transition: var(--transicion);
+
 }
 
 .footer-bottom a:hover {
-  color: var(--color-texto);
+color: var(--color-texto-inverso);
   text-decoration: underline;
 }
 
 .footer-bottom .separator {
-  color: var(--color-gris-borde);
+color: var(--color-texto-inverso);
+  text-decoration: underline;
 }
