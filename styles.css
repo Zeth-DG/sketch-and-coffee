@@ -1,0 +1,113 @@
+:root {
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --magenta: #9E1E4C;
+  --purpura-oscuro: #680148;
+  --gris-borde: #dcdcdc;
+  --gris-texto: #555555;
+}
+
+/* Contenedor general */
+.pilares-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.titulo-seccion {
+  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
+  font-size: 2.2rem;
+  color: var(--negro);
+  margin-bottom: 30px;
+}
+
+/* Layout de 3 columnas */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Diseño de cada Tarjeta */
+.pilar-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen dentro de la tarjeta */
+.pilar-img {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.pilar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido interno de la tarjeta */
+.pilar-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Cápsula/Badge para los títulos (Misión, Visión, Valores) */
+.pilar-badge {
+  border: 1px solid var(--gris-borde);
+  border-radius: 20px;
+  padding: 6px 30px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--negro);
+  margin-bottom: 15px;
+  background-color: var(--blanco);
+}
+
+.pilar-body p {
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+/* Botón inferior */
+.btn-container {
+  margin-top: 40px;
+}
+
+.btn-visitarnos {
+  display: inline-block;
+  background-color: #f3ebf5; /* Fondo lavanda/púrpura claro */
+  color: var(--purpura-oscuro);
+  border: 1px solid var(--purpura-oscuro);
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-visitarnos:hover {
+  background-color: var(--purpura-oscuro);
+  color: var(--blanco);
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
