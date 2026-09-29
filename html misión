@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch & Coffee - Nosotros</title>
+    <!-- Tu archivo CSS vinculado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <section class="pilares-container">
+    <h2 class="titulo-seccion">Nuestros pilares</h2>
+
+    <div class="pilares-grid">
+      <!-- Tarjeta Misión -->
+      <div class="pilar-card">
+        <div class="pilar-img">
+          <img src="mision.jpg" alt="Misión Sketch & Coffee">
+        </div>
+        <div class="pilar-body">
+          <div class="pilar-badge">Misión</div>
+          <p>
+            Desarrollar una plataforma e-commerce integral para la cafetería 
+            <strong>Sketch & Coffee</strong>, diseñada para optimizar y agilizar 
+            el acceso a sus productos y servicios desde cualquier dispositivo móvil o de escritorio.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tarjeta Visión -->
+      <div class="pilar-card">
+        <div class="pilar-img">
+          <img src="vision.jpg" alt="Visión Sketch & Coffee">
+        </div>
+        <div class="pilar-body">
+          <div class="pilar-badge">Visión</div>
+          <p>
+            Consolidar este proyecto web como un modelo de referencia en el 
+            sector de las plataformas e-commerce, demostrando cómo una solución digital multiplataforma puede unificar la eficiencia del servicio.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tarjeta Valores -->
+      <div class="pilar-card">
+        <div class="pilar-img">
+          <img src="valores.jpg" alt="Valores Sketch & Coffee">
+        </div>
+        <div class="pilar-body">
+          <div class="pilar-badge">Valores</div>
+          <p>
+            Creatividad e Innovación Visual, Hospitalidad e Inclusión, 
+            Calidad y Excelencia en el Servicio, Compromiso Local y Transparencia Digital.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón inferior -->
+    <div class="btn-container">
+      <a href="#" class="btn-visitarnos">¡Ven a visitarnos!</a>
+    </div>
+  </section>
+
+</body>
+</html>
