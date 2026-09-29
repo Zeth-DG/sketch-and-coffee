@@ -356,9 +356,9 @@ img { max-width: 100%; height: auto; }
 }
  
 /* ==========================================================================
-   4. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
+   5. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
  
-/* ---- 3.1 Variables locales -------------------------------------------- */
+/* ---- 5.1 Variables locales -------------------------------------------- */
 .gv-scope {
   --gv-superficie:    var(--color-blanco-secciones);
   --gv-fondo-alt:     var(--color-gris-perla);
@@ -375,7 +375,7 @@ img { max-width: 100%; height: auto; }
   color: var(--gv-texto);
 }
  
-/* ---- 4.2 Blindaje ------------------------------------------------------            */
+/* ---- 5.2 Blindaje ------------------------------------------------------            */
 .gv-scope .row     { display: flex; flex-wrap: wrap; }
 .gv-scope .row > * { flex-shrink: 0; max-width: 100%; }
  
@@ -390,7 +390,7 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radio-sm);
 }
  
-/* ---- 4.3 Contenedor y sección ----------------------------------------- */
+/* ---- 5.3 Contenedor y sección ----------------------------------------- */
 .gv-contenedor {
   width: 100%;
   margin-inline: auto;
@@ -445,7 +445,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: underline;
 }
  
-/* ---- 4.4 Tarjeta de producto ------------------------------------------ */
+/* ---- 5.4 Tarjeta de producto ------------------------------------------ */
 .gv-scope .gv-producto {
   height: 100%;                    /* iguala la altura de todas las tarjetas */
   display: flex;
@@ -571,7 +571,7 @@ img { max-width: 100%; height: auto; }
   margin-top: auto;
 }
  
-/* ---- 4.5 Botones -------------------------------------------------------
+/* ---- 5.5 Botones -------------------------------------------------------
    Se llaman gv-btn, NO btn, para no pelear con Bootstrap ni con nadie.   */
 .gv-scope .gv-btn {
   display: inline-flex;
@@ -630,7 +630,7 @@ img { max-width: 100%; height: auto; }
  
 .gv-scope .gv-btn--bloque { width: 100%; }
  
-/* ---- 4.6 Promoción de temporada --------------------------------------- */
+/* ---- 5.6 Promoción de temporada --------------------------------------- */
 .gv-scope .gv-promo {
   position: relative;
   overflow: hidden;
@@ -693,7 +693,7 @@ img { max-width: 100%; height: auto; }
  
 .gv-scope .gv-promo__accion { flex-shrink: 0; }
  
-/* ---- 4.7 Responsivo ---------------------------------------------------- */
+/* ---- 5.7 Responsivo ---------------------------------------------------- */
  
 /* Desde tablet, la promoción pasa a fila */
 @media (min-width: 768px) {
@@ -733,10 +733,10 @@ img { max-width: 100%; height: auto; }
 /* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
 
 /* ==========================================================================
-   5. TARJETAS
+   6. TARJETAS
    ========================================================================== */
 
-/*5.1 TARJETAS*/
+/*6.1 TARJETAS*/
 
 @font-face{
   font-family:'Sparkling Valentine';
@@ -761,7 +761,7 @@ img { max-width: 100%; height: auto; }
 
 
 
-/*5.Tarjetas de foto de perfil*/
+/*6.Tarjetas de foto de perfil*/
 .card-title{
   font-family:'Sparkling Valentine';
 }
@@ -776,7 +776,14 @@ img { max-width: 100%; height: auto; }
 }
 
 
-
+/* tamaño */
+.card .card-img-top {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 
 
 
