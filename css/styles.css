@@ -632,65 +632,41 @@ img { max-width: 100%; height: auto; }
  
 /* ---- 5.6 Promoción de temporada --------------------------------------- */
 .gv-scope .gv-promo {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: var(--radio);
+  padding: 1.15rem 2rem;
+  border-radius: var(--radio-sm);
   background-color: var(--gv-oscuro);
   color: var(--gv-texto-inverso);
 }
- 
-.gv-scope .gv-promo::before {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  width: 6px;
-  background-color: var(--gv-accion);
-}
- 
+
 .gv-scope .gv-promo__interior {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-lg);
+  gap: var(--espaciado-md);
 }
- 
-.gv-scope .gv-promo__kicker {
-  margin: 0 0 .4rem;
-  font-family: var(--fuente-cuerpo);
-  font-size: var(--tamano-micro);
-  font-weight: var(--peso-negrita);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--gv-tenue);
-}
- 
+
 .gv-scope .gv-promo__titulo {
-  margin: 0 0 var(--espaciado-sm);
+  margin: 0 0 2px;
   font-family: var(--fuente-titulo-principal);
-  font-size: var(--tamano-titulo-seccion);
-  font-weight: var(--peso-negrita);
-  line-height: 1.2;
-  color: var(--gv-texto-inverso);
+  font-size: 1.55rem;
+  font-weight: var(--peso-ligero);
+  letter-spacing: .01em;
+  line-height: 1.15;
+  color: #F2E9EC;
 }
- 
+
 .gv-scope .gv-promo__texto {
   margin: 0;
-  max-width: 52ch;
-  font-size: var(--tamano-parrafos);
-  color: #D8CBD1;                  /* blanco atenuado sobre el fondo oscuro */
-}
- 
-.gv-scope .gv-promo__vigencia {
-  display: inline-block;
-  margin-top: .9rem;
-  padding: .3rem .85rem;
-  border: 1px solid rgba(243, 228, 234, .35);
-  border-radius: 999px;
+  font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-auxiliar);
-  color: var(--gv-tenue);
+  font-weight: var(--peso-regular);
+  line-height: 1.3;
+  color: #CDBFC5;
 }
- 
+
+.gv-scope .gv-promo .gv-btn {
+  padding: .5rem 1.5rem;
+}
+
 .gv-scope .gv-promo__accion { flex-shrink: 0; }
  
 /* ---- 5.7 Responsivo ---------------------------------------------------- */
@@ -701,6 +677,7 @@ img { max-width: 100%; height: auto; }
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: var(--espaciado-lg);
   }
 }
  
