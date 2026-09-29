@@ -785,18 +785,234 @@ img { max-width: 100%; height: auto; }
   display: block;
 }
 
-
-
-
-
 /* ===== FIN DEL BLOQUE TARJETAS ======================================== */
 
+/*  SOBRE SKETCH & COFFEE - LF */
 
 
+/* Contenedor principal de la sección */
+.lf-sobre-sketch {
+    background-color: var(--color-gris-perla);
+    padding: var(--espaciado-xl) var(--espaciado-md);
+}
 
 
+/*  IMAGEN */
+
+.lf-sobre-sketch__media {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+
+    background-color: var(--color-blanco-secciones);
+
+    border: 1px solid var(--color-gris-borde);
+
+    overflow: hidden;
+}
 
 
+/* Imagen principal */
+.lf-sobre-sketch__imagen {
+    width: 100%;
+    height: 100%;
+
+    min-height: 300px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/*  CONTENIDO */
+
+.lf-sobre-sketch__contenido {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* Título */
+.lf-sobre-sketch__titulo {
+    font-family: var(--fuente-titulo-principal);
+
+    font-size: var(--tamano-titulo-seccion);
+
+    font-weight: var(--peso-seminegrita);
+
+    color: var(--color-texto);
+
+    margin-bottom: var(--espaciado-md);
+}
+
+
+/* Texto descriptivo */
+.lf-sobre-sketch__texto {
+    font-family: var(--fuente-cuerpo);
+
+    font-size: var(--tamano-parrafos);
+
+    color: var(--color-texto);
+
+    line-height: 1.7;
+
+    margin-bottom: var(--espaciado-lg);
+}
+
+
+/*  BOTÓN CONOCER MÁS */
+
+.lf-sobre-sketch__boton {
+    width: fit-content;
+
+    display: inline-block;
+
+    background-color: var(--color-magenta-btn);
+
+    color: var(--color-texto-inverso);
+
+    font-family: var(--fuente-cuerpo);
+
+    font-size: var(--tamano-boton);
+
+    font-weight: var(--peso-seminegrita);
+
+    text-decoration: none;
+
+    padding: 0.6rem 1.8rem;
+
+    border-radius: var(--radio-sm);
+
+    margin-bottom: var(--espaciado-md);
+
+    transition: var(--transicion);
+}
+
+
+/* Hover del botón */
+.lf-sobre-sketch__boton:hover {
+    background-color: var(--color-magenta-hover);
+
+    color: var(--color-texto-inverso);
+
+    transform: translateY(-1px);
+
+    box-shadow: var(--sombra);
+}
+
+
+/*  CAJA DE INFORMACIÓN */
+
+.lf-sobre-sketch__info {
+    width: 100%;
+
+    background-color: var(--color-marron-purpura-oscuro);
+
+    color: var(--color-texto-inverso);
+
+    padding: var(--espaciado-md);
+
+    margin-top: auto;
+}
+
+
+/* Título de la caja */
+.lf-sobre-sketch__info h3 {
+    font-family: var(--fuente-titulo-principal);
+
+    font-size: var(--tamano-subtitulo);
+
+    font-weight: var(--peso-seminegrita);
+
+    color: var(--color-texto-inverso);
+
+    margin-bottom: var(--espaciado-sm);
+}
+
+
+/* Párrafos de la caja */
+.lf-sobre-sketch__info p {
+    font-family: var(--fuente-cuerpo);
+
+    font-size: var(--tamano-auxiliar);
+
+    color: var(--color-texto-inverso);
+
+    margin-bottom: var(--espaciado-xs);
+}
+
+
+/* Quitar margen del último párrafo */
+.lf-sobre-sketch__info p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+
+    .lf-sobre-sketch__media {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__contenido {
+        height: auto;
+    }
+
+
+    .lf-sobre-sketch__info {
+        margin-top: var(--espaciado-md);
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .lf-sobre-sketch {
+        padding:
+            var(--espaciado-lg)
+            var(--espaciado-md);
+    }
+
+
+    .lf-sobre-sketch__media {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__titulo {
+        font-size: 1.5rem;
+    }
+
+
+    .lf-sobre-sketch__boton {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* fin de sección Sobre nosotros Sketch & Coffee */
 
 /* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
