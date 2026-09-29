@@ -10,42 +10,9 @@
 </head>
 <body>
     <!--Encabezado y menu - Liz-->
-    <!--header-->
-    <nav class="navbar navbar-expand-lg navbar-centrada">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="./imagenes/logo/logo-fondo-negro.jpg" alt="logo sketch and coffee" class="brand-logo" style="height: 50px; width: auto;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!--el header se mueve a un archivo especifico para importarse en cada página-->
+    <header id="header-global"></header>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nuestro menú</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./acerca_de_nosotros.html">Acerca de nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                </ul>
-                <div class="d-flex gap-3 align-items-center">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search"/>
-                        <button class="btn" type="submit">Buscar</button>
-                    </form>
-
-                    <!--<button id="btnCambiarIdioma" class="btn" type="button">Idioma</button>-->
-                    <button id="btnVerCarrito" class="btn" type="button">Carrito</button>
-                    <button id="btnCuenta" class="btn" type="button">Mi cuenta</button>
-                </div>       
-            </div>
-        </div>
-    </nav>
 
     <!--hero-->
     <section class="hero-section" id="encabezado" aria-labelledby="coffe-and-sketch-encabezado">
@@ -264,6 +231,6 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/main.js" type="module"></script>
 </body>
 </html>

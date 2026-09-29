@@ -220,7 +220,7 @@ img { max-width: 100%; height: auto; }
   padding: 0.5rem 1rem;
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
-  font-weight: var(--peso-seminegrita);
+  font-weight: var(--peso-regular);
   white-space: nowrap;
   transition: background-color var(--transicion),
               color var(--transicion),
