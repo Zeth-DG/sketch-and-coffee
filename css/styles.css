@@ -759,9 +759,9 @@ img { max-width: 100%; height: auto; }
 }
 
 
+/*6.2 Tarjetas de foto de perfil*/
 
 
-/*6.Tarjetas de foto de perfil*/
 .card-title{
   font-family:'Sparkling Valentine';
 }
@@ -771,9 +771,32 @@ img { max-width: 100%; height: auto; }
 }
 
 .card {
-  background-color: #000000;
+  background-color: #25020F;
   color: #FFFFFF;
 }
+
+.card-footer a {
+  display: inline-block;   
+  background-color: #9E1E4C; 
+  color: #fff;              
+  padding: 6px 12px;       
+  border-radius: 4px;      
+  text-decoration: none;    
+  font-weight: bold;        
+}
+
+.card-footer a:hover {
+  background-color: #570825; 
+  color: #fff;               
+}
+
+.container {
+  max-width: 1400px;
+  background-color: #000000; 
+  color: #fff;              
+  border-radius: 2px;     
+}
+
 
 
 /* tamaño */
