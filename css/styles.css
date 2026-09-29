@@ -26,7 +26,11 @@
   /* Marrón púrpura muy oscuro: footer y fondos contrastantes */
   --color-marron-purpura-oscuro:  #25020F;
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
- 
+
+  /*Header*/
+  --color-header: #4A1029;
+  --color-header-hover: #651535;
+  --color-header-borde: #C65A83;
  
   /* ---------------------------------------------------------------------
      AGREGADO · 
@@ -138,17 +142,21 @@ img { max-width: 100%; height: auto; }
    3. HEADER (NAVBAR)
    ========================================================================== */
 
-/* Fondo y bordes de la navbar */
+/* Fondo y borde de la navbar */
 .navbar {
-  background-color: var(--color-blanco-secciones);
-  border-bottom: 1px solid var(--color-gris-borde);
+  background-color: var(--color-header);
+  border-bottom: 2px solid var(--color-header-borde);
   padding-top: var(--espaciado-sm);
   padding-bottom: var(--espaciado-sm);
 }
 
+/* --------------------------------------------------------------------------
+   Distribución en escritorio:
+   Logo a la izquierda | enlaces centrados | buscador y botones a la derecha
+   -------------------------------------------------------------------------- */
 @media (min-width: 992px) {
   .navbar-centrada .navbar-collapse {
-    justify-content: stretch; /* deja que los auto margins trabajen */
+    justify-content: stretch;
   }
 
   .navbar-centrada .navbar-nav {
@@ -157,7 +165,7 @@ img { max-width: 100%; height: auto; }
   }
 
   .navbar-centrada .navbar-brand {
-    margin-right: auto; /* opcional, por si algo lo empuja */
+    margin-right: auto;
   }
 }
 
@@ -166,51 +174,72 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   gap: var(--espaciado-sm);
-  color: var(--color-texto);
+  padding: var(--espaciado-xs);
+  border-radius: var(--radio-sm);
+  color: var(--color-texto-inverso);
   text-decoration: none;
   font-weight: var(--peso-seminegrita);
-}
-
-.navbar-brand:hover {
-  color: var(--color-magenta);
-}
-
-/* Enlaces de navegación */
-.nav-link {
-  color: var(--color-texto);
-  font-weight: var(--peso-regular);
   transition: color var(--transicion);
 }
 
-.nav-link:hover,
-.nav-link.active {
-  color: var(--color-magenta-enlaces-act);
+/* El archivo de tu logo ya tiene fondo blanco.
+   display:block evita un espacio extra bajo la imagen. */
+.brand-logo {
+  display: block;
+  border-radius: 4px;
 }
 
-/* Botones del header (buscar, idioma, carrito, cuenta) */
+.navbar-brand:hover {
+  color: var(--color-magenta-tenue);
+}
+
+/* Links: Inicio, Nuestro menú, Acerca de nosotros, Contacto */
+.navbar .nav-link {
+  color: var(--color-texto-inverso);
+  font-weight: var(--peso-regular);
+  transition: color var(--transicion),
+              border-color var(--transicion);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--color-magenta-tenue);
+}
+
+/* Indicador adicional para la página donde está la persona */
+.navbar .nav-link.active {
+  border-bottom: 2px solid var(--color-header-borde);
+}
+
+/* Botones del header: Buscar, Carrito y Mi cuenta */
 .navbar .btn {
   background-color: var(--color-magenta-btn);
   color: var(--color-texto-inverso);
-  border: 1.5px solid var(--color-negro);
+  border: 1.5px solid var(--color-purpura-oscuro);
   border-radius: var(--radio-sm);
   padding: 0.5rem 1rem;
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
-  transition: var(--transicion);
   white-space: nowrap;
+  transition: background-color var(--transicion),
+              color var(--transicion),
+              border-color var(--transicion),
+              box-shadow var(--transicion),
+              transform var(--transicion);
 }
 
 .navbar .btn:hover {
   background-color: var(--color-magenta-hover);
   color: var(--color-texto-inverso);
+  border-color: var(--color-magenta-tenue);
   box-shadow: var(--sombra);
   transform: translateY(-1px);
 }
 
-/* Input de búsqueda en la navbar */
+/* Campo de búsqueda */
 .navbar .form-control {
-  border: 1.5px solid var(--color-negro);
+  border: 1.5px solid var(--color-magenta-tenue);
   border-radius: var(--radio-sm);
   background-color: var(--color-blanco-formularios);
   font-family: var(--fuente-cuerpo);
@@ -220,9 +249,32 @@ img { max-width: 100%; height: auto; }
 
 .navbar .form-control:focus {
   border-color: var(--color-magenta);
-  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.25);
 }
 
+/* Pantallas pequeñas: evita que los botones o el buscador se amontonen */
+@media (max-width: 991.98px) {
+  .navbar .navbar-collapse {
+    padding-top: var(--espaciado-md);
+  }
+
+  .navbar .navbar-nav {
+    margin-bottom: var(--espaciado-md);
+  }
+
+  .navbar .navbar-collapse > .d-flex {
+    flex-wrap: wrap;
+    align-items: flex-start !important;
+  }
+
+  .navbar .navbar-collapse form {
+    width: 100%;
+  }
+
+  .navbar .navbar-collapse form .form-control {
+    min-width: 0;
+  }
+}
 
 /* ==========================================================================
    4. HERO
