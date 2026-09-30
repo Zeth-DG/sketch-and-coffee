@@ -900,6 +900,24 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 
+/*Botón de los valores*/
+
+.btn-pilares {
+  background-color: #9E1E4C;   /* Magenta */
+  color: #fff;                 /* Texto blanco */
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  transition: all 0.3s ease;   /* suaviza el cambio */
+}
+
+.btn-pilares:hover {
+  background-color: #7a163a;   /* Magenta más oscuro */
+  color: #fff;                 /* mantiene texto blanco */
+  transform: scale(1.05);      /* efecto de agrandamiento */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra elegante */
+}
+
 /* Botón inferior */
 .btn-container {
   margin-top: 40px;

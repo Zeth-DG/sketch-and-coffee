@@ -243,12 +243,84 @@
       <div class="pilar-img">
         <img src="./imagenes/mision_vision_valores/3.png" alt="Valores Sketch & Coffee">
       </div>
-      <div class="pilar-body">
-        <h3 class="pilar-badge">Valores</h3>
-        <p>
-          Creatividad e Innovación Visual, Hospitalidad e Inclusión, 
-          Calidad y Excelencia en el Servicio, Compromiso Local y Transparencia Digital.
-        </p>
+      
+      <!-- Botón dentro de la tarjeta -->
+<div class="pilar-body">
+  <h3 class="pilar-badge">
+    <button type="button" class="btn-pilares" data-bs-toggle="modal" data-bs-target="#modalValores"
+            aria-label="Ver los valores (se abre en ventana dentro de la página)">
+      Valores
+    </button>
+  </h3>
+
+  <!-- Texto breve de valores-->
+  <p>
+    Creatividad e Innovación Visual, Hospitalidad e Inclusión, 
+    Calidad y Excelencia en el Servicio, Compromiso Local y Transparencia Digital.
+  </p>
+</div>
+
+<!-- Modal con bloque completo -->
+<div class="modal fade" id="modalValores" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg"> 
+    <div class="modal-content shadow border-0 modal-valores">
+      
+      <div class="modal-header bg-black text-white justify-content-center">
+  <h5 class="modal-title fw-bold text-center w-100">Sketch & Coffee</h5>
+  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+</div>
+
+      
+      <div class="modal-body text-secondary">
+    
+        <!--SECCION DE VALORES-->
+        <section class="seccion-mision-vision my-4 my-md-2 text-start" aria-labelledby="titulo-valores">
+          <h2 id="titulo-valores" class="titulo-seccion">Valores</h2>
+          <h3 class="subtitulo-seccion">Valores Organizacionales</h3>
+
+          <ol class="lista-valores">
+            <li>
+              <strong>Creatividad e Innovación Visual</strong>
+              <ul>
+                <li>Creemos que el diseño y el arte transforman la experiencia cotidiana del café.</li>
+                <li>Mantenemos un espíritu de originalidad y constante evolución estética...</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Hospitalidad e Inclusión</strong>
+              <ul>
+                <li>Somos un espacio abierto, accesible y acogedor para todo tipo de personas.</li>
+                <li><strong>Comportamiento ético y cultura:</strong> Fomentamos un trato respetuoso...</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Calidad y Excelencia en el Servicio</strong>
+              <ul>
+                <li>Creemos que la experiencia del cliente depende tanto de la calidad...</li>
+                <li><strong>Comportamiento ético y cultura:</strong> Nos comprometemos con altos estándares...</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Compromiso con la Comunidad Local</strong>
+              <ul>
+                <li>Somos un punto de encuentro integrado y respetuoso con nuestro entorno...</li>
+                <li><strong>Comportamiento ético y cultura:</strong> Valoramos la relación con los vecinos...</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Transparencia y Confiabilidad Digital</strong>
+              <ul>
+                <li>Protegemos la confianza de nuestros usuarios y clientes.</li>
+                <li><strong>Comportamiento ético y cultura:</strong> Garantizamos el manejo responsable...</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   </div>
@@ -258,66 +330,6 @@
     <a href="#" class="btn-visitarnos">¡Ven a visitarnos!</a>
   </div>
 </section>
-
- <!--Valores-->
-      <section class="seccion-mision-vision my-4 my-md-5" aria-labelledby="titulo-mision">
-      <h2 id="titulo-valores" class="titulo-seccion">Valores</h2>
-      <h3 class="subtitulo-seccion">Valores Organizacionales</h3>
-
-      <ol class="lista-valores">
-        <li>
-          <strong>Creatividad e Innovación Visual</strong>
-          <ul>
-            <li>Creemos que el diseño y el arte transforman la experiencia cotidiana del café.</li>
-            <li>Mantenemos un espíritu de originalidad y constante evolución estética, cuidando la identidad gráfica
-              (concepto 2D/sketch) y ofreciendo una propuesta visualmente estimulante en cada detalle de la experiencia
-              digital y presencial.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Hospitalidad e Inclusión</strong>
-          <ul>
-            <li>Somos un espacio abierto, accesible y acogedor para todo tipo de personas.</li>
-            <li><strong>Comportamiento ético y cultura:</strong> Fomentamos un trato respetuoso, empático y libre de
-              discriminación hacia clientes, colaboradores y mascotas (pet friendly), garantizando un ambiente seguro
-              donde cada visitante pueda expresarse y trabajar cómodamente.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Calidad y Excelencia en el Servicio</strong>
-          <ul>
-            <li>Creemos que la experiencia del cliente depende tanto de la calidad de nuestros productos como de la
-              atención recibida.</li>
-            <li><strong>Comportamiento ético y cultura:</strong> Nos comprometemos con altos estándares de higiene,
-              selección de insumos frescos y una atención al cliente transparente, eficiente y amable, tanto en el
-              establecimiento como a través del sitio web.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Compromiso con la Comunidad Local</strong>
-          <ul>
-            <li>Somos un punto de encuentro integrado y respetuoso con nuestro entorno geográfico en la Colonia Del
-              Valle.</li>
-            <li><strong>Comportamiento ético y cultura:</strong> Valoramos la relación con los vecinos, apoyamos el
-              desarrollo local y promovemos prácticas comerciales éticas con nuestros proveedores para aportar valor
-              positivo al barrio.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Transparencia y Confiabilidad Digital</strong>
-          <ul>
-            <li>Protegemos la confianza de nuestros usuarios y clientes.</li>
-            <li><strong>Comportamiento ético y cultura:</strong> Garantizamos el manejo responsable de los datos
-              personales, la claridad en los precios, menús y políticas del local, asegurando información veraz y
-              actualizada en todas las plataformas digitales.</li>
-          </ul>
-        </li>
-      </ol>
-    </section>
 
     <!-- SECCIÓN NEWSLETTER -->
     <section class="section-newsletter my-4 my-md-5 text-center" aria-labelledby="titulo-newsletter">
