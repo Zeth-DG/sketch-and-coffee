@@ -75,14 +75,14 @@ export function validarNombre (nombre, apellido){
 }//funcion validar nombre 
 
 export function validarTelefono(telefono){
-    if(typeof telefono != Number){
+    if(typeof telefono !== "string"){
         return {
             valido: false, 
-            mensaje: "Ingresa solo numeros"
+            mensaje: "El teléfono debe recibirse como texto."
         };
     }//validar que sea tipo numero
     
-    const telefonoLimpio = telefono.trim; 
+    const telefonoLimpio = telefono.trim(); 
 
     if (telefonoLimpio === ""){
         return{
@@ -90,15 +90,40 @@ export function validarTelefono(telefono){
             mensaje: "El número teléfonico es obligatorio."
         }; 
     }
-    const numeroRegex = ^\+[1-9]\d{1,14}$; 
+    const telefonoSinSeparadores = telefonoLimpio.replace(/[\s-]/g, "");
+    const numeroRegex = /^\d{10}$/; 
 
-    if (!numeroRegex.test(telefono)){
-        return false; 
+    if (!numeroRegex.test(telefonoSinSeparadores)){
+        return {
+            valido: false, 
+            mensaje: "Ingresa un número teléfonico válido de 10 dígitos."
+        }; 
     }//if
 
-    if(telefono.length !== 10){
-        alert("El numero ingresado es menor a 10 dígitos");
-        return false; 
-    }//if 
-    return true; 
+    return {
+        valido: true,
+        mensaje: "El número teléfonico es válido."
+    }; 
 }//funcion validar telefono
+
+export function validarMensaje(mensaje){
+    if (typeof mensaje != "string"){
+        return{
+            valido: false, 
+            mensaje: "El mensaje debe ser texto"
+        }; 
+    }//if
+    const mensajeLimpio = mensaje.trim(); 
+
+    if(mensajeLimpio === ""){
+        return{
+            valido: false, 
+            mensaje: "Ingrese un mensaje"
+        }
+    }
+
+    return{
+        valido: true,
+        mensaje: "El mensaje es válido"
+    }
+}
