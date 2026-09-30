@@ -1123,6 +1123,13 @@ img { max-width: 100%; height: auto; }
   box-shadow: 1px 1px 0px var(--color-negro);
 }
 
+/* Ajuste de Tu correo electrónico*/
+
+.newsletter-input {
+  max-width: 280px;   /* ancho máximo del rectángulo blanco */
+  width: 100%;        /* ocupa todo el ancho disponible hasta 280px */
+}
+
 /* --------------------------------------------------
         ESTILO DEL BOTÓN PARA SUBIR
 -------------------------------------------------- */
