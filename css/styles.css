@@ -723,6 +723,10 @@ img { max-width: 100%; height: auto; }
   display: inline-block;
   border-bottom: 3px solid var(--negro);
   font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 0px var(--color-negro); /* Efecto trazo sólido 2D */
+  letter-spacing: 1px;
 }
 
 /* Conoce al equipo */
@@ -733,6 +737,19 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 0.75rem;
   font-weight: var(--peso-seminegrita);
 }
+
+/* Contenedor general*/
+.contenedor-tarjetas,
+.container.border.rounded {
+  background-color: var(--color-blanco-puro) !important;
+  border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
+  box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
+}
+
+/* ==========================================================================
+                          TARJETAS INDIVIDUALES
+   ========================================================================== */
 
 .card {
   background-color: var(--color-blanco) !important;
@@ -814,6 +831,7 @@ img { max-width: 100%; height: auto; }
   transform: scale(1.05);
   }
 }
+
 
 /* ================ FIN DEL BLOQUE TARJETAS ================================= */
 
@@ -972,37 +990,11 @@ img { max-width: 100%; height: auto; }
   font-weight: var(--peso-regular);
 }
 
-/* Quitar margen del último párrafo */
-.lf-sobre-sketch__info p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* --------------------------------------------------
-   RESPONSIVE
--------------------------------------------------- */
-
-@media (max-width: 991.98px) {
-
-    .lf-sobre-sketch__media {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__contenido {
-        height: auto;
-    }
-
-
-    .lf-sobre-sketch__info {
-        margin-top: var(--espaciado-md);
-    }
-
+/* Listas de valores */
+.lista-valores li strong {
+  color: var(--purpura-oscuro);
+  font-family: var(--fuente-numeros);
+  font-weight: var(--peso-seminegrita);
 }
 
 
@@ -1381,8 +1373,11 @@ color: var(--color-texto-inverso);
   .caja-recaptcha {
     max-width: 100%;
   }
-  
-  .boton-magenta {
-    width: 100%;
+}
+
+@media (max-width: 768px) {
+  .newsletter-input,
+  .btn-custom-magenta {
+    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
   }
 }
