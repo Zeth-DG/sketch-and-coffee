@@ -1,5 +1,4 @@
 import { cargarHeader } from "./header.js"
-
 cargarHeader();
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,3 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
 
 });
+
+/**Formulario validaciones */
+
+const nombre = document.getElementById("nombre"); 
+const email = document.getElementById("email"); 
+const telefono = document.getElementById("telefono"); 
+const mensaje = document.getElementById("mensaje")
+
