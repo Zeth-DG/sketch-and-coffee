@@ -733,82 +733,29 @@ img { max-width: 100%; height: auto; }
 /* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
 
 /* ==========================================================================
-                              TARJETAS
+                        6. TARJETAS INDIVIDUALES
    ========================================================================== */
 
-
-/* ==========================================================================
-                        FUENTES Y TIPOGRAFÍAS
-   ========================================================================== */
-@font-face {
-  font-family: 'Sparkling Valentine';
-  src: url('SparklingValentine.ttf') format('truetype');
-  font-display: swap; /* Optimización de rendimiento para dispositivos móviles */
-}
-
-/* ==========================================================================
-   ACCESIBILIDAD ARIA, NAVEGACIÓN POR TECLADO Y PREFERENCIAS DE USUARIO
-   ========================================================================== */
-
-/* Foco accesible de alto contraste (Cumplimiento WCAG / ARIA) */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 3px dashed var(--color-magenta) !important;
-  outline-offset: 4px;
-}
-
-/* Respeto a las preferencias del usuario si reduce animaciones en su dispositivo */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Evita desbordamiento horizontal en pantallas pequeñas de smartphones */
-body {
-  overflow-x: hidden;
-}
-
-/* ==========================================================================
-   5.1 SECCIÓN ACERCA DE NOSOTROS (ESTILO DIBUJO 2D & TINTA)
-   ========================================================================== */
-
-.titulo-seccion-acercade {
+/* Nuestro equipo */
+   .titulo-equipo {
   font-family: var(--fuente-titulo-principal);
-  font-size: clamp(1.75rem, 4.5vw, 2.5rem); /* Tamaño en móviles */
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
   font-weight: var(--peso-negrita);
-  color: var(--color-magenta);
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 0px var(--color-negro); /* Efecto trazo sólido 2D */
-  letter-spacing: 1px;
 }
 
+/* Conoce al equipo */
 .subtitulo-seccion-acercade {
   font-family: var(--fuente-subtitulo);
-  font-size: clamp(1.25rem, 3vw, 2rem); /* más grande en todos los dispositivos */
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
+  margin-bottom: 0.75rem;
   font-weight: var(--peso-seminegrita);
-  color: var(--color-purpura-oscuro);
-  display: inline-block;
-  border-bottom: 3px dashed var(--color-negro); 
-  padding-bottom: 4px;
 }
-
-/* Contenedor general*/
-.contenedor-tarjetas,
-.container.border.rounded {
-  background-color: var(--color-blanco-puro) !important;
-  border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
-  box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
-}
-
-/* ==========================================================================
-                          TARJETAS INDIVIDUALES
-   ========================================================================== */
 
 .card {
   background-color: var(--color-blanco) !important;
@@ -894,7 +841,7 @@ body {
 /* ================ FIN DEL BLOQUE TARJETAS ================================= */
 
 /* ==========================================================================
-               NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
+               7. NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
    ========================================================================== */
 
 :root {
@@ -1056,7 +1003,7 @@ body {
 }
 
 /* ==========================================================================
-                          SECCIÓN NEWSLETTER 
+                         8. SECCIÓN NEWSLETTER 
    ========================================================================== */
 
 .section-newsletter {
@@ -1121,7 +1068,7 @@ body {
 }
 
 /* ==========================================================================
-                                FOOTER GLOBAL
+                             9.   FOOTER GLOBAL
    ========================================================================== */
 
 .footer-global {
@@ -1221,7 +1168,7 @@ body {
 }
 
 /* ==========================================================================
-   PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
+      10. PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
    ========================================================================== */
 
 @media (max-width: 576px) {
@@ -1238,4 +1185,43 @@ body {
   .btn-custom-magenta {
     width: 100%; /* Botones y campos ocupan el ancho total en celulares */
   }
+}
+
+/* ==========================================================================
+      11. BOTÓN PARA SUBIR
+   ========================================================================== */ 
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  width: 50px;
+  height: 50px;
+  
+  /* FONDO MAGENTA MEDIO OPACO (0.75 de opacidad) */
+  background-color: rgba(6, 6, 6, 0.75) !important; 
+  border-color: rgba(0, 0, 0, 0.75) !important;
+  color: #ffffff !important;
+
+  /* CENTRADO PERFECTO */
+  display: flex; /* Fuerza el alineamiento de caja */
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* AJUSTE PARA EL SÍMBOLO EN V */
+#btnSubir svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin-top: -2px; 
+}
+
+/* EFECTO HOVER (Cuando pasas el cursor se vuelve más sólido) */
+#btnSubir:hover {
+  background-color: rgba(163, 0, 88, 0.95) !important;
+  border-color: rgba(163, 0, 88, 0.95) !important;
 }
