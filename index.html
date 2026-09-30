@@ -6,6 +6,7 @@
     <title>Inicio</title>
     <!--enlace de bootstrap y estilos de css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -38,15 +39,12 @@
   <section class="gv-scope gv-seccion" id="gv-productos-estrella" aria-labelledby="gv-titulo-estrella">
   <div class="gv-contenedor">
 
-    <!-- El diseño no muestra este título, pero tiene que existir para los
-         lectores de pantalla. .solo-lectores lo oculta sin quitarlo. -->
+    
     <h2 class="solo-lectores" id="gv-titulo-estrella">Productos estrella</h2>
 
     <div class="gv-seccion__cabecera">
       <a class="gv-seccion__enlace" href="menu.html">Ver todos</a>
     </div>
-
-    <!-- row-cols-2 → 2 columnas en móvil · row-cols-lg-4 → 4 en escritorio -->
     <div class="row row-cols-2 row-cols-lg-4 g-3">
 
       <!-- ---------- Producto 1 ---------- -->
@@ -54,7 +52,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/taza1.jpeg"
+                 src="imagenes/cafeteria/cafe_americano.jpg"
                  alt="Café americano de Sketch & Coffee"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -74,7 +72,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/chilaquiles.jpeg"
+                 src="imagenes/cafeteria/chilaquiles.jpg"
                  alt="Chilaquiles servidos en Sketch & Coffee"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -94,7 +92,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/chapata-hawaiana.jpeg"
+                 src="imagenes/cafeteria/Chapata.jpg"
                  alt="Chapata hawaiana recién horneada"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -114,7 +112,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="./imagenes/Sketch&Coffee/bebida1.jpeg"
+                 src="./imagenes/cafeteria/Bebida_roja.jpg"
                  alt="Berry Dream Soda It con frutos rojos"
                  loading="lazy"
                  >
@@ -129,24 +127,137 @@
         </article>
       </div>
 
-    </div><!-- /.row -->
-  </div><!-- /.gv-contenedor -->
+    </div>
+  </div>
 </section>
  
  
 <!-- SECCIÓN: PROMOCIÓN DE TEMPORADA - Gonzalo -->
+<section class="gv-scope gv-seccion" id="gv-promocion" aria-labelledby="gv-titulo-promo">
+  <div class="gv-contenedor">
+    <div class="gv-promo">
+      <div class="gv-promo__interior">
 
+        <div>
+          <h2 class="gv-promo__titulo" id="gv-titulo-promo">Promoción de Apertura</h2>
+          <p class="gv-promo__texto">
+            $100 MXN en combo café + alimento seleccionado
+          </p>
+        </div>
 
+        <div class="gv-promo__accion">
+          <a class="gv-btn gv-btn--primario" href="menu.html">Aprovechar</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     <!--Sobre sketch y coffe-->
+
+<section
+    class="lf-sobre-sketch"
+    id="sobre-sketch"
+    aria-labelledby="lf-titulo-sobre"
+>
+
+    <div class="container">
+
+        <div class="row align-items-stretch g-4">
+
+            <!-- Imagen -->
+            <div class="col-12 col-lg-6">
+
+                <div class="lf-sobre-sketch__media">
+
+                    <img
+                        src="./imagenes/cafeteria/Sketch&Coffee_cuadro1.png"
+                        alt="Interior temático en estilo 2D de Sketch & Coffee"
+                        class="lf-sobre-sketch__imagen"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Información -->
+            <div class="col-12 col-lg-6">
+
+                <div class="lf-sobre-sketch__contenido">
+
+                    <!-- Título -->
+                    <h2
+                        class="lf-sobre-sketch__titulo"
+                        id="lf-titulo-sobre"
+                    >
+                        Sobre Sketch & Coffee
+                    </h2>
+
+
+                    <!-- Descripción -->
+                    <p class="lf-sobre-sketch__texto">
+
+                        Somos una cafetería temática donde el arte
+                        y el café cobran vida en un espacio 2D.
+
+                        Ven a disfrutar de nuestras bebidas de
+                        especialidad y platillos artesanales.
+
+                    </p>
+
+
+                    <!-- Botón -->
+                    <a
+                        href="./acerca_de_nosotros.html"
+                        class="lf-sobre-sketch__boton"
+                    >
+                        Conocer más
+                    </a>
+
+
+                    <!-- Información de ubicación -->
+                    <div class="lf-sobre-sketch__info">
+
+                        <h3>
+                            Visítanos en...
+                        </h3>
+
+                        <p>
+                            Avenida División del Norte 134,
+                            Col. Del Valle Centro,
+                            Benito Juárez, CDMX.
+                        </p>
+
+                        <p>
+                            <strong>Horario:</strong>
+                            Lun - Vie 7:00 a 20:00 |
+                            Sáb 8:30 a 15:00 |
+                            Dom 8:30 a 13:00
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- Newsletter Suscríbete -->
-<section class="section-newsletter text-center">
+<section class="section-newsletter text-center" aria-labelledby="newsletter-heading">
     <div class="container">
-        <h2 class="mb-4">Suscríbete y recibe promociones</h2>
-        <form class="row g-2 justify-content-center align-items-center">
+        <h2 id="newsletter-heading" class="mb-4">Suscríbete y recibe promociones</h2>
+        
+        <form id="formNewsletter" class="row g-2 justify-content-center align-items-center" novalidate>
             <div class="col-12 col-sm-auto">
-                <input type="email" class="form-control form-control-lg text-center text-sm-start newsletter-input" placeholder="tu@correo.com" required>
+                <label for="inputEmailNewsletter" class="visually-hidden">Correo electrónico</label>
+                <input id="inputEmailNewsletter" type="email" class="form-control form-control-lg text-center text-sm-start newsletter-input" placeholder="tu@correo.com" required>
             </div>
             <div class="col-12 col-sm-auto">
                 <button type="submit" class="btn btn-custom-magenta w-100">Enviar</button>
@@ -162,8 +273,8 @@
         <div class="row g-4">
             <!-- Columna 1 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Sketch & Coffee</h3>
-                <ul>
+                <h3 class="h5">Sketch & Coffee</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Nuestra Historia</a></li>
                     <li><a href="#">Prensa y Galería 2D</a></li> 
                 </ul>
@@ -171,8 +282,8 @@
 
             <!-- Columna 2 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Tienda</h3>
-                <ul>
+                <h3 class="h5">Tienda</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Menú en línea</a></li>
                     <li><a href="#">Café en grano</a></li> 
                 </ul>
@@ -180,49 +291,51 @@
 
             <!-- Columna 3 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Ayuda</h3>
-                <ul>
+                <h3 class="h5">Ayuda</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Preguntas frecuentes</a></li>
                     <li><a href="#">Facturación</a></li>
                 </ul>
             </div>
 
-            <!-- Columna 4: Síguenos (CORREGIDA) -->
+            <!-- Columna 4: Síguenos -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Síguenos</h3>
+                <h3 class="h5">Síguenos</h3>
                 <ul class="list-unstyled">
                     <li class="mb-2">
                         <a href="https://www.instagram.com/sketchandcoffe" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-instagram"></i>
-                        Instagram</a>
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                            Instagram
+                        </a>
                     </li>
                     <li class="mb-2">
                         <a href="https://www.facebook.com/profile.php?id=61561271356592" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-facebook"></i>
-                        Facebook</a>
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                            Facebook
+                        </a>
                     </li>
                     <li class="mb-2">
                         <a href="https://www.tiktok.com/@sketch.coffee" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-tiktok"></i>
-                        TikTok</a>
+                            <i class="bi bi-tiktok" aria-hidden="true"></i>
+                            TikTok
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.ubereats.com/mx/store/sketch-%26-coffee-mexico-city/SAOhzebCUPyW21gG4zXB6w?diningMode=DELIVERY&surfaceName="target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2 social-uber">
-                            <svg class="icon-uber" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-3.5 4.5v7h2v-2.5h3v-2h-3v-2.5h3.5v-2z"/>
-                            </svg>
-                        Uber Eats</a>
+                        <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-bag-fill" aria-hidden="true"></i>
+                            Uber Eats
+                        </a>
                     </li>
                 </ul>
             </div>
         </div> 
 
         <!-- Derechos y Enlaces Legales Inferiores -->
-        <div class="footer-bottom d-flex flex-wrap align-items-center gap-2">
+        <div class="footer-bottom d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-2">
             <p class="mb-0">&copy; 2026 Sketch & Coffee</p>
-            <span class="separator">|</span>
+            <span class="separator" aria-hidden="true">|</span>
             <a href="#">Aviso de Privacidad</a>
-            <span class="separator">|</span>
+            <span class="separator" aria-hidden="true">|</span>
             <a href="#">Términos y Condiciones</a>
         </div>
 
@@ -232,5 +345,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="./js/main.js" type="module"></script>
+
+    <!-- Botón -->
+    <button type="button" class="btn btn-primary rounded-circle shadow-lg" id="btnSubir">
+  <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+  </svg>
+</button>
+
 </body>
 </html>

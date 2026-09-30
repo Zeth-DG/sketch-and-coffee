@@ -28,7 +28,7 @@
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
 
   /*Header*/
-  --color-header: #4A1029;
+  --color-header: black; /*color previo: #4A1029*/
   --color-header-hover: #651535;
   --color-header-borde: #C65A83;
  
@@ -356,9 +356,9 @@ img { max-width: 100%; height: auto; }
 }
  
 /* ==========================================================================
-   4. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
+   5. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
  
-/* ---- 3.1 Variables locales -------------------------------------------- */
+/* ---- 5.1 Variables locales -------------------------------------------- */
 .gv-scope {
   --gv-superficie:    var(--color-blanco-secciones);
   --gv-fondo-alt:     var(--color-gris-perla);
@@ -375,7 +375,7 @@ img { max-width: 100%; height: auto; }
   color: var(--gv-texto);
 }
  
-/* ---- 4.2 Blindaje ------------------------------------------------------            */
+/* ---- 5.2 Blindaje ------------------------------------------------------            */
 .gv-scope .row     { display: flex; flex-wrap: wrap; }
 .gv-scope .row > * { flex-shrink: 0; max-width: 100%; }
  
@@ -390,7 +390,7 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radio-sm);
 }
  
-/* ---- 4.3 Contenedor y sección ----------------------------------------- */
+/* ---- 5.3 Contenedor y sección ----------------------------------------- */
 .gv-contenedor {
   width: 100%;
   margin-inline: auto;
@@ -445,7 +445,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: underline;
 }
  
-/* ---- 4.4 Tarjeta de producto ------------------------------------------ */
+/* ---- 5.4 Tarjeta de producto ------------------------------------------ */
 .gv-scope .gv-producto {
   height: 100%;                    /* iguala la altura de todas las tarjetas */
   display: flex;
@@ -571,7 +571,7 @@ img { max-width: 100%; height: auto; }
   margin-top: auto;
 }
  
-/* ---- 4.5 Botones -------------------------------------------------------
+/* ---- 5.5 Botones -------------------------------------------------------
    Se llaman gv-btn, NO btn, para no pelear con Bootstrap ni con nadie.   */
 .gv-scope .gv-btn {
   display: inline-flex;
@@ -630,70 +630,46 @@ img { max-width: 100%; height: auto; }
  
 .gv-scope .gv-btn--bloque { width: 100%; }
  
-/* ---- 4.6 Promoción de temporada --------------------------------------- */
+/* ---- 5.6 Promoción de temporada --------------------------------------- */
 .gv-scope .gv-promo {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: var(--radio);
+  padding: 1.15rem 2rem;
+  border-radius: var(--radio-sm);
   background-color: var(--gv-oscuro);
   color: var(--gv-texto-inverso);
 }
- 
-.gv-scope .gv-promo::before {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  width: 6px;
-  background-color: var(--gv-accion);
-}
- 
+
 .gv-scope .gv-promo__interior {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-lg);
+  gap: var(--espaciado-md);
 }
- 
-.gv-scope .gv-promo__kicker {
-  margin: 0 0 .4rem;
-  font-family: var(--fuente-cuerpo);
-  font-size: var(--tamano-micro);
-  font-weight: var(--peso-negrita);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--gv-tenue);
-}
- 
+
 .gv-scope .gv-promo__titulo {
-  margin: 0 0 var(--espaciado-sm);
+  margin: 0 0 2px;
   font-family: var(--fuente-titulo-principal);
-  font-size: var(--tamano-titulo-seccion);
-  font-weight: var(--peso-negrita);
-  line-height: 1.2;
-  color: var(--gv-texto-inverso);
+  font-size: 1.55rem;
+  font-weight: var(--peso-ligero);
+  letter-spacing: .01em;
+  line-height: 1.15;
+  color: #F2E9EC;
 }
- 
+
 .gv-scope .gv-promo__texto {
   margin: 0;
-  max-width: 52ch;
-  font-size: var(--tamano-parrafos);
-  color: #D8CBD1;                  /* blanco atenuado sobre el fondo oscuro */
-}
- 
-.gv-scope .gv-promo__vigencia {
-  display: inline-block;
-  margin-top: .9rem;
-  padding: .3rem .85rem;
-  border: 1px solid rgba(243, 228, 234, .35);
-  border-radius: 999px;
+  font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-auxiliar);
-  color: var(--gv-tenue);
+  font-weight: var(--peso-regular);
+  line-height: 1.3;
+  color: #CDBFC5;
 }
- 
+
+.gv-scope .gv-promo .gv-btn {
+  padding: .5rem 1.5rem;
+}
+
 .gv-scope .gv-promo__accion { flex-shrink: 0; }
  
-/* ---- 4.7 Responsivo ---------------------------------------------------- */
+/* ---- 5.7 Responsivo ---------------------------------------------------- */
  
 /* Desde tablet, la promoción pasa a fila */
 @media (min-width: 768px) {
@@ -701,6 +677,7 @@ img { max-width: 100%; height: auto; }
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: var(--espaciado-lg);
   }
 }
  
@@ -733,82 +710,29 @@ img { max-width: 100%; height: auto; }
 /* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
 
 /* ==========================================================================
-                              TARJETAS
+                        6. TARJETAS INDIVIDUALES
    ========================================================================== */
 
-
-/* ==========================================================================
-                        FUENTES Y TIPOGRAFÍAS
-   ========================================================================== */
-@font-face {
-  font-family: 'Sparkling Valentine';
-  src: url('SparklingValentine.ttf') format('truetype');
-  font-display: swap; /* Optimización de rendimiento para dispositivos móviles */
-}
-
-/* ==========================================================================
-   ACCESIBILIDAD ARIA, NAVEGACIÓN POR TECLADO Y PREFERENCIAS DE USUARIO
-   ========================================================================== */
-
-/* Foco accesible de alto contraste (Cumplimiento WCAG / ARIA) */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 3px dashed var(--color-magenta) !important;
-  outline-offset: 4px;
-}
-
-/* Respeto a las preferencias del usuario si reduce animaciones en su dispositivo */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Evita desbordamiento horizontal en pantallas pequeñas de smartphones */
-body {
-  overflow-x: hidden;
-}
-
-/* ==========================================================================
-   5.1 SECCIÓN ACERCA DE NOSOTROS (ESTILO DIBUJO 2D & TINTA)
-   ========================================================================== */
-
-.titulo-seccion-acercade {
+/* Nuestro equipo */
+   .titulo-equipo {
   font-family: var(--fuente-titulo-principal);
-  font-size: clamp(2rem, 5vw, var(--tamano-titulo-principal)); /* Fluido en móviles */
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
   font-weight: var(--peso-negrita);
-  color: var(--color-magenta);
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 0px var(--color-negro); /* Efecto trazo sólido 2D */
-  letter-spacing: 1px;
 }
 
+/* Conoce al equipo */
 .subtitulo-seccion-acercade {
   font-family: var(--fuente-subtitulo);
-  font-size: clamp(1rem, 2.5vw, var(--tamano-subtitulo)); /* Fluido en móviles */
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
+  margin-bottom: 0.75rem;
   font-weight: var(--peso-seminegrita);
-  color: var(--color-purpura-oscuro);
-  display: inline-block;
-  border-bottom: 3px dashed var(--color-negro); 
-  padding-bottom: 4px;
 }
-
-/* Contenedor general*/
-.contenedor-tarjetas,
-.container.border.rounded {
-  background-color: var(--color-blanco) !important;
-  border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
-  box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
-}
-
-/* ==========================================================================
-                          TARJETAS INDIVIDUALES
-   ========================================================================== */
 
 .card {
   background-color: var(--color-blanco) !important;
@@ -871,87 +795,266 @@ body {
 
 .card-footer a {
   font-family: var(--fuente-cuerpo);
-  color: var(--color-magenta) !important;
+  color: white; /*Texto*/
   font-weight: var(--peso-seminegrita);
   font-size: var(--tamano-auxiliar);
   text-decoration: none;
   display: inline-block;
   transition: transform 0.2s ease, color 0.2s ease;
+  background-color: #9E1E4C;
+  padding: 8px 16px;                 
+  border-radius: 20px;
+  
 }
 
 @media (hover: hover) {
   .card-footer a:hover {
-    color: var(--color-marron-purpura-oscuro) !important;
     transform: scale(1.05);
-    text-decoration: underline !important;
+  background-color: #4A1029;
+  transform: scale(1.05);
   }
 }
 
 /* ================ FIN DEL BLOQUE TARJETAS ================================= */
 
 /* ==========================================================================
-               NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
+               7. NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
    ========================================================================== */
 
-.seccion-proyecto,
-.seccion-mision-vision {
-  background-color: var(--color-blanco);
-  border: 2.5px solid var(--color-negro);
-  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
-  padding: clamp(1.25rem, 4vw, 2rem); /* Relleno dinámico según la pantalla */
-  box-shadow: 5px 5px 0px var(--color-purpura-oscuro);
-  margin-bottom: 3rem;
+:root {
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --magenta: #9E1E4C;
+  --purpura-oscuro: #680148;
+  --gris-borde: #dcdcdc;
+  --gris-texto: #555555;
 }
 
-.titulo-seccion {
-  font-family: var(--fuente-titulo-principal);
-  color: var(--color-magenta);
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
+/* Contenedor general */
+.pilares-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Títulos principales e internos */
+.titulo-seccion,
+.pilar-badge {
+  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
+  font-size: 2.2rem;
+  color: var(--magenta);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   display: inline-block;
-  border-bottom: 3px solid var(--color-negro);
+  border-bottom: 3px solid var(--negro);
 }
 
+/* Layout de 3 columnas */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Diseño de cada Tarjeta */
+.pilar-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen dentro de la tarjeta */
+.pilar-img {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.pilar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido interno de la tarjeta */
+.pilar-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Texto dentro de la tarjeta */
+.pilar-body p {
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+/* Botón inferior */
+.btn-container {
+  margin-top: 40px;
+}
+
+.btn-visitarnos {
+  display: inline-block;
+  background-color: #f3ebf5;
+  color: var(--purpura-oscuro);
+  border: 1px solid var(--purpura-oscuro);
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-visitarnos:hover {
+  background-color: var(--purpura-oscuro);
+  color: var(--blanco);
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Secciones principales con cuadro */
+.seccion-proyecto,
+.seccion-mision-vision,
+.seccion-valores {
+  background-color: var(--blanco);
+  border: 2.5px solid var(--negro);
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 5px 5px 0px var(--purpura-oscuro);
+  margin-bottom: 3rem;
+}
+
+/* Títulos principales */
+.titulo-seccion,
+.pilar-badge {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+  font-weight: var(--peso-negrita);
+}
+
+/* Subtítulos */
 .subtitulo-seccion {
   font-family: var(--fuente-subtitulo);
-  color: var(--color-purpura-oscuro);
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
   margin-bottom: 0.75rem;
+  font-weight: var(--peso-seminegrita);
 }
 
+/* Texto general */
 .texto-seccion {
   font-family: var(--fuente-cuerpo);
-  color: var(--color-negro);
+  font-size: 0.95rem;
+  color: var(--gris-texto);
+  line-height: 1.5;
+  font-weight: var(--peso-regular);
 }
 
-.lista-valores ol {
-  padding-left: 1.2rem;
+/* Quitar margen del último párrafo */
+.lf-sobre-sketch__info p:last-child {
+    margin-bottom: 0;
 }
 
-.lista-valores li strong {
-  color: var(--color-purpura-oscuro);
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+
+    .lf-sobre-sketch__media {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__contenido {
+        height: auto;
+    }
+
+
+    .lf-sobre-sketch__info {
+        margin-top: var(--espaciado-md);
+    }
+
 }
 
-/* ==========================================================================
-                          SECCIÓN NEWSLETTER 
-   ========================================================================== */
 
+@media (max-width: 575.98px) {
+
+    .lf-sobre-sketch {
+        padding:
+            var(--espaciado-lg)
+            var(--espaciado-md);
+    }
+
+
+    .lf-sobre-sketch__media {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__titulo {
+        font-size: 1.5rem;
+    }
+
+
+    .lf-sobre-sketch__boton {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* fin de sección Sobre nosotros Sketch & Coffee */
+
+/* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
-  background-color: var(--color-gris-perla);
-  border-top: 3px solid var(--color-negro);
-  border-bottom: 3px solid var(--color-negro);
+  background-color: var(--color-negro); /* Si usas fondo oscuro */
+  border-top: 1px solid var(--color-gris-borde);
+  border-bottom: 1px solid var(--color-gris-borde);
   padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
 .section-newsletter h2 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-titulo-seccion);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso) !important; /* Blanco para máxima legibilidad */
   font-weight: var(--peso-seminegrita);
 }
 
-/* Campo de entrada de correo */
+/* Campo de entrada de correo (Input) */
 .newsletter-input {
   min-width: 280px;
   max-width: 100%;
@@ -972,8 +1075,8 @@ body {
 
 /* Botón personalizado Magenta */
 .btn-custom-magenta {
-  background-color: var(--color-magenta-btn);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-magenta-btn, #9E1E4C);
+  color: var(--color-texto-inverso, #FFFFFF);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
@@ -998,24 +1101,20 @@ body {
   box-shadow: 1px 1px 0px var(--color-negro);
 }
 
-/* ==========================================================================
-                                FOOTER GLOBAL
-   ========================================================================== */
-
 .footer-global {
-  background-color: var(--color-blanco-secciones);
-  border-top: 3px solid var(--color-negro); /* Línea divisoria gruesa */
-  color: var(--color-texto);
+  background-color: var(--color-negro);
+  border-top: 2px solid var(--color-gris-borde);
+  color: var(--color-texto-inverso);
   font-size: var(--tamano-footer);
-  padding-top: var(--espaciado-xl);
-  padding-bottom: var(--espaciado-lg);
+  padding-top: var(--espaciado-xl, 3rem);
+  padding-bottom: var(--espaciado-lg, 2rem);
 }
 
 .footer-global h3 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-subtitulo);
   font-weight: var(--peso-negrita);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso);
   margin-bottom: var(--espaciado-md);
 }
 
@@ -1026,92 +1125,264 @@ body {
 }
 
 .footer-global ul li {
-  margin-bottom: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-sm, 0.5rem);
 }
 
 .footer-global ul li a {
-  color: var(--color-texto);
+  color: var(--color-gris-perla);
   text-decoration: none;
-  transition: var(--transicion);
+  transition: var(--transicion, all 0.3s ease);
 }
 
-@media (hover: hover) {
-  .footer-global ul li a:hover {
-    color: var(--color-magenta);
-  }
+.footer-global ul li a:hover {
+  color: var(--color-magenta-hover); 
 }
 
 /* Redes sociales con iconos */
 .footer-global ul li a i {
-  font-size: 1.1rem;
-  color: var(--color-texto);
+color: var(--color-gris-perla);
+  fill: var(--color-gris-perla);
   transition: var(--transicion);
 }
 
-@media (hover: hover) {
-  .footer-global ul li a:hover i {
-    color: var(--color-magenta);
-    transform: scale(1.2);
-  }
-}
-
-/* Alineación y tamaño del SVG del icono */
-.footer-global ul li a .icon-uber {
-  width: 1.1rem;
-  height: 1.1rem;
-  fill: var(--color-texto);
-  transition: var(--transicion);
-}
-
-@media (hover: hover) {
-  .footer-global ul li a:hover .icon-uber {
-    fill: var(--color-magenta);
-    transform: scale(1.2);
-  }
+.footer-global ul li a:hover i {
+color: var(--color-magenta-hover);
+  fill: var(--color-magenta-hover);
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
-  font-size: var(--tamano-auxiliar);
-  color: var(--color-texto-suave);
-  border-top: 2px dashed var(--color-gris-borde);
+font-size: var(--tamano-auxiliar);
+  color: var(--color-gris-perla);
+  border-top: 1px solid var(--color-gris-borde);
   margin-top: var(--espaciado-xl);
   padding-top: var(--espaciado-md);
 }
 
 .footer-bottom p {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
+  text-decoration: none;
 }
 
 .footer-bottom a {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
   text-decoration: none;
   transition: var(--transicion);
 }
 
 .footer-bottom a:hover {
-  color: var(--color-texto);
+color: var(--color-texto-inverso);
   text-decoration: underline;
 }
 
 .footer-bottom .separator {
-  color: var(--color-gris-borde);
+color: var(--color-texto-inverso);
+  text-decoration: underline;
+}
+/*========================================================================*/
+/*SECCION PAGINA DE CONTACTO: TARJETAS DE HORARIOS Y COMO NOS ENCUENTRAS */
+/*=======================================================================*/
+.contenedor-contacto {
+  padding-top: var(--espaciado-md);
+  padding-bottom: var(--espaciado-xl);
 }
 
 /* ==========================================================================
-   PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
+                                TARJETAS
    ========================================================================== */
+.tarjeta-boceto {
+  background-color: var(--color-blanco-secciones);
+  border: 2px solid var(--color-purpura-gral);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: var(--espaciado-lg);
+  height: 100%;
+  transition: box-shadow var(--transicion), transform var(--transicion);
+}
 
-@media (max-width: 576px) {
-  /* Suavizado leve en dispositivos móviles muy estrechos sin perder estética  */
-  .contenedor-tarjetas,
-  .seccion-proyecto,
-  .seccion-mision-vision {
-    border-radius: 18px !important;
+.tarjeta-boceto:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+/* Tarjeta Principal del Formulario */
+.tarjeta-boceto-principal {
+  border: 2px solid var(--color-purpura-oscuro);
+  background-color: var(--color-blanco-formularios);
+}
+
+.tarjeta-boceto h2,
+.tarjeta-boceto h3 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+  margin-bottom: var(--espaciado-xs);
+}
+
+.subtitulo {
+  font-family: var(--fuente-subtitulo);
+  font-size: var(--tamano-subtitulo);
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espaciado-lg);
+}
+
+/* ==========================================================================
+                          FORMULARIO E INPUTS
+   ========================================================================== */
+.form-control,
+.form-select {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+  background-color: var(--color-blanco-formularios);
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 0 0.25rem var(--color-magenta-tenue);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--color-texto-suave);
+  font-size: var(--tamano-auxiliar);
+}
+
+.form-check-label {
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+}
+
+.form-check-label a {
+  color: var(--color-magenta);
+  text-decoration: underline;
+}
+
+.form-check-label a:hover {
+  color: var(--color-magenta-hover);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-magenta);
+  border-color: var(--color-magenta);
+}
+
+/* Caja reCAPTCHA */
+.caja-recaptcha {
+  border: 2px dashed var(--color-gris-borde);
+  background-color: var(--color-magenta-tenue);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  border-radius: var(--radio-sm);
+  text-align: center;
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+  width: 100%;
+  max-width: 220px;
+}
+
+.caja-recaptcha i {
+  color: var(--color-magenta);
+  font-size: var(--tamano-parrafos);
+}
+
+/* ==========================================================================
+                          BOTONES
+   ========================================================================== */
+.boton-magenta {
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-negrita);
+  border: 2px solid var(--color-purpura-oscuro);
+  border-radius: var(--radio-sm);
+  padding: var(--espaciado-sm) var(--espaciado-lg);
+  box-shadow: var(--sombra);
+  transition: background-color var(--transicion), box-shadow var(--transicion), transform var(--transicion);
+  cursor: pointer;
+}
+
+.boton-magenta:hover,
+.boton-magenta:focus {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+                           MENSAJE DE ÉXITO
+   ========================================================================== */
+#mensaje-exito {
+  background-color: var(--color-magenta-tenue);
+  color: var(--color-exito);
+  border: 2px solid var(--color-exito);
+  border-radius: var(--radio-sm);
+  font-size: var(--tamano-parrafos);
+  font-weight: var(--peso-seminegrita);
+  padding: var(--espaciado-md);
+}
+
+/* ==========================================================================
+             TARJETAS LATERALES (INFORMACIÓN Y HORARIOS)
+   ========================================================================== */
+.bloque-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-md);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+}
+
+.bloque-info i {
+  font-size: var(--iconos-imagenes);
+  color: var(--color-magenta);
+  flex-shrink: 0;
+}
+
+.bloque-info a {
+  color: var(--color-texto);
+  text-decoration: underline;
+  transition: color var(--transicion);
+}
+
+.bloque-info a:hover {
+  color: var(--color-magenta-enlaces-act);
+}
+
+.fila-horario {
+  border-bottom: 1px dashed var(--color-gris-borde);
+  padding-bottom: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-sm);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+  font-family: var(--fuente-numeros);
+}
+
+.fila-horario strong {
+  font-family: var(--fuente-cuerpo);
+}
+
+.fila-horario:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+                         ADAPTATIVO / RESPONSIVO
+   ========================================================================== */
+@media (max-width: 575.98px) {
+  .caja-recaptcha {
+    max-width: 100%;
   }
-
-  .newsletter-input,
-  .btn-custom-magenta {
-    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
+  
+  .boton-magenta {
+    width: 100%;
   }
 }
