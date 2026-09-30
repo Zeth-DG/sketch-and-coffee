@@ -250,12 +250,14 @@
 
 
 <!-- Newsletter Suscríbete -->
-<section class="section-newsletter text-center">
+<section class="section-newsletter text-center" aria-labelledby="newsletter-heading">
     <div class="container">
-        <h2 class="mb-4">Suscríbete y recibe promociones</h2>
-        <form class="row g-2 justify-content-center align-items-center">
+        <h2 id="newsletter-heading" class="mb-4">Suscríbete y recibe promociones</h2>
+        
+        <form id="formNewsletter" class="row g-2 justify-content-center align-items-center" novalidate>
             <div class="col-12 col-sm-auto">
-                <input type="email" class="form-control form-control-lg text-center text-sm-start newsletter-input" placeholder="tu@correo.com" required>
+                <label for="inputEmailNewsletter" class="visually-hidden">Correo electrónico</label>
+                <input id="inputEmailNewsletter" type="email" class="form-control form-control-lg text-center text-sm-start newsletter-input" placeholder="tu@correo.com" required>
             </div>
             <div class="col-12 col-sm-auto">
                 <button type="submit" class="btn btn-custom-magenta w-100">Enviar</button>
@@ -271,8 +273,8 @@
         <div class="row g-4">
             <!-- Columna 1 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Sketch & Coffee</h3>
-                <ul>
+                <h3 class="h5">Sketch & Coffee</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Nuestra Historia</a></li>
                     <li><a href="#">Prensa y Galería 2D</a></li> 
                 </ul>
@@ -280,8 +282,8 @@
 
             <!-- Columna 2 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Tienda</h3>
-                <ul>
+                <h3 class="h5">Tienda</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Menú en línea</a></li>
                     <li><a href="#">Café en grano</a></li> 
                 </ul>
@@ -289,47 +291,51 @@
 
             <!-- Columna 3 -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Ayuda</h3>
-                <ul>
+                <h3 class="h5">Ayuda</h3>
+                <ul class="list-unstyled">
                     <li><a href="#">Preguntas frecuentes</a></li>
                     <li><a href="#">Facturación</a></li>
                 </ul>
             </div>
 
-            <!-- Columna 4: Síguenos (CORREGIDA) -->
+            <!-- Columna 4: Síguenos -->
             <div class="col-12 col-sm-6 col-md-3">
-                <h3>Síguenos</h3>
+                <h3 class="h5">Síguenos</h3>
                 <ul class="list-unstyled">
                     <li class="mb-2">
                         <a href="https://www.instagram.com/sketchandcoffe" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-instagram"></i>
-                        Instagram</a>
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                            Instagram
+                        </a>
                     </li>
                     <li class="mb-2">
                         <a href="https://www.facebook.com/profile.php?id=61561271356592" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-facebook"></i>
-                        Facebook</a>
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                            Facebook
+                        </a>
                     </li>
                     <li class="mb-2">
                         <a href="https://www.tiktok.com/@sketch.coffee" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
-                            <i class="bi bi-tiktok"></i>
-                        TikTok</a>
+                            <i class="bi bi-tiktok" aria-hidden="true"></i>
+                            TikTok
+                        </a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2 text-decoration-none">
-                            <i class="bi bi-bag-fill"></i>
-                        Uber Eats</a>
+                        <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-bag-fill" aria-hidden="true"></i>
+                            Uber Eats
+                        </a>
                     </li>
                 </ul>
             </div>
         </div> 
 
         <!-- Derechos y Enlaces Legales Inferiores -->
-        <div class="footer-bottom d-flex flex-wrap align-items-center gap-2">
+        <div class="footer-bottom d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-2">
             <p class="mb-0">&copy; 2026 Sketch & Coffee</p>
-            <span class="separator">|</span>
+            <span class="separator" aria-hidden="true">|</span>
             <a href="#">Aviso de Privacidad</a>
-            <span class="separator">|</span>
+            <span class="separator" aria-hidden="true">|</span>
             <a href="#">Términos y Condiciones</a>
         </div>
 

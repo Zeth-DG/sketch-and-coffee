@@ -972,37 +972,93 @@ img { max-width: 100%; height: auto; }
   font-weight: var(--peso-regular);
 }
 
-/* Listas de valores */
-.lista-valores li strong {
-  color: var(--purpura-oscuro);
-  font-family: var(--fuente-numeros);
-  font-weight: var(--peso-seminegrita);
+/* Quitar margen del último párrafo */
+.lf-sobre-sketch__info p:last-child {
+    margin-bottom: 0;
 }
 
-/* ==========================================================================
-                         8. SECCIÓN NEWSLETTER 
-   ========================================================================== */
 
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+
+    .lf-sobre-sketch__media {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 280px;
+    }
+
+
+    .lf-sobre-sketch__contenido {
+        height: auto;
+    }
+
+
+    .lf-sobre-sketch__info {
+        margin-top: var(--espaciado-md);
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .lf-sobre-sketch {
+        padding:
+            var(--espaciado-lg)
+            var(--espaciado-md);
+    }
+
+
+    .lf-sobre-sketch__media {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__titulo {
+        font-size: 1.5rem;
+    }
+
+
+    .lf-sobre-sketch__boton {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* fin de sección Sobre nosotros Sketch & Coffee */
+
+/* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
-  background-color: var(--color-gris-perla);
-  border-top: 3px solid var(--color-negro);
-  border-bottom: 3px solid var(--color-negro);
+  background-color: var(--color-negro); /* Si usas fondo oscuro */
+  border-top: 1px solid var(--color-gris-borde);
+  border-bottom: 1px solid var(--color-gris-borde);
   padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
 .section-newsletter h2 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-titulo-seccion);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso) !important; /* Blanco para máxima legibilidad */
   font-weight: var(--peso-seminegrita);
 }
 
-/* Campo de entrada de correo */
+/* Campo de entrada de correo (Input) */
 .newsletter-input {
   min-width: 280px;
-  max-width: 100%;
-  border: 2.5px solid var(--color-negro) !important;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 1.5px solid var(--color-negro) !important;
+  border-radius: var(--radio-sm);
   background-color: var(--color-blanco-formularios);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-parrafos);
@@ -1012,31 +1068,27 @@ img { max-width: 100%; height: auto; }
 
 .newsletter-input:focus {
   border-color: var(--color-magenta) !important;
-  box-shadow: 3px 3px 0px var(--color-magenta);
-  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
 }
 
 /* Botón personalizado Magenta */
 .btn-custom-magenta {
-  background-color: var(--color-magenta-btn);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-magenta-btn, #9E1E4C);
+  color: var(--color-texto-inverso, #FFFFFF);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border: 2.5px solid var(--color-negro);
+  border-radius: var(--radio-sm);
+  border: 1.5px solid var(--color-negro);
   padding: 0.5rem 1.75rem;
-  box-shadow: 3px 3px 0px var(--color-negro);
-  transition: all 0.15s ease-in-out;
+  transition: var(--transicion);
 }
 
-@media (hover: hover) {
-  .btn-custom-magenta:hover {
-    background-color: var(--color-magenta-hover);
-    color: var(--color-texto-inverso);
-    box-shadow: 5px 5px 0px var(--color-negro);
-    transform: translate(-2px, -2px);
-  }
+.btn-custom-magenta:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra);
+  transform: translateY(-1px);
 }
 
 .btn-custom-magenta:active {
@@ -1044,24 +1096,21 @@ img { max-width: 100%; height: auto; }
   box-shadow: 1px 1px 0px var(--color-negro);
 }
 
-/* ==========================================================================
-                             9.   FOOTER GLOBAL
-   ========================================================================== */
-
+/* ==========================FOOTER GLOBAL========================= */
 .footer-global {
-  background-color: var(--color-blanco-secciones);
-  border-top: 3px solid var(--color-negro); /* Línea divisoria gruesa */
-  color: var(--color-texto);
+  background-color: var(--color-negro);
+  border-top: 2px solid var(--color-gris-borde);
+  color: var(--color-texto-inverso);
   font-size: var(--tamano-footer);
-  padding-top: var(--espaciado-xl);
-  padding-bottom: var(--espaciado-lg);
+  padding-top: var(--espaciado-xl, 3rem);
+  padding-bottom: var(--espaciado-lg, 2rem);
 }
 
 .footer-global h3 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-subtitulo);
   font-weight: var(--peso-negrita);
-  color: var(--color-texto);
+  color: var(--color-texto-inverso);
   margin-bottom: var(--espaciado-md);
 }
 
@@ -1072,133 +1121,57 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-global ul li {
-  margin-bottom: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-sm, 0.5rem);
 }
 
 .footer-global ul li a {
-  color: var(--color-texto);
+  color: var(--color-gris-perla);
   text-decoration: none;
-  transition: var(--transicion);
+  transition: var(--transicion, all 0.3s ease);
 }
 
-@media (hover: hover) {
-  .footer-global ul li a:hover {
-    color: var(--color-magenta);
-  }
+.footer-global ul li a:hover {
+  color: var(--color-magenta-hover); 
 }
 
 /* Redes sociales con iconos */
 .footer-global ul li a i {
-  font-size: 1.1rem;
-  color: var(--color-texto);
+color: var(--color-gris-perla);
+  fill: var(--color-gris-perla);
   transition: var(--transicion);
 }
 
-@media (hover: hover) {
-  .footer-global ul li a:hover i {
-    color: var(--color-magenta);
-    transform: scale(1.2);
-  }
-}
-
-/* Alineación y tamaño del SVG del icono */
-.footer-global ul li a .icon-uber {
-  width: 1.1rem;
-  height: 1.1rem;
-  fill: var(--color-texto);
-  transition: var(--transicion);
-}
-
-@media (hover: hover) {
-  .footer-global ul li a:hover .icon-uber {
-    fill: var(--color-magenta);
-    transform: scale(1.2);
-  }
+.footer-global ul li a:hover i {
+color: var(--color-magenta-hover);
+  fill: var(--color-magenta-hover);
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
-  font-size: var(--tamano-auxiliar);
-  color: var(--color-texto-suave);
-  border-top: 2px dashed var(--color-gris-borde);
+font-size: var(--tamano-auxiliar);
+  color: var(--color-gris-perla);
+  border-top: 1px solid var(--color-gris-borde);
   margin-top: var(--espaciado-xl);
   padding-top: var(--espaciado-md);
 }
 
 .footer-bottom p {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
+  text-decoration: none;
 }
 
 .footer-bottom a {
-  color: var(--color-texto-suave);
+color: var(--color-gris-perla);
   text-decoration: none;
   transition: var(--transicion);
 }
 
 .footer-bottom a:hover {
-  color: var(--color-texto);
+color: var(--color-texto-inverso);
   text-decoration: underline;
 }
 
 .footer-bottom .separator {
-  color: var(--color-gris-borde);
-}
-
-/* ==========================================================================
-      10. PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
-   ========================================================================== */
-
-@media (max-width: 576px) {
-  /* Suavizado leve en dispositivos móviles muy estrechos sin perder estética  */
-  .contenedor-tarjetas,
-  .seccion-proyecto,
-  .seccion-mision-vision {
-    border-radius: 18px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .newsletter-input,
-  .btn-custom-magenta {
-    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
-  }
-}
-
-/* ==========================================================================
-      11. BOTÓN PARA SUBIR
-   ========================================================================== */ 
-
-#btnSubir {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: none;
-  width: 50px;
-  height: 50px;
-  
-  /* FONDO MAGENTA MEDIO OPACO (0.75 de opacidad) */
-  background-color: rgba(6, 6, 6, 0.75) !important; 
-  border-color: rgba(0, 0, 0, 0.75) !important;
-  color: #ffffff !important;
-
-  /* CENTRADO PERFECTO */
-  display: flex; /* Fuerza el alineamiento de caja */
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 0 !important;
-}
-
-/* AJUSTE PARA EL SÍMBOLO EN V */
-#btnSubir svg {
-  width: 22px;
-  height: 22px;
-  display: block;
-  margin-top: -2px; 
-}
-
-/* EFECTO HOVER (Cuando pasas el cursor se vuelve más sólido) */
-#btnSubir:hover {
-  background-color: rgba(163, 0, 88, 0.95) !important;
-  border-color: rgba(163, 0, 88, 0.95) !important;
+color: var(--color-texto-inverso);
+  text-decoration: underline;
 }
