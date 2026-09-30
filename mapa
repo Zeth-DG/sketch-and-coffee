@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+  <h2>Ubicación</h2>
+  
+  <div>
+    <iframe
+      src="https://maps.google.com/maps?q=Sketch%20%26%20Coffee%2C%20Patricio%20Sanz%20242%2C%20Del%20Valle%20Norte%2C%20CDMX&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+      width="100%"
+      height="400"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+</div>
+</body>
+</html>
