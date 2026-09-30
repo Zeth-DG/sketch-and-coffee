@@ -27,7 +27,7 @@
     </header>
 
     <!-- TARJETAS DE PRESENTACIÓN (Ajustadas de 1 a 4 columnas según la pantalla) -->
-    <section class="container my-4 my-md-5 p-3 p-sm-4 border rounded contenedor-tarjetas"
+    <section class="container my-4 my-md-5 p-3 p-sm-4 border rounded contenedor-fichas"
       aria-labelledby="titulo-equipo">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 g-md-4" role="list">
 
@@ -192,8 +192,8 @@
 
     <!-- NUESTRO PROYECTO -->
     <section class="seccion-proyecto my-4 my-md-5" aria-labelledby="titulo-proyecto">
-      <h2 id="titulo-proyecto" class="titulo-seccion">Nuestro proyecto</h2>
-      <h3 class="subtitulo-seccion">El arte de hacer una pausa</h3>
+  <h2 id="titulo-proyecto" class="titulo-seccion">Nuestro Proyecto</h2>
+  <h3 class="subtitulo-seccion">El arte de hacer una pasión</h3>
       <p class="texto-seccion">
         Nacemos con la idea de ser más que una cafetería: un refugio acogedor, moderno e inspirador en medio de la
         rutina. Creamos un punto de encuentro donde la calidez de lo hogareño se fusiona con un concepto visual fresco y
@@ -203,25 +203,64 @@
         creatividad.
       </p>
     </section>
+   
+    <!-- NUESTROS PILARES, MISIÓN, VISIÓN Y VALORES -->
+<section class="pilares-container seccion-mision-vision my-4 my-md-5" aria-labelledby="titulo-pilares">
+  <h2 id="titulo-pilares" class="titulo-seccion">Nuestros pilares</h2>
 
-    <!-- MISIÓN, VISIÓN Y VALORES -->
-    <section class="seccion-mision-vision my-4 my-md-5" aria-labelledby="titulo-mision">
-      <h2 id="titulo-mision" class="titulo-seccion">Misión</h2>
-      <p class="texto-seccion">
-        Desarrollar una plataforma e-commerce integral para la cafetería <strong>Sketch & Coffee</strong>, diseñada para
-        optimizar y agilizar el acceso a sus productos y servicios desde cualquier dispositivo móvil o de escritorio.
-        Buscamos fusionar el servicio del lugar con el mundo digital, de forma segura y eficiente, facilitando la
-        interacción de la comunidad y el crecimiento comercial de la marca.
-      </p>
+  <div class="pilares-grid">
+    <!-- Tarjeta Misión -->
+    <div class="pilar-card">
+      <div class="pilar-img">
+        <img src="mision.jpg" alt="Misión Sketch & Coffee">
+      </div>
+      <div class="pilar-body">
+        <h3 class="pilar-badge">Misión</h3>
+        <p>
+          Desarrollar una plataforma e-commerce integral para la cafetería 
+          <strong>Sketch & Coffee</strong>, diseñada para optimizar y agilizar 
+          el acceso a sus productos y servicios desde cualquier dispositivo móvil o de escritorio.
+        </p>
+      </div>
+    </div>
 
-      <h2 id="titulo-vision" class="titulo-seccion">Visión</h2>
-      <p class="texto-seccion">
-        Consolidar este proyecto web como un modelo de referencia en el sector de las plataformas e-commerce,
-        demostrando cómo una solución digital multiplataforma puede unificar la eficiencia del servicio a domicilio con
-        la optimización del consumo en el local. Alcanzaremos esta meta optimizando una plataforma web rápida, segura y
-        accesible.
-      </p>
+    <!-- Tarjeta Visión -->
+    <div class="pilar-card">
+      <div class="pilar-img">
+        <img src="vision.jpg" alt="Visión Sketch & Coffee">
+      </div>
+      <div class="pilar-body">
+        <h3 class="pilar-badge">Visión</h3>
+        <p>
+          Consolidar este proyecto web como un modelo de referencia en el 
+          sector de las plataformas e-commerce, demostrando cómo una solución digital multiplataforma puede unificar la eficiencia del servicio.
+        </p>
+      </div>
+    </div>
 
+    <!-- Tarjeta Valores -->
+    <div class="pilar-card">
+      <div class="pilar-img">
+        <img src="valores.jpg" alt="Valores Sketch & Coffee">
+      </div>
+      <div class="pilar-body">
+        <h3 class="pilar-badge">Valores</h3>
+        <p>
+          Creatividad e Innovación Visual, Hospitalidad e Inclusión, 
+          Calidad y Excelencia en el Servicio, Compromiso Local y Transparencia Digital.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón inferior -->
+  <div class="btn-container">
+    <a href="#" class="btn-visitarnos">¡Ven a visitarnos!</a>
+  </div>
+</section>
+
+ <!--Valores-->
+      <section class="seccion-mision-vision my-4 my-md-5" aria-labelledby="titulo-mision">
       <h2 id="titulo-valores" class="titulo-seccion">Valores</h2>
       <h3 class="subtitulo-seccion">Valores Organizacionales</h3>
 
@@ -312,6 +351,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="./js/main.js" type="module"></script>
+
 </body>
 
 </html>

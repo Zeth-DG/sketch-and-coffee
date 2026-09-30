@@ -783,7 +783,7 @@ body {
   font-weight: var(--peso-negrita);
   color: var(--color-magenta);
   margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 0px var(--color-negro); /* Efecto trazo sólido 2D */
+  text-shadow: 1px 1px 0px var(--color-negro); /* Efecto trazo sólido 2D */
   letter-spacing: 1px;
 }
 
@@ -800,7 +800,7 @@ body {
 /* Contenedor general*/
 .contenedor-tarjetas,
 .container.border.rounded {
-  background-color: var(--color-blanco) !important;
+  background-color: var(--color-blanco-puro) !important;
   border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
   box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
@@ -887,50 +887,169 @@ body {
   }
 }
 
+
 /* ================ FIN DEL BLOQUE TARJETAS ================================= */
 
 /* ==========================================================================
                NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
    ========================================================================== */
 
-.seccion-proyecto,
-.seccion-mision-vision {
-  background-color: var(--color-blanco);
-  border: 2.5px solid var(--color-negro);
-  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
-  padding: clamp(1.25rem, 4vw, 2rem); /* Relleno dinámico según la pantalla */
-  box-shadow: 5px 5px 0px var(--color-purpura-oscuro);
-  margin-bottom: 3rem;
+:root {
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --magenta: #9E1E4C;
+  --purpura-oscuro: #680148;
+  --gris-borde: #dcdcdc;
+  --gris-texto: #555555;
 }
 
-.titulo-seccion {
-  font-family: var(--fuente-titulo-principal);
-  color: var(--color-magenta);
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
+/* Contenedor general */
+.pilares-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Títulos principales e internos */
+.titulo-seccion,
+.pilar-badge {
+  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
+  font-size: 2.2rem;
+  color: var(--magenta);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   display: inline-block;
-  border-bottom: 3px solid var(--color-negro);
+  border-bottom: 3px solid var(--negro);
 }
 
+/* Layout de 3 columnas */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Diseño de cada Tarjeta */
+.pilar-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen dentro de la tarjeta */
+.pilar-img {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.pilar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido interno de la tarjeta */
+.pilar-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Texto dentro de la tarjeta */
+.pilar-body p {
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+/* Botón inferior */
+.btn-container {
+  margin-top: 40px;
+}
+
+.btn-visitarnos {
+  display: inline-block;
+  background-color: #f3ebf5;
+  color: var(--purpura-oscuro);
+  border: 1px solid var(--purpura-oscuro);
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-visitarnos:hover {
+  background-color: var(--purpura-oscuro);
+  color: var(--blanco);
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Secciones principales con cuadro */
+.seccion-proyecto,
+.seccion-mision-vision,
+.seccion-valores {
+  background-color: var(--blanco);
+  border: 2.5px solid var(--negro);
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 5px 5px 0px var(--purpura-oscuro);
+  margin-bottom: 3rem;
+}
+
+/* Títulos principales */
+.titulo-seccion,
+.pilar-badge {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+  font-weight: var(--peso-negrita);
+}
+
+/* Subtítulos */
 .subtitulo-seccion {
   font-family: var(--fuente-subtitulo);
-  color: var(--color-purpura-oscuro);
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
   margin-bottom: 0.75rem;
+  font-weight: var(--peso-seminegrita);
 }
 
+/* Texto general */
 .texto-seccion {
   font-family: var(--fuente-cuerpo);
-  color: var(--color-negro);
+  font-size: 0.95rem;
+  color: var(--gris-texto);
+  line-height: 1.5;
+  font-weight: var(--peso-regular);
 }
 
-.lista-valores ol {
-  padding-left: 1.2rem;
-}
-
+/* Listas de valores */
 .lista-valores li strong {
-  color: var(--color-purpura-oscuro);
+  color: var(--purpura-oscuro);
+  font-family: var(--fuente-numeros);
+  font-weight: var(--peso-seminegrita);
 }
 
 /* ==========================================================================
@@ -1109,7 +1228,9 @@ body {
   .seccion-mision-vision {
     border-radius: 18px !important;
   }
+}
 
+@media (max-width: 768px) {
   .newsletter-input,
   .btn-custom-magenta {
     width: 100%; /* Botones y campos ocupan el ancho total en celulares */
