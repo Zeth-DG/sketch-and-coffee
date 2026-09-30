@@ -733,339 +733,310 @@ img { max-width: 100%; height: auto; }
 /* ===== FIN DEL BLOQUE DE GONZALO ======================================== */
 
 /* ==========================================================================
-   6. TARJETAS
+                        6. TARJETAS INDIVIDUALES
    ========================================================================== */
 
-/*6.1 TARJETAS*/
-
-@font-face{
-  font-family:'Sparkling Valentine';
-  src: url('SparklingValentine.ttf') format('truetype');
-}
-
-.titulo-seccion-acercade{
-  font-family: var(--fuente-titulo-principal) ;
-  font-size: var(--tamano-titulo-principal);
+/* Nuestro equipo */
+   .titulo-equipo {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
   font-weight: var(--peso-negrita);
-  color: var(--color-magenta);
-  margin-bottom: 0.5rem;
 }
 
-.subtitulo-seccion-acercade{
-  font-family: var(--fuente-subtitulo) ;
-  font-size: var(--tamano-subtitulo);
+/* Conoce al equipo */
+.subtitulo-seccion-acercade {
+  font-family: var(--fuente-subtitulo);
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
+  margin-bottom: 0.75rem;
   font-weight: var(--peso-seminegrita);
-  color: var(--color-purpura-oscuro);
-}
-
-
-/*6.2 Tarjetas de foto de perfil*/
-
-
-.card-title{
-  font-family:'Sparkling Valentine';
-}
-
-.card-text{
-  font-family: 'Lorestta', system-ui, -apple-system, sans-serif;
 }
 
 .card {
-  background-color: #25020F;
-  color: #FFFFFF;
+  background-color: var(--color-blanco) !important;
+  /* Trazo entintado imperfecto de boceto */
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+  box-shadow: 4px 4px 0px var(--color-negro) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+/* Efecto Hover condicional para dispositivos con puntero (PC / Laptop) */
+@media (hover: hover) {
+  .card:hover {
+    transform: translate(-3px, -3px) rotate(-1deg); /* Ligera inclinación tipo viñeta */
+    box-shadow: 7px 7px 0px var(--color-magenta) !important; /* Destaque de color al interactuar */
+  }
+}
+
+
+.card-img-top {
+  height: clamp(180px, 30vw, 230px); /* Adaptable a pantallas táctiles chicas */
+  object-fit: contain; /* Muestra la imagen completa sin cortar */
+  object-position: center;
+  background-color: var(--color-blanco-secciones, #f8f9fa); /* Fondo neutro para rellenar */
+  padding: 0.5rem; /* Margen interno tipo marco de fotografía */
+  border-bottom: 2.5px solid var(--color-negro); /* Separación entintada */
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-blanco);
+}
+
+.card-title {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 1.25rem;
+  font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-negro);
+  line-height: 1.5;
+  flex-grow: 1; /* Permite alineación vertical fluida */
+}
+
+/* Pie de la tarjeta */
+.card-footer {
+  background-color: var(--color-blanco) !important;
+  border-top: 2px dashed var(--color-negro) !important; /* Punteado de tinta */
+  padding: 0.75rem 1rem !important;
 }
 
 .card-footer a {
-  display: inline-block;   
-  background-color: #9E1E4C; 
-  color: #fff;              
-  padding: 6px 12px;       
-  border-radius: 4px;      
-  text-decoration: none;    
-  font-weight: bold;        
+  font-family: var(--fuente-cuerpo);
+  color: white; /*Texto*/
+  font-weight: var(--peso-seminegrita);
+  font-size: var(--tamano-auxiliar);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+  background-color: #9E1E4C;
+  padding: 8px 16px;                 
+  border-radius: 20px;
+  
 }
 
-.card-footer a:hover {
-  background-color: #570825; 
-  color: #fff;               
+@media (hover: hover) {
+  .card-footer a:hover {
+    transform: scale(1.05);
+  background-color: #4A1029;
+  transform: scale(1.05);
+  }
 }
 
-.container {
-  max-width: 1400px;
-  background-color: #000000; 
-  color: #fff;              
-  border-radius: 2px;     
+/* ================ FIN DEL BLOQUE TARJETAS ================================= */
+
+/* ==========================================================================
+               7. NUESTRO PROYECTO, MISIÓN, VISIÓN, VALORES
+   ========================================================================== */
+
+:root {
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --magenta: #9E1E4C;
+  --purpura-oscuro: #680148;
+  --gris-borde: #dcdcdc;
+  --gris-texto: #555555;
 }
 
+/* Contenedor general */
+.pilares-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
 
+/* Títulos principales e internos */
+.titulo-seccion,
+.pilar-badge {
+  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+}
 
-/* tamaño */
-.card .card-img-top {
+/* Layout de 3 columnas */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Diseño de cada Tarjeta */
+.pilar-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen dentro de la tarjeta */
+.pilar-img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.pilar-img img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center top;
-  display: block;
 }
 
-/* ===== FIN DEL BLOQUE TARJETAS ======================================== */
-
-/*  SOBRE SKETCH & COFFEE - LF */
-
-
-/* Contenedor principal de la sección */
-.lf-sobre-sketch {
-    background-color: var(--color-gris-perla);
-    padding: var(--espaciado-xl) var(--espaciado-md);
+/* Contenido interno de la tarjeta */
+.pilar-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 }
 
-
-/*  IMAGEN */
-
-.lf-sobre-sketch__media {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-
-    background-color: var(--color-blanco-secciones);
-
-    border: 1px solid var(--color-gris-borde);
-
-    overflow: hidden;
+/* Texto dentro de la tarjeta */
+.pilar-body p {
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
 }
 
-
-/* Imagen principal */
-.lf-sobre-sketch__imagen {
-    width: 100%;
-    height: 100%;
-
-    min-height: 300px;
-
-    object-fit: cover;
-
-    display: block;
+/* Botón inferior */
+.btn-container {
+  margin-top: 40px;
 }
 
-
-/*  CONTENIDO */
-
-.lf-sobre-sketch__contenido {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
+.btn-visitarnos {
+  display: inline-block;
+  background-color: #f3ebf5;
+  color: var(--purpura-oscuro);
+  border: 1px solid var(--purpura-oscuro);
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-
-/* Título */
-.lf-sobre-sketch__titulo {
-    font-family: var(--fuente-titulo-principal);
-
-    font-size: var(--tamano-titulo-seccion);
-
-    font-weight: var(--peso-seminegrita);
-
-    color: var(--color-texto);
-
-    margin-bottom: var(--espaciado-md);
+.btn-visitarnos:hover {
+  background-color: var(--purpura-oscuro);
+  color: var(--blanco);
 }
 
-
-/* Texto descriptivo */
-.lf-sobre-sketch__texto {
-    font-family: var(--fuente-cuerpo);
-
-    font-size: var(--tamano-parrafos);
-
-    color: var(--color-texto);
-
-    line-height: 1.7;
-
-    margin-bottom: var(--espaciado-lg);
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-
-/*  BOTÓN CONOCER MÁS */
-
-.lf-sobre-sketch__boton {
-    width: fit-content;
-
-    display: inline-block;
-
-    background-color: var(--color-magenta-btn);
-
-    color: var(--color-texto-inverso);
-
-    font-family: var(--fuente-cuerpo);
-
-    font-size: var(--tamano-boton);
-
-    font-weight: var(--peso-seminegrita);
-
-    text-decoration: none;
-
-    padding: 0.6rem 1.8rem;
-
-    border-radius: var(--radio-sm);
-
-    margin-bottom: var(--espaciado-md);
-
-    transition: var(--transicion);
+/* Secciones principales con cuadro */
+.seccion-proyecto,
+.seccion-mision-vision,
+.seccion-valores {
+  background-color: var(--blanco);
+  border: 2.5px solid var(--negro);
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 5px 5px 0px var(--purpura-oscuro);
+  margin-bottom: 3rem;
 }
 
-
-/* Hover del botón */
-.lf-sobre-sketch__boton:hover {
-    background-color: var(--color-magenta-hover);
-
-    color: var(--color-texto-inverso);
-
-    transform: translateY(-1px);
-
-    box-shadow: var(--sombra);
+/* Títulos principales */
+.titulo-seccion,
+.pilar-badge {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+  font-weight: var(--peso-negrita);
 }
 
-
-/*  CAJA DE INFORMACIÓN */
-
-.lf-sobre-sketch__info {
-    width: 100%;
-
-    background-color: var(--color-marron-purpura-oscuro);
-
-    color: var(--color-texto-inverso);
-
-    padding: var(--espaciado-md);
-
-    margin-top: auto;
+/* Subtítulos */
+.subtitulo-seccion {
+  font-family: var(--fuente-subtitulo);
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
+  margin-bottom: 0.75rem;
+  font-weight: var(--peso-seminegrita);
 }
 
-
-/* Título de la caja */
-.lf-sobre-sketch__info h3 {
-    font-family: var(--fuente-titulo-principal);
-
-    font-size: var(--tamano-subtitulo);
-
-    font-weight: var(--peso-seminegrita);
-
-    color: var(--color-texto-inverso);
-
-    margin-bottom: var(--espaciado-sm);
+/* Texto general */
+.texto-seccion {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--gris-texto);
+  line-height: 1.5;
+  font-weight: var(--peso-regular);
 }
 
-
-/* Párrafos de la caja */
-.lf-sobre-sketch__info p {
-    font-family: var(--fuente-cuerpo);
-
-    font-size: var(--tamano-auxiliar);
-
-    color: var(--color-texto-inverso);
-
-    margin-bottom: var(--espaciado-xs);
+/* Listas de valores */
+.lista-valores li strong {
+  color: var(--purpura-oscuro);
+  font-family: var(--fuente-numeros);
+  font-weight: var(--peso-seminegrita);
 }
 
+/* ==========================================================================
+                         8. SECCIÓN NEWSLETTER 
+   ========================================================================== */
 
-/* Quitar margen del último párrafo */
-.lf-sobre-sketch__info p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* --------------------------------------------------
-   RESPONSIVE
--------------------------------------------------- */
-
-@media (max-width: 991.98px) {
-
-    .lf-sobre-sketch__media {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__contenido {
-        height: auto;
-    }
-
-
-    .lf-sobre-sketch__info {
-        margin-top: var(--espaciado-md);
-    }
-
-}
-
-
-@media (max-width: 575.98px) {
-
-    .lf-sobre-sketch {
-        padding:
-            var(--espaciado-lg)
-            var(--espaciado-md);
-    }
-
-
-    .lf-sobre-sketch__media {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__titulo {
-        font-size: 1.5rem;
-    }
-
-
-    .lf-sobre-sketch__boton {
-        width: 100%;
-        text-align: center;
-    }
-
-}
-
-/* fin de sección Sobre nosotros Sketch & Coffee */
-
-/* =========================SECCIÓN NEWSLETTER======================== */
 .section-newsletter {
-  background-color: var(--color-negro); /* Si usas fondo oscuro */
-  border-top: 1px solid var(--color-gris-borde);
-  border-bottom: 1px solid var(--color-gris-borde);
+  background-color: var(--color-gris-perla);
+  border-top: 3px solid var(--color-negro);
+  border-bottom: 3px solid var(--color-negro);
   padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
 .section-newsletter h2 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-titulo-seccion);
-  color: var(--color-texto-inverso) !important; /* Blanco para máxima legibilidad */
+  color: var(--color-texto);
   font-weight: var(--peso-seminegrita);
 }
 
 /* Campo de entrada de correo */
 .newsletter-input {
   min-width: 280px;
-  border: 1.5px solid var(--color-negro) !important;
-  border-radius: var(--radio-sm);
+  max-width: 100%;
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   background-color: var(--color-blanco-formularios);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-parrafos);
   color: var(--color-texto);
+  box-shadow: 3px 3px 0px var(--color-negro);
 }
 
 .newsletter-input:focus {
   border-color: var(--color-magenta) !important;
-  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+  box-shadow: 3px 3px 0px var(--color-magenta);
+  outline: none;
 }
 
 /* Botón personalizado Magenta */
@@ -1075,25 +1046,35 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
-  border-radius: var(--radio-sm);
-  border: 1.5px solid var(--color-negro);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 2.5px solid var(--color-negro);
   padding: 0.5rem 1.75rem;
-  transition: var(--transicion);
+  box-shadow: 3px 3px 0px var(--color-negro);
+  transition: all 0.15s ease-in-out;
 }
 
-.btn-custom-magenta:hover {
-  background-color: var(--color-magenta-hover);
-  color: var(--color-texto-inverso);
-  box-shadow: var(--sombra);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .btn-custom-magenta:hover {
+    background-color: var(--color-magenta-hover);
+    color: var(--color-texto-inverso);
+    box-shadow: 5px 5px 0px var(--color-negro);
+    transform: translate(-2px, -2px);
+  }
 }
 
+.btn-custom-magenta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--color-negro);
+}
 
-/* ==========================FOOTER GLOBAL========================= */
+/* ==========================================================================
+                             9.   FOOTER GLOBAL
+   ========================================================================== */
+
 .footer-global {
-  background-color: var(--color-negro);
-  border-top: 2px solid var(--color-gris-borde);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-blanco-secciones);
+  border-top: 3px solid var(--color-negro); /* Línea divisoria gruesa */
+  color: var(--color-texto);
   font-size: var(--tamano-footer);
   padding-top: var(--espaciado-xl);
   padding-bottom: var(--espaciado-lg);
@@ -1103,7 +1084,7 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-subtitulo);
   font-weight: var(--peso-negrita);
-  color: var(--color-texto-inverso);
+  color: var(--color-texto);
   margin-bottom: var(--espaciado-md);
 }
 
@@ -1118,53 +1099,129 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-global ul li a {
-  color: var(--color-gris-perla);
+  color: var(--color-texto);
   text-decoration: none;
   transition: var(--transicion);
 }
 
-.footer-global ul li a:hover {
-  color: var(--color-magenta-hover); 
+@media (hover: hover) {
+  .footer-global ul li a:hover {
+    color: var(--color-magenta);
+  }
 }
 
 /* Redes sociales con iconos */
 .footer-global ul li a i {
-color: var(--color-gris-perla);
-  fill: var(--color-gris-perla);
+  font-size: 1.1rem;
+  color: var(--color-texto);
   transition: var(--transicion);
 }
 
-.footer-global ul li a:hover i {
-color: var(--color-magenta-hover);
-  fill: var(--color-magenta-hover);
+@media (hover: hover) {
+  .footer-global ul li a:hover i {
+    color: var(--color-magenta);
+    transform: scale(1.2);
+  }
+}
+
+/* Alineación y tamaño del SVG del icono */
+.footer-global ul li a .icon-uber {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: var(--color-texto);
+  transition: var(--transicion);
+}
+
+@media (hover: hover) {
+  .footer-global ul li a:hover .icon-uber {
+    fill: var(--color-magenta);
+    transform: scale(1.2);
+  }
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
-font-size: var(--tamano-auxiliar);
-  color: var(--color-gris-perla);
-  border-top: 1px solid var(--color-gris-borde);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto-suave);
+  border-top: 2px dashed var(--color-gris-borde);
   margin-top: var(--espaciado-xl);
   padding-top: var(--espaciado-md);
 }
 
 .footer-bottom p {
-color: var(--color-gris-perla);
-  text-decoration: none;
+  color: var(--color-texto-suave);
 }
 
 .footer-bottom a {
-color: var(--color-gris-perla);
+  color: var(--color-texto-suave);
   text-decoration: none;
-
+  transition: var(--transicion);
 }
 
 .footer-bottom a:hover {
-color: var(--color-texto-inverso);
+  color: var(--color-texto);
   text-decoration: underline;
 }
 
 .footer-bottom .separator {
-color: var(--color-texto-inverso);
-  text-decoration: underline;
+  color: var(--color-gris-borde);
+}
+
+/* ==========================================================================
+      10. PUNTOS DE INTERRUPCIÓN (MEDIA QUERIES PARA DISPOSITIVOS MÓVILES)
+   ========================================================================== */
+
+@media (max-width: 576px) {
+  /* Suavizado leve en dispositivos móviles muy estrechos sin perder estética  */
+  .contenedor-tarjetas,
+  .seccion-proyecto,
+  .seccion-mision-vision {
+    border-radius: 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter-input,
+  .btn-custom-magenta {
+    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
+  }
+}
+
+/* ==========================================================================
+      11. BOTÓN PARA SUBIR
+   ========================================================================== */ 
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  width: 50px;
+  height: 50px;
+  
+  /* FONDO MAGENTA MEDIO OPACO (0.75 de opacidad) */
+  background-color: rgba(6, 6, 6, 0.75) !important; 
+  border-color: rgba(0, 0, 0, 0.75) !important;
+  color: #ffffff !important;
+
+  /* CENTRADO PERFECTO */
+  display: flex; /* Fuerza el alineamiento de caja */
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* AJUSTE PARA EL SÍMBOLO EN V */
+#btnSubir svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin-top: -2px; 
+}
+
+/* EFECTO HOVER (Cuando pasas el cursor se vuelve más sólido) */
+#btnSubir:hover {
+  background-color: rgba(163, 0, 88, 0.95) !important;
+  border-color: rgba(163, 0, 88, 0.95) !important;
 }
