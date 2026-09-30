@@ -28,7 +28,7 @@
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
 
   /*Header*/
-  --color-header: black; /*color previo: #4A1029*/
+  --color-header: #4A1029;
   --color-header-hover: #651535;
   --color-header-borde: #C65A83;
  
@@ -356,9 +356,9 @@ img { max-width: 100%; height: auto; }
 }
  
 /* ==========================================================================
-   5. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
+   4. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
  
-/* ---- 5.1 Variables locales -------------------------------------------- */
+/* ---- 3.1 Variables locales -------------------------------------------- */
 .gv-scope {
   --gv-superficie:    var(--color-blanco-secciones);
   --gv-fondo-alt:     var(--color-gris-perla);
@@ -375,7 +375,7 @@ img { max-width: 100%; height: auto; }
   color: var(--gv-texto);
 }
  
-/* ---- 5.2 Blindaje ------------------------------------------------------            */
+/* ---- 4.2 Blindaje ------------------------------------------------------            */
 .gv-scope .row     { display: flex; flex-wrap: wrap; }
 .gv-scope .row > * { flex-shrink: 0; max-width: 100%; }
  
@@ -390,7 +390,7 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radio-sm);
 }
  
-/* ---- 5.3 Contenedor y sección ----------------------------------------- */
+/* ---- 4.3 Contenedor y sección ----------------------------------------- */
 .gv-contenedor {
   width: 100%;
   margin-inline: auto;
@@ -445,7 +445,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: underline;
 }
  
-/* ---- 5.4 Tarjeta de producto ------------------------------------------ */
+/* ---- 4.4 Tarjeta de producto ------------------------------------------ */
 .gv-scope .gv-producto {
   height: 100%;                    /* iguala la altura de todas las tarjetas */
   display: flex;
@@ -571,7 +571,7 @@ img { max-width: 100%; height: auto; }
   margin-top: auto;
 }
  
-/* ---- 5.5 Botones -------------------------------------------------------
+/* ---- 4.5 Botones -------------------------------------------------------
    Se llaman gv-btn, NO btn, para no pelear con Bootstrap ni con nadie.   */
 .gv-scope .gv-btn {
   display: inline-flex;
@@ -630,7 +630,7 @@ img { max-width: 100%; height: auto; }
  
 .gv-scope .gv-btn--bloque { width: 100%; }
  
-/* ---- 5.6 Promoción de temporada --------------------------------------- */
+/* ---- 4.6 Promoción de temporada --------------------------------------- */
 .gv-scope .gv-promo {
   padding: 1.15rem 2rem;
   border-radius: var(--radio-sm);
@@ -669,7 +669,7 @@ img { max-width: 100%; height: auto; }
 
 .gv-scope .gv-promo__accion { flex-shrink: 0; }
  
-/* ---- 5.7 Responsivo ---------------------------------------------------- */
+/* ---- 4.7 Responsivo ---------------------------------------------------- */
  
 /* Desde tablet, la promoción pasa a fila */
 @media (min-width: 768px) {
