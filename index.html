@@ -39,15 +39,12 @@
   <section class="gv-scope gv-seccion" id="gv-productos-estrella" aria-labelledby="gv-titulo-estrella">
   <div class="gv-contenedor">
 
-    <!-- El diseño no muestra este título, pero tiene que existir para los
-         lectores de pantalla. .solo-lectores lo oculta sin quitarlo. -->
+    
     <h2 class="solo-lectores" id="gv-titulo-estrella">Productos estrella</h2>
 
     <div class="gv-seccion__cabecera">
       <a class="gv-seccion__enlace" href="menu.html">Ver todos</a>
     </div>
-
-    <!-- row-cols-2 → 2 columnas en móvil · row-cols-lg-4 → 4 en escritorio -->
     <div class="row row-cols-2 row-cols-lg-4 g-3">
 
       <!-- ---------- Producto 1 ---------- -->
@@ -55,7 +52,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/taza1.jpeg"
+                 src="imagenes/cafeteria/cafe_americano.jpg"
                  alt="Café americano de Sketch & Coffee"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -75,7 +72,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/chilaquiles.jpeg"
+                 src="imagenes/cafeteria/chilaquiles.jpg"
                  alt="Chilaquiles servidos en Sketch & Coffee"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -95,7 +92,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="imagenes/Sketch&Coffee/chapata-hawaiana.jpeg"
+                 src="imagenes/cafeteria/Chapata.jpg"
                  alt="Chapata hawaiana recién horneada"
                  loading="lazy"
                  onerror="this.closest('.gv-producto__media').classList.add('gv-producto__media--vacio'); this.remove();">
@@ -115,7 +112,7 @@
         <article class="gv-producto">
           <div class="gv-producto__media">
             <img class="gv-producto__img"
-                 src="./imagenes/Sketch&Coffee/bebida1.jpeg"
+                 src="./imagenes/cafeteria/Bebida_roja.jpg"
                  alt="Berry Dream Soda It con frutos rojos"
                  loading="lazy"
                  >
@@ -130,14 +127,32 @@
         </article>
       </div>
 
-    </div><!-- /.row -->
-  </div><!-- /.gv-contenedor -->
+    </div>
+  </div>
 </section>
  
  
 <!-- SECCIÓN: PROMOCIÓN DE TEMPORADA - Gonzalo -->
+<section class="gv-scope gv-seccion" id="gv-promocion" aria-labelledby="gv-titulo-promo">
+  <div class="gv-contenedor">
+    <div class="gv-promo">
+      <div class="gv-promo__interior">
 
+        <div>
+          <h2 class="gv-promo__titulo" id="gv-titulo-promo">Promoción de Apertura</h2>
+          <p class="gv-promo__texto">
+            $100 MXN en combo café + alimento seleccionado
+          </p>
+        </div>
 
+        <div class="gv-promo__accion">
+          <a class="gv-btn gv-btn--primario" href="menu.html">Aprovechar</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     <!--Sobre sketch y coffe-->
 
 <section
