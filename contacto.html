@@ -16,6 +16,8 @@
   <!-- Estilos personalizados CSS-->
   <link rel="stylesheet" href="./css/styles.css">
 </head>
+  <!-- HEADER GLOBAL -->
+  <header id="header-global" role="banner"></header>
 
 
 <main>
@@ -54,6 +56,7 @@
           <option value="mayoreo">Mayoreo</option>
           <option value="otro">Otro</option>
         </select>
+        <p id="errorAsunto"></p>
       </div>
 
       <!-- Mensaje -->
@@ -64,8 +67,9 @@
 
       <!-- Checkbox Aviso de privacidad -->
       <div>
-        <input type="checkbox" id="privacidad" required>
+        <input type="checkbox" id="privacidad" required>       
         <label for="privacidad">Acepto el <a href="#">aviso de privacidad</a></label>
+        <p id="errorPrivacidad"></p>
       </div>
 
       <!-- reCAPTCHA y Botón -->
