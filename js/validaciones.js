@@ -30,7 +30,7 @@ export function validarCorreo (email){
     }; 
 }//funcion validar correo 
 
-export function validarNombre (nombre, apellido){
+export function validarNombreCompleto (nombre, apellido){
     if(typeof nombre !== "string" || apellido !== "string"){
         return{
             valido: false, 
@@ -72,7 +72,7 @@ export function validarNombre (nombre, apellido){
         valido: true,
         mensaje: "Nombre y apellido válido."
     };
-}//funcion validar nombre 
+}//funcion validar nombre
 
 export function validarTelefono(telefono){
     if(typeof telefono !== "string"){
@@ -126,4 +126,52 @@ export function validarMensaje(mensaje){
         valido: true,
         mensaje: "El mensaje es válido"
     }
-}
+}//funcion validar mensaje
+
+export function validarNombre (nombre){
+    if(typeof nombre !== "string"){
+        return{
+            valido: false, 
+            mensaje: "Introduce texto"
+        }
+    }//validar que sea un string
+
+    const nombreLimpio = nombre.trim();
+
+    //existe el dato nombre?
+    if (nombreLimpio === "") {
+        return {
+            valido: false, 
+            mensaje: "El nombre es obligatorio."
+        }; 
+    }
+    // el nombre o el apellido tienen una longitud mayor a 2 caracteres pero menor a 30?
+    if (nombreLimpio.length < 3 || nombreLimpio.length > 30 ){
+        return {
+            valido: false,
+            mensaje: "Ingresa un nombre válido."
+        }; 
+    }
+    const nameRegex = /^[\p{L}\s-]+$/u; //unicode 
+
+    //tiene caracteres invalidos?
+    if (!nameRegex.test(nombreLimpio)) {
+        return {
+            valido: false, 
+            mensaje: "Ingresa un nombre válido."
+        }; 
+    }
+
+    return {
+        valido: true,
+        mensaje: "Nombre válido."
+    };
+}//funcion validar nombreCompleto
+
+export function mostrarError(elemento, resultado){
+    if (resultado.valido){
+        elemento.textContent = "";
+    } else {
+        elemento.textContent = resultado.mensaje; 
+    }//else
+}//funcion mostrar error

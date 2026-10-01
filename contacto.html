@@ -10,8 +10,71 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+    <div>Inicio &rsaquo; Contacto</div>
+  <h1>Contacto</h1>
 
+  <div>
+    <h2>Escríbenos</h2>
+    <p>Respondemos en un máximo de 24 horas hábiles</p>
+
+    <!-- Formulario -->
+    <form id="contactForm" novalidate>
+      
+      <!-- Nombre y Teléfono -->
+      <div>
+        <input id="iptNombre" type="text" placeholder="Nombre" required>
+        <p id="errorNombre"></p>
+        <input id="iptTelefono" type="tel" placeholder="Teléfono" required>
+        <p id="errorTelefono"></p>
+      </div>
+
+      <!-- Correo electrónico -->
+      <div>
+        <input id="iptEmail" type="email" placeholder="Correo electrónico" required>
+        <p id="errorEmail"></p>
+      </div>
+
+      <!-- Asunto -->
+      <div>
+        <select id="slcAsunto" required>
+          <option value="" disabled selected hidden>Asunto: Pedidos / Eventos / Mayoreo / Otro</option>
+          <option value="pedidos">Pedidos</option>
+          <option value="eventos">Eventos</option>
+          <option value="mayoreo">Mayoreo</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <!-- Mensaje -->
+      <div>
+        <textarea id="iptMensaje" placeholder="Mensaje" required></textarea>
+        <p id="errorMensaje"></p>
+      </div>
+
+      <!-- Checkbox Aviso de privacidad -->
+      <div>
+        <input type="checkbox" id="privacidad" required>
+        <label for="privacidad">Acepto el <a href="#">aviso de privacidad</a></label>
+      </div>
+
+      <!-- reCAPTCHA y Botón -->
+      <div>
+        <div>reCAPTCHA</div>
+        <button id="btnEnviar" type="submit">ENVIAR MENSAJE</button>
+      </div>
+
+    </form>
+
+    <!-- Mensaje de Agradecimiento -->
+    <div id="successMessage" style="display: none;">
+      ¡Gracias por tu mensaje! En breve nos comunicaremos.
+    </div>
+  </div>
+
+</body>
+</html>
     
+ 
     <!--enlaces bootstrap y js-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="./js/main.js" type="module"></script>
