@@ -5,3 +5,4 @@ export function mostrarError(elemento, resultado){
         elemento.textContent = resultado.mensaje; 
     }//else
 }//funcion mostrar error
+
