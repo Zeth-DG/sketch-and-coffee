@@ -168,3 +168,30 @@ export function validarNombre (nombre){
     };
 }//funcion validar nombreCompleto
 
+export function validarAsunto(asunto){
+    if (asunto === ""){
+        return{
+            valido: false, 
+            mensaje: "Selecciona un asunto"
+        }; 
+    }
+
+    return{
+        valido: true,
+        mensaje: "Asunto seleccionado correctamente."
+    }
+}//funcion validarAsunto
+
+export function validarPrivacidad(aceptada){
+    if (!aceptada){
+        return{
+            valido: false, 
+            mensaje: "Debes aceptar el aviso de privacidad"
+        };
+    }
+
+    return{
+        valido: true, 
+        mensaje: ""
+    };
+}//funcion validarPrivacidad

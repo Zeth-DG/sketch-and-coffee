@@ -1,5 +1,5 @@
 import { cargarHeader } from "./header.js"
-import {validarCorreo, validarNombre, validarTelefono, validarMensaje} from "./validaciones.js"
+import {validarCorreo, validarNombre, validarTelefono, validarMensaje, validarAsunto, validarPrivacidad} from "./validaciones.js"
 import {mostrarError} from "./interfaz.js"
 import {MensajeUsuario} from "./mensaje-usuario.js"
 
@@ -41,11 +41,14 @@ const errorTelefono = document.getElementById("errorTelefono");
 const iptEmail = document.getElementById("iptEmail"); 
 const errorEmail = document.getElementById("errorEmail"); 
 const slcAsunto = document.getElementById("slcAsunto"); 
+const errorAsunto = document.getElementById("errorAsunto"); 
 const iptMensaje = document.getElementById("iptMensaje");
 const errorMensaje = document.getElementById("errorMensaje"); 
 const successMessage = document.getElementById("successMessage");
+const errorPrivacidad = document.getElementById("errorPrivacidad"); 
 const contactForm = document.getElementById("contactForm");
 const btnEnviar = document.getElementById("btnEnviar"); 
+const privacidad = document.getElementById("privacidad");
 
 //evento de envío del formulario 
 contactForm.addEventListener("submit", (evento) => {
@@ -57,21 +60,27 @@ contactForm.addEventListener("submit", (evento) => {
   let asuntoUsr = slcAsunto.value; 
   let mensajeUsr = iptMensaje.value; 
   //realizar las validaciones usando las funciones definidas en validaciones.js
-  let resultadoEmail = validarCorreo(emailUsr); 
-  let resultadoTelefono = validarTelefono(telefonoUsr); 
   let resultadoNombre = validarNombre(nombreUsr); 
+  let resultadoTelefono = validarTelefono(telefonoUsr); 
+  let resultadoEmail = validarCorreo(emailUsr); 
+  let resultadoAsunto = validarAsunto(asuntoUsr); 
   let resultadoMensaje = validarMensaje(mensajeUsr); 
+  let resultadoPrivacidad = validarPrivacidad(privacidad.checked); 
   //manejo de errores
   mostrarError(errorNombre, resultadoNombre); 
   mostrarError(errorTelefono, resultadoTelefono); 
   mostrarError(errorEmail, resultadoEmail); 
+  mostrarError(errorAsunto, resultadoAsunto);
   mostrarError(errorMensaje, resultadoMensaje); 
+  mostrarError(errorPrivacidad, resultadoPrivacidad); 
   //evaluacion de todas las validaciones
   const formularioValido = 
-  resultadoEmail.valido &&
-  resultadoTelefono.valido &&
   resultadoNombre.valido &&
-  resultadoMensaje.valido; 
+  resultadoTelefono.valido &&
+  resultadoEmail.valido &&
+  resultadoAsunto.valido &&
+  resultadoMensaje.valido &&
+  resultadoPrivacidad.valido; 
   //control de flujo en caso de que alguna validación sea falsa
   if(!formularioValido){
     return; 
