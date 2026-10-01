@@ -900,6 +900,25 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 
+
+/*Botón de los valores*/
+
+.btn-pilares {
+  background-color: #9E1E4C;   /* Magenta */
+  color: #fff;                 /* Texto blanco */
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  transition: all 0.3s ease;   
+}
+
+.btn-pilares:hover {
+  background-color: #7a163a;   /* Magenta más oscuro */
+  color: #fff;                 /* mantiene texto blanco */
+  transform: scale(1.05);      /* efecto de agrandamiento */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra elegante */
+}
+
 /* Botón inferior */
 .btn-container {
   margin-top: 40px;
@@ -1097,6 +1116,44 @@ img { max-width: 100%; height: auto; }
   color: var(--color-texto-inverso, #FFFFFF);
   box-shadow: var(--sombra);
   transform: translateY(-1px);
+}
+
+.btn-custom-magenta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--color-negro);
+}
+
+/* Ajuste de Tu correo electrónico*/
+
+.newsletter-input {
+  max-width: 280px;   /* ancho máximo del rectángulo blanco */
+  width: 100%;        /* ocupa todo el ancho disponible hasta 280px */
+}
+
+/* --------------------------------------------------
+        ESTILO DEL BOTÓN PARA SUBIR
+-------------------------------------------------- */
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  display: none;
+  width: 50px;       
+  height: 50px;        
+  border-radius: 50%;  
+  background-color: #000; 
+  color: #fff;
+  border: none;
+  justify-content: center; 
+  align-items: center;     
+}
+
+#btnSubir:hover {
+  background-color: #9E1E4C; 
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 
