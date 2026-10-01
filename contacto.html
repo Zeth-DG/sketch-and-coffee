@@ -40,27 +40,30 @@
                         <!-- Nombre y Teléfono -->
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
-                                <label for="campo-nombre" class="visually-hidden">Nombre completo</label>
-                                <input type="text" id="campo-nombre" class="form-control" placeholder="Nombre" required
+                                <label for="campoNombre" class="visually-hidden">Nombre completo</label>
+                                <input type="text" id="campoNombre" class="form-control" placeholder="Nombre" required
                                     aria-required="true">
+                                <p id="errorNombre"></p>    
                             </div>
                             <div class="col-md-6">
-                                <label for="campo-telefono" class="visually-hidden">Número de teléfono</label>
-                                <input type="tel" id="campo-telefono" class="form-control" placeholder="Teléfono">
+                                <label for="campoTelefono" class="visually-hidden">Número de teléfono</label>
+                                <input type="tel" id="campoTelefono" class="form-control" placeholder="Teléfono" required aria-required="true">
+                                <p id="errorTelefono"></p>
                             </div>
                         </div>
 
                         <!-- Correo electrónico -->
                         <div class="mb-3">
-                            <label for="campo-correo" class="visually-hidden">Correo electrónico</label>
-                            <input type="email" id="campo-correo" class="form-control" placeholder="Correo electrónico"
+                            <label for="campoCorreo" class="visually-hidden">Correo electrónico</label>
+                            <input type="email" id="campoCorreo" class="form-control" placeholder="Correo electrónico"
                                 required aria-required="true">
+                            <p id="errorEmail"></p>    
                         </div>
 
                         <!-- Asunto -->
                         <div class="mb-3">
-                            <label for="campo-asunto" class="visually-hidden">Selecciona el asunto del mensaje</label>
-                            <select id="campo-asunto" class="form-select" required aria-required="true">
+                            <label for="campoAsunto" class="visually-hidden">Selecciona el asunto del mensaje</label>
+                            <select id="campoAsunto" class="form-select" required aria-required="true">
                                 <option value="" disabled selected hidden>Asunto: Pedidos / Eventos / Mayoreo / Otro
                                 </option>
                                 <option value="pedidos">Pedidos</option>
@@ -68,22 +71,26 @@
                                 <option value="mayoreo">Mayoreo</option>
                                 <option value="otro">Otro</option>
                             </select>
+                            <p id="errorAsunto"></p>
                         </div>
 
                         <!-- Mensaje -->
                         <div class="mb-3">
-                            <label for="campo-mensaje" class="visually-hidden">Escribe tu mensaje</label>
-                            <textarea id="campo-mensaje" class="form-control" rows="5" placeholder="Mensaje" required
+                            <label for="campoMensaje" class="visually-hidden">Escribe tu mensaje</label>
+                            <textarea id="campoMensaje" class="form-control" rows="5" placeholder="Mensaje" required
                                 aria-required="true"></textarea>
+                            <p id="errorMensaje"></p>     
                         </div>
 
                         <!-- Checkbox Aviso de privacidad -->
                         <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" id="campo-privacidad" required
+                            <input class="form-check-input" type="checkbox" id="campoPrivacidad" required
                                 aria-required="true">
-                            <label class="form-check-label small" for="campo-privacidad">
+                            <label class="form-check-label small" for="campoPrivacidad">
                                 Acepto el <a href="#" class="text-dark fw-semibold">aviso de privacidad</a>
                             </label>
+
+                            <p id="errorPrivacidad"></p>
                         </div>
 
                         <!-- reCAPTCHA y Botón -->
@@ -91,7 +98,7 @@
                             <div class="caja-recaptcha" role="region" aria-label="Verificación de seguridad anti-bot">
                                 <i class="bi bi-shield-check me-1" aria-hidden="true"></i> reCAPTCHA
                             </div>
-                            <button type="submit" class="boton-magenta">ENVIAR MENSAJE</button>
+                            <button id="btnEnviar" type="submit" class="boton-magenta">ENVIAR MENSAJE</button>
                         </div>
 
                     </form>
@@ -102,16 +109,7 @@
                     </div>
                 </div>
 
-                <script>
-                    document.getElementById('contactForm').addEventListener('submit', function (e) {
-                        e.preventDefault(); // Previene la recarga de la página
 
-                        // Oculta el formulario y muestra el mensaje de confirmación
-                        this.style.display = 'none';
-                        document.getElementById('successMessage').style.display = 'block';
-                    });
-
-                </script>
 
             </section>
 

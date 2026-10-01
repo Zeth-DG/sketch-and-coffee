@@ -17,21 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
   
 /**Validaciones del formulario*/
 //llamar todos los componentes necesarios del html (variables, botones, espacio para errores, etc)
-const iptNombre = document.getElementById("iptNombre"); 
+const iptNombre = document.getElementById("campoNombre"); 
 const errorNombre = document.getElementById("errorNombre"); 
-const iptTelefono = document.getElementById("iptTelefono"); 
+const iptTelefono = document.getElementById("campoTelefono"); 
 const errorTelefono = document.getElementById("errorTelefono"); 
-const iptEmail = document.getElementById("iptEmail"); 
+const iptEmail = document.getElementById("campoCorreo"); 
 const errorEmail = document.getElementById("errorEmail"); 
-const slcAsunto = document.getElementById("slcAsunto"); 
+const slcAsunto = document.getElementById("campoAsunto"); 
 const errorAsunto = document.getElementById("errorAsunto"); 
-const iptMensaje = document.getElementById("iptMensaje");
+const iptMensaje = document.getElementById("campoMensaje");
 const errorMensaje = document.getElementById("errorMensaje"); 
 const successMessage = document.getElementById("successMessage");
 const errorPrivacidad = document.getElementById("errorPrivacidad"); 
-const contactForm = document.getElementById("contactForm");
+const contactForm = document.getElementById("formularioContacto");
 const btnEnviar = document.getElementById("btnEnviar"); 
-const privacidad = document.getElementById("privacidad");
+const privacidad = document.getElementById("campoPrivacidad");
 
 //evento de envío del formulario 
 contactForm.addEventListener("submit", (evento) => {
