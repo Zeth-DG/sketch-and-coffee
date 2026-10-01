@@ -1,6 +1,6 @@
 import { cargarHeader } from "./header.js"
 import {validarCorreo, validarNombre, validarTelefono, validarMensaje, validarAsunto, validarPrivacidad} from "./validaciones.js"
-import {mostrarError} from "./interfaz.js"
+import {mostrarError, actualizarErrorCampo, actualizarErrorPrivacidad, configurarValidacionCampo} from "./interfaz.js"
 import {MensajeUsuario} from "./mensaje-usuario.js"
 
 cargarHeader();
@@ -81,6 +81,7 @@ contactForm.addEventListener("submit", (evento) => {
   resultadoAsunto.valido &&
   resultadoMensaje.valido &&
   resultadoPrivacidad.valido; 
+
   //control de flujo en caso de que alguna validación sea falsa
   if(!formularioValido){
     return; 
@@ -96,3 +97,12 @@ contactForm.addEventListener("submit", (evento) => {
   successMessage.style.display = "block";
 })
 
+//mostrar errores en tiempo real
+configurarValidacionCampo(iptEmail, errorEmail, validarCorreo);
+configurarValidacionCampo(iptTelefono, errorTelefono, validarTelefono);
+configurarValidacionCampo(iptNombre, errorNombre, validarNombre); 
+configurarValidacionCampo(iptMensaje, errorMensaje, validarMensaje); 
+configurarValidacionCampo(slcAsunto, errorAsunto, validarAsunto); 
+privacidad.addEventListener("change", () => {
+  actualizarErrorPrivacidad(privacidad, errorPrivacidad, validarPrivacidad);
+});
