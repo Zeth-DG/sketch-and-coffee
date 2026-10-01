@@ -1,54 +1,37 @@
 import { cargarHeader } from "./header.js"
+import { cargarFooter } from "./footer.js";
 import {validarCorreo, validarNombre, validarTelefono, validarMensaje, validarAsunto, validarPrivacidad} from "./validaciones.js"
 import {mostrarError, actualizarErrorCampo, actualizarErrorPrivacidad, configurarValidacionCampo} from "./interfaz.js"
 import {MensajeUsuario} from "./mensaje-usuario.js"
 
 cargarHeader();
 
+// IFooter
+cargarFooter();
+
+// ==========================================
+//      VALIDACIONES DEL FORMULARIO
+// ==========================================
+
 document.addEventListener("DOMContentLoaded", () => {
   
-  // ==========================================
-  //      CÓDIGO DEL BOTÓN PARA SUBIR
-  // ==========================================
-  const btn = document.getElementById("btnSubir");
-
-  if (btn) {
-    window.onscroll = function() {
-      if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
-        btn.style.display = "flex";
-      } else {
-        btn.style.display = "none";
-      }
-    };
-
-    btn.onclick = function() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-  }
-  // ==========================================
-
-});
-
 /**Validaciones del formulario*/
 //llamar todos los componentes necesarios del html (variables, botones, espacio para errores, etc)
-const iptNombre = document.getElementById("iptNombre"); 
+const iptNombre = document.getElementById("campoNombre"); 
 const errorNombre = document.getElementById("errorNombre"); 
-const iptTelefono = document.getElementById("iptTelefono"); 
+const iptTelefono = document.getElementById("campoTelefono"); 
 const errorTelefono = document.getElementById("errorTelefono"); 
-const iptEmail = document.getElementById("iptEmail"); 
+const iptEmail = document.getElementById("campoCorreo"); 
 const errorEmail = document.getElementById("errorEmail"); 
-const slcAsunto = document.getElementById("slcAsunto"); 
+const slcAsunto = document.getElementById("campoAsunto"); 
 const errorAsunto = document.getElementById("errorAsunto"); 
-const iptMensaje = document.getElementById("iptMensaje");
+const iptMensaje = document.getElementById("campoMensaje");
 const errorMensaje = document.getElementById("errorMensaje"); 
 const successMessage = document.getElementById("successMessage");
 const errorPrivacidad = document.getElementById("errorPrivacidad"); 
-const contactForm = document.getElementById("contactForm");
+const contactForm = document.getElementById("formularioContacto");
 const btnEnviar = document.getElementById("btnEnviar"); 
-const privacidad = document.getElementById("privacidad");
+const privacidad = document.getElementById("campoPrivacidad");
 
 //evento de envío del formulario 
 contactForm.addEventListener("submit", (evento) => {
@@ -105,4 +88,5 @@ configurarValidacionCampo(iptMensaje, errorMensaje, validarMensaje);
 configurarValidacionCampo(slcAsunto, errorAsunto, validarAsunto); 
 privacidad.addEventListener("change", () => {
   actualizarErrorPrivacidad(privacidad, errorPrivacidad, validarPrivacidad);
+});
 });

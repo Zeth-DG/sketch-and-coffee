@@ -723,6 +723,10 @@ img { max-width: 100%; height: auto; }
   display: inline-block;
   border-bottom: 3px solid var(--negro);
   font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 0px var(--color-negro); /* Efecto trazo sólido 2D */
+  letter-spacing: 1px;
 }
 
 /* Conoce al equipo */
@@ -733,6 +737,19 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 0.75rem;
   font-weight: var(--peso-seminegrita);
 }
+
+/* Contenedor general*/
+.contenedor-tarjetas,
+.container.border.rounded {
+  background-color: var(--color-blanco-puro) !important;
+  border: 3px solid var(--color-negro) !important; /* Trazo grueso*/
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important; /* Borde asimétrico */
+  box-shadow: 6px 6px 0px var(--color-purpura-oscuro) !important; /
+}
+
+/* ==========================================================================
+                          TARJETAS INDIVIDUALES
+   ========================================================================== */
 
 .card {
   background-color: var(--color-blanco) !important;
@@ -814,6 +831,7 @@ img { max-width: 100%; height: auto; }
   transform: scale(1.05);
   }
 }
+
 
 /* ================ FIN DEL BLOQUE TARJETAS ================================= */
 
@@ -991,37 +1009,11 @@ img { max-width: 100%; height: auto; }
   font-weight: var(--peso-regular);
 }
 
-/* Quitar margen del último párrafo */
-.lf-sobre-sketch__info p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* --------------------------------------------------
-   RESPONSIVE
--------------------------------------------------- */
-
-@media (max-width: 991.98px) {
-
-    .lf-sobre-sketch__media {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 280px;
-    }
-
-
-    .lf-sobre-sketch__contenido {
-        height: auto;
-    }
-
-
-    .lf-sobre-sketch__info {
-        margin-top: var(--espaciado-md);
-    }
-
+/* Listas de valores */
+.lista-valores li strong {
+  color: var(--purpura-oscuro);
+  font-family: var(--fuente-numeros);
+  font-weight: var(--peso-seminegrita);
 }
 
 
@@ -1085,17 +1077,19 @@ img { max-width: 100%; height: auto; }
 /* Campo de entrada de correo (Input) */
 .newsletter-input {
   min-width: 280px;
-  border: 1.5px solid var(--color-negro, #000000) !important;
-  border-radius: var(--radio-sm, 4px);
-  background-color: var(--color-blanco-formularios, #FFFFFF);
+  max-width: 100%;
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: var(--color-blanco-formularios);
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-parrafos);
   color: var(--color-texto);
 }
 
 .newsletter-input:focus {
-  border-color: var(--color-magenta, #9E1E4C) !important;
-  box-shadow: 0 0 0 0.25rem rgba(158, 30, 76, 0.15);
+  border-color: var(--color-magenta) !important;
+  box-shadow: 3px 3px 0px var(--color-magenta);
+  outline: none;
 }
 
 /* Botón personalizado Magenta */
@@ -1105,17 +1099,20 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-boton);
   font-weight: var(--peso-seminegrita);
-  border-radius: var(--radio-sm, 4px);
-  border: 1.5px solid var(--color-negro, #000000);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 2.5px solid var(--color-negro);
   padding: 0.5rem 1.75rem;
-  transition: var(--transicion, all 0.3s ease);
+  box-shadow: 3px 3px 0px var(--color-negro);
+  transition: all 0.15s ease-in-out;
 }
 
-.btn-custom-magenta:hover {
-  background-color: var(--color-magenta-hover, #680148);
-  color: var(--color-texto-inverso, #FFFFFF);
-  box-shadow: var(--sombra);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .btn-custom-magenta:hover {
+    background-color: var(--color-magenta-hover);
+    color: var(--color-texto-inverso);
+    box-shadow: 5px 5px 0px var(--color-negro);
+    transform: translate(-2px, -2px);
+  }
 }
 
 .btn-custom-magenta:active {
@@ -1123,43 +1120,6 @@ img { max-width: 100%; height: auto; }
   box-shadow: 1px 1px 0px var(--color-negro);
 }
 
-/* Ajuste de Tu correo electrónico*/
-
-.newsletter-input {
-  max-width: 280px;   /* ancho máximo del rectángulo blanco */
-  width: 100%;        /* ocupa todo el ancho disponible hasta 280px */
-}
-
-/* --------------------------------------------------
-        ESTILO DEL BOTÓN PARA SUBIR
--------------------------------------------------- */
-
-#btnSubir {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1050;
-  display: none;
-  width: 50px;       
-  height: 50px;        
-  border-radius: 50%;  
-  background-color: #000; 
-  color: #fff;
-  border: none;
-  justify-content: center; 
-  align-items: center;     
-}
-
-#btnSubir:hover {
-  background-color: #9E1E4C; 
-  transform: scale(1.1);
-  transition: all 0.3s ease;
-}
-
-
-/* ==========================================================================
-   2. FOOTER GLOBAL
-   ========================================================================== */
 .footer-global {
   background-color: var(--color-negro, #000000) !important;
   border-top: 2px solid var(--color-gris-borde, #25020F);
@@ -1234,6 +1194,302 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-bottom .separator {
-  color: var(--color-texto-inverso, #FFFFFF);
-  text-decoration: none;
+color: var(--color-texto-inverso);
+  text-decoration: underline;
+}
+
+
+/*========================================================================*/
+/*     CÓDIGO DEL BOTÓN PARA SUBIR Y WHATSAPP (NO BORRAR DE NUEVO) */
+/*=======================================================================*/
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  display: none;          
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;     
+  background-color: #000; 
+  color: #fff;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnSubir:hover {
+  background-color: #9E1E4C; 
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+#btnWhatsapp {
+  position: fixed;
+  bottom: 80px;   
+  right: 20px;
+  z-index: 1050;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #25D366; 
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnWhatsapp:hover {
+  background-color: #269a54;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+
+/*================FIN DEL ESTILO DE BOTÓN Y WHATSAPP =======================*/
+
+
+/*========================================================================*/
+/*SECCION PAGINA DE CONTACTO: TARJETAS DE HORARIOS Y COMO NOS ENCUENTRAS */
+/*=======================================================================*/
+.contenedor-contacto {
+  padding-top: var(--espaciado-md);
+  padding-bottom: var(--espaciado-xl);
+}
+
+/* ==========================================================================
+                                TARJETAS
+   ========================================================================== */
+.tarjeta-boceto {
+  background-color: var(--color-blanco-secciones);
+  border: 2px solid var(--color-purpura-gral);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: var(--espaciado-lg);
+  height: 100%;
+  transition: box-shadow var(--transicion), transform var(--transicion);
+}
+
+.tarjeta-boceto:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+/* Tarjeta Principal del Formulario */
+.tarjeta-boceto-principal {
+  border: 2px solid var(--color-purpura-oscuro);
+  background-color: var(--color-blanco-formularios);
+}
+
+.tarjeta-boceto h2,
+.tarjeta-boceto h3 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+  margin-bottom: var(--espaciado-xs);
+}
+
+.subtitulo {
+  font-family: var(--fuente-subtitulo);
+  font-size: var(--tamano-subtitulo);
+  color: var(--color-texto-suave);
+  margin-bottom: var(--espaciado-lg);
+}
+
+/* ==========================================================================
+                          FORMULARIO E INPUTS
+   ========================================================================== */
+.form-control,
+.form-select {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+  background-color: var(--color-blanco-formularios);
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 0 0.25rem var(--color-magenta-tenue);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--color-texto-suave);
+  font-size: var(--tamano-auxiliar);
+}
+
+.form-check-label {
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+}
+
+.form-check-label a {
+  color: var(--color-magenta);
+  text-decoration: underline;
+}
+
+.form-check-label a:hover {
+  color: var(--color-magenta-hover);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-magenta);
+  border-color: var(--color-magenta);
+}
+
+/* Caja reCAPTCHA */
+.caja-recaptcha {
+  border: 2px dashed var(--color-gris-borde);
+  background-color: var(--color-magenta-tenue);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  border-radius: var(--radio-sm);
+  text-align: center;
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+  width: 100%;
+  max-width: 220px;
+}
+
+.caja-recaptcha i {
+  color: var(--color-magenta);
+  font-size: var(--tamano-parrafos);
+}
+
+/* ==========================================================================
+                          BOTONES
+   ========================================================================== */
+.boton-magenta {
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-negrita);
+  border: 2px solid var(--color-purpura-oscuro);
+  border-radius: var(--radio-sm);
+  padding: var(--espaciado-sm) var(--espaciado-lg);
+  box-shadow: var(--sombra);
+  transition: background-color var(--transicion), box-shadow var(--transicion), transform var(--transicion);
+  cursor: pointer;
+}
+
+.boton-magenta:hover,
+.boton-magenta:focus {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+                           MENSAJE DE ÉXITO
+   ========================================================================== */
+#mensaje-exito {
+  background-color: var(--color-magenta-tenue);
+  color: var(--color-exito);
+  border: 2px solid var(--color-exito);
+  border-radius: var(--radio-sm);
+  font-size: var(--tamano-parrafos);
+  font-weight: var(--peso-seminegrita);
+  padding: var(--espaciado-md);
+}
+
+/* ==========================================================================
+             TARJETAS LATERALES (INFORMACIÓN Y HORARIOS)
+   ========================================================================== */
+.bloque-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-md);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+}
+
+.bloque-info i {
+  font-size: var(--iconos-imagenes);
+  color: var(--color-magenta);
+  flex-shrink: 0;
+}
+
+.bloque-info a {
+  color: var(--color-texto);
+  text-decoration: underline;
+  transition: color var(--transicion);
+}
+
+.bloque-info a:hover {
+  color: var(--color-magenta-enlaces-act);
+}
+
+.fila-horario {
+  border-bottom: 1px dashed var(--color-gris-borde);
+  padding-bottom: var(--espaciado-sm);
+  margin-bottom: var(--espaciado-sm);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+  font-family: var(--fuente-numeros);
+}
+
+.fila-horario strong {
+  font-family: var(--fuente-cuerpo);
+}
+
+.fila-horario:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   SECCIÓN MAPA
+   ========================================================================== */
+.seccion-mapa h2 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+}
+
+.contenedor-iframe-mapa {
+  border: 2px solid var(--color-purpura-gral);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden; /* Garantiza que el iframe respete los bordes redondeados */
+  background-color: var(--color-blanco-secciones);
+  transition: box-shadow var(--transicion);
+}
+
+.contenedor-iframe-mapa:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+.contenedor-iframe-mapa iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* ==========================================================================
+                         ADAPTATIVO / RESPONSIVO
+   ========================================================================== */
+@media (max-width: 575.98px) {
+  .caja-recaptcha {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter-input,
+  .btn-custom-magenta {
+    width: 100%; /* Botones y campos ocupan el ancho total en celulares */
+  }
+}
+@media (max-width: 575.98px) {
+  .contenedor-iframe-mapa iframe {
+    height: 300px;
+  }
 }
