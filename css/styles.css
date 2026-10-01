@@ -1367,6 +1367,35 @@ color: var(--color-texto-inverso);
 }
 
 /* ==========================================================================
+   SECCIÓN MAPA
+   ========================================================================== */
+.seccion-mapa h2 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  color: var(--color-texto);
+  font-weight: var(--peso-seminegrita);
+}
+
+.contenedor-iframe-mapa {
+  border: 2px solid var(--color-purpura-gral);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden; /* Garantiza que el iframe respete los bordes redondeados */
+  background-color: var(--color-blanco-secciones);
+  transition: box-shadow var(--transicion);
+}
+
+.contenedor-iframe-mapa:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+.contenedor-iframe-mapa iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* ==========================================================================
                          ADAPTATIVO / RESPONSIVO
    ========================================================================== */
 @media (max-width: 575.98px) {
@@ -1379,5 +1408,10 @@ color: var(--color-texto-inverso);
   .newsletter-input,
   .btn-custom-magenta {
     width: 100%; /* Botones y campos ocupan el ancho total en celulares */
+  }
+}
+@media (max-width: 575.98px) {
+  .contenedor-iframe-mapa iframe {
+    height: 300px;
   }
 }
