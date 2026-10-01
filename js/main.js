@@ -1,5 +1,6 @@
 import { cargarHeader } from "./header.js"
-import {validarCorreo, validarNombre, validarTelefono, validarMensaje, mostrarError} from "./validaciones.js"
+import {validarCorreo, validarNombre, validarTelefono, validarMensaje} from "./validaciones.js"
+import {mostrarError} from "./interfaz.js"
 import {MensajeUsuario} from "./clase-crear-mensaje.js"
 
 cargarHeader();
