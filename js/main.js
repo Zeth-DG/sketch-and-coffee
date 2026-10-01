@@ -1,37 +1,20 @@
 import { cargarHeader } from "./header.js"
+import { cargarFooter } from "./footer.js";
 import {validarCorreo, validarNombre, validarTelefono, validarMensaje, validarAsunto, validarPrivacidad} from "./validaciones.js"
 import {mostrarError, actualizarErrorCampo, actualizarErrorPrivacidad, configurarValidacionCampo} from "./interfaz.js"
 import {MensajeUsuario} from "./mensaje-usuario.js"
 
 cargarHeader();
 
+// IFooter
+cargarFooter();
+
+// ==========================================
+//      VALIDACIONES DEL FORMULARIO
+// ==========================================
+
 document.addEventListener("DOMContentLoaded", () => {
   
-  // ==========================================
-  //      CÓDIGO DEL BOTÓN PARA SUBIR
-  // ==========================================
-  const btn = document.getElementById("btnSubir");
-
-  if (btn) {
-    window.onscroll = function() {
-      if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
-        btn.style.display = "flex";
-      } else {
-        btn.style.display = "none";
-      }
-    };
-
-    btn.onclick = function() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-  }
-  // ==========================================
-
-});
-
 /**Validaciones del formulario*/
 //llamar todos los componentes necesarios del html (variables, botones, espacio para errores, etc)
 const iptNombre = document.getElementById("iptNombre"); 
@@ -105,4 +88,5 @@ configurarValidacionCampo(iptMensaje, errorMensaje, validarMensaje);
 configurarValidacionCampo(slcAsunto, errorAsunto, validarAsunto); 
 privacidad.addEventListener("change", () => {
   actualizarErrorPrivacidad(privacidad, errorPrivacidad, validarPrivacidad);
+});
 });
