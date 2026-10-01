@@ -918,6 +918,25 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 
+
+/*Botón de los valores*/
+
+.btn-pilares {
+  background-color: #9E1E4C;   /* Magenta */
+  color: #fff;                 /* Texto blanco */
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  transition: all 0.3s ease;   
+}
+
+.btn-pilares:hover {
+  background-color: #7a163a;   /* Magenta más oscuro */
+  color: #fff;                 /* mantiene texto blanco */
+  transform: scale(1.05);      /* efecto de agrandamiento */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra elegante */
+}
+
 /* Botón inferior */
 .btn-container {
   margin-top: 40px;
@@ -1032,17 +1051,26 @@ img { max-width: 100%; height: auto; }
 /* fin de sección Sobre nosotros Sketch & Coffee */
 
 /* =========================SECCIÓN NEWSLETTER======================== */
+/* ==========================================================================
+   1. SECCIÓN NEWSLETTER
+   ========================================================================== */
 .section-newsletter {
-  background-color: var(--color-negro); /* Si usas fondo oscuro */
-  border-top: 1px solid var(--color-gris-borde);
-  border-bottom: 1px solid var(--color-gris-borde);
-  padding: var(--espaciado-xl) var(--espaciado-md);
+  background-color: var(--color-negro, #000000) !important; /* Fuerza el fondo oscuro e impide sobrescrituras */
+  border-top: 1px solid var(--color-gris-borde, #25020F);
+  border-bottom: 1px solid var(--color-gris-borde, #25020F);
+  padding: var(--espaciado-xl, 3rem) var(--espaciado-md, 1.5rem);
+  color: var(--color-texto-inverso, #FFFFFF);
+}
+
+/* Títulos y párrafos dentro de Newsletter */
+.section-newsletter h2,
+.section-newsletter p {
+  color: var(--color-texto-inverso, #FFFFFF) !important; /* Mantiene legibilidad sobre fondo oscuro */
 }
 
 .section-newsletter h2 {
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-titulo-seccion);
-  color: var(--color-texto-inverso) !important; /* Blanco para máxima legibilidad */
   font-weight: var(--peso-seminegrita);
 }
 
@@ -1056,7 +1084,6 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-cuerpo);
   font-size: var(--tamano-parrafos);
   color: var(--color-texto);
-  box-shadow: 3px 3px 0px var(--color-negro);
 }
 
 .newsletter-input:focus {
@@ -1094,9 +1121,9 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-global {
-  background-color: var(--color-negro);
-  border-top: 2px solid var(--color-gris-borde);
-  color: var(--color-texto-inverso);
+  background-color: var(--color-negro, #000000) !important;
+  border-top: 2px solid var(--color-gris-borde, #25020F);
+  color: var(--color-texto-inverso, #FFFFFF);
   font-size: var(--tamano-footer);
   padding-top: var(--espaciado-xl, 3rem);
   padding-bottom: var(--espaciado-lg, 2rem);
@@ -1106,8 +1133,8 @@ img { max-width: 100%; height: auto; }
   font-family: var(--fuente-titulo-principal);
   font-size: var(--tamano-subtitulo);
   font-weight: var(--peso-negrita);
-  color: var(--color-texto-inverso);
-  margin-bottom: var(--espaciado-md);
+  color: var(--color-texto-inverso, #FFFFFF);
+  margin-bottom: var(--espaciado-md, 1rem);
 }
 
 .footer-global ul {
@@ -1121,49 +1148,48 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-global ul li a {
-  color: var(--color-gris-perla);
+  color: var(--color-gris-perla, #E9E3E6);
   text-decoration: none;
   transition: var(--transicion, all 0.3s ease);
 }
 
 .footer-global ul li a:hover {
-  color: var(--color-magenta-hover); 
+  color: var(--color-magenta-hover, #680148); 
 }
 
 /* Redes sociales con iconos */
 .footer-global ul li a i {
-color: var(--color-gris-perla);
-  fill: var(--color-gris-perla);
-  transition: var(--transicion);
+  color: var(--color-gris-perla, #E9E3E6);
+  fill: var(--color-gris-perla, #E9E3E6);
+  transition: var(--transicion, all 0.3s ease);
 }
 
 .footer-global ul li a:hover i {
-color: var(--color-magenta-hover);
-  fill: var(--color-magenta-hover);
+  color: var(--color-magenta-hover, #680148);
+  fill: var(--color-magenta-hover, #680148);
 }
 
 /* Barra inferior (Legales y Derechos) */
 .footer-bottom {
-font-size: var(--tamano-auxiliar);
-  color: var(--color-gris-perla);
-  border-top: 1px solid var(--color-gris-borde);
-  margin-top: var(--espaciado-xl);
-  padding-top: var(--espaciado-md);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-gris-perla, #E9E3E6);
+  border-top: 1px solid var(--color-gris-borde, #25020F);
+  margin-top: var(--espaciado-xl, 3rem);
+  padding-top: var(--espaciado-md, 1rem);
 }
 
 .footer-bottom p {
-color: var(--color-gris-perla);
+  color: var(--color-gris-perla, #E9E3E6);
   text-decoration: none;
 }
 
 .footer-bottom a {
-color: var(--color-gris-perla);
+  color: var(--color-gris-perla, #E9E3E6);
   text-decoration: none;
-  transition: var(--transicion);
 }
 
 .footer-bottom a:hover {
-color: var(--color-texto-inverso);
+  color: var(--color-texto-inverso, #FFFFFF);
   text-decoration: underline;
 }
 
