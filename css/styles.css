@@ -848,7 +848,9 @@ img { max-width: 100%; height: auto; }
   --gris-texto: #555555;
 }
 
-/* Contenedor general */
+/* ==========================================================================
+               GRID DE PILARES Y TARJETAS
+   ========================================================================== */
 .pilares-container {
   max-width: 1100px;
   margin: 40px auto;
@@ -856,26 +858,12 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 
-/* Títulos principales e internos */
-.titulo-seccion,
-.pilar-badge {
-  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
-  font-size: 2.2rem;
-  color: var(--magenta);
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  display: inline-block;
-  border-bottom: 3px solid var(--negro);
-}
-
-/* Layout de 3 columnas */
 .pilares-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-/* Diseño de cada Tarjeta */
 .pilar-card {
   background: var(--blanco);
   border: 1px solid var(--gris-borde);
@@ -886,7 +874,6 @@ img { max-width: 100%; height: auto; }
   flex-direction: column;
 }
 
-/* Imagen dentro de la tarjeta */
 .pilar-img {
   width: 100%;
   height: 180px;
@@ -900,7 +887,6 @@ img { max-width: 100%; height: auto; }
   object-fit: cover;
 }
 
-/* Contenido interno de la tarjeta */
 .pilar-body {
   padding: 20px;
   display: flex;
@@ -909,7 +895,6 @@ img { max-width: 100%; height: auto; }
   flex-grow: 1;
 }
 
-/* Texto dentro de la tarjeta */
 .pilar-body p {
   font-size: 0.85rem;
   color: var(--gris-texto);
@@ -918,26 +903,24 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 
-
-/*Botón de los valores*/
-
 .btn-pilares {
-  background-color: #9E1E4C;   /* Magenta */
-  color: #fff;                 /* Texto blanco */
-  padding: 8px 16px;
-  border-radius: 3px;
+  background-color: var(--magenta);
+  color: var(--blanco);
+  padding: 8px 20px;
+  border-radius: 5px;
   border: none;
-  transition: all 0.3s ease;   
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-pilares:hover {
-  background-color: #7a163a;   /* Magenta más oscuro */
-  color: #fff;                 /* mantiene texto blanco */
-  transform: scale(1.05);      /* efecto de agrandamiento */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra elegante */
+  background-color: #7a163a;
+  color: var(--blanco);
+  transform: scale(1.04);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
-/* Botón inferior */
 .btn-container {
   margin-top: 40px;
 }
@@ -946,7 +929,7 @@ img { max-width: 100%; height: auto; }
   display: inline-block;
   background-color: #f3ebf5;
   color: var(--purpura-oscuro);
-  border: 1px solid var(--purpura-oscuro);
+  border: 1.5px solid var(--purpura-oscuro);
   padding: 10px 28px;
   border-radius: 25px;
   text-decoration: none;
@@ -959,94 +942,77 @@ img { max-width: 100%; height: auto; }
   color: var(--blanco);
 }
 
-/* Adaptación a dispositivos móviles */
-@media (max-width: 768px) {
-  .pilares-grid {
-    grid-template-columns: 1fr;
-  }
+/* ==========================================================================
+                     ESTILO DE VENTANA EMERGENTE
+   ========================================================================== */
+
+/* Fondo transparente */
+.modal-sketch-content {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* Secciones principales con cuadro */
-.seccion-proyecto,
-.seccion-mision-vision,
-.seccion-valores {
+/* Caja */
+.caja-sketch-emergente {
   background-color: var(--blanco);
   border: 2.5px solid var(--negro);
-  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  box-shadow: 5px 5px 0px var(--purpura-oscuro);
-  margin-bottom: 3rem;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 6px 6px 0px var(--purpura-oscuro);
 }
 
-/* Títulos principales */
-.titulo-seccion,
-.pilar-badge {
-  font-family: var(--fuente-titulo-principal);
+/* Título */
+.titulo-seccion-modal {
+  font-family: var(--fuente-titulos);
   font-size: 2.2rem;
   color: var(--magenta);
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
   display: inline-block;
   border-bottom: 3px solid var(--negro);
-  font-weight: var(--peso-negrita);
+  font-weight: bold;
 }
 
-/* Subtítulos */
-.subtitulo-seccion {
-  font-family: var(--fuente-subtitulo);
+/* Subtítulo */
+.subtitulo-seccion-modal {
+  font-family: var(--fuente-cuerpo);
   font-size: 1.25rem;
   color: var(--purpura-oscuro);
-  margin-bottom: 0.75rem;
-  font-weight: var(--peso-seminegrita);
+  margin-bottom: 1.25rem;
+  font-weight: 700;
 }
 
-/* Texto general */
-.texto-seccion {
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.95rem;
-  color: var(--gris-texto);
-  line-height: 1.5;
-  font-weight: var(--peso-regular);
-}
-
-/* Listas de valores */
-.lista-valores li strong {
+/* Lista Ordenada y Viñetas Internas */
+.lista-modal-sketch {
+  padding-left: 1.2rem;
   color: var(--purpura-oscuro);
-  font-family: var(--fuente-numeros);
-  font-weight: var(--peso-seminegrita);
+  font-weight: 600;
+}
+
+.lista-modal-sketch > li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.lista-modal-sketch > li strong {
+  color: var(--purpura-oscuro);
+}
+
+.lista-modal-sketch ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+  margin-top: 0.4rem;
+}
+
+.lista-modal-sketch ul li {
+  color: #666666;
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }
 
 
-@media (max-width: 575.98px) {
-
-    .lf-sobre-sketch {
-        padding:
-            var(--espaciado-lg)
-            var(--espaciado-md);
-    }
-
-
-    .lf-sobre-sketch__media {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__titulo {
-        font-size: 1.5rem;
-    }
-
-
-    .lf-sobre-sketch__boton {
-        width: 100%;
-        text-align: center;
-    }
-
-}
 
 /* fin de sección Sobre nosotros Sketch & Coffee */
 
@@ -1441,3 +1407,45 @@ color: var(--color-texto-inverso);
     height: 300px;
   }
 }
+
+
+/*Seccion Sobre Nosotros Sketch & Coffee Mision, Vision y Valores */
+@media (max-width: 575.98px) {
+
+    .lf-sobre-sketch {
+        padding:
+            var(--espaciado-lg)
+            var(--espaciado-md);
+    }
+
+
+    .lf-sobre-sketch__media {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__titulo {
+        font-size: 1.5rem;
+    }
+
+
+    .lf-sobre-sketch__boton {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Fin de seccion Mision, Vision y Valores*/
