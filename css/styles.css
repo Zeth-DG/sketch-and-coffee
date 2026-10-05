@@ -1163,6 +1163,58 @@ img { max-width: 100%; height: auto; }
 color: var(--color-texto-inverso);
   text-decoration: underline;
 }
+
+
+/*========================================================================*/
+/*     CÓDIGO DEL BOTÓN PARA SUBIR Y WHATSAPP (NO BORRAR DE NUEVO) */
+/*=======================================================================*/
+
+#btnSubir {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  display: none;          
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;     
+  background-color: #000; 
+  color: #fff;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnSubir:hover {
+  background-color: #9E1E4C; 
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+#btnWhatsapp {
+  position: fixed;
+  bottom: 80px;   
+  right: 20px;
+  z-index: 1050;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #25D366; 
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+#btnWhatsapp:hover {
+  background-color: #269a54;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+
+/*================FIN DEL ESTILO DE BOTÓN Y WHATSAPP =======================*/
+
+
 /*========================================================================*/
 /*SECCION PAGINA DE CONTACTO: TARJETAS DE HORARIOS Y COMO NOS ENCUENTRAS */
 /*=======================================================================*/
@@ -1407,6 +1459,40 @@ color: var(--color-texto-inverso);
     height: 300px;
   }
 }
+
+/* ==========================================================================
+                          Preguntas frecuentes
+   ========================================================================== */
+
+/* Estado normal */
+.accordion-button.faq-btn {
+  background-color: #9E1E4C !important;   
+  color: #ffffff !important;             
+  border: 2px solid #000000 !important;  
+  border-radius: 6px !important;
+  box-shadow: none !important;           
+}
+
+.accordion-button.faq-btn:hover,
+.accordion-button.faq-btn:focus {
+  background-color: #7a163a !important;   
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed).faq-btn {
+  background-color: #000000 !important;   
+  color: #ffffff !important;
+  border: 2px solid #9E1E4C !important;
+  box-shadow: none !important;
+}
+
+.accordion-button.faq-btn::after {
+  filter: invert(1); 
+}
+
+
+
 
 
 /*Seccion Sobre Nosotros Sketch & Coffee Mision, Vision y Valores */
