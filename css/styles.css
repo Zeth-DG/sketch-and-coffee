@@ -354,6 +354,25 @@ img { max-width: 100%; height: auto; }
     margin-top: var(--espaciado-lg);
   }
 }
+
+/* ========== Diseño del carrusel del HERO - Vanya ==========*/
+
+/* Botones de navegación del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  background: none !important;   
+  border: none !important;      
+  width: auto;                
+}
+
+/* Íconos dentro de los botones */
+.carousel-control-prev i,
+.carousel-control-next i {
+  font-size: 2rem;
+  color:  #9E1E4C; /* color turquesa */
+}
+
+/* ========== Fin de sección del diseño del carrusel del HERO - Vanya ==========*/
  
 /* ==========================================================================
    5. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
