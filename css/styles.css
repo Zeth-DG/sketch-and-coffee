@@ -897,8 +897,211 @@ p {
 
  
 /* ==========================================================================
-   7. OUR PROJECT, MISSION, VISION, VALUES
+   7. Nuestro proyecto, acerca de nosotros:
    ========================================================================== */
+
+/* Contenedor general */
+.pilares-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Títulos principales e internos */
+.titulo-seccion,
+.pilar-badge {
+  font-family: 'Tropical Avenue', 'Lorestta', sans-serif;
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+}
+
+/* Layout de 3 columnas */
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Diseño de cada Tarjeta */
+.pilar-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen dentro de la tarjeta */
+.pilar-img {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.pilar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido interno de la tarjeta */
+.pilar-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Texto dentro de la tarjeta */
+.pilar-body p {
+  font-size: 0.85rem;
+  color: var(--gris-texto);
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+
+/*Botón de los valores*/
+
+.btn-pilares {
+  background-color: #9E1E4C;   /* Magenta */
+  color: #fff;                 /* Texto blanco */
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: none;
+  transition: all 0.3s ease;   
+}
+
+.btn-pilares:hover {
+  background-color: #7a163a;   /* Magenta más oscuro */
+  color: #fff;                 /* mantiene texto blanco */
+  transform: scale(1.05);      /* efecto de agrandamiento */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra elegante */
+}
+
+/* Botón inferior */
+.btn-container {
+  margin-top: 40px;
+}
+
+.btn-visitarnos {
+  display: inline-block;
+  background-color: #f3ebf5;
+  color: var(--purpura-oscuro);
+  border: 1px solid var(--purpura-oscuro);
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-visitarnos:hover {
+  background-color: var(--purpura-oscuro);
+  color: var(--blanco);
+}
+
+/* Adaptación a dispositivos móviles */
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Secciones principales con cuadro */
+.seccion-proyecto,
+.seccion-mision-vision,
+.seccion-valores {
+  background-color: var(--blanco);
+  border: 2.5px solid var(--negro);
+  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 5px 5px 0px var(--purpura-oscuro);
+  margin-bottom: 3rem;
+}
+
+/* Títulos principales */
+.titulo-seccion,
+.pilar-badge {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 2.2rem;
+  color: var(--magenta);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  border-bottom: 3px solid var(--negro);
+  font-weight: var(--peso-negrita);
+}
+
+/* Subtítulos */
+.subtitulo-seccion {
+  font-family: var(--fuente-subtitulo);
+  font-size: 1.25rem;
+  color: var(--purpura-oscuro);
+  margin-bottom: 0.75rem;
+  font-weight: var(--peso-seminegrita);
+}
+
+/* Texto general */
+.texto-seccion {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--gris-texto);
+  line-height: 1.5;
+  font-weight: var(--peso-regular);
+}
+
+/* Listas de valores */
+.lista-valores li strong {
+  color: var(--purpura-oscuro);
+  font-family: var(--fuente-numeros);
+  font-weight: var(--peso-seminegrita);
+}
+
+
+@media (max-width: 575.98px) {
+
+    .lf-sobre-sketch {
+        padding:
+            var(--espaciado-lg)
+            var(--espaciado-md);
+    }
+
+
+    .lf-sobre-sketch__media {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__imagen {
+        min-height: 220px;
+    }
+
+
+    .lf-sobre-sketch__titulo {
+        font-size: 1.5rem;
+    }
+
+
+    .lf-sobre-sketch__boton {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+
+
 
 /* Container */
 .pilares-container {
