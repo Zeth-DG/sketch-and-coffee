@@ -1050,144 +1050,164 @@ img { max-width: 100%; height: auto; }
 }
 
 
-@media (max-width: 575.98px) {
+/*  SOBRE SKETCH & COFFEE - LF */
 
-    .lf-sobre-sketch {
-        padding:
-            var(--espaciado-lg)
-            var(--espaciado-md);
-    }
-
-
-    .lf-sobre-sketch__media {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__titulo {
-        font-size: 1.5rem;
-    }
-
-
-    .lf-sobre-sketch__boton {
-        width: 100%;
-        text-align: center;
-    }
-
+/* Contenedor principal de la sección */
+.lf-sobre-sketch {
+  background-color: #FFFFFF;
+  padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
-
-/* Seccion manuel de estilo para la sección "Sobre nosotros" */
-
-
-.pilares-container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.pilares-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.pilar-card {
-  background: var(--blanco);
-  border: 1px solid var(--gris-borde);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-}
-
-.pilar-img {
+/* Contenedor de la imagen */
+.lf-sobre-sketch__media {
   width: 100%;
-  height: 180px;
-  background-color: #f0f0f0;
   overflow: hidden;
-}
 
-.pilar-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  background-color: #FFFFFF;
 
-.pilar-body {
-  padding: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  flex-grow: 1;
-}
 
-.pilar-body p {
-  font-size: 0.85rem;
-  color: var(--gris-texto);
-  line-height: 1.4;
-  margin: 0;
-  text-align: center;
-}
-
-.btn-pilares {
-  background-color: var(--magenta);
-  color: var(--blanco);
-  padding: 8px 20px;
-  border-radius: 5px;
+  /* Quitamos el borde que hacía parecer la imagen una caja */
   border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.btn-pilares:hover {
-  background-color: #7a163a;
-  color: var(--blanco);
+/* Imagen principal */
+.lf-sobre-sketch__imagen {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  background-color: #FFFFFF;
+
+  /* Acerca ligeramente la ilustración */
   transform: scale(1.04);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
-.btn-container {
-  margin-top: 40px;
+/* Contenido */
+.lf-sobre-sketch__contenido {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Ya no distribuye todo el contenido verticalmente */
+  justify-content: flex-start;
+
+  padding-left: var(--espaciado-md);
 }
 
-.btn-visitarnos {
+/* Título */
+.lf-sobre-sketch__titulo {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: var(--peso-seminegrita);
+
+  color: var(--color-texto);
+
+  margin-bottom: var(--espaciado-md);
+}
+
+/* Texto descriptivo */
+.lf-sobre-sketch__texto {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+
+  color: var(--color-texto);
+
+  line-height: 1.7;
+
+  margin-bottom: var(--espaciado-lg);
+}
+
+/* Botón Conocer más */
+.lf-sobre-sketch__boton {
+  width: fit-content;
+
   display: inline-block;
-  background-color: #f3ebf5;
-  color: var(--purpura-oscuro);
-  border: 1.5px solid var(--purpura-oscuro);
-  padding: 10px 28px;
-  border-radius: 25px;
+
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+
+  padding: 0.7rem 1.8rem;
+
+  border-radius: var(--radio-sm);
+
+  margin-bottom: var(--espaciado-lg);
+
+  transition: var(--transicion);
 }
 
-.btn-visitarnos:hover {
-  background-color: var(--purpura-oscuro);
-  color: var(--blanco);
+/* Hover del botón */
+.lf-sobre-sketch__boton:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--sombra);
 }
 
-/* ==========================================================================
-               ESTILO DE VENTANA EMERGENTE (ESTILO SKETCH COMO EN LA IMAGEN)
-   ========================================================================== */
+/* Caja de información */
+.lf-sobre-sketch__info {
+  width: 100%;
 
-/* Fondo transparente del modal para permitir ver la tarjeta sketch */
+  background-color: var(--color-marron-purpura-oscuro);
+  color: var(--color-texto-inverso);
+
+  padding: var(--espaciado-md);
+
+  /* Antes estaba en auto y la mandaba hasta abajo */
+  margin-top: var(--espaciado-md);
+}
+
+/* Título de la caja */
+.lf-sobre-sketch__info h3 {
+  font-family: var(--fuente-titulo-principal);
+
+  font-size: var(--tamano-subtitulo);
+  font-weight: var(--peso-seminegrita);
+
+  color: var(--color-texto-inverso);
+
+  margin-bottom: var(--espaciado-sm);
+}
+
+/* Párrafos de la caja */
+.lf-sobre-sketch__info p {
+  font-family: var(--fuente-cuerpo);
+
+  font-size: var(--tamano-auxiliar);
+
+  color: var(--color-texto-inverso);
+
+  line-height: 1.5;
+
+  margin-bottom: var(--espaciado-xs);
+}
+
+/* Quitar margen del último párrafo */
+.lf-sobre-sketch__info p:last-child {
+  margin-bottom: 0;
+}
+
 .modal-sketch-content {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Caja Dibujada a mano (Efecto Sketch) */
 .caja-sketch-emergente {
   background-color: var(--blanco);
   border: 2.5px solid var(--negro);
@@ -1196,7 +1216,6 @@ img { max-width: 100%; height: auto; }
   box-shadow: 6px 6px 0px var(--purpura-oscuro);
 }
 
-/* Título Magenta Subrayado */
 .titulo-seccion-modal {
   font-family: var(--fuente-titulos);
   font-size: 2.2rem;
@@ -1205,10 +1224,9 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 0.5rem;
   display: inline-block;
   border-bottom: 3px solid var(--negro);
-  font-weight: bold;
+  font-weight: 700;
 }
 
-/* Subtítulo Púrpura */
 .subtitulo-seccion-modal {
   font-family: var(--fuente-cuerpo);
   font-size: 1.25rem;
@@ -1217,11 +1235,10 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
 }
 
-/* Lista Ordenada y Viñetas Internas */
 .lista-modal-sketch {
   padding-left: 1.2rem;
   color: var(--purpura-oscuro);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .lista-modal-sketch > li {
@@ -1240,31 +1257,41 @@ img { max-width: 100%; height: auto; }
 }
 
 .lista-modal-sketch ul li {
-  color: #666666;
-  font-weight: normal;
+  color: var(--gris-texto);
+  font-weight: 400;
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
 }
 
+@media (max-width: 768px) {
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-/* fin de sección Sobre nosotros Sketch & Coffee */
 
-/* =========================SECCIÓN NEWSLETTER======================== */
+/* SOBRE SKETCH & COFFEE - LF */
+
+/* ===== INICIO DEL BLOQUE DE ALEXANDRA ======================================== */
 /* ==========================================================================
-   1. SECCIÓN NEWSLETTER
+    SECCIÓN NEWSLETTER
    ========================================================================== */
 .section-newsletter {
-  background-color: var(--color-negro, #000000) !important; /* Fuerza el fondo oscuro e impide sobrescrituras */
-  border-top: 1px solid var(--color-gris-borde, #25020F);
-  border-bottom: 1px solid var(--color-gris-borde, #25020F);
-  padding: var(--espaciado-xl, 3rem) var(--espaciado-md, 1.5rem);
-  color: var(--color-texto-inverso, #FFFFFF);
+background-color: var(--color-negro, #000000) !important; 
+color: var(--color-texto-inverso, #FFFFFF);
+width: 100% !important;
+max-width: 100% !important;
+border-radius: 0 !important;
+border: none !important;
+padding: 3rem 1.5rem;
+margin-top: 3rem !important;
+margin-bottom: 0 !important;
 }
 
 /* Títulos y párrafos dentro de Newsletter */
 .section-newsletter h2,
 .section-newsletter p {
-  color: var(--color-texto-inverso, #FFFFFF) !important; /* Mantiene legibilidad sobre fondo oscuro */
+  color: var(--color-texto-inverso, #FFFFFF) !important; 
 }
 
 .section-newsletter h2 {
@@ -1293,32 +1320,40 @@ img { max-width: 100%; height: auto; }
 
 /* Botón personalizado Magenta */
 .btn-custom-magenta {
-  background-color: var(--color-magenta-btn, #9E1E4C);
-  color: var(--color-texto-inverso, #FFFFFF);
-  font-family: var(--fuente-cuerpo);
-  font-size: var(--tamano-boton);
-  font-weight: var(--peso-seminegrita);
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border: 2.5px solid var(--color-negro);
-  padding: 0.5rem 1.75rem;
-  box-shadow: 3px 3px 0px var(--color-negro);
-  transition: all 0.15s ease-in-out;
+background-color: var(--color-magenta-btn, #9E1E4C) !important;
+color: var(--color-texto-inverso, #FFFFFF) !important;
+font-family: var(--fuente-cuerpo) !important;
+font-size: var(--tamano-boton, 1rem) !important;
+font-weight: var(--peso-seminegrita, 600) !important;
+border-radius: 8px !important;
+border: 1px solid var(--color-purpura-oscuro, #680148) !important;
+padding: 0.5rem 1.25rem !important;
+display: inline-flex !important;
+align-items: center !important;
+justify-content: center !important;
+text-decoration: none !important;
+box-shadow: none !important;
+cursor: pointer !important;
+transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+background-color 0.2s ease, 
+box-shadow 0.2s ease !important;
 }
 
 @media (hover: hover) {
   .btn-custom-magenta:hover {
-    background-color: var(--color-magenta-hover);
-    color: var(--color-texto-inverso);
-    box-shadow: 5px 5px 0px var(--color-negro);
-    transform: translate(-2px, -2px);
+background-color: var(--color-magenta-hover, #7E1840) !important;
+    transform: translateY(-2px) scale(1.03) !important; 
+    box-shadow: 0 4px 12px rgba(158, 30, 76, 0.3) !important; 
   }
 }
 
 .btn-custom-magenta:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px var(--color-negro);
+background-color: var(--color-purpura-oscuro, #680148) !important;
 }
 
+/* ==========================================================================
+    SECCIÓN FOOTER GLOBAL 
+   ========================================================================== */
 .footer-global {
   background-color: var(--color-negro, #000000) !important;
   border-top: 2px solid var(--color-gris-borde, #25020F);
@@ -1396,7 +1431,7 @@ img { max-width: 100%; height: auto; }
 color: var(--color-texto-inverso);
   text-decoration: underline;
 }
-
+/* ===== FIN DEL BLOQUE DE ALEXANDRA ======================================== */
 
 /*========================================================================*/
 /*     CÓDIGO DEL BOTÓN PARA SUBIR Y WHATSAPP (NO BORRAR DE NUEVO) */
