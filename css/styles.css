@@ -1083,22 +1083,26 @@ img { max-width: 100%; height: auto; }
 
 /* fin de sección Sobre nosotros Sketch & Coffee */
 
-/* =========================SECCIÓN NEWSLETTER======================== */
+/* ===== INICIO DEL BLOQUE DE ALEXANDRA ======================================== */
 /* ==========================================================================
-   1. SECCIÓN NEWSLETTER
+    SECCIÓN NEWSLETTER
    ========================================================================== */
 .section-newsletter {
-  background-color: var(--color-negro, #000000) !important; /* Fuerza el fondo oscuro e impide sobrescrituras */
-  border-top: 1px solid var(--color-gris-borde, #25020F);
-  border-bottom: 1px solid var(--color-gris-borde, #25020F);
-  padding: var(--espaciado-xl, 3rem) var(--espaciado-md, 1.5rem);
-  color: var(--color-texto-inverso, #FFFFFF);
+background-color: var(--color-negro, #000000) !important; 
+color: var(--color-texto-inverso, #FFFFFF);
+width: 100% !important;
+max-width: 100% !important;
+border-radius: 0 !important;
+border: none !important;
+padding: 3rem 1.5rem;
+margin-top: 3rem !important;
+margin-bottom: 0 !important;
 }
 
 /* Títulos y párrafos dentro de Newsletter */
 .section-newsletter h2,
 .section-newsletter p {
-  color: var(--color-texto-inverso, #FFFFFF) !important; /* Mantiene legibilidad sobre fondo oscuro */
+  color: var(--color-texto-inverso, #FFFFFF) !important; 
 }
 
 .section-newsletter h2 {
@@ -1127,32 +1131,40 @@ img { max-width: 100%; height: auto; }
 
 /* Botón personalizado Magenta */
 .btn-custom-magenta {
-  background-color: var(--color-magenta-btn, #9E1E4C);
-  color: var(--color-texto-inverso, #FFFFFF);
-  font-family: var(--fuente-cuerpo);
-  font-size: var(--tamano-boton);
-  font-weight: var(--peso-seminegrita);
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border: 2.5px solid var(--color-negro);
-  padding: 0.5rem 1.75rem;
-  box-shadow: 3px 3px 0px var(--color-negro);
-  transition: all 0.15s ease-in-out;
+background-color: var(--color-magenta-btn, #9E1E4C) !important;
+color: var(--color-texto-inverso, #FFFFFF) !important;
+font-family: var(--fuente-cuerpo) !important;
+font-size: var(--tamano-boton, 1rem) !important;
+font-weight: var(--peso-seminegrita, 600) !important;
+border-radius: 8px !important;
+border: 1px solid var(--color-purpura-oscuro, #680148) !important;
+padding: 0.5rem 1.25rem !important;
+display: inline-flex !important;
+align-items: center !important;
+justify-content: center !important;
+text-decoration: none !important;
+box-shadow: none !important;
+cursor: pointer !important;
+transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+background-color 0.2s ease, 
+box-shadow 0.2s ease !important;
 }
 
 @media (hover: hover) {
   .btn-custom-magenta:hover {
-    background-color: var(--color-magenta-hover);
-    color: var(--color-texto-inverso);
-    box-shadow: 5px 5px 0px var(--color-negro);
-    transform: translate(-2px, -2px);
+background-color: var(--color-magenta-hover, #7E1840) !important;
+    transform: translateY(-2px) scale(1.03) !important; 
+    box-shadow: 0 4px 12px rgba(158, 30, 76, 0.3) !important; 
   }
 }
 
 .btn-custom-magenta:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px var(--color-negro);
+background-color: var(--color-purpura-oscuro, #680148) !important;
 }
 
+/* ==========================================================================
+    SECCIÓN FOOTER GLOBAL 
+   ========================================================================== */
 .footer-global {
   background-color: var(--color-negro, #000000) !important;
   border-top: 2px solid var(--color-gris-borde, #25020F);
@@ -1230,7 +1242,7 @@ img { max-width: 100%; height: auto; }
 color: var(--color-texto-inverso);
   text-decoration: underline;
 }
-
+/* ===== FIN DEL BLOQUE DE ALEXANDRA ======================================== */
 
 /*========================================================================*/
 /*     CÓDIGO DEL BOTÓN PARA SUBIR Y WHATSAPP (NO BORRAR DE NUEVO) */
