@@ -1050,38 +1050,159 @@ img { max-width: 100%; height: auto; }
 }
 
 
-@media (max-width: 575.98px) {
+/*  SOBRE SKETCH & COFFEE - LF */
 
-    .lf-sobre-sketch {
-        padding:
-            var(--espaciado-lg)
-            var(--espaciado-md);
-    }
-
-
-    .lf-sobre-sketch__media {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__imagen {
-        min-height: 220px;
-    }
-
-
-    .lf-sobre-sketch__titulo {
-        font-size: 1.5rem;
-    }
-
-
-    .lf-sobre-sketch__boton {
-        width: 100%;
-        text-align: center;
-    }
-
+/* Contenedor principal de la sección */
+.lf-sobre-sketch {
+  background-color: #FFFFFF;
+  padding: var(--espaciado-xl) var(--espaciado-md);
 }
 
-/* fin de sección Sobre nosotros Sketch & Coffee */
+/* Contenedor de la imagen */
+.lf-sobre-sketch__media {
+  width: 100%;
+  overflow: hidden;
+
+  background-color: #FFFFFF;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Quitamos el borde que hacía parecer la imagen una caja */
+  border: none;
+}
+
+/* Imagen principal */
+.lf-sobre-sketch__imagen {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  background-color: #FFFFFF;
+
+  /* Acerca ligeramente la ilustración */
+  transform: scale(1.04);
+}
+
+/* Contenido */
+.lf-sobre-sketch__contenido {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Ya no distribuye todo el contenido verticalmente */
+  justify-content: flex-start;
+
+  padding-left: var(--espaciado-md);
+}
+
+/* Título */
+.lf-sobre-sketch__titulo {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-seccion);
+  font-weight: var(--peso-seminegrita);
+
+  color: var(--color-texto);
+
+  margin-bottom: var(--espaciado-md);
+}
+
+/* Texto descriptivo */
+.lf-sobre-sketch__texto {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+
+  color: var(--color-texto);
+
+  line-height: 1.7;
+
+  margin-bottom: var(--espaciado-lg);
+}
+
+/* Botón Conocer más */
+.lf-sobre-sketch__boton {
+  width: fit-content;
+
+  display: inline-block;
+
+  background-color: var(--color-magenta-btn);
+  color: var(--color-texto-inverso);
+
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-seminegrita);
+
+  text-decoration: none;
+
+  padding: 0.7rem 1.8rem;
+
+  border-radius: var(--radio-sm);
+
+  margin-bottom: var(--espaciado-lg);
+
+  transition: var(--transicion);
+}
+
+/* Hover del botón */
+.lf-sobre-sketch__boton:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--sombra);
+}
+
+/* Caja de información */
+.lf-sobre-sketch__info {
+  width: 100%;
+
+  background-color: var(--color-marron-purpura-oscuro);
+  color: var(--color-texto-inverso);
+
+  padding: var(--espaciado-md);
+
+  /* Antes estaba en auto y la mandaba hasta abajo */
+  margin-top: var(--espaciado-md);
+}
+
+/* Título de la caja */
+.lf-sobre-sketch__info h3 {
+  font-family: var(--fuente-titulo-principal);
+
+  font-size: var(--tamano-subtitulo);
+  font-weight: var(--peso-seminegrita);
+
+  color: var(--color-texto-inverso);
+
+  margin-bottom: var(--espaciado-sm);
+}
+
+/* Párrafos de la caja */
+.lf-sobre-sketch__info p {
+  font-family: var(--fuente-cuerpo);
+
+  font-size: var(--tamano-auxiliar);
+
+  color: var(--color-texto-inverso);
+
+  line-height: 1.5;
+
+  margin-bottom: var(--espaciado-xs);
+}
+
+/* Quitar margen del último párrafo */
+.lf-sobre-sketch__info p:last-child {
+  margin-bottom: 0;
+}
+
+/* SOBRE SKETCH & COFFEE - LF */
 
 /* ===== INICIO DEL BLOQUE DE ALEXANDRA ======================================== */
 /* ==========================================================================
