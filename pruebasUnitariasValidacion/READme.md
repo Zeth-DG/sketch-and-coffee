@@ -1,8 +1,9 @@
-## 🧪 Validaciones – Formulario Sketch & coffee
+## Validaciones v2
+## Formulario de contacto de "Sketch & coffee"
 
 Conjunto de pruebas unitarias con **Jest** para validar los campos de un formulario de contacto de nuestra cafetería.
 
-### ✅ Funciones validadas
+### Funciones validadas
 
 - `validarCorreo`
 - `validarNombre`
@@ -11,139 +12,115 @@ Conjunto de pruebas unitarias con **Jest** para validar los campos de un formula
 - `validarAsunto`
 - `validarPrivacidad`
 
-### ▶️ Ejecutar pruebas
+### Ejecutar pruebas
 
 ```bash
 npm test
-```
-
-**Resultado esperado:**
 
 ```
-Test Suites: 1 passed, 1 total
-Tests:       42 passed, 42 total
+
+**Resultado actual de la ejecución:**
+
+```
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 50 passed, 56 total
+Snapshots:   0 total
+Time:        0.763 s
+
 ```
 
-***
+---
 
-## 📖 Cómo usar cada función
+## Cómo usar cada función
 
 Todas las funciones devuelven un objeto con la estructura:
 
 ```js
 { valido: boolean, mensaje: string }
+
 ```
 
 ### 1. `validarCorreo(email)`
 
-Valida formato de correo electrónico.
+Valida formato de correo electrónico mediante expresiones regulares.
 
-**Casos que valida:**
-- No vacío ni solo espacios
-- Contiene `@` y dominio con TLD (`.com`, `.es`, `.co`, etc.)
-- Rechaza `@` al inicio/fin, dominios vacíos o espacios en el correo
-
-***
+* **Casos probados exitosamente:** Correos estándar, con subdominios (`@sub.dominio.com`), con símbolo `+` (`usuario+cafe@`) y TLDs largos (`.restaurant`, `.mx`).
+* **Casos rechazados correctamente:** Correos vacíos, sin `@`, sin TLD o con espacios intermedios inválidos.
 
 ### 2. `validarNombre(nombre)`
 
-Valida nombre propio (cliente).
+Valida nombre propio del cliente.
 
-**Casos que valida:**
-- Mínimo 3 caracteres
-- Solo letras, acentos, espacios y guiones
-- Rechaza números, símbolos o caracteres especiales
-
-***
+* **Casos probados exitosamente:** Nombres compuestos, con acentos, tildes y caracteres especiales permitidos (como la `ñ` o guiones).
+* **⚠️ Observación / Falla detectada:** Los nombres muy largos (como `"María del Carmen Guadalupe de los Ángeles Rodríguez Hernández-Villamil Martínez de la Garza."`) fallan porque superan el límite de `30` caracteres configurado en la validación actual (`nombreLimpio.length > 30`).
 
 ### 3. `validarTelefono(telefono)`
 
-Valida número telefónico (México, 10 dígitos).
+Valida número telefónico de 10 dígitos.
 
-**Casos que valida:**
-- Exactamente 10 dígitos (ignora guiones y espacios visuales)
-- Rechaza letras, símbolos o longitudes incorrectas (menos de 10 o más de 10 dígitos numéricos)
-
-***
+* **Casos probados exitosamente:** Números de 10 dígitos limpios, con espacios o con guiones de separación.
+* **⚠️ Observación / Falla detectada:** Los formatos que incluyen paréntesis (ej. `(722) 170-1202`) o lada de país (ej. `15512345678` de 11 dígitos) fallan porque la función actual solo remueve espacios y guiones (`.replace(/[\s-]/g, "")`) y exige exactamente 10 caracteres numéricos (`^\d{10}$`).
 
 ### 4. `validarMensaje(mensaje)`
 
-Valida mensaje del cliente.
+Valida el contenido del mensaje del cliente.
 
-
-**Casos que valida:**
-- No vacío ni solo espacios
-- Entre 10 y 1000 caracteres
-- Permite saltos de línea (párrafos múltiples)
-
-***
+* **Casos probados exitosamente:** Mensajes dentro del rango (10 a 1000 caracteres), uso de emojis y párrafos múltiples con saltos de línea (`\n`).
+* **⚠️ Observación / Falla detectada:** El caso de exactamente 10 caracteres (`"Lorem ipsu"`) falló porque la condición en el código usa `<=` (`mensajeLimpio.length <= 10`), por lo que el número 10 es tomado como inválido (debería ser `< 10`).
 
 ### 5. `validarAsunto(asunto)`
 
-Valida selección de asunto (lista desplegable).
+Valida selección de asunto en la lista desplegable.
 
-**Casos que valida:**
-- No vacío (debe seleccionar una opción de la lista)
-- Opciones típicas: `"Reserva"`, `"Pedido"`, `"Queja"`, `"Sugerencia"`, `"Otro"`
-
-***
+* **Casos probados:** Validación básica cuando el campo está vacío.
 
 ### 6. `validarPrivacidad(aceptado)`
 
-Valida checkbox de términos y condiciones.
+Valida el checkbox de términos y condiciones.
 
-**Casos que valida:**
-- Debe ser `true` (checkbox marcado)
-- Rechaza `false`, `""`, `null`, `undefined`
+* **⚠️ Observación / Falla detectada:** Al enviar strings como `"null"` o `"undefined"` en las pruebas, la función los evalúa como `true` en JavaScript (ya que cualquier string no vacío es truthy). Es necesario validar explícitamente tipos de datos o strings literales que simulen valores nulos.
 
-***
+---
 
-## 🔍 Mejoras sugeridas para probar
+## Sugerencias de mejora y cosas nuevas por probar
 
-### ✅ Casos adicionales recomendados
+Basado en los resultados de las pruebas unitarias, se sugieren los siguientes ajustes tanto en el código de validación (`validaciones.js`) como en los casos de prueba:
 
-- **Correo**:
-  - Subdominios: `"usuario@sub.dominio.com"` → válido
-  - Correos con `+`: `"usuario+cafe@dominio.com"` → válido (nuestro regex lo soporta?)
-  - TLD largos: `"usuario@dominio.mx"` o `"usuario@dominio.restaurant"` → válido
+1. **Ajustar el límite de longitud en `validarNombre`:**
+* Incrementar el límite máximo de caracteres de 30 a 60 o 80 para permitir nombres y apellidos compuestos largos sin errores.
 
-- **Nombre**:
-  - Nombres compuestos con múltiples espacios: `"Ana María de los Ángeles"` → válido
-  - Apellidos con ñ: `"Ibáñez"` → válido
-  - Nombres muy largos (50+ caracteres) → definir si hay límite máximo
 
-- **Teléfono**:
-  - Formato con paréntesis: `"(722) 170-1202"` → ¿válido o inválido según tu UX?
-  - Lada móvil (11 dígitos): `"15512345678"` → ¿aceptar o rechazar?
+2. **Corregir la validación de longitud en `validarMensaje`:**
+* Cambiar la condición de `<= 10` a `< 10` para que los mensajes de exactamente 10 caracteres sean considerados válidos.
 
-- **Mensaje**:
-  - Exactamente 10 caracteres → válido (caso borde)
-  - Exactamente 1000 caracteres → válido (caso borde)
-  - Solo emojis: `"☕☕☕"` → ¿válido o inválido?
 
-- **Asunto**:
-  - Valor por defecto vacío: `""` o `"Seleccione..."` → inválido
+3. **Mejorar el manejo de formatos en `validarTelefono`:**
+* Actualizar la expresión regular o la limpieza del teléfono para que ignore paréntesis (`()`) y acepte opcionalmente ladas internacionales o de marcación nacional de 11 dígitos si el negocio lo requiere.
 
-- **Privacidad**:
-  - Probar con `null` y `undefined` explícitamente → inválido
 
-***
+4. **Nuevas pruebas recomendadas a agregar:**
+* **Inyección XSS / HTML:** Probar campos de nombre o mensaje con etiquetas maliciosas (ej. `<script>alert('hola')</script>`) para verificar si las validaciones escapan o rechazan código ejecutable.
+* **Asuntos inválidos:** Agregar pruebas específicas pasando valores numéricos o strings no contemplados en el menú desplegable.
 
-## 📁 Estructura del proyecto
+
+
+---
+
+## Estructura del proyecto
 
 ```
 proyecto/
-├── validaciones.js       # funciones a probar
-├── validaciones.test.js  # pruebas con Jest
+├── validaciones.js      # Funciones de validación
+├── validaciones.test.js # Pruebas unitarias con Jest
 ├── package.json
-└── README.md
+└── README.md            # Este archivo
+
 ```
 
-***
-
-## 🛠️ Instalación
+## Instalación y Ejecución
 
 ```bash
 npm install
 npm test
+
 ```
