@@ -1,16 +1,19 @@
+/* ==========================================================================
+   1. ROOT VARIABLES - TYPOGRAPHY & DESIGN TOKENS
+   ========================================================================== */
+
 :root {
  
-  /* ---------------------------------------------------------------------
-     PALETA DE COLORES
-     --------------------------------------------------------------------- */
+  /* =====================================================================
+     COLORS
+     ===================================================================== */
  
   /* Blanco: base neutra para formularios y secciones */
   --color-blanco-puro:            #FFFFFF;
   --color-blanco-formularios:     var(--color-blanco-puro);
   --color-blanco-secciones:       var(--color-blanco-puro);
  
-  /* Negro: se conserva para detalles y sombras.
-     OJO: para párrafos y encabezados usen --color-texto (más abajo). */
+  /* Negro: se conserva para detalles y sombras */
   --color-negro:                  #000000;
   --color-negro-txtprincipal:     var(--color-negro);
  
@@ -28,96 +31,107 @@
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
 
   /*Header*/
-  --color-header: black; /*color previo: #4A1029*/
+  --color-header: black;
   --color-header-hover: #651535;
   --color-header-borde: #C65A83;
  
-  /* ---------------------------------------------------------------------
-     AGREGADO · 
-     --------------------------------------------------------------------- */
-  --color-magenta-hover:          #7E1840;   /* hover/pressed del botón      */
-  --color-magenta-tenue:          #F3E4EA;   /* fondo de etiquetas y avisos  */
-  --color-gris-perla:             #F7F5F6;   /* fondo alterno de sección     */
-  --color-gris-borde:             #E6E1E3;   /* bordes y divisores           */
-  --color-gris-texto:             #8A8085;   /* texto secundario             */
+  /* Agregado */
+  --color-magenta-hover:          #7E1840;
+  --color-magenta-tenue:          #F3E4EA;
+  --color-gris-perla:             #F7F5F6;
+  --color-gris-borde:             #E6E1E3;
+  --color-gris-texto:             #8A8085;
  
   --color-texto:                  var(--color-marron-purpura-oscuro);
   --color-texto-suave:            var(--color-gris-texto);
   --color-texto-inverso:          var(--color-blanco-puro);
  
-  /* AGREGADO · estados del sistema (formularios, carrito, confirmaciones) */
+  /* Estados del sistema (formularios, carrito, confirmaciones) */
   --color-exito:                  #2E7D5B;
   --color-error:                  #C0392B;
   --color-aviso:                  #C99700;
   --color-info:                   #2F5D8C;
  
  
-  /* ---------------------------------------------------------------------
-     TIPOGRAFÍAS Y FUENTES
-     --------------------------------------------------------------------- */
-  --fuente-titulo-principal: 'Tropical Avenue', Georgia, serif;
-  --fuente-subtitulo:        'Sparkling Valentine', 'Brush Script MT', cursive;
-  --fuente-cuerpo:           'Lorestta', system-ui, -apple-system, sans-serif;
-  --fuente-numeros:          'Comic Neue', system-ui, sans-serif;
+  /* =====================================================================
+     TYPOGRAPHY STACK - ARTISANAL & ACCESSIBLE
+     ===================================================================== */
+  
+  /* MAIN TITLES - Elegant serif */
+  --fuente-titulo-principal:      'Playfair Display', Georgia, serif;
+  
+  /* SUBTITLES - Handwritten artisanal */
+  --fuente-subtitulo:             'Homemade Apple', cursive;
+  
+  /* BODY TEXT - Accessible */
+  --fuente-cuerpo:                'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+  
+  /* NUMBERS & FORMS - Accessible */
+  --fuente-numeros:               'Atkinson Hyperlegible', system-ui, sans-serif;
+  
+  /* DECORATIVE ACCENTS - Beautiful script (use sparingly) */
+  --fuente-acento-decorativo:     'Caveat', cursive;
+  
+  /* FONT WEIGHTS */
+  --peso-ligero:                  400;
+  --peso-regular:                 400;
+  --peso-seminegrita:             600;
+  --peso-negrita:                 700;
+  --peso-extranegrita:            800;
  
-  /* Pesos */
-  --peso-ligero:       300;
-  --peso-regular:      400;
-  --peso-seminegrita:  600;
-  --peso-negrita:      700;
+  /* =====================================================================
+     FONT SIZES (Fluid Typography)
+     ===================================================================== */
+  --tamano-titulo-principal:      clamp(2rem, 5vw, 2.75rem);
+  --tamano-titulo-seccion:        clamp(1.8rem, 4vw, 2.35rem);
+  --tamano-subtitulo:             clamp(1.15rem, 2.5vw, 1.45rem);
+  --tamano-parrafo-destacado:     1.125rem;
+  --tamano-parrafos:              1.0625rem;
+  --tamano-boton:                 1rem;
+  --tamano-auxiliar:              0.9375rem;
+  --tamano-footer:                0.9375rem;
+  --tamano-micro:                 0.8125rem;
+
+  /* Legacy aliases for compatibility */
+  --tamano-titulo-seccion:        clamp(1.8rem, 4vw, 2.35rem);
  
+  /* =====================================================================
+     LINE HEIGHT & SPACING FOR ACCESSIBILITY & READABILITY
+     ===================================================================== */
+  --interlineado-titulos:         1.25;
+  --interlineado-parrafos:        1.7;
+  --interlineado-botones:         1.4;
+  --espaciado-letras-parrafos:    0.01em;
+  --espaciado-letras-titulos:     0.02em;
+  --ancho-maximo-parrafos:        65ch;
  
-  /* ---------------------------------------------------------------------
-     TAMAÑOS DE FUENTE
-     --------------------------------------------------------------------- */
-  --tamano-titulo-principal:   2rem;      /* H1 de la página               */
-  --tamano-titulo-seccion:     1.75rem;   /* AGREGADO · H2 de cada sección */
-  --tamano-subtitulo:          1.25rem;
-  --tamano-parrafo-destacado:  1.125rem;
-  --tamano-parrafos:           1rem;
-  --tamano-boton:              1rem;
-  --tamano-auxiliar:           0.9rem;
-  --tamano-footer:             0.9rem;
-  --tamano-micro:              0.75rem;   /* AGREGADO · etiquetas, kickers */
+  /* =====================================================================
+     SPACING & MEASURES
+     ===================================================================== */
+  --espaciados-margenes:          1rem;
+  --iconos-imagenes:              25px;
  
-  /* Alias con ñ (compatibilidad con lo que ya esté escrito) */
-  --tamano-subtitulo:          var(--tamano-subtitulo);
-  --tamano-parrafos:           var(--tamano-parrafos);
-  --tamano-parrafo-destacado:  var(--tamano-parrafo-destacado);
-  --tamano-boton:              var(--tamano-boton);
-  --tamano-auxiliar:           var(--tamano-auxiliar);
-  --tamano-footer:             var(--tamano-footer);
+  --espaciado-xs:                 0.25rem;
+  --espaciado-sm:                 0.5rem;
+  --espaciado-md:                 1rem;
+  --espaciado-lg:                 1.5rem;
+  --espaciado-xl:                 2.5rem;
  
+  --ancho-contenedor-sm:          540px;
+  --ancho-contenedor-md:          720px;
+  --ancho-contenedor-lg:          960px;
+  --ancho-contenedor-xl:          1140px;
+  --ancho-contenedor-xxl:         1320px;
  
-  /* ---------------------------------------------------------------------
-     ESPACIADO Y MEDIDAS
-     --------------------------------------------------------------------- */
-  --espaciados-margenes:  1rem;
-  --iconos-imagenes:      25px;
- 
-  --espaciado-xs:  0.25rem;
-  --espaciado-sm:  0.5rem;
-  --espaciado-md:  1rem;
-  --espaciado-lg:  1.5rem;
-  --espaciado-xl:  2.5rem;
- 
-  --ancho-contenedor-sm:   540px;
-  --ancho-contenedor-md:   720px;
-  --ancho-contenedor-lg:   960px;
-  --ancho-contenedor-xl:  1140px;
-  --ancho-contenedor-xxl: 1320px;
- 
- 
-  /* ---------------------------------------------------------------------
-     AGREGADO · forma, sombra y movimiento
-     --------------------------------------------------------------------- */
-  --radio:          10px;
-  --radio-sm:       6px;
-  --sombra:         0 2px 12px rgba(37, 2, 15, .07);
-  --sombra-hover:   0 10px 26px rgba(37, 2, 15, .14);
-  --transicion:     .25s ease;
+  /* =====================================================================
+     SHAPE, SHADOW & MOTION
+     ===================================================================== */
+  --radio:                        10px;
+  --radio-sm:                     6px;
+  --sombra:                       0 2px 12px rgba(37, 2, 15, .07);
+  --sombra-hover:                 0 10px 26px rgba(37, 2, 15, .14);
+  --transicion:                   .25s ease;
 }
- 
  
 /* ==========================================================================
    2. BASE GLOBAL
