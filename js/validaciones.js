@@ -30,50 +30,6 @@ export function validarCorreo (email){
     }; 
 }//funcion validar correo 
 
-export function validarNombreCompleto (nombre, apellido){
-    if(typeof nombre !== "string" || apellido !== "string"){
-        return{
-            valido: false, 
-            mensaje: "Introduce texto"
-        }
-    }//validar que sea un string
-
-    const nombreLimpio = nombre.trim();
-    const apellidoLimpio = nombre.trim(); 
-
-    //existe el dato nombre o apellido?
-    if (nombreLimpio === "" || apellidoLimpio === "") {
-        return {
-            valido: false, 
-            mensaje: "El nombre/apellido son obligatorios."
-        }; 
-    }
-    // el nombre o el apellido tienen una longitud mayor a 2 caracteres pero menor a 30?
-    if (nombreLimpio.length < 3 || 
-        nombreLimpio.length > 30 ||
-        apellidoLimpio.length < 3 || 
-        apellidoLimpio.length > 30){
-        return {
-            valido: false,
-            mensaje: "Ingresa un nombre/apellido válido."
-        }; 
-    }
-    const nameRegex = /^[\p{L}\s-]+$/u; //unicode 
-
-    //tiene caracteres invalidos?
-    if (!nameRegex.test(nombreLimpio) || !nameRegex.test(apellidoLimpio)) {
-        return {
-            valido: false, 
-            mensaje: "Ingresa un nombre/apellido válido."
-        }; 
-    }
-
-    return {
-        valido: true,
-        mensaje: "Nombre y apellido válido."
-    };
-}//funcion validar nombre
-
 export function validarTelefono(telefono){
     if(typeof telefono !== "string"){
         return {
@@ -119,6 +75,20 @@ export function validarMensaje(mensaje){
         return{
             valido: false, 
             mensaje: "Ingrese un mensaje"
+        }
+    }
+
+    if(mensajeLimpio.length <=10){
+        return{
+            valido: false, 
+            mensaje: "Tu mensaje es muy corto"
+        }
+    }
+
+    if(mensajeLimpio.length>1000){
+        return{
+            valido: false, 
+            mensaje: "Tu mensaje es muy largo"
         }
     }
 

@@ -386,6 +386,15 @@ img { max-width: 100%; height: auto; }
   color:  #9E1E4C; /* color turquesa */
 }
 
+/* Ajuste uniforme de imágenes en el carrusel */
+#carouselSketchCoffee .carousel-item img {
+  height: 400px;          /* altura fija para todas las imágenes */
+  width: 100%;            /* que ocupen todo el ancho */
+  object-fit: cover;      /* recorta manteniendo proporción */
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
 /* ========== Fin de sección del diseño del carrusel del HERO - Vanya ==========*/
  
 /* ==========================================================================
