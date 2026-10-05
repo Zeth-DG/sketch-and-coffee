@@ -1493,3 +1493,36 @@ color: var(--color-texto-inverso);
     height: 300px;
   }
 }
+
+/* ==========================================================================
+                          Preguntas frecuentes
+   ========================================================================== */
+
+/* Estado normal */
+.accordion-button.faq-btn {
+  background-color: #9E1E4C !important;   
+  color: #ffffff !important;             
+  border: 2px solid #000000 !important;  
+  border-radius: 6px !important;
+  box-shadow: none !important;           
+}
+
+.accordion-button.faq-btn:hover,
+.accordion-button.faq-btn:focus {
+  background-color: #7a163a !important;   
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed).faq-btn {
+  background-color: #000000 !important;   
+  color: #ffffff !important;
+  border: 2px solid #9E1E4C !important;
+  box-shadow: none !important;
+}
+
+.accordion-button.faq-btn::after {
+  filter: invert(1); 
+}
+
+
