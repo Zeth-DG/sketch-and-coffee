@@ -166,7 +166,7 @@ test("El nombre  María Jóse Alcantára , tiene formato válido", ()=> {
 
 
 /*VALIDACIONES TELEFONO*/
-test("si se ingresan espacios, no es un número teléfonico válido", () => {
+test("si se ingresan SOLO espacios, no es un número teléfonico válido", () => {
     const resultado = funciones.validarTelefono("   ");
     expect(resultado.valido).toBeFalsy(); 
 });
@@ -186,7 +186,7 @@ test("si se ingresan caracteres, no es un número teléfonico válido", ()=> {
     expect(resultado.valido).toBeFalsy(); 
 });
 
-test("si se ingresan numeros mas cartos, no es un número teléfonico válido", ()=> {
+test("si se ingresan 9 dígitos, NO es un número teléfonico válido", ()=> {
     const resultado = funciones.validarTelefono("551234567)");
     expect(resultado.valido).toBeFalsy(); 
 });
@@ -196,13 +196,31 @@ test("si se ingresan numeros mas largos a 10 numeros, no es un número teléfoni
     expect(resultado.valido).toBeFalsy(); 
 });
 
-test("si se ingresan paréntesis, es un número teléfonico válido", ()=> {
-    const resultado = funciones.validarTelefono("(722) 170-1202");
-    expect(resultado.valido).toBeTruthy(); 
+test("si se ingresan lada (11 dígitos), NO es un número teléfonico válido", ()=> {
+    const resultado = funciones.validarTelefono("15512345678");
+    expect(resultado.valido).toBeFalsy(); 
 });
 
-test("si se ingresan lada, es un número teléfonico válido", ()=> {
-    const resultado = funciones.validarTelefono("15512345678");
+
+test("si el número empieza con 0 NO es un número teléfonico válido", ()=> {
+    const resultado = funciones.validarTelefono("0512345678");
+    expect(resultado.valido).toBeFalsy(); 
+});
+
+
+test("si todos los números son 0000000000, NO es un número teléfonico válido", ()=> {
+    const resultado = funciones.validarTelefono("0000000000");
+    expect(resultado.valido).toBeFalsy(); 
+});
+
+
+test("si todos los números son 1111111111, NO es un número teléfonico válido", ()=> {
+    const resultado = funciones.validarTelefono("1111111111");
+    expect(resultado.valido).toBeFalsy(); 
+});
+
+test("si se ingresan paréntesis, es un número teléfonico válido", ()=> {
+    const resultado = funciones.validarTelefono("(722) 170-1202");
     expect(resultado.valido).toBeTruthy(); 
 });
 
