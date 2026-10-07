@@ -1585,6 +1585,13 @@ color: var(--color-texto-inverso);
   border-color: var(--color-magenta);
 }
 
+/*COLOR MENSAJES DE ERROR*/
+.mensaje-error {
+  color: var(--color-error);
+  font-size: var(--tamano-auxiliar);
+  margin-top: var(--espaciado-sm);
+}
+
 /* Caja reCAPTCHA */
 .caja-recaptcha {
   border: 2px dashed var(--color-gris-borde);

@@ -13,11 +13,8 @@
 </head>
 
 <body>
-
-    <!--Encabezado y menu - Liz-->
     <!--el header se mueve a un archivo especifico para importarse en cada página-->
     <header id="header-global"></header>
-
 
 
     <!--UNION DE FORMULARIO DE LAURA Y TARJETAS QUE HICE-->
@@ -43,12 +40,12 @@
                                 <label for="campoNombre" class="visually-hidden">Nombre completo</label>
                                 <input type="text" id="campoNombre" class="form-control" placeholder="Nombre" required
                                     aria-required="true">
-                                <p id="errorNombre"></p>    
+                                <p id="errorNombre" class="mensaje-error"></p>    
                             </div>
                             <div class="col-md-6">
                                 <label for="campoTelefono" class="visually-hidden">Número de teléfono</label>
                                 <input type="tel" id="campoTelefono" class="form-control" placeholder="Teléfono" required aria-required="true">
-                                <p id="errorTelefono"></p>
+                                <p id="errorTelefono" class="mensaje-error"></p>
                             </div>
                         </div>
 
@@ -57,7 +54,7 @@
                             <label for="campoCorreo" class="visually-hidden">Correo electrónico</label>
                             <input type="email" id="campoCorreo" class="form-control" placeholder="Correo electrónico"
                                 required aria-required="true">
-                            <p id="errorEmail"></p>    
+                            <p id="errorEmail" class="mensaje-error"></p>    
                         </div>
 
                         <!-- Asunto -->
@@ -71,7 +68,7 @@
                                 <option value="mayoreo">Mayoreo</option>
                                 <option value="otro">Otro</option>
                             </select>
-                            <p id="errorAsunto"></p>
+                            <p id="errorAsunto" class="mensaje-error"></p>
                         </div>
 
                         <!-- Mensaje -->
@@ -79,7 +76,7 @@
                             <label for="campoMensaje" class="visually-hidden">Escribe tu mensaje</label>
                             <textarea id="campoMensaje" class="form-control" rows="5" placeholder="Mensaje" required
                                 aria-required="true"></textarea>
-                            <p id="errorMensaje"></p>     
+                            <p id="errorMensaje" class="mensaje-error"></p>     
                         </div>
 
                         <!-- Checkbox Aviso de privacidad -->
@@ -90,7 +87,7 @@
                                 Acepto el <a href="#" class="text-dark fw-semibold">aviso de privacidad</a>
                             </label>
 
-                            <p id="errorPrivacidad"></p>
+                            <p id="errorPrivacidad" class="mensaje-error"></p>
                         </div>
 
                         <!-- reCAPTCHA y Botón -->
