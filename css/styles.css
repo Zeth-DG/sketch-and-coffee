@@ -158,6 +158,8 @@ img { max-width: 100%; height: auto; }
 
 /* Fondo y borde de la navbar */
 .navbar {
+  /*position: relative;
+  z-index: 1030; puesto para probar porque no funcionaba la hamburguesa*/ 
   background-color: var(--color-header);
   border-bottom: 2px solid var(--color-header-borde);
   padding-top: var(--espaciado-sm);
