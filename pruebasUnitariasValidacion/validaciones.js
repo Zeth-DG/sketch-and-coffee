@@ -6,21 +6,20 @@ function validarCorreo (email){
         };
     }//verifica que sea un string
 
-    const emailLimpio = email.trim(); 
-    
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailLimpio = email.trim(); //quitar espacios al inicio y al final
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //estructura aceptada 
 
     if(emailLimpio === ""){
         return {
             valido: false,
-            mensaje: "El correo eléctronico es obligatorio."
+            mensaje: "Escribe tu correo electrónico."
         }
     }//verifica que no este vacío
 
     if (!emailRegex.test(emailLimpio)){
         return {
             valido: false,
-            mensaje: "Ingresa un correo electrónico válido"
+            mensaje: "Escribe un correo con el formato nombre@dominio.com, sin espacios."
         }
     }//verifica que tenga la expresión regular de un email
 
@@ -45,7 +44,7 @@ function validarTelefono(telefono){
     if (telefonoLimpio === ""){
         return{
             valido: false, 
-            mensaje: "El número teléfonico es obligatorio."
+            mensaje: "Escribe tu número de teléfono."
         }; 
     }//no dejar el campo vacío
 
@@ -57,23 +56,16 @@ function validarTelefono(telefono){
     if (!numeroRegex.test(telefonoSinSeparadores)){
         return {
             valido: false, 
-            mensaje: "Ingresa un número de 10 dígitos ej. 5512345678."
+            mensaje: "Escribe 10 dígitos. Ej: 5512345678. Puedes separarlos con espacios o guiones."
         }; 
     }//if numero sin 10 dígitos
-
-    if (telefonoSinSeparadores.startsWith('0')){
-        return {
-            valido: false,
-            mensaje: "El número no puede empezar con 0."
-        };
-    }//if numeros que empiezan con 0
 
     const todosIguales = /^(\d)\1+$/.test(telefonoSinSeparadores); 
 
     if (todosIguales){
         return {
             valido: false, 
-            mensaje: "No se aceptan números continuos iguales como 0000000000."
+            mensaje: "El número no puede tener todos los dígitos iguales (ej. 5555555555)."
         };
     }//if todos los numeros son iguales
 
@@ -82,14 +74,13 @@ function validarTelefono(telefono){
     if (!/[2-9]/.test(primerDigito)) {
         return { 
             valido: false, 
-            mensaje: "El número debe empezar con un dígito válido entre 2 y 9" 
+            mensaje: "El número debe empezar con un dígito del 2 al 9" 
         };
     }//if el numero no empieza con 2-9
 
-
     return {
         valido: true,
-        mensaje: "El número teléfonico es válido."
+        mensaje: "El número telefónico es válido."
     }; 
 }//funcion validar telefono sin separadores y de 10 dígitos
 
@@ -99,7 +90,7 @@ function validarMensaje(mensaje){
     if (typeof mensaje != "string"){
         return{
             valido: false, 
-            mensaje: "El mensaje debe ser texto"
+            mensaje: "El mensaje debe ser texto."
         }; 
     }//debe ser texto 
 
@@ -109,7 +100,7 @@ function validarMensaje(mensaje){
     if(mensajeLimpio === ""){
         return{
             valido: false, 
-            mensaje: "Ingrese un mensaje"
+            mensaje: "Escribe tu mensaje."
         };
     }//if
     
@@ -117,7 +108,7 @@ function validarMensaje(mensaje){
     if(mensajeLimpio.length < 10){
         return{
             valido: false, 
-            mensaje: "Tu mensaje es muy corto"
+            mensaje: `Tu mensaje debe tener al menos 10 caracteres (llevas ${mensajeLimpio.length})`
         };
     }//if
 
@@ -125,7 +116,7 @@ function validarMensaje(mensaje){
     if(mensajeLimpio.length>1000){
         return{
             valido: false, 
-            mensaje: "Tu mensaje es muy largo"
+            mensaje: `Tu mensaje no puede pasar de 1000 caracteres (llevas ${mensajeLimpio.length})`
         };
     }//if
 
@@ -152,14 +143,14 @@ function validarNombre (nombre){
     if (nombreLimpio === "") {
         return {
             valido: false, 
-            mensaje: "El nombre es obligatorio."
+            mensaje: "Escribe tu nombre."
         }; 
     }
-    // el nombre o el apellido tienen una longitud mayor a 2 caracteres pero menor a 30?
+    // el nombre tiene una longitud mayor a 3 caracteres pero menor a 30?
     if (nombreLimpio.length < 3 || nombreLimpio.length > 100 ){
         return {
             valido: false,
-            mensaje: "Ingresa un nombre de entre 3 y 100 caracteres."
+            mensaje: "Tu nombre debe tener entre 3 y 100 caracteres."
         }; 
     }
     const nameRegex = /^[\p{L}\s\.-]+$/u; //unicode se agrega que acepte puntos
@@ -168,7 +159,7 @@ function validarNombre (nombre){
     if (!nameRegex.test(nombreLimpio)) {
         return {
             valido: false, 
-            mensaje: "Ingresa un nombre que tenga solo letras."
+            mensaje: "Usa solo letras, espacios, puntos o guiones. No uses números ni símbolos."
         }; 
     }
 
@@ -184,7 +175,7 @@ function validarAsunto(asunto){
     if (asunto === ""){
         return{
             valido: false, 
-            mensaje: "Selecciona un asunto"
+            mensaje: "Selecciona un asunto de la lista."
         }; 
     }
 
@@ -200,7 +191,7 @@ function validarPrivacidad(aceptada){
     if (aceptada === "null" || aceptada === "undefined" || aceptada === "false" || aceptada === ""){
         return{
             valido: false, 
-            mensaje: "Debes aceptar el aviso de privacidad para continuar."
+            mensaje: "Marca la casilla para aceptar el aviso de privacidad."
         };
     }//if
 
@@ -208,7 +199,7 @@ function validarPrivacidad(aceptada){
     if (!aceptada){
         return{
             valido: false, 
-            mensaje: "Debes aceptar el aviso de privacidad para continuar"
+            mensaje: "Marca la casilla para aceptar el aviso de privacidad."
         };
     }//if
 
