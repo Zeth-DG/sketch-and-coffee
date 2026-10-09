@@ -15,6 +15,7 @@ export async function cargarMenuTop() {
       nombre: producto.name || "Sin nombre",
       departamento: producto.department || "Sin departamento",
       precio: producto.origins && producto.origins.length > 0 ? producto.origins[0].price : "0.00",
+      sku: producto.sku || "Sin sku", 
       disponible: producto.isProductAvailable ?? false
     }));
 
