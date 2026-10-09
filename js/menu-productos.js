@@ -1,4 +1,4 @@
-// menu-service.js
+// menu-productos.js
 import { detallesPersonalizados } from './menu-detalles.js';
 
 export let menuTopEnriquecido = [];
