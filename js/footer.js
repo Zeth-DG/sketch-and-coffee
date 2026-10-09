@@ -8,7 +8,7 @@
       const btn = document.getElementById("btnSubir");
       if (btn) {
         window.onscroll = function() {
-          console.log(document.documentElement.scrollTop);
+         // console.log(document.documentElement.scrollTop);
           if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
             btn.style.display = "flex";
           } else {
