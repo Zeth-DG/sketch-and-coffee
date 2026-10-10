@@ -2558,3 +2558,74 @@ main.main-container,
   margin-top: var(--espaciado-xs);
 }
 
+/* Carrucel de productos TOP 10  */
+.product-carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 1.25rem;
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cada elemento del carrusel de productos con tamaño propio */
+.product-carousel-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 220px;
+}
+
+/* Tarjeta interna exclusiva de productos (independiente de la sección de equipo) */
+.product-carousel-item .product-card-custom {
+    height: 270px !important; /* Altura controlada para productos */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.product-carousel-item .product-card-custom img {
+    max-height: 110px;
+    object-fit: contain;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.d-flex.justify-content-between.align-items-center.mb-4 button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 1.8rem;
+    color: #333;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.d-flex.justify-content-between.align-items-center.mb-4 button:hover {
+    color: #6b1d2f !important; /* Color borgoña de tu marca */
+}
+
+.d-flex.justify-content-between.align-items-center.mb-4 button:active {
+    transform: scale(0.9);
+    color: #4a1320 !important;
+}
+
+.product-carousel-item .product-card-custom {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-carousel-item .product-card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(107, 29, 47, 0.15) !important;
+}
