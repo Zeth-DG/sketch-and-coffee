@@ -198,3 +198,83 @@ export function validarPrivacidad(aceptada){
         mensaje: "Aviso de privacidad aceptado correctamente."
     };
 }//funcion validarPrivacidad
+
+// Validar Nombre del producto Alexandra
+export function validarNombreProducto(nombre) {
+    if (typeof nombre !== "string") {
+        return {
+            valido: false,
+            mensaje: "Introduce texto para el nombre."
+        };
+    }
+
+    const nombreLimpio = nombre.trim();
+
+    if (nombreLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe el nombre del producto."
+        };
+    }
+
+    if (nombreLimpio.length < 3 || nombreLimpio.length > 100) {
+        return {
+            valido: false,
+            mensaje: "El nombre del producto debe tener entre 3 y 100 caracteres."
+        };
+    }
+    
+    const regexNombre = /^[\p{L}0-9\s\.\-]+$/u;
+    if (!regexNombre.test(nombreLimpio)) {
+        return { valido: false, mensaje: "El nombre contiene caracteres no permitidos." };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Nombre del producto válido."
+    };
+}//función validar nombre de producto
+
+//Validar Descripcion del producto Alexandra 
+export function validarDescripcionProducto(descripcion) {
+    if (typeof descripcion !== "string") {
+        return {
+            valido: false,
+            mensaje: "La descripción debe ser texto."
+        };
+    }
+
+    const descripcionLimpia = descripcion.trim();
+
+    if (descripcionLimpia === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe una descripción para el producto."
+        };
+    }
+
+    if (descripcionLimpia.length < 5 || descripcionLimpia.length > 500) {
+        return {
+            valido: false,
+            mensaje: "La descripción debe tener entre 5 y 500 caracteres."
+        };
+    }
+
+    const regexDescripcion = /^[\p{L}0-9\s\.\-]+$/u;
+    if (!regexDescripcion.test(descripcionLimpia)) {
+        return {
+            valido: false,
+            mensaje: "La descripción contiene caracteres no permitidos."
+        };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Descripción válida."
+    };
+}//función validar descripción
+
+// Validar Precio del producto
+
+
+// Validar Categoria del producto
