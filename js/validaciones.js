@@ -260,11 +260,11 @@ export function validarDescripcionProducto(descripcion) {
         };
     }
 
-    const regexHTML = /<\/?[a-z][\s\S]*>/i;
-    if (regexHTML.test(descripcionLimpia)) {
+    const regexDescripcion = /^[\p{L}0-9\s\.\-]+$/u;
+    if (!regexDescripcion.test(descripcionLimpia)) {
         return {
             valido: false,
-            mensaje: "La descripción no puede contener etiquetas HTML."
+            mensaje: "La descripción contiene caracteres no permitidos."
         };
     }
 
