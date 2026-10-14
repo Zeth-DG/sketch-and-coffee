@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             descripcion: "Disfruta de un delicioso café acompañado de un pay de queso recién horneado. Oferta válida solo miercoles",
                             precioActual: "$120.00 MXN",
                             precioAnterior: "$150.00 MXN",
-                            imagen: "./imagenes/alimentos-menu/cafepay.jpeg",
+                            imagen: "./imagenes/alimentos-menu/cafepayn.jpg",
                             altImg: "Dúo de Origen: Dos bolsas de café",
                             descuento: "-15%",
                             categoria: "combo-postres",
