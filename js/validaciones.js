@@ -260,6 +260,14 @@ export function validarDescripcionProducto(descripcion) {
         };
     }
 
+    const regexHTML = /<\/?[a-z][\s\S]*>/i;
+    if (regexHTML.test(descripcionLimpia)) {
+        return {
+            valido: false,
+            mensaje: "La descripción no puede contener etiquetas HTML."
+        };
+    }
+
     return {
         valido: true,
         mensaje: "Descripción válida."
