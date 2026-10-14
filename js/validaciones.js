@@ -199,6 +199,8 @@ export function validarPrivacidad(aceptada){
     };
 }//funcion validarPrivacidad
 
+/*AQUÍ TERMINAN VALIDACIONES DE FORMULARIO DE CONTACTO  - Liz*/
+
 // Validar Nombre del producto Alexandra
 export function validarNombreProducto(nombre) {
     if (typeof nombre !== "string") {
