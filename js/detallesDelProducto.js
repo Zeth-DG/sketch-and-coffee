@@ -94,7 +94,7 @@ const products = {
     name: "LATTE",
     price: "$ 85.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/latte.jpg",
+    image: "./imagenes/alimentos-menu/latte-caliente.jpg",
     desc: "Espresso de altura coronado con una densa capa de microespuma de leche de tu preferencia.",
     cata: "Perfil suave, cremoso y equilibrado.",
     prep: "Servir caliente.",
@@ -105,7 +105,7 @@ const products = {
     name: "CAPUCCINO",
     price: "$ 90.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/capuccino.jpg",
+    image: "./imagenes/alimentos-menu/capuchino.jpg",
     desc: "Un balance armonioso entre la intensidad del espresso de especialidad y una nube de leche al vapor suave y cremosa.",
     cata: "Notas dulces y achocolatadas.",
     prep: "Servir caliente.",
@@ -116,89 +116,89 @@ const products = {
     name: "CHAI LATTE",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/chai.jpg",
+    image: "./imagenes/alimentos-menu/chai-latte.jpg",
     desc: "Infusión aromática de tés negros con cardamomo, canela y jengibre.",
     cata: "Perfil especiado y dulce.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   4: {
     name: "CROISSANT",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/croissant.jpg",
+    image: "./imagenes/alimentos-menu/croissant-salado.jpg",
     desc: "Láminas doradas y crujientes de fino hojaldre artesanal, horneadas a la perfección para lograr una textura ligera, suave y esponjosa por dentro.",
     cata: "Perfil crujiente y sabroso.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   5: {
     name: "ENCHILADAS",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/enchiladas.jpg",
+    image: "./imagenes/alimentos-menu/enquiladas.jpg",
     desc: "Tortillas artesanales con pechuga de pollo bañadas en deliciosa crema y salsa de la casa, queso, cebolla fresca y cilantro recién cortado, listas para deleitar tu paladar.",
     cata: "Perfil picante y sabroso.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   6: {
     name: "CHILAQUILES",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/chilaquiles.jpg",
+    image: "./imagenes/alimentos-menu/chilaquiles.jpg",
     desc: "Totopos crujientes bañados con salsa especiada, enriquesidos con crema ácida, queso espolvoreado y el punto exacto de picor.",
     cata: "Perfil picante y sabroso.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   7: {
     name: "AMERICANO",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/americano.jpg",
+    image: "./imagenes/alimentos-menu/americano.jpg",
     desc: "Extracción limpia de grano recién molido con notas tostadas, aroma envolvente y un perfil suave pero con carácter.",
     cata: "Perfil fuerte y afrutado.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   8: {
     name: "CHOCOLATE CALIENTE",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/chocolate.jpg",
+    image: "./imagenes/alimentos-menu/chocolate-caliente.jpg",
     desc: "Cacao puro fundido en leche entera, logrando una bebida rica, espesa y con el dulzor perfecto para reconfortar el alma.",
     cata: "Perfil dulce y cremoso.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   9: {
     name: "TISANA PINK BLOSSOM",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/tisana.jpg",
+    image: "./imagenes/alimentos-menu/tisana-pink-blossom.jpg",
     desc: "Infusión frutal de notas florales y matices rosados vibrantes; un elixir fresco, ligero y naturalmente dulce. ",
     cata: "Perfil especiado y dulce.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
   10: {
     name: "CREPA CON NUTELLA Y PHILADELPHIA",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./img/productos/crepa.jpg",
+    image: "./imagenes/alimentos-menu/crepa-nutella-philadelphia.jpg",
     desc: "Fina crepa artesanal dorada a la plancha, rebozante de suave queso crema y abundante crema de avellana y cacao.",
     cata: "Perfil especiado y dulce.",
     prep: "Servir caliente.",
     envio: "Disponible en sucursal."
-  }
+  },
 
 };
 
