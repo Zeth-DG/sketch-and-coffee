@@ -13,11 +13,8 @@
 </head>
 
 <body>
-
-    <!--Encabezado y menu - Liz-->
     <!--el header se mueve a un archivo especifico para importarse en cada página-->
     <header id="header-global"></header>
-
 
 
     <!--UNION DE FORMULARIO DE LAURA Y TARJETAS QUE HICE-->
@@ -43,12 +40,12 @@
                                 <label for="campoNombre" class="visually-hidden">Nombre completo</label>
                                 <input type="text" id="campoNombre" class="form-control" placeholder="Nombre" required
                                     aria-required="true">
-                                <p id="errorNombre"></p>    
+                                <p id="errorNombre" class="mensaje-error"></p>    
                             </div>
                             <div class="col-md-6">
                                 <label for="campoTelefono" class="visually-hidden">Número de teléfono</label>
                                 <input type="tel" id="campoTelefono" class="form-control" placeholder="Teléfono" required aria-required="true">
-                                <p id="errorTelefono"></p>
+                                <p id="errorTelefono" class="mensaje-error"></p>
                             </div>
                         </div>
 
@@ -57,7 +54,7 @@
                             <label for="campoCorreo" class="visually-hidden">Correo electrónico</label>
                             <input type="email" id="campoCorreo" class="form-control" placeholder="Correo electrónico"
                                 required aria-required="true">
-                            <p id="errorEmail"></p>    
+                            <p id="errorEmail" class="mensaje-error"></p>    
                         </div>
 
                         <!-- Asunto -->
@@ -71,7 +68,7 @@
                                 <option value="mayoreo">Mayoreo</option>
                                 <option value="otro">Otro</option>
                             </select>
-                            <p id="errorAsunto"></p>
+                            <p id="errorAsunto" class="mensaje-error"></p>
                         </div>
 
                         <!-- Mensaje -->
@@ -79,7 +76,7 @@
                             <label for="campoMensaje" class="visually-hidden">Escribe tu mensaje</label>
                             <textarea id="campoMensaje" class="form-control" rows="5" placeholder="Mensaje" required
                                 aria-required="true"></textarea>
-                            <p id="errorMensaje"></p>     
+                            <p id="errorMensaje" class="mensaje-error"></p>     
                         </div>
 
                         <!-- Checkbox Aviso de privacidad -->
@@ -90,7 +87,7 @@
                                 Acepto el <a href="#" class="text-dark fw-semibold">aviso de privacidad</a>
                             </label>
 
-                            <p id="errorPrivacidad"></p>
+                            <p id="errorPrivacidad" class="mensaje-error"></p>
                         </div>
 
                         <!-- reCAPTCHA y Botón -->
@@ -132,7 +129,7 @@
                         <div class="bloque-info">
                             <i class="bi bi-whatsapp" aria-hidden="true"></i>
                             <div>
-                                <strong>WhatsApp:</strong> <a href="https://wa.me/525542921810" target="_blank"
+                                <strong>WhatsApp:</strong> <a href="https://wa.me/525542921810?text=¡Hola!%20Quiero%20más%20información" 
                                     aria-label="Enviar mensaje por WhatsApp al número +52 55 4292 1810">+52 55 4292
                                     1810</a>
                             </div>
@@ -158,7 +155,7 @@
                         <div class="mt-3">
 
                             <div class="fila-horario">
-                                <strong>Lunes a viernes:</strong> 07:00 am - 20:30 pm
+                                <strong>Lunes a viernes:</strong> 07:30 am - 20:30 pm
                             </div>
 
                             <div class="fila-horario">
@@ -189,7 +186,7 @@
 <!--Mapa de Ubicacion-->
 
    <!-- SECCIÓN UBICACIÓN / MAPA -->
-<section class="seccion-mapa my-5" aria-labelledby="titulo-ubicacion">
+<section id="seccion-mapa" tabindex="-1" class="seccion-mapa my-5" aria-labelledby="titulo-ubicacion">
   <div class="container">
     <h2 id="titulo-ubicacion" class="mb-3">Ubicación</h2>
 
@@ -213,8 +210,8 @@
 <!-- INICIO DE LA SECCION DE PREGUNTAS FRECUENTES (Vanya) -->
 
 
-<section id="faq" class="container my-5 px-3 px-md-5">
-  <h2 class="mb-4">Preguntas frecuentes (PENDIENTE AGREGAR ESTILO)</h2>
+<section id="faq" tabindex="-1" class="container my-5 px-3 px-md-5">
+  <h2 class="mb-4">Preguntas frecuentes</h2>
   <div class="accordion" id="faqAccordion">
 
     <!-- Pregunta 1 -->
@@ -223,13 +220,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaUno"
           aria-expanded="false" aria-controls="respuestaUno">
-          ¿Pregunta 1?
+          ¿Cuáles son sus horarios de atención y dónde están ubicados?
         </button>
       </h2>
       <div id="respuestaUno" class="accordion-collapse collapse"
         aria-labelledby="preguntaUno" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           Estamos ubicados en Patricio Sanz 242-Loc B, código 2, Col. Del valle, Benito Juárez, 03100 Ciudad de México, CDMX. Abrimos de lunes a viernes de 7:30 a.m. a 8:30 p.m., y sábados y domingos de 8:30 a.m. a 01:30 p.m. ¡Te esperamos!
         </div>
       </div>
     </div>
@@ -240,13 +237,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaDos"
           aria-expanded="false" aria-controls="respuestaDos">
-          ¿Pregunta 2?
+          ¿Cuentan con Wi-Fi y espacio para trabajar o estudiar?
         </button>
       </h2>
       <div id="respuestaDos" class="accordion-collapse collapse"
         aria-labelledby="preguntaDos" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-          Holis, aqui va la respuesta
+          ¡Por supuesto! Tenemos Wi-Fi de alta velocidad gratis y conexiones eléctricas en la mayoría de nuestras mesas. Diseñamos un ambiente cómodo para que puedas concentrarte mientras disfrutas de tu café favorito.
         </div>
       </div>
     </div>
@@ -257,13 +254,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaTres"
           aria-expanded="false" aria-controls="respuestaTres">
-          ¿Pregunta 3?
+          ¿Qué métodos de pago aceptan?
         </button>
       </h2>
       <div id="respuestaTres" class="accordion-collapse collapse"
         aria-labelledby="preguntaTres" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           Aceptamos efectivo, tarjetas de crédito y débito (Visa, Mastercard, Amex), y pagos sin contacto como Apple Pay y Google Pay.
         </div>
       </div>
     </div>
@@ -274,13 +271,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaCuatro"
           aria-expanded="false" aria-controls="respuestaCuatro">
-          ¿Pregunta 4?
+          ¿Aceptan mascotas en el establecimiento?
         </button>
       </h2>
       <div id="respuestaCuatro" class="accordion-collapse collapse"
         aria-labelledby="preguntaCuatro" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           Sí, somos un espacio 100% pet-friendly. Tus amigos de cuatro patas son bienvenidos tanto en nuestra terraza como en el interior del local, siempre y cuando permanezcan con su correa.
         </div>
       </div>
     </div>
@@ -291,13 +288,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaCinco"
           aria-expanded="false" aria-controls="respuestaCinco">
-          ¿Pregunta 5?
+          ¿Tienen opciones de comida veganas, vegetarianas o sin gluten?
         </button>
       </h2>
       <div id="respuestaCinco" class="accordion-collapse collapse"
         aria-labelledby="preguntaCinco" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           Por ahora ofrecemos únicamente opciones sin gluten. Valoramos mucho las sugerencias de nuestros clientes y estamos abiertos a incorporar alternativas veganas y vegetarianas en el futuro.
         </div>
       </div>
     </div>
@@ -308,13 +305,13 @@
         <button class="accordion-button collapsed faq-btn" type="button"
           data-bs-toggle="collapse" data-bs-target="#respuestaSeis"
           aria-expanded="false" aria-controls="respuestaSeis">
-          ¿Pregunta 6?
+          ¿Ofrecen servicio a domicilio o pedidos para llevar?
         </button>
       </h2>
       <div id="respuestaSeis" class="accordion-collapse collapse"
         aria-labelledby="preguntaSeis" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           ¡Sí! Puedes hacer tu pedido para llevar directamente en nuestra barra o llamarnos para tenerlo listo cuando pases por él. Para servicio a domicilio, nos encuentras en las principales aplicaciones de entrega (Uber Eats, Rappi y Didi Food) o puedes pedir directamente a nuestro WhatsApp de servicio.
         </div>
       </div>
     </div>
@@ -331,7 +328,12 @@
       <div id="respuestaSiete" class="accordion-collapse collapse"
         aria-labelledby="preguntaSiete" data-bs-parent="#faqAccordion">
         <div class="accordion-body faq-body">
-           Holis, aqui va la respuesta
+           No contamos con estacionamiento propio, pero en la calle de Patricio Sanz no hay parquímetro y puedes estacionarte libremente si encuentras lugar.  <br>
+      También tienes la opción de usar estacionamientos cercanos:  
+      <ul>
+        <li><a href="https://maps.app.goo.gl/jkKbZLnYPLtkX7to9?g_st=ic" target="_blank" rel="noopener noreferrer">Estacionamiento 1</a></li>
+        <li><a href="https://maps.app.goo.gl/bfXyhFHCNboSe5FAA?g_st=ic" target="_blank" rel="noopener noreferrer">Estacionamiento 2</a></li>
+      </ul>
         </div>
       </div>
     </div>
@@ -339,7 +341,7 @@
   </div> <!-- Cierre de div class="accordion" id="faqAccordion" -->
 </section> <!-- Cierre de id="faq" class="container my-5 px-3 px-md-10" -->
 
-<!-- FIN DE LA SECCIÓN DE PREGUNTAS FRECUENTES (Vanya) -->
+<!-- FIN DE LA SECCIÓN DE PREGUNTAS FRECUENTES -->
 
 
 <!--Footer global para importarse en cada página-->
@@ -349,14 +351,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="./js/main.js" type="module"></script>
-
-
-<!--enlaces bootstrap y js-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-<script src="./js/main.js" type="module"></script>
+<script src="./js/formulario.js" type = "module"></script>
 </body>
 
 </html>
