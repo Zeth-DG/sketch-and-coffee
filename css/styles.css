@@ -2628,3 +2628,339 @@ html, body {
     transform: translateY(-5px);
     box-shadow: 0 .5rem 1rem rgba(107, 29, 47, 0.15) !important;
 }
+
+
+/* ==========================================================================
+   ESTILOS DE LA LANDING PAGE DE PROMOCIONES 
+   ========================================================================== */
+
+*,
+*::before,
+*::after { 
+  box-sizing: border-box; 
+}
+ 
+body {
+  margin: 0;
+  background-color: var(--color-blanco-puro);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  font-weight: var(--peso-regular);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+ 
+img { 
+  max-width: 100%; 
+  height: auto; 
+}
+
+.enlace-salto {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--color-magenta);
+  color: var(--color-texto-inverso);
+  padding: 0.75rem 1.5rem;
+  z-index: 9999;
+  border-radius: var(--radio-sm);
+  text-decoration: none;
+  font-weight: var(--peso-negrita);
+  transition: top 0.2s ease;
+}
+
+.enlace-salto:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-magenta) !important;
+  outline-offset: 3px !important;
+}
+
+button, .btn, input, select, a.nav-link {
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Header / Navbar Global */
+.navbar {
+  background-color: var(--color-header);
+  border-bottom: 2px solid var(--color-header-borde);
+  padding-top: var(--espaciado-sm);
+  padding-bottom: var(--espaciado-sm);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-sm);
+  padding: var(--espaciado-xs);
+  border-radius: var(--radio-sm);
+  color: var(--color-texto-inverso);
+  text-decoration: none;
+  font-weight: var(--peso-seminegrita);
+  transition: color var(--transicion);
+}
+
+.navbar-brand:hover {
+  color: var(--color-magenta-tenue);
+}
+
+.navbar .nav-link {
+  color: var(--color-texto-inverso);
+  font-weight: var(--peso-regular);
+  transition: color var(--transicion), border-color var(--transicion);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--color-magenta-tenue);
+}
+
+.navbar .nav-link.active {
+  border-bottom: 2px solid var(--color-header-borde);
+}
+
+/* Hero Section & Urgencia Flash */
+.seccion-hero-promos {
+  background-color: var(--color-gris-perla);
+  padding: var(--espaciado-xl) var(--espaciado-md);
+  border-bottom: 1px solid var(--color-gris-borde);
+}
+
+.seccion-hero-promos h1 {
+  font-family: var(--fuente-titulo-principal);
+  font-size: var(--tamano-titulo-principal);
+  font-weight: var(--peso-negrita);
+  color: var(--color-negro);
+  margin-bottom: var(--espaciado-md);
+  line-height: 1.2;
+}
+
+.insignia-destacada {
+  color: var(--color-magenta);
+  font-family: var(--fuente-titulo-principal);
+  font-style: italic;
+  font-weight: var(--peso-seminegrita);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-flash-urgencia {
+  background-color: var(--color-negro);
+  border: 1px solid var(--color-blanco-puro);
+  color: var(--color-blanco-puro);
+  font-size: 0.95rem;
+}
+
+.banner-flash-urgencia .badge {
+  background-color: var(--color-purpura-oscuro) !important;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+}
+
+/* Selector Rápido y Botones Píldora */
+.btn-filtro-activo {
+  background-color: var(--color-magenta) !important;
+  color: var(--color-blanco-puro) !important;
+  border: 1px solid var(--color-purpura-oscuro) !important;
+  font-weight: var(--peso-negrita);
+  border-radius: 20px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-filtro-inactivo {
+  background-color: var(--color-blanco-puro) !important;
+  color: var(--color-magenta) !important;
+  border: 1px solid var(--color-gris-borde) !important;
+  font-weight: var(--peso-seminegrita);
+  border-radius: 20px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn-filtro-inactivo:hover {
+  border-color: var(--color-magenta) !important;
+  background-color: var(--color-gris-perla) !important;
+  transform: translateY(-2px);
+}
+
+.boton-pildora {
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-purpura-oscuro);
+  background-color: var(--color-magenta);
+  color: var(--color-texto-inverso);
+  font-size: 0.9rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transicion);
+  cursor: pointer;
+}
+
+.boton-pildora:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+
+.boton-pildora.activo {
+  background-color: var(--color-purpura-oscuro);
+  border-color: var(--color-magenta);
+  font-weight: 700;
+}
+
+/* Tarjetas Dinámicas de Productos y Promociones */
+.tarjeta-producto {
+  background: var(--color-blanco-puro);
+  border: 1.5px solid var(--color-gris-borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: border-color var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-producto:hover {
+  border-color: var(--color-magenta);
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+}
+
+.contenedor-imagen-producto {
+  width: 100%;
+  height: 180px;
+  border-bottom: 1.5px solid var(--color-gris-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-blanco-puro);
+  overflow: hidden;
+}
+
+.contenedor-imagen-producto img {
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.insignia-descuento {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background-color: var(--color-magenta);
+  color: var(--color-blanco-puro);
+  font-weight: var(--peso-negrita);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Sección Newsletter */
+.section-newsletter {
+  background-color: var(--color-negro) !important; 
+  color: var(--color-texto-inverso);
+  width: 100% !important;
+  padding: 3rem 1.5rem;
+  margin-top: 3rem !important;
+}
+
+.section-newsletter h2,
+.section-newsletter p {
+  color: var(--color-texto-inverso) !important; 
+}
+
+.newsletter-input {
+  min-width: 280px;
+  max-width: 100%;
+  border: 2.5px solid var(--color-negro) !important;
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-formularios);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-parrafos);
+  color: var(--color-texto);
+}
+
+.newsletter-input:focus {
+  border-color: var(--color-magenta) !important;
+  box-shadow: 3px 3px 0px var(--color-magenta);
+  outline: none;
+}
+
+.btn-custom-magenta {
+  background-color: var(--color-magenta-btn) !important;
+  color: var(--color-texto-inverso) !important;
+  font-family: var(--fuente-cuerpo) !important;
+  font-size: var(--tamano-boton) !important;
+  font-weight: var(--peso-seminegrita) !important;
+  border-radius: var(--radio-sm) !important;
+  border: 1px solid var(--color-purpura-oscuro) !important;
+  padding: 0.5rem 1.25rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+@media (hover: hover) {
+  .btn-custom-magenta:hover {
+    background-color: var(--color-magenta-hover) !important;
+    transform: translateY(-2px) scale(1.03) !important; 
+    box-shadow: 0 4px 12px rgba(158, 30, 76, 0.3) !important; 
+  }
+}
+
+.btn-custom-magenta:active {
+  background-color: var(--color-purpura-oscuro) !important;
+}
+
+/* Footer Global */
+.footer-global {
+  background-color: var(--color-negro) !important;
+  border-top: 2px solid var(--color-gris-borde);
+  color: var(--color-texto-inverso);
+  font-size: var(--tamano-footer);
+  padding-top: var(--espaciado-xl);
+  padding-bottom: var(--espaciado-lg);
+}
+
+.footer-global a {
+  color: var(--color-gris-perla);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+.footer-global a:hover {
+  color: var(--color-magenta-hover);
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  .newsletter-input,
+  .btn-custom-magenta {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   FIN LANDING PAGE
+   ========================================================================== */
+

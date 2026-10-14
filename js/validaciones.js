@@ -123,6 +123,7 @@ export function validarMensaje(mensaje){
     }//return
 }//funcion validar mensaje
 
+
 export function validarNombre (nombre){
     if(typeof nombre !== "string"){
         return{
@@ -199,6 +200,7 @@ export function validarPrivacidad(aceptada){
     };
 }//funcion validarPrivacidad
 
+
 // Validar Nombre del producto Alexandra
 export function validarNombreProducto(nombre) {
     if (typeof nombre !== "string") {
@@ -274,7 +276,100 @@ export function validarDescripcionProducto(descripcion) {
     };
 }//función validar descripción
 
-// Validar Precio del producto
+//====================================================================
+// Validar Precio del producto(Manuel)
+export function validarPrecioProducto(precio) {
+    const precioNum = Number(precio);
+    
+    if (precio === "" || isNaN(precioNum)) {
+        return {
+            valido: false,
+            mensaje: "Introduce un precio válido para el producto."
+        };//return
+
+    }// if precio invalido
+
+    if (precioNum <= 0) {
+        return {
+            valido: false,
+            mensaje: "El precio debe ser mayor a cero."
+        };//return
+
+    }//if precio debe ser mayor a 0
+
+    if (precioNum > 100000) {
+        return {
+            valido: false,
+            mensaje: "El precio excede el límite máximo permitido."
+        };//return
+
+    }// if precio excede lo permitido
+
+    return {
+        valido: true,
+        mensaje: "Precio del producto válido."
+    };//return
+
+}// validarPrecioProducto
 
 
-// Validar Categoria del producto
+//================================================================
+// Validar Categoria del producto(Manuel)
+export function validarCategoriaProducto(categoria) {
+    const categoriasPermitidas = ["grano", "bebidas", "reposteria", "accesorios"];
+    
+    if (!categoria || !categoriasPermitidas.includes(categoria.trim())) {
+        return {
+            valido: false,
+            mensaje: "Selecciona una categoría válida del menú."
+        };//return
+
+    }//if categoria no es válida
+
+    return {
+        valido: true,
+        mensaje: "Categoría válida."
+    };//return
+
+}//función validar categoria
+
+
+
+//==============================================================
+// Validar Stock del producto (Máximo 10 productos) NOTA: Se puede cambiar el máximo de stock en la validación si se desea en un futuro. (Manuel)
+export function validarStockProducto(stock) {
+    const stockNum = Number(stock);
+
+    if (stock === "" || isNaN(stockNum) || !Number.isInteger(stockNum)) {
+        return {
+            valido: false,
+            mensaje: "Introduce un número entero válido para el stock."
+        };
+    }// if stock es vacío, no es número o no es entero
+
+    if (stockNum < 0) {
+        return {
+            valido: false,
+            mensaje: "El stock no puede ser un valor negativo."
+        };//return
+
+    }//if no puede ser negativo
+
+    if (stockNum > 10) {
+        return {
+            valido: false,
+            mensaje: "El stock máximo permitido es de hasta 10 productos."
+        };//return
+
+    }//if  maximo de stock permitido es 10 
+
+    return {
+        valido: true,
+        mensaje: "Stock válido."
+
+    };//return
+
+}//función validar stock
+
+/**FIN VALIDACIONES MANUEL */
+//=========================================================================
