@@ -2631,7 +2631,7 @@ html, body {
 
 
 /* --------------------------------------------------------------------------
-                   ======= CREACIÓN DE PRODUCTOS ========
+                   ======= PÁGINA - CREACIÓN DE PRODUCTOS ========
    -------------------------------------------------------------------------- */
 
 /* == GENERAL == */
@@ -2674,7 +2674,8 @@ body {
     background: #fff;
     padding: 35px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid #6d012e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .seccion-formulario h2 { /* Título de la sección del formulario */
@@ -2772,8 +2773,9 @@ body {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
-    border: 1px solid #ddd;
-    height: fit-content;
+    border: 2px solid #6d012e;
+    box-shadow: 0 4px 15px rgba(158, 30, 76, 0.12);
+    align-self: start;
 }
 
 .seccion-vista-previa h2 {
@@ -2828,8 +2830,9 @@ body {
 .seccion-listado {
     background: #fff;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid #6d012e;
     padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .seccion-listado h2 {
