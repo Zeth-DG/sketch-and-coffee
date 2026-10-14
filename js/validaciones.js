@@ -312,31 +312,28 @@ export function validarPrecioProducto(precio) {
 
 }// validarPrecioProducto
 
-
-//================================================================
-// Validar Categoria del producto(Manuel)
+//==============================================================================
+// Validar Categoria del producto (Manuel)
 export function validarCategoriaProducto(categoria) {
-    const categoriasPermitidas = ["grano", "bebidas", "reposteria", "accesorios"];
+    const categoriasPermitidas = ["bebidas", "snack", "postres"];
     
     if (!categoria || !categoriasPermitidas.includes(categoria.trim())) {
         return {
             valido: false,
             mensaje: "Selecciona una categoría válida del menú."
-        };//return
-
-    }//if categoria no es válida
+        };// return
+    }//if
 
     return {
         valido: true,
         mensaje: "Categoría válida."
     };//return
-
-}//función validar categoria
-
+}// validarCategoriaProducto
 
 
-//==============================================================
-// Validar Stock del producto (Máximo 10 productos) NOTA: Se puede cambiar el máximo de stock en la validación si se desea en un futuro. (Manuel)
+// ===========================================================================================
+
+// Validar Stock del producto (Máximo 10 productos) NOTA: Este valor puede cambiar en un futuro (Manuel)
 export function validarStockProducto(stock) {
     const stockNum = Number(stock);
 
@@ -344,8 +341,9 @@ export function validarStockProducto(stock) {
         return {
             valido: false,
             mensaje: "Introduce un número entero válido para el stock."
-        };
-    }// if stock es vacío, no es número o no es entero
+        };//return
+
+    }//if numero valido
 
     if (stockNum < 0) {
         return {
@@ -361,15 +359,13 @@ export function validarStockProducto(stock) {
             mensaje: "El stock máximo permitido es de hasta 10 productos."
         };//return
 
-    }//if  maximo de stock permitido es 10 
+    }//if maximo 10 productos
 
     return {
         valido: true,
         mensaje: "Stock válido."
-
     };//return
 
-}//función validar stock
+}//validarStockProducto
 
-/**FIN VALIDACIONES MANUEL */
-//=========================================================================
+//=============FIN VALIDACIONES MANUEL =======================================
