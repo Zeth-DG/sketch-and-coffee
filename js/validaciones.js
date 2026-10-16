@@ -485,18 +485,65 @@ export function validarConfirmarContrasena(confirmPassword) {
     };
 }
 
-// Validación del Checkbox de Aviso de Privacidad (Obligatoriedad)
-export function validarPrivacidad(privacidad) {
-    if (!privacidad) {
-        return {
-            valido: false,
-            mensaje: "Debes aceptar el Aviso de privacidad."
-        };
-    }//validar que esté marcado
-    return {
-        valido: true,
-        mensaje: "Aviso de privacidad aceptado."
-    };
-}
+/* OJO: `validarPrivacidad` ya estaba declarada en la linea 181.
+   Dos export con el mismo nombre son un error fatal y hacen que el
+   navegador NO cargue este archivo completo, asi que ninguna
+   validacion del sitio funciona. Por eso se quito esta segunda copia. */
+
 
 //============validacion Alexandra===============================
+
+//========= VALIDACIÓN DE COINCIDENCIA DE CONTRASEÑAS (Gonzalo) =============
+
+// Compara el campo "Contraseña" con el de "Confirmar contraseña".
+//
+// OJO con el trim(): aquí NO se usa, a diferencia de las demás validaciones.
+// Un espacio al final sí forma parte de la contraseña, así que si recortamos
+// los espacios antes de comparar le diríamos al usuario que las dos coinciden
+// cuando en realidad guardaría una contraseña distinta a la que cree.
+export function validarCoincidenciaContrasenas(contrasena, confirmacion) {
+    if (typeof contrasena !== "string" || typeof confirmacion !== "string") {
+        return {
+            valido: false,
+            mensaje: "Las contraseñas deben recibirse como texto."
+        };
+    }//las dos tienen que ser texto
+
+    if (confirmacion === "") {
+        return {
+            valido: false,
+            mensaje: "Vuelve a escribir tu contraseña para confirmarla."
+        };
+    }//no dejar vacía la confirmación
+
+    if (contrasena !== confirmacion) {
+        // Las tres pistas de abajo son para los errores más comunes.
+        // Sin ellas el usuario solo lee "no coinciden" y no sabe qué revisar.
+
+        if (contrasena.trim() === confirmacion.trim()) {
+            return {
+                valido: false,
+                mensaje: "Las contraseñas no coinciden: a una le sobra un espacio al inicio o al final."
+            };
+        }//difieren solo en espacios
+
+        if (contrasena.toLowerCase() === confirmacion.toLowerCase()) {
+            return {
+                valido: false,
+                mensaje: "Las contraseñas no coinciden: cambian las mayúsculas. Revisa si tienes activado Bloq Mayús."
+            };
+        }//difieren solo en mayúsculas
+
+        return {
+            valido: false,
+            mensaje: "Las contraseñas no coinciden. Revísalas e inténtalo de nuevo."
+        };
+    }//son distintas
+
+    return {
+        valido: true,
+        mensaje: "Las contraseñas coinciden."
+    };
+}//función validarCoincidenciaContrasenas
+
+//============= FIN VALIDACIÓN DE CONTRASEÑAS (Gonzalo) =====================
