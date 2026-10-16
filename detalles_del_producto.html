@@ -45,9 +45,9 @@
 
       <!-- Detalles del producto -->
       <div class="product-info">
-        <h1 class="product-title">NOMBRE</h1>
-        <div class="product-meta">CALIFICACION • ★★★★★ </div>
-        <div class="product-price">$ 000.00 MXN <span class="old-price">$ 000.00</span></div>
+        <h1 id="product-title" class="product-title">NOMBRE</h1>
+        <div id="product-rating" class="product-meta">CALIFICACION • ★★★★★</div>
+        <div id="product-price" class="product-price">$ 000.00 MXN</div>
 
         <!-- Molienda -->
         <div class="option-group">
@@ -113,32 +113,150 @@
 
 
   <!-- RECOMENDACION (TAMBIEN TE PODRIA GUSTAR)  -->
-<section class="related-section">
-<h2 class="section-title">También te podría gustar</h2>
-      <div class="related-grid">
-        <div class="product-card">
-          <img src="#" alt="PRODUCTO">
-          <p><strong>PRODUCTO1</strong></p>
-          <div class="card-price">$ 000.00 MXN</div>
-        </div>
-        <div class="product-card">
-          <img src="#" alt="PRODUCTO">
-          <p><strong>PRODUCTO2</strong></p>
-          <div class="card-price">$ 000.00 MXN</div>
-        </div>
-        <div class="product-card">
-          <img src="#" alt="PRODUCTO">
-          <p><strong>PRODUCTO3</strong></p>
-          <div class="card-price">$ 000.00 MXN</div>
-        </div>
-        <div class="product-card">
-          <img src="#" alt="PRODUCTO">
-          <p><strong>PRODUCTO4</strong></p>
-          <div class="card-price">$ 000.00 MXN</div>
+
+<section class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">También te podría gustar</h3>
+    <div>
+      <button class="btn btn-outline-dark btn-sm rounded-circle me-1" onclick="document.getElementById('uniqueProductCarousel').scrollBy({ left: -250, behavior: 'smooth' })">‹</button>
+      <button class="btn btn-outline-dark btn-sm rounded-circle" onclick="document.getElementById('uniqueProductCarousel').scrollBy({ left: 250, behavior: 'smooth' })">›</button>
+    </div>
+  </div>
+
+  <div id="uniqueProductCarousel" class="product-carousel-container">
+    <!-- Producto 1 -->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(1)">
+        <img src="./imagenes/alimentos-menu/latte-frio.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">LATTE</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
         </div>
       </div>
-    </section>
+    </div>
 
+    <!-- Producto 2 -->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(2)">
+        <img src="./imagenes/alimentos-menu/capuchino.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CAPUCCINO</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+        <!-- Producto 3 -->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(3)">
+        <img src="./imagenes/alimentos-menu/chai-latte.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CHAI LATTE</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 4 -->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(4)">
+        <img src="./imagenes/alimentos-menu/croissant-salado.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CROISSANT</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 5 -->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(5)">
+        <img src="./imagenes/alimentos-menu/enquiladas.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">ENCHILADAS</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 6 - CHILAQUILES-->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(6)">
+        <img src="./imagenes/alimentos-menu/chilaquiles.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CHILAQUILES</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 7 - AMERICANO-->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(7)">
+        <img src="./imagenes/alimentos-menu/americano.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">AMERICANO</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 8 - CHOCOLATE CALIENTE-->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(8)">
+        <img src="./imagenes/alimentos-menu/chocolate-caliente.jpeg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CHOCOLATE CALIENTE</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 9 - TISANA PINK BLOSSOM-->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(9)">
+        <img src="./imagenes/alimentos-menu/tisana-pink-blossom.jpg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">TISANA PINK BLOSSOM</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Producto 10 - CREPA CON NUTELLA Y PHILADELPHIA-->
+    <div class="product-carousel-item">
+      <div class="product-card-custom p-3 text-center border rounded-3 shadow-sm"
+     onclick="loadProduct(10)">
+        <img src="./imagenes/alimentos-menu/crepa-nutella-philadelphia.jpg" class="img-fluid mx-auto mb-2" alt="PRODUCTO">
+        <div>
+          <hr class="my-1">
+          <p class="fw-bold mb-1 small">CREPA CON NUTELLA Y PHILADELPHIA</p>
+          <p class="small mb-0">$ 000.00 MXN</p>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
 
   </main>
 

@@ -15,14 +15,23 @@ export async function cargarMenuTop() {
       nombre: producto.name || "Sin nombre",
       departamento: producto.department || "Sin departamento",
       precio: producto.origins && producto.origins.length > 0 ? producto.origins[0].price : "0.00",
+      sku: producto.sku || "Sin sku", 
       disponible: producto.isProductAvailable ?? false
     }));
 
     // 2. Palabras clave del top 10
-    const palabrasClave = [
-      "croissant salado", "enchiladas", "chilaquiles", "latte",
-      "capuchino", "americano", "chai latte", "chocolate caliente", 
-      "tisana pink blossom", "crepa"
+     const palabrasClave = [
+      "croissant salado",
+      "chai latte",          // antes que "latte caliente"
+      "chocolate caliente",
+      "tisana pink blossom",
+      "enchiladas",
+      "chilaquiles",
+      "capuchino",
+      "americano",
+      "latte frio",
+      "latte caliente",
+      "crepa"
     ];
 
     // 3. Filtrar los productos asegurándonos de excluir el departamento de ingredientes

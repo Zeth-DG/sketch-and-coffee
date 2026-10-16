@@ -123,6 +123,7 @@ export function validarMensaje(mensaje){
     }//return
 }//funcion validar mensaje
 
+
 export function validarNombre (nombre){
     if(typeof nombre !== "string"){
         return{
@@ -198,3 +199,173 @@ export function validarPrivacidad(aceptada){
         mensaje: "Aviso de privacidad aceptado correctamente."
     };
 }//funcion validarPrivacidad
+
+
+// Validar Nombre del producto Alexandra
+export function validarNombreProducto(nombre) {
+    if (typeof nombre !== "string") {
+        return {
+            valido: false,
+            mensaje: "Introduce texto para el nombre."
+        };
+    }
+
+    const nombreLimpio = nombre.trim();
+
+    if (nombreLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe el nombre del producto."
+        };
+    }
+
+    if (nombreLimpio.length < 3 || nombreLimpio.length > 100) {
+        return {
+            valido: false,
+            mensaje: "El nombre del producto debe tener entre 3 y 100 caracteres."
+        };
+    }
+    
+    const regexNombre = /^[\p{L}0-9\s\.\-]+$/u;
+    if (!regexNombre.test(nombreLimpio)) {
+        return { valido: false, mensaje: "El nombre contiene caracteres no permitidos." };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Nombre del producto válido."
+    };
+}//función validar nombre de producto
+
+//Validar Descripcion del producto Alexandra 
+export function validarDescripcionProducto(descripcion) {
+    if (typeof descripcion !== "string") {
+        return {
+            valido: false,
+            mensaje: "La descripción debe ser texto."
+        };
+    }
+
+    const descripcionLimpia = descripcion.trim();
+
+    if (descripcionLimpia === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe una descripción para el producto."
+        };
+    }
+
+    if (descripcionLimpia.length < 5 || descripcionLimpia.length > 500) {
+        return {
+            valido: false,
+            mensaje: "La descripción debe tener entre 5 y 500 caracteres."
+        };
+    }
+
+    const regexDescripcion = /^[\p{L}0-9\s\.\-]+$/u;
+    if (!regexDescripcion.test(descripcionLimpia)) {
+        return {
+            valido: false,
+            mensaje: "La descripción contiene caracteres no permitidos."
+        };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Descripción válida."
+    };
+}//función validar descripción
+
+//====================================================================
+// Validar Precio del producto(Manuel)
+export function validarPrecioProducto(precio) {
+    const precioNum = Number(precio);
+    
+    if (precio === "" || isNaN(precioNum)) {
+        return {
+            valido: false,
+            mensaje: "Introduce un precio válido para el producto."
+        };//return
+
+    }// if precio invalido
+
+    if (precioNum <= 0) {
+        return {
+            valido: false,
+            mensaje: "El precio debe ser mayor a cero."
+        };//return
+
+    }//if precio debe ser mayor a 0
+
+    if (precioNum > 100000) {
+        return {
+            valido: false,
+            mensaje: "El precio excede el límite máximo permitido."
+        };//return
+
+    }// if precio excede lo permitido
+
+    return {
+        valido: true,
+        mensaje: "Precio del producto válido."
+    };//return
+
+}// validarPrecioProducto
+
+//==============================================================================
+// Validar Categoria del producto (Manuel)
+export function validarCategoriaProducto(categoria) {
+    const categoriasPermitidas = ["bebidas", "snack", "postres"];
+    
+    if (!categoria || !categoriasPermitidas.includes(categoria.trim())) {
+        return {
+            valido: false,
+            mensaje: "Selecciona una categoría válida del menú."
+        };// return
+    }//if
+
+    return {
+        valido: true,
+        mensaje: "Categoría válida."
+    };//return
+}// validarCategoriaProducto
+
+
+// ===========================================================================================
+
+// Validar Stock del producto (Máximo 10 productos) NOTA: Este valor puede cambiar en un futuro (Manuel)
+export function validarStockProducto(stock) {
+    const stockNum = Number(stock);
+
+    if (stock === "" || isNaN(stockNum) || !Number.isInteger(stockNum)) {
+        return {
+            valido: false,
+            mensaje: "Introduce un número entero válido para el stock."
+        };//return
+
+    }//if numero valido
+
+    if (stockNum < 0) {
+        return {
+            valido: false,
+            mensaje: "El stock no puede ser un valor negativo."
+        };//return
+
+    }//if no puede ser negativo
+
+    if (stockNum > 10) {
+        return {
+            valido: false,
+            mensaje: "El stock máximo permitido es de hasta 10 productos."
+        };//return
+
+    }//if maximo 10 productos
+
+    return {
+        valido: true,
+        mensaje: "Stock válido."
+    };//return
+
+}//validarStockProducto
+
+//=============FIN VALIDACIONES MANUEL =======================================
