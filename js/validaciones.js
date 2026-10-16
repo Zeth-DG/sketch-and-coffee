@@ -403,20 +403,30 @@ export function validarTelefonoRegistro(telefono) {
     };
 }
 
-// Validación del campo Correo Electrónico (Obligatoriedad)
+// Validación del campo Correo Electrónico (Obligatoriedad) (Laura)
 export function validarCorreoRegistro(correo) {
-    const correoLimpio = typeof correo === "string" ? correo.trim() : "";
-
+    const correoLimpio = typeof correo === "string" ? correo.trim() : ""; 
+    
     if (correoLimpio === "") {
         return {
-            valido: false,
-            mensaje: "Escribe tu correo electrónico."
+            valido: false, 
+            mensaje: "Escribe tu correo electrónico." 
         };
-    }//no dejar el campo vacío
+    } 
+
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexCorreo.test(correoLimpio)) {
+        return {
+            valido: false,
+            mensaje: "El formato del correo electrónico no es válido."
+        };
+    }
+
     return {
-        valido: true,
-        mensaje: "Correo válido."
-    };
+        valido: true, 
+        mensaje: "Correo electrónico válido." 
+    }; 
 }
 
 // Validación del campo Contraseña (Obligatoriedad)
