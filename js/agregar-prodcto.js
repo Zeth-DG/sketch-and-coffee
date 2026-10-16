@@ -1,4 +1,5 @@
 import { 
+    validarNombreProducto,
     validarDescripcionProducto, 
     validarPrecioProducto, 
     validarCategoriaProducto, 
