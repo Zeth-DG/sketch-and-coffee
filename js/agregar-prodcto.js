@@ -1,3 +1,10 @@
+import { 
+    validarDescripcionProducto, 
+    validarPrecioProducto, 
+    validarCategoriaProducto, 
+    validarStockProducto 
+} from './validaciones.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('formulario-producto');
 
