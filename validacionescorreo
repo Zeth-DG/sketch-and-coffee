@@ -1,0 +1,106 @@
+
+// Validación del campo Nombre y Apellido (Obligatoriedad) Alexandra
+export function validarNombreRegistro(nombre) {
+    const nombreLimpio = typeof nombre === "string" ? nombre.trim() : "";
+
+    if (nombreLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu nombre y apellido."
+        };
+    }//no dejar el campo vacío
+    return {
+        valido: true,
+        mensaje: "Nombre válido."
+    };
+}
+
+// Validación del campo Teléfono (Obligatoriedad)
+export function validarTelefonoRegistro(telefono) {
+    const telefonoLimpio = typeof telefono === "string" ? telefono.trim() : "";
+
+    if (telefonoLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu número de teléfono."
+        };
+    }//no dejar el campo vacío
+    return {
+        valido: true,
+        mensaje: "Teléfono válido."
+    };
+}
+
+// Validación de Formato de Correo Electrónico (Laura)
+export function validarCorreoRegistro(correo) {
+    const correoLimpio = typeof correo === "string" ? correo.trim() : "";
+
+    if (correoLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu correo electrónico."
+        };
+    }
+
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!regexCorreo.test(correoLimpio)) {
+        return {
+            valido: false,
+            mensaje: "El formato del correo electrónico no es válido."
+        };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Correo electrónico válido."
+    };
+}
+
+// Validación del campo Contraseña (Obligatoriedad)
+export function validarContrasenaRegistro(password) {
+    const passwordLimpio = typeof password === "string" ? password.trim() : "";
+
+    if (passwordLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu contraseña."
+        };
+    }//no dejar el campo vacío
+    return {
+        valido: true,
+        mensaje: "Contraseña válida."
+    };
+}
+
+// Validación del campo Confirmar Contraseña (Obligatoriedad)
+export function validarConfirmarContrasena(confirmPassword) {
+    const confirmLimpio = typeof confirmPassword === "string" ? confirmPassword.trim() : "";
+
+    if (confirmLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Confirma tu contraseña."
+        };
+    }//no dejar el campo vacío
+    return {
+        valido: true,
+        mensaje: "Confirmación válida."
+    };
+}
+
+// Validación del Checkbox de Aviso de Privacidad (Obligatoriedad)
+export function validarPrivacidad(privacidad) {
+    if (!privacidad) {
+        return {
+            valido: false,
+            mensaje: "Debes aceptar el Aviso de privacidad."
+        };
+    }//validar que esté marcado
+    return {
+        valido: true,
+        mensaje: "Aviso de privacidad aceptado."
+    };
+}
+
+//============validacion Alexandra===============================
