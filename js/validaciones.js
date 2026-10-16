@@ -401,6 +401,30 @@ export function validarTelefonoRegistro(telefono) {
         valido: true,
         mensaje: "Teléfono válido."
     };
+
+    // 2. Validación de Fernando: longitud
+    if (telefonoLimpio.length !== 10) {
+        return {
+            valido: false,
+            mensaje: "El teléfono debe tener exactamente 10 dígitos."
+        };
+    }
+
+    // 3. Validación de Fernando: formato
+    const telefonoRegex = /^[0-9]{10}$/;
+
+    if (!telefonoRegex.test(telefonoLimpio)) {
+        return {
+            valido: false,
+            mensaje: "El teléfono debe contener únicamente números."
+        };
+    }
+
+    return {
+        valido: true,
+        mensaje: "Teléfono válido."
+    };
+
 }
 
 // Validación del campo Correo Electrónico (Obligatoriedad) (Laura)
