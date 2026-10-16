@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-:root {
- 
-  /* ---------------------------------------------------------------------
-     PALETA DE COLORES
-     --------------------------------------------------------------------- */
-=======
 /* ==========================================================================
    1. ROOT VARIABLES - TYPOGRAPHY & DESIGN TOKENS
    ========================================================================== */
@@ -14,19 +7,13 @@
   /* =====================================================================
      COLORS
      ===================================================================== */
->>>>>>> develop
  
   /* Blanco: base neutra para formularios y secciones */
   --color-blanco-puro:            #FFFFFF;
   --color-blanco-formularios:     var(--color-blanco-puro);
   --color-blanco-secciones:       var(--color-blanco-puro);
  
-<<<<<<< HEAD
-  /* Negro: se conserva para detalles y sombras.
-     OJO: para párrafos y encabezados usen --color-texto (más abajo). */
-=======
   /* Negro: se conserva para detalles y sombras */
->>>>>>> develop
   --color-negro:                  #000000;
   --color-negro-txtprincipal:     var(--color-negro);
  
@@ -44,20 +31,6 @@
   --color-marron-purpura-footer:  var(--color-marron-purpura-oscuro);
 
   /*Header*/
-<<<<<<< HEAD
-  --color-header: black; /*color previo: #4A1029*/
-  --color-header-hover: #651535;
-  --color-header-borde: #C65A83;
- 
-  /* ---------------------------------------------------------------------
-     AGREGADO · 
-     --------------------------------------------------------------------- */
-  --color-magenta-hover:          #7E1840;   /* hover/pressed del botón      */
-  --color-magenta-tenue:          #F3E4EA;   /* fondo de etiquetas y avisos  */
-  --color-gris-perla:             #F7F5F6;   /* fondo alterno de sección     */
-  --color-gris-borde:             #E6E1E3;   /* bordes y divisores           */
-  --color-gris-texto:             #8A8085;   /* texto secundario             */
-=======
   --color-header: black;
   --color-header-hover: #651535;
   --color-header-borde: #C65A83;
@@ -68,92 +41,18 @@
   --color-gris-perla:             #F7F5F6;
   --color-gris-borde:             #E6E1E3;
   --color-gris-texto:             #8A8085;
->>>>>>> develop
  
   --color-texto:                  var(--color-marron-purpura-oscuro);
   --color-texto-suave:            var(--color-gris-texto);
   --color-texto-inverso:          var(--color-blanco-puro);
  
-<<<<<<< HEAD
-  /* AGREGADO · estados del sistema (formularios, carrito, confirmaciones) */
-=======
   /* Estados del sistema (formularios, carrito, confirmaciones) */
->>>>>>> develop
   --color-exito:                  #2E7D5B;
   --color-error:                  #C0392B;
   --color-aviso:                  #C99700;
   --color-info:                   #2F5D8C;
  
  
-<<<<<<< HEAD
-  /* ---------------------------------------------------------------------
-     TIPOGRAFÍAS Y FUENTES
-     --------------------------------------------------------------------- */
-  --fuente-titulo-principal: 'Tropical Avenue', Georgia, serif;
-  --fuente-subtitulo:        'Sparkling Valentine', 'Brush Script MT', cursive;
-  --fuente-cuerpo:           'Lorestta', system-ui, -apple-system, sans-serif;
-  --fuente-numeros:          'Comic Neue', system-ui, sans-serif;
- 
-  /* Pesos */
-  --peso-ligero:       300;
-  --peso-regular:      400;
-  --peso-seminegrita:  600;
-  --peso-negrita:      700;
- 
- 
-  /* ---------------------------------------------------------------------
-     TAMAÑOS DE FUENTE
-     --------------------------------------------------------------------- */
-  --tamano-titulo-principal:   2rem;      /* H1 de la página               */
-  --tamano-titulo-seccion:     1.75rem;   /* AGREGADO · H2 de cada sección */
-  --tamano-subtitulo:          1.25rem;
-  --tamano-parrafo-destacado:  1.125rem;
-  --tamano-parrafos:           1rem;
-  --tamano-boton:              1rem;
-  --tamano-auxiliar:           0.9rem;
-  --tamano-footer:             0.9rem;
-  --tamano-micro:              0.75rem;   /* AGREGADO · etiquetas, kickers */
- 
-  /* Alias con ñ (compatibilidad con lo que ya esté escrito) */
-  --tamano-subtitulo:          var(--tamano-subtitulo);
-  --tamano-parrafos:           var(--tamano-parrafos);
-  --tamano-parrafo-destacado:  var(--tamano-parrafo-destacado);
-  --tamano-boton:              var(--tamano-boton);
-  --tamano-auxiliar:           var(--tamano-auxiliar);
-  --tamano-footer:             var(--tamano-footer);
- 
- 
-  /* ---------------------------------------------------------------------
-     ESPACIADO Y MEDIDAS
-     --------------------------------------------------------------------- */
-  --espaciados-margenes:  1rem;
-  --iconos-imagenes:      25px;
- 
-  --espaciado-xs:  0.25rem;
-  --espaciado-sm:  0.5rem;
-  --espaciado-md:  1rem;
-  --espaciado-lg:  1.5rem;
-  --espaciado-xl:  2.5rem;
- 
-  --ancho-contenedor-sm:   540px;
-  --ancho-contenedor-md:   720px;
-  --ancho-contenedor-lg:   960px;
-  --ancho-contenedor-xl:  1140px;
-  --ancho-contenedor-xxl: 1320px;
- 
- 
-  /* ---------------------------------------------------------------------
-     AGREGADO · forma, sombra y movimiento
-     --------------------------------------------------------------------- */
-  --radio:          10px;
-  --radio-sm:       6px;
-  --sombra:         0 2px 12px rgba(37, 2, 15, .07);
-  --sombra-hover:   0 10px 26px rgba(37, 2, 15, .14);
-  --transicion:     .25s ease;
-}
- 
- 
-=======
   /* =====================================================================
      TYPOGRAPHY STACK - ARTISANAL & ACCESSIBLE
      ===================================================================== */
@@ -234,7 +133,6 @@
   --transicion:                   .25s ease;
 }
  
->>>>>>> develop
 /* ==========================================================================
    2. BASE GLOBAL
    ========================================================================== */
@@ -260,11 +158,8 @@ img { max-width: 100%; height: auto; }
 
 /* Fondo y borde de la navbar */
 .navbar {
-<<<<<<< HEAD
-=======
   /*position: relative;
   z-index: 1030; puesto para probar porque no funcionaba la hamburguesa*/ 
->>>>>>> develop
   background-color: var(--color-header);
   border-bottom: 2px solid var(--color-header-borde);
   padding-top: var(--espaciado-sm);
@@ -475,8 +370,6 @@ img { max-width: 100%; height: auto; }
     margin-top: var(--espaciado-lg);
   }
 }
-<<<<<<< HEAD
-=======
 
 /* ========== Diseño del carrusel del HERO - Vanya ==========*/
 
@@ -505,7 +398,6 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========== Fin de sección del diseño del carrusel del HERO - Vanya ==========*/
->>>>>>> develop
  
 /* ==========================================================================
    5. PRODUCTOS ESTRELLA  +  PROMOCIÓN DE TEMPORADA
@@ -1321,20 +1213,6 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 0;
 }
 
-<<<<<<< HEAD
-/* fin de sección Sobre nosotros Sketch & Coffee */
-
-/* =========================SECCIÓN NEWSLETTER======================== */
-/* ==========================================================================
-   1. SECCIÓN NEWSLETTER
-   ========================================================================== */
-.section-newsletter {
-  background-color: var(--color-negro, #000000) !important; /* Fuerza el fondo oscuro e impide sobrescrituras */
-  border-top: 1px solid var(--color-gris-borde, #25020F);
-  border-bottom: 1px solid var(--color-gris-borde, #25020F);
-  padding: var(--espaciado-xl, 3rem) var(--espaciado-md, 1.5rem);
-  color: var(--color-texto-inverso, #FFFFFF);
-=======
 .modal-sketch-content {
   background-color: transparent !important;
   border: none !important;
@@ -1419,17 +1297,12 @@ border: none !important;
 padding: 3rem 1.5rem;
 margin-top: 3rem !important;
 margin-bottom: 0 !important;
->>>>>>> develop
 }
 
 /* Títulos y párrafos dentro de Newsletter */
 .section-newsletter h2,
 .section-newsletter p {
-<<<<<<< HEAD
-  color: var(--color-texto-inverso, #FFFFFF) !important; /* Mantiene legibilidad sobre fondo oscuro */
-=======
   color: var(--color-texto-inverso, #FFFFFF) !important; 
->>>>>>> develop
 }
 
 .section-newsletter h2 {
@@ -1458,18 +1331,6 @@ margin-bottom: 0 !important;
 
 /* Botón personalizado Magenta */
 .btn-custom-magenta {
-<<<<<<< HEAD
-  background-color: var(--color-magenta-btn, #9E1E4C);
-  color: var(--color-texto-inverso, #FFFFFF);
-  font-family: var(--fuente-cuerpo);
-  font-size: var(--tamano-boton);
-  font-weight: var(--peso-seminegrita);
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border: 2.5px solid var(--color-negro);
-  padding: 0.5rem 1.75rem;
-  box-shadow: 3px 3px 0px var(--color-negro);
-  transition: all 0.15s ease-in-out;
-=======
 background-color: var(--color-magenta-btn, #9E1E4C) !important;
 color: var(--color-texto-inverso, #FFFFFF) !important;
 font-family: var(--fuente-cuerpo) !important;
@@ -1487,38 +1348,23 @@ cursor: pointer !important;
 transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
 background-color 0.2s ease, 
 box-shadow 0.2s ease !important;
->>>>>>> develop
 }
 
 @media (hover: hover) {
   .btn-custom-magenta:hover {
-<<<<<<< HEAD
-    background-color: var(--color-magenta-hover);
-    color: var(--color-texto-inverso);
-    box-shadow: 5px 5px 0px var(--color-negro);
-    transform: translate(-2px, -2px);
-=======
 background-color: var(--color-magenta-hover, #7E1840) !important;
     transform: translateY(-2px) scale(1.03) !important; 
     box-shadow: 0 4px 12px rgba(158, 30, 76, 0.3) !important; 
->>>>>>> develop
   }
 }
 
 .btn-custom-magenta:active {
-<<<<<<< HEAD
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px var(--color-negro);
-}
-
-=======
 background-color: var(--color-purpura-oscuro, #680148) !important;
 }
 
 /* ==========================================================================
     SECCIÓN FOOTER GLOBAL 
    ========================================================================== */
->>>>>>> develop
 .footer-global {
   background-color: var(--color-negro, #000000) !important;
   border-top: 2px solid var(--color-gris-borde, #25020F);
@@ -1596,8 +1442,6 @@ background-color: var(--color-purpura-oscuro, #680148) !important;
 color: var(--color-texto-inverso);
   text-decoration: underline;
 }
-<<<<<<< HEAD
-=======
 /* ===== FIN DEL BLOQUE DE ALEXANDRA ======================================== */
 
 /*========================================================================*/
@@ -1650,7 +1494,6 @@ color: var(--color-texto-inverso);
 /*================FIN DEL ESTILO DE BOTÓN Y WHATSAPP =======================*/
 
 
->>>>>>> develop
 /*========================================================================*/
 /*SECCION PAGINA DE CONTACTO: TARJETAS DE HORARIOS Y COMO NOS ENCUENTRAS */
 /*=======================================================================*/
@@ -1744,8 +1587,6 @@ color: var(--color-texto-inverso);
   border-color: var(--color-magenta);
 }
 
-<<<<<<< HEAD
-=======
 /*COLOR MENSAJES DE ERROR*/
 .mensaje-error {
   color: var(--color-error);
@@ -1753,7 +1594,6 @@ color: var(--color-texto-inverso);
   margin-top: var(--espaciado-sm);
 }
 
->>>>>>> develop
 /* Caja reCAPTCHA */
 .caja-recaptcha {
   border: 2px dashed var(--color-gris-borde);
@@ -1886,8 +1726,6 @@ color: var(--color-texto-inverso);
 }
 
 /* ==========================================================================
-<<<<<<< HEAD
-=======
                           PAGINA DE MENÚ
    ========================================================================== */  
 
@@ -2257,7 +2095,6 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
->>>>>>> develop
                          ADAPTATIVO / RESPONSIVO
    ========================================================================== */
 @media (max-width: 575.98px) {
@@ -2276,9 +2113,6 @@ h1, h2, h3, h4 {
   .contenedor-iframe-mapa iframe {
     height: 300px;
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 /* ==========================================================================
@@ -3366,4 +3200,3 @@ button, .btn, input, select {
 ====================================================================================*/
 
 
->>>>>>> develop
