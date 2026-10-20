@@ -6,7 +6,21 @@ import {
     validarContrasenaRegistro,
     validarConfirmarContrasena,
     validarPrivacidad
+    
 } from './validaciones.js';
+
+// inicio storage_inicioSecion.js
+import {
+    seedInitialUsers,
+    saveUserToStorage
+} from './storage_InicioSesion.js';
+
+
+// EJECUTAR LA FUNCION DE storage_inicioSecion.js
+seedInitialUsers();
+
+// FIN DE storage storage_inicioSecion.js
+
 
 const formulario =
     document.getElementById("formularioContacto");
@@ -89,6 +103,20 @@ if (formulario) {
             contrasena: contrasena
         };
 
+        // Guardar el usuario en LocalStorage
+        let registrado = saveUserToStorage(usuario);
+
+         // Verificar si el correo ya existe
+        if (registrado === false) {
+
+        mostrarAlerta(
+        "Este correo ya está registrado",
+        "danger"
+    );
+
+    return;
+}
+
 
         // Mostrar JSON en consola
         console.log("JSON FINAL:");
@@ -99,6 +127,9 @@ if (formulario) {
             "Registro completado correctamente",
             "success"
         );
+
+
+        
 
     });
 
