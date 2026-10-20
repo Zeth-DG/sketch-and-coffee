@@ -31,11 +31,39 @@
         <section class="card">
             <h1>BIENVENIDOS A SKETCH & COFFEE</h1>
             <p>Has iniciado sesión correctamente. ¡Que bueno tenerte por aqui, ya eres parte de la mesa! Ponte comod@, pide tu café y snack favorito..</p>
-                       <!-- Zonas de anuncio dinámico para lectores de pantalla -->
+
+            <!--alerta general Alexandra-->
+            <div id="alertaGeneralLogin" class="alert alert-danger d-none" role="alert"></div>
+
+            <form id="formularioLogin">
+                <!--Correo electrónico-->
+                <div class="mb-3">
+                    <label for="campoUsuarioLogin" class="form-label">Correo electrónico</label>
+                    <input type="email" id="campoUsuarioLogin" class="form-control" required aria-required="true"
+                    aria-describedby="errorUsuarioLogin" placeholder="ejemplo@correo.com">
+                    <!-- Párrafo de error que busca login.js -->
+                    <p id="errorUsuarioLogin" class="mensaje-error d-none"></p>
+                </div>
+
+                <!--Contraseña-->
+                <div class="mb-3">
+                    <label for="campoContrasenaLogin" class="form-label">Contraseña</label>
+                    <input type="password" id="campoContrasenaLogin" class="form-control" required aria-required="true"
+                    aria-describedby="errorContrasenaLogin" placeholder="Escribe tu contraseña">
+                    <!-- Párrafo de error que busca login.js -->
+                    <p id="errorContrasenaLogin" class="mensaje-error d-none"></p>
+                </div>
+
+                <button type="submit" class="btn-submit">Ingresar</button>
+            </form>
+
+            <!-- Zonas de anuncio dinámico para lectores de pantalla -->
             <div id="notificacion-polite" aria-live="polite" class="sr-only"></div>
             <div id="notificacion-assertive" aria-live="assertive"></div>
         </section>
     </main>
+
+    <script src="login.js"></script>
 
     <script>
         function cerrarSesion() {

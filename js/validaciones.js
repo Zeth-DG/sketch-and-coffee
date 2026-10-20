@@ -397,10 +397,6 @@ export function validarTelefonoRegistro(telefono) {
             mensaje: "Escribe tu número de teléfono."
         };
     }//no dejar el campo vacío
-    return {
-        valido: true,
-        mensaje: "Teléfono válido."
-    };
 
     // 2. Validación de Fernando: longitud
     if (telefonoLimpio.length !== 10) {
@@ -462,7 +458,8 @@ export function validarContrasenaRegistro(password) {
             valido: false,
             mensaje: "Escribe tu contraseña."
         };
-    }//no dejar el campo vacío
+    }
+    
     return {
         valido: true,
         mensaje: "Contraseña válida."
@@ -470,18 +467,44 @@ export function validarContrasenaRegistro(password) {
 }
 
 // Validación del campo Confirmar Contraseña (Obligatoriedad)
-export function validarConfirmarContrasena(confirmPassword) {
-    const confirmLimpio = typeof confirmPassword === "string" ? confirmPassword.trim() : "";
+export function validarConfirmarContrasena(password, confirmPassword) {
+    // Nota: aquí NO usamos .trim() tal como se indicó en las notas de tu equipo
+    const confirmLimpio = typeof confirmPassword === "string" ? confirmPassword : "";
 
     if (confirmLimpio === "") {
         return {
             valido: false,
             mensaje: "Confirma tu contraseña."
         };
-    }//no dejar el campo vacío
+    }
+
+    // Comparamos si ambas contraseñas son exactamente iguales
+    if (password !== confirmPassword) {
+        return {
+            valido: false,
+            mensaje: "Las contraseñas no coinciden."
+        };
+    }
+
     return {
         valido: true,
         mensaje: "Confirmación válida."
+    };
+}
+
+// Validación del campo Apellido (Obligatoriedad)
+export function validarApellidoRegistro(apellido) {
+    const apellidoLimpio = typeof apellido === "string" ? apellido.trim() : "";
+
+    if (apellidoLimpio === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu apellido."
+        };
+    }
+    return {
+        valido: true,
+        mensaje: "Apellido válido."
     };
 }
 
