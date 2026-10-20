@@ -1,0 +1,467 @@
+:root {
+  --color-blanco-puro: #FFFFFF;
+  --color-negro: #000000;
+  --color-magenta: #9E1E4C;
+  --color-magenta-hover: #7E1840;
+  --color-marron-purpura-oscuro: #25020F;
+  --color-gris-perla: #F7F5F6;
+  --color-gris-borde: #E6E1E3;
+  --radio-sm: 8px;
+  --radio-md: 16px;
+  --fuente-titulo-principal: 'Playfair Display', Georgia, serif;
+  --fuente-cuerpo: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --transicion: .25s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-family: var(--fuente-cuerpo);
+}
+
+/* --------------------------------------------------
+   1. NAVBAR (Sobrescribe Bootstrap usando especificidad)
+   -------------------------------------------------- */
+nav.navbar.bg-dark,
+.navbar-custom {
+  background-color: var(--color-negro);
+  border-bottom: 2px solid var(--color-magenta);
+}
+
+@media (min-width: 992px) {
+  .navbar-centrada .navbar-collapse {
+    justify-content: stretch;
+  }
+
+  .navbar-centrada .navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navbar-centrada .navbar-brand {
+    margin-right: auto;
+  }
+}
+
+.brand-logo {
+  display: block;
+  border-radius: 4px;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 400;
+  transition: color var(--transicion);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #F3E4EA;
+}
+
+/* --------------------------------------------------
+   2. HERO SECTION
+   -------------------------------------------------- */
+/* --------------------------------------------------
+   2.1 HERO — Tipografía y CTA
+   -------------------------------------------------- */
+.hero-titulo {
+  font-family: var(--fuente-titulo-principal);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+}
+
+.hero-subtitulo {
+  max-width: 480px;
+}
+
+
+
+.cta-hero {
+  font-weight: 600;
+  transition: transform var(--transicion), box-shadow var(--transicion), background-color var(--transicion);
+}
+
+.cta-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 2, 15, 0.25);
+  background-color: var(--color-magenta);
+  color: #fff;
+}
+
+/* --------------------------------------------------
+   2.2 HERO — Tarjetas asimétricas
+   -------------------------------------------------- */
+.card-hero {
+  cursor: pointer;
+  transition: transform var(--transicion), box-shadow var(--transicion), background-color var(--transicion);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-section {
+  background-color: var(--color-gris-perla);
+  min-height: calc(100vh - 60px);
+  padding: 3rem 1rem 1.5rem;   /* ← 3rem arriba, 1.5rem abajo */
+  border-bottom: 1px solid var(--color-gris-borde);
+}
+
+/* Tarjeta destacada (Bebidas) */
+.card-hero-destacada {
+  min-height: 380px;
+}
+
+.card-hero-destacada .card-hero-img {
+  height: 380px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card-hero-destacada:hover .card-hero-img {
+  transform: scale(1.04);
+}
+
+.card-hero-destacada .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+}
+
+.badge-destacada {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.35em 0.7em;
+}
+
+/* Tarjetas secundarias */
+.card-hero-secundaria {
+  min-height: 120px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Imagen de fondo que cubre todo el card */
+.card-hero-img-fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+/* Gradiente oscuro encima de la imagen para legibilidad del texto */
+.card-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+/* Contenido encima del overlay */
+.card-body-hero {
+  z-index: 2;
+}
+
+/* Título y subtítulo dentro del card */
+.card-hero-secundaria .card-title {
+  font-weight: 600;
+  font-size: 1rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-hero-secundaria small {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Zoom sutil de la imagen al hacer hover */
+.card-hero-secundaria:hover .card-hero-img-fondo {
+  transform: scale(1.06);
+}
+
+/* Flecha alineada a la derecha */
+.card-hero-secundaria .icono-click {
+  transition: transform var(--transicion), opacity var(--transicion);
+  opacity: 0.85;
+}
+
+.card-hero-secundaria:hover .icono-click {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* Aseguramos que el contenedor de la columna tenga altura completa */
+.card-hero-secundaria.flex-fill {
+  flex: 1 1 0;
+  min-height: 130px;
+}
+
+/* Hover general */
+.card-hero:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(158, 30, 76, 0.25);
+  background-color: var(--color-magenta) !important;
+}
+
+/* Ícono de "clickeable" */
+.icono-click {
+  transition: transform var(--transicion);
+  opacity: 0.8;
+}
+
+.card-hero:hover .icono-click {
+  transform: translateX(6px);
+  opacity: 1;
+}
+
+/* --------------------------------------------------
+   2.3 HERO — Indicador de scroll
+   -------------------------------------------------- */
+.scroll-indicator {
+  opacity: 0.7;
+  transition: opacity var(--transicion);
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator .bi-chevron-double-down {
+  display: block;
+  animation: bounce 2s infinite;
+  color: var(--color-magenta);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* --------------------------------------------------
+   2.4 Responsive — Ajustes del hero
+   -------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .card-hero-destacada {
+    min-height: 260px;
+  }
+
+  .card-hero-destacada .card-hero-img {
+    height: 260px;
+  }
+
+  .hero-titulo {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitulo {
+    font-size: 0.85rem;
+  }
+
+  .cta-hero {
+    font-size: 0.95rem;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .hero-section {
+    padding: 4rem 1rem 2rem;
+  }
+}
+
+/* --------------------------------------------------
+   3. SECCIÓN DEL MENÚ DINÁMICO & NAV-PILLS
+   -------------------------------------------------- */
+.section-title {
+  font-family: var(--fuente-titulo-principal);
+  font-weight: 700;
+}
+
+/* Ganamos la especificidad de Bootstrap encadenando las clases */
+.nav-pills .nav-link {
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 600;
+  border: 1px solid var(--color-gris-borde);
+  background-color: var(--color-blanco-puro);
+  transition: all var(--transicion);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--color-magenta);
+  border-color: var(--color-magenta);
+  color: var(--color-blanco-puro);
+}
+
+/* --------------------------------------------------
+   4. CARDS WIZARD (Con contraste)
+   -------------------------------------------------- */
+.card.card-wizard {
+  background-color: #FFFFFF !important;
+  border: 2px solid var(--color-marron-purpura-oscuro) !important; /* Borde oscuro bien marcado */
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+  transition: transform var(--transicion), box-shadow var(--transicion), background-color var(--transicion), border-color var(--transicion);
+  cursor: pointer;
+}
+
+.card.card-wizard:hover {
+  transform: translateY(-4px);
+  background-color: #FBF4F7 !important;
+  border-color: var(--color-magenta) !important;
+  box-shadow: 0 8px 20px rgba(158, 30, 76, 0.18) !important;
+}
+
+/* --------------------------------------------------
+   5. CUSTOM SELECTORS (RADIO & CHECKBOX OCULTOS)
+   -------------------------------------------------- */
+.selector-sabor-item {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Ocultar inputs nativos visualmente sin romper accesibilidad */
+.selector-sabor-item input[type="radio"],
+.selector-sabor-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Estilo visual del botón / píldora */
+.btn-sabor-option {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transicion);
+  text-align: center;
+  user-select: none;
+}
+
+.btn-sabor-option:hover {
+  border-color: var(--color-magenta);
+  background-color: #FBF4F7;
+}
+
+/* Estado Seleccionado */
+.selector-sabor-item input[type="radio"]:checked + .btn-sabor-option,
+.selector-sabor-item input[type="checkbox"]:checked + .btn-sabor-option {
+  border-color: var(--color-magenta);
+  background-color: var(--color-magenta);
+  color: var(--color-blanco-puro);
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(158, 30, 76, 0.25);
+}
+
+/* --------------------------------------------------
+   6. NOTIFICACIONES TOAST
+   -------------------------------------------------- */
+.toast-container .toast {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast-container .toast.showing {
+  transform: translateY(0);
+}
+
+.toast-container .toast.hide {
+  transform: translateY(20px);
+}
+
+/* --------------------------------------------------
+   7. BOTÓN CTA MAGENTA (Modal Carrito)
+   -------------------------------------------------- */
+.btn-cta-magenta {
+  background-color: var(--color-magenta);
+  border: 1px solid var(--color-magenta);
+  color: #fff;
+  transition: background-color var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+}
+
+.btn-cta-magenta:hover,
+.btn-cta-magenta:focus {
+  background-color: var(--color-magenta-hover);
+  border-color: var(--color-magenta-hover);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(158, 30, 76, 0.3);
+}
+
+.btn-cta-magenta:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(158, 30, 76, 0.2);
+}
+
+/* Botón "Mostrar a Mesero" deshabilitado si el carrito está vacío */
+.btn-cta-magenta:disabled {
+  background-color: #D9A3B5;
+  border-color: #D9A3B5;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------
+   8. MODAL CARRITO — Ajustes finos
+   -------------------------------------------------- */
+#modalCarrito .modal-content {
+  border: none;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+}
+
+#modalCarrito .modal-header {
+  padding-bottom: 0.5rem;
+}
+
+#modalCarrito .list-group-item {
+  border: 1px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm) !important;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+}
+
+#modalCarrito .btn-link:hover {
+  text-decoration: underline !important;
+}
+
+/* Estado vacío */
+#modalCarrito .estado-vacio {
+  text-align: center;
+  padding: 2rem 1rem;
+}
