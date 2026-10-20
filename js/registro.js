@@ -1,5 +1,6 @@
 import {
     validarNombreRegistro,
+    validarApellidoRegistro,
     validarTelefonoRegistro,
     validarCorreoRegistro,
     validarContrasenaRegistro,
@@ -73,10 +74,11 @@ if (formulario) {
         // Validaciones
         const validaciones = [
             validarNombreRegistro(nombre),
+            validarApellidoRegistro(apellido), 
             validarTelefonoRegistro(telefono),
             validarCorreoRegistro(correo),
             validarContrasenaRegistro(contrasena),
-            validarConfirmarContrasena(confirmarContrasena),
+            validarConfirmarContrasena(contrasena, confirmarContrasena), 
             validarPrivacidad(privacidad)
         ];
 

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch & Coffee - Menú</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- Tipografías Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400..700&family=Homemade+Apple&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-centrada py-2 sticky-top">
+        <div class="container-fluid">
+            <!-- Logo a la izquierda -->
+            <a class="navbar-brand" href="#hero">
+                <img src="./images/logo-fondo-negro.jpg" alt="logo sketch and coffee" class="brand-logo"
+                    style="height: 40px; width: auto;">
+            </a>
+
+            <!-- Botón hamburguesa -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido desplegable -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Botón de Pedido / Carrito empujado a la derecha -->
+                <div class="d-flex align-items-center ms-auto">
+                    <button class="btn btn-outline-light btn-sm rounded-pill px-3 position-relative"
+                        data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        <i class="bi bi-cart3 me-1"></i> Mi Pedido
+                        <span id="contador-carrito"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO (Asimétrico: 1 destacada + 3 secundarias) -->
+    <section id="hero" class="container-fluid hero-section text-center d-flex flex-column justify-content-center">
+        <div class="container text-center mb-4">
+            <h1 class="mb-2 hero-titulo">Diseña tu antojo</h1>
+
+            <!-- CTA principal -->
+            <a href="#menu-seccion" class="btn btn-dark btn-lg rounded-pill px-5 shadow-sm cta-hero">
+                <i class="bi bi-arrow-down-circle me-2"></i> Ver el menú completo
+            </a>
+        </div>
+
+        <div class="container">
+            <div class="row g-3 justify-content-center align-items-stretch">
+
+                <!-- 🟣 TARJETA DESTACADA: Bebidas -->
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="card bg-dark text-white h-100 shadow-sm card-hero card-hero-destacada"
+                        onclick="seleccionarCategoriaDesdeHero('bebidas')">
+                        <img src="./images/bebidas.jpg" class="card-img-top card-hero-img"
+                            alt="Latte con arte de oso de Sketch and Coffee">
+                        <div class="card-body d-flex flex-column justify-content-end py-3">
+                            <span class="badge bg-danger align-self-start mb-2 badge-destacada">Lo más pedido</span>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-start">
+                                    <h5 class="card-title m-0 fs-4">Bebidas</h5>
+                                    <small class="text-white-50">Cafés, frappés, tés y más</small>
+                                </div>
+                                <i class="bi bi-arrow-right-circle fs-4 icono-click"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: 3 tarjetas apiladas -->
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="d-flex flex-column gap-3 h-100">
+
+                        <!-- Platillos -->
+                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
+                            onclick="seleccionarCategoriaDesdeHero('platillos')">
+                            <img src="./images/paquetes.jpeg" class="card-hero-img-fondo" alt="Croissant en paquete">
+                            <div class="card-hero-overlay"></div>
+                            <div
+                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
+                                <div class="text-start">
+                                    <h6 class="card-title m-0">Platillos</h6>
+                                    <small class="text-white-50">Chilaquiles, molletes y más</small>
+                                </div>
+                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
+                            </div>
+                        </div>
+
+                        <!-- Crepas y Waffles -->
+                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
+                            onclick="seleccionarCategoriaDesdeHero('crepas-waffles')">
+                            <img src="./images/crepas.jpg" class="card-hero-img-fondo"
+                                alt="Crepa de nutella con fresas">
+                            <div class="card-hero-overlay"></div>
+                            <div
+                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
+                                <div class="text-start">
+                                    <h6 class="card-title m-0">Crepas y waffles</h6>
+                                    <small class="text-white-50">Ármalos a tu gusto</small>
+                                </div>
+                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
+                            </div>
+                        </div>
+
+                        <!-- Postres -->
+                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
+                            onclick="seleccionarCategoriaDesdeHero('postres')">
+                            <img src="./images/postres2.jpg" class="card-hero-img-fondo"
+                                alt="Postres de Sketch and Coffee">
+                            <div class="card-hero-overlay"></div>
+                            <div
+                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
+                                <div class="text-start">
+                                    <h6 class="card-title m-0">Postres</h6>
+                                    <small class="text-white-50">Panqué, brownie, flan y más</small>
+                                </div>
+                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Indicador de scroll -->
+            <div class="scroll-indicator text-center mt-4">
+                <a href="#menu-seccion"
+                    class="text-decoration-none text-dark d-inline-flex flex-column align-items-center">
+                    <i class="bi bi-chevron-double-down fs-4"></i>
+                    <span class="small">Desliza para ver el menú</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEL MENÚ DINÁMICO (Cargado por JavaScript) -->
+    <section id="menu-seccion" class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Carta de alimentos y bebidas</h2>
+            <div id="categorias-tabs" class="nav nav-pills justify-content-center gap-2 mt-4">
+                <!-- Las pestañas de categorías se cargan dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Contenedor donde se despliega el menú -->
+        <div id="menu-contenedor" class="row g-4">
+            <!-- Se inyecta mediante JS -->
+        </div>
+    </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; 2026 Sketch and Coffee. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- MODAL PARA CARRITO / RESUMEN DE PEDIDO -->
+    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header border-0 pb-2">
+                    <h5 class="modal-title fw-bold" id="modalCarritoLabel">Resumen de tu Pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body pt-0 pb-2">
+                    <div id="lista-carrito" class="list-group mb-3">
+                        <!-- Items agregados dinámicamente -->
+                    </div>
+                    <div
+                        class="d-flex justify-content-between align-items-center fw-bold fs-5 px-3 py-3 rounded-3 bg-light border">
+                        <span>Total estimado:</span>
+                        <span id="total-carrito" class="text-dark">$0 MXN</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0 pt-0 pb-3 px-3 flex-column gap-3">
+
+                    <!-- CTA principal en magenta -->
+                    <button type="button" class="btn w-100 rounded-pill py-2 fw-semibold btn-cta-magenta"
+                        onclick="alert('¡Pedido anotado! Muestre esta pantalla en barra o a su mesero.')">
+                        <i class="bi bi-check2-circle me-2"></i> Mostrar a Mesero
+                    </button>
+
+                    <!-- Acciones secundarias como links -->
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <button type="button" class="btn btn-link btn-sm text-secondary text-decoration-none p-0"
+                            data-bs-dismiss="modal">
+                            <i class="bi bi-arrow-left me-1"></i> Seguir viendo
+                        </button>
+                        <button type="button" class="btn btn-link btn-sm text-danger text-decoration-none p-0"
+                            onclick="vaciarCarrito()">
+                            <i class="bi bi-trash3 me-1"></i> Vaciar pedido
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA CREPAS Y WAFFLES (WIZARD DE 4 PASOS) -->
+    <div class="modal fade" id="modalCrepa" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Arma tu Crepa o Waffle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-3">
+
+                    <!-- PASO 1: Waffle o Crepa -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark">1. ¿Qué se te antoja hoy?</label>
+                        <div class="row g-2" id="tipo-producto-container">
+                            <div class="col-6">
+                                <input type="radio" class="btn-check" name="tipoCrepaWaffle" id="tipoCrepa"
+                                    value="Crepa" checked autocomplete="off">
+                                <label class="btn btn-outline-dark w-100 py-2" for="tipoCrepa">Crepa</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" class="btn-check" name="tipoCrepaWaffle" id="tipoWaffle"
+                                    value="Waffle" autocomplete="off">
+                                <label class="btn btn-outline-dark w-100 py-2" for="tipoWaffle">Waffle</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASO 2: Tipo de Masa (Normal, Red Velvet / Sin Gluten) -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark">2. Elige tu tipo de masa</label>
+                        <div id="bases-container" class="d-flex flex-column gap-2">
+                            <!-- Se llena dinámicamente con JS -->
+                        </div>
+                    </div>
+
+                    <!-- PASO 3: 2 Ingredientes Incluidos -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark">3. Elige tus 2 ingredientes incluidos</label>
+                        <p class="text-muted small mb-2">Selecciona exactamente hasta 2 opciones.</p>
+                        <div id="ingredientes-incluidos-container" class="row row-cols-2 row-cols-md-3 g-2">
+                            <!-- Se llena dinámicamente con JS -->
+                        </div>
+                    </div>
+
+                    <!-- PASO 4: Ingredientes Extra (Opcional con costo adicional) -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label class="form-label fw-bold text-dark m-0">4. ¿Deseas agregar más ingredientes
+                                extra?</label>
+                            <span class="badge bg-secondary fs-6" id="precio-extra-badge">+$15 c/u</span>
+                        </div>
+                        <p class="text-muted small mb-2">Puedes marcar o desmarcar las veces que quieras.</p>
+                        <div id="ingredientes-extra-container" class="row row-cols-2 row-cols-md-3 g-2">
+                            <!-- Se llena dinámicamente con JS -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-between align-items-center">
+                    <div class="fw-bold fs-5">
+                        Total estimado: <span id="modal-total-crepa" class="text-dark">$0 MXN</span>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-dark btn-sm rounded-pill px-4"
+                            onclick="agregarCrepaPersonalizada()">Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA SELECCIÓN DE SABOR DE BEBIDAS -->
+    <div class="modal fade" id="modalSaborBebida" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0 pb-0 justify-content-center position-relative">
+                    <h5 class="modal-title fw-bold" id="tituloModalSabor">Elige tu sabor</h5>
+                    <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-3">
+                    <p class="text-muted small mb-3">Selecciona tu opción favorita:</p>
+                    <!-- Contenedor centrado para los botones de sabor -->
+                    <div id="contenedor-sabores-radio" class="d-flex flex-column gap-2 align-items-center w-100">
+                        <!-- Se llena dinámicamente con JS -->
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-center">
+                    <button type="button" class="btn btn-dark btn-sm rounded-pill px-4"
+                        onclick="confirmarSaborYBebida()">Agregar al pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
+    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 1090;">
+        <div id="toastAgregarCarrito"
+            class="toast align-items-center text-white bg-dark border-0 shadow-lg rounded-pill px-3 py-1" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="toast-body d-flex align-items-center gap-2 py-2">
+                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                    <span id="toastMensaje" class="fw-medium">¡Producto agregado al pedido!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white ms-3" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- Scripts modulares -->
+    <script src="./js/menu.js"></script>
+    <script src="./js/modales.js"></script>
+    <script src="./js/especialidades.js"></script>
+    <script src="./js/carrito.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>

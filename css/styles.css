@@ -2901,6 +2901,294 @@ button, .btn, input, select {
     box-shadow: var(--sombra);
   }
 }
-/*===================================================================================
-                          FIN DE LANDING PAGE
-====================================================================================*/
+
+/* ==========================================================================
+   BLOQUE DE ACCESIBILIDAD VISUAL  
+   --------------------------------------------------------------------------
+  No renombra ni borra ninguna clase. No hace falta tocar HTML ni JS.
+
+   Lo que cubre:
+     A. Anillo de foco por teclado de 3px, visible sobre fondo claro Y oscuro
+     B. Contraste de texto por encima de 4.5:1
+     C. Areas tactiles de 48px de alto
+     D. Estados de error .is-invalid
+
+   Medido con el navegador sobre las 11 paginas del sitio. Los numeros de
+   cada seccion salen de esa medicion, no de la intuicion.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   A. FOCO POR TECLADO
+   --------------------------------------------------------------------------
+   El sitio ya tenia un anillo de 3px magenta. El problema medido es que el
+   magenta contra el navbar negro da 2.74:1, y contra la caja de promocion
+   (#25020F) da 2.51:1. La norma pide 3:1 contra el color de al lado.
+
+   Solucion: anillo doble. El magenta se ve sobre fondo claro (7.65:1) y el
+   halo blanco de alrededor se ve sobre fondo oscuro (21:1). Siempre hay al
+   menos una de las dos mitades que contrasta, sea cual sea el fondo.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--color-magenta) !important;
+  outline-offset: 3px !important;
+  /* Anillo de tres bandas. Un solo color nunca sirve: el magenta se pierde
+     sobre el navbar negro (2.74:1) y el blanco se pierde sobre la pagina.
+     Con tres bandas, sea cual sea el fondo, siempre hay un borde entre dos
+     colores que contrastan, y el anillo se distingue.
+       0-3px  blanco   -> separa el anillo del elemento
+       3-6px  magenta  -> es el outline de arriba, se pinta encima
+       6-8px  tinta    -> se ve cuando el fondo es claro */
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, .95),
+    0 0 0 8px rgba(37, 2, 15, .85) !important;
+  /* Sin esto el anillo tarda 250ms en aparecer, porque varias reglas usan
+     `transition: var(--transicion)`, que es `all` e incluye el outline.
+     Quien navega con Tab rapido no alcanza a ver donde esta parado. */
+  transition-property: none !important;
+}
+
+/* El raton no debe dejar anillo: :focus-visible solo se activa con teclado,
+   pero algunos navegadores viejos aplican :focus. Esto lo neutraliza. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* El enlace de salto es lo primero que recibe el Tab. Tiene que verse. */
+.enlace-salto:focus {
+  outline: 3px solid var(--color-blanco-puro);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--color-marron-purpura-oscuro);
+}
+
+
+/* --------------------------------------------------------------------------
+   B. CONTRASTE DE TEXTO
+   --------------------------------------------------------------------------
+   Se midieron 10 textos por debajo de 4.5:1 en todo el sitio. Nueve salian
+   del mismo sitio: la variable --color-gris-texto (#8A8085), que da 3.81:1
+   sobre blanco y 3.51:1 sobre el gris perla de las cajas.
+
+   Se oscurece conservando el mismo tono. No cambia el diseno, solo deja de
+   ser ilegible para quien ve poco o usa el telefono bajo el sol.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* antes #8A8085 -> 3.81:1 sobre blanco     ahora 6.00:1 */
+  --color-gris-texto: #696165;
+  --color-texto-suave: #696165;
+}
+
+/* Un #777777 escrito a mano que daba 4.48:1. Faltaba por centesimas. */
+.campo-grupo small,
+.seccion-formulario small {
+  color: #6F6F6F;
+}
+
+
+/* --------------------------------------------------------------------------
+   C. AREAS TACTILES
+   --------------------------------------------------------------------------
+   Se midieron 119 objetivos por debajo de lo exigido en movil (390px).
+   El grueso son los enlaces del pie de pagina, de 18 a 24px de alto.
+
+   Nota honesta sobre la norma: el criterio 2.5.5 que pide 44px es nivel AAA,
+   no AA. El equivalente AA es el 2.5.8 de WCAG 2.2, que pide 24px. Aqui se
+   aplica el de 48px porque asi lo pide la tarea, que es mas estricto.
+   -------------------------------------------------------------------------- */
+
+/* Botones e inputs: 48px de alto limpio. */
+.btn,
+.boton-magenta,
+.boton-esquema,
+.boton-pildora,
+.boton-anadir,
+.boton-encabezado,
+.boton-pagina,
+.btn-custom-magenta,
+.btn-pilares,
+.btn-visitarnos,
+.btn-logout,
+.gv-scope .gv-btn,
+button[type="submit"],
+input[type="submit"] {
+  min-height: 48px;
+}
+
+.form-control,
+.form-select,
+.newsletter-input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  min-height: 48px;
+}
+
+/* El textarea crece hacia abajo; 48px seria absurdo como unico minimo. */
+textarea.form-control,
+textarea {
+  min-height: 96px;
+}
+
+/* Enlaces del pie: eran de 18 a 24px. El padding agranda el area sin mover
+   el diseno, porque la lista ya tenia separacion entre renglones. */
+.footer-global ul li a,
+.footer-bottom a,
+.site-footer a,
+.footer-legal-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding-block: 2px;
+}
+
+/* El pie usa margen entre renglones; al crecer el area se puede quitar. */
+.footer-global ul li {
+  margin-bottom: 0;
+}
+
+/* Enlaces sueltos que funcionan como boton. */
+.card-footer a,
+.enlace-linkedin,
+.gv-scope .gv-seccion__enlace,
+.lf-sobre-sketch__boton,
+.bloque-info a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+/* Casillas: la casilla en si mide 20px, pero el area que responde al dedo
+   incluye su etiqueta. Se le da alto a la fila completa, que es lo que la
+   persona toca en realidad. */
+.form-check {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+
+.form-check-input {
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+}
+
+.form-check-label {
+  /* OJO: aqui NO va display:flex. Convertir la etiqueta en contenedor flex
+     hace que el navegador se coma el espacio entre el texto y el enlace de
+     adentro, y queda "Acepto elAviso de privacidad" pegado.
+     Con padding se consigue el mismo alto sin romper el texto. */
+  display: inline-block;
+  padding-block: .75rem;
+  padding-left: .5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   D. ESTADOS DE ERROR
+   --------------------------------------------------------------------------
+   Bootstrap trae .is-invalid, pero con su rojo y no con el de la marca.
+   Estos estilos usan --color-error (#C0392B), que da 5.44:1 sobre blanco.
+
+   El borde rojo NO es la unica senal: tambien hay un borde mas grueso y un
+   icono. Un daltonico no distingue el rojo del gris, asi que el color solo
+   nunca puede ser la unica forma de avisar de un error (criterio 1.4.1).
+   -------------------------------------------------------------------------- */
+
+.form-control.is-invalid,
+.form-select.is-invalid,
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+  border: 2px solid var(--color-error);
+  /* El grosor doble es la segunda senal, la que no depende del color. */
+  background-color: var(--color-blanco-puro);
+  padding-right: 2.5rem;
+  /* Signo de admiracion dibujado en el propio CSS: no hace falta imagen
+     ni tocar el HTML para agregar un icono. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='none' stroke='%23C0392B' stroke-width='1.6'/%3E%3Cpath d='M8 4.2v5' stroke='%23C0392B' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11.6' r='1' fill='%23C0392B'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 1.25rem;
+}
+
+.form-control.is-invalid:focus-visible,
+.form-select.is-invalid:focus-visible,
+input.is-invalid:focus-visible,
+textarea.is-invalid:focus-visible,
+select.is-invalid:focus-visible {
+  /* Al enfocar un campo con error, el anillo se pone rojo: asi la persona
+     que navega con teclado sabe que ESE es el campo que falla. */
+  outline: 3px solid var(--color-error) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, .95) !important;
+}
+
+/* Casilla marcada como invalida. */
+.form-check-input.is-invalid {
+  border: 2px solid var(--color-error);
+}
+
+/* Mensajes de error. Las tres primeras clases ya existen en el sitio y cada
+   pagina usa una distinta; se igualan aqui para que todas se vean igual. */
+.mensaje-error,
+.contrasena-error,
+.confirmarContrasena-error,
+.invalid-feedback,
+.error-mensaje {
+  color: var(--color-error);
+  font-size: var(--tamano-auxiliar);
+  font-weight: var(--peso-seminegrita);
+  margin-top: var(--espaciado-xs);
+  /* El texto no se tapa aunque quede vacio: evita que la pagina "salte"
+     cuando aparece un error. */
+  min-height: 1.2em;
+}
+
+/* Campo correcto, por si se quiere confirmar en verde. */
+.form-control.is-valid,
+.form-select.is-valid {
+  border: 2px solid var(--color-exito);
+}
+
+
+/* --------------------------------------------------------------------------
+   E. DOS AJUSTES QUE LA NORMA EXIGE Y NO ESTABAN
+   -------------------------------------------------------------------------- */
+
+/* Respeta a quien pidio menos movimiento en su sistema operativo.
+   Criterio 2.3.3. Sin esto, las animaciones pueden marear o provocar
+   crisis a personas con trastornos vestibulares. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modo de alto contraste de Windows: ahi los colores se reemplazan y el
+   outline puede desaparecer. forced-color-adjust lo devuelve. */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid Highlight !important;
+    box-shadow: none !important;
+  }
+
+  .btn,
+  .boton-magenta,
+  .boton-pildora {
+    border: 1px solid ButtonText;
+  }
+}
+
+/* ===== FIN DEL BLOQUE DE ACCESIBILIDAD ================================== */

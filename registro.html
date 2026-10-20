@@ -48,7 +48,7 @@
                                 <label for="campoNombreRegistro" class="form-label fw-bold">Nombre</label>
                                 <input type="text" id="campoNombreRegistro" class="form-control"
                                     placeholder="Escribe tu nombre" required aria-required="true"
-                                    style="min-height: 44px;">
+                                    aria-describedby="errorNombreRegistro" style="min-height: 44px;">
                                 <p id="errorNombreRegistro" class="mensaje-error text-danger small mt-1"></p>
                             </div>
 
@@ -56,7 +56,7 @@
                                 <label for="campoApellidoRegistro" class="form-label fw-bold">Apellido</label>
                                 <input type="text" id="campoApellidoRegistro" class="form-control"
                                     placeholder="Escribe tu apellido" required aria-required="true"
-                                    style="min-height: 44px;">
+                                    aria-describedby="errorApellidoRegistro" style="min-height: 44px;">
                                 <p id="errorApellidoRegistro" class="mensaje-error text-danger small mt-1"></p>
                             </div>
                         </div>
@@ -66,7 +66,8 @@
                             <div class="col-md-6">
                                 <label for="campoTelefonoRegistro" class="form-label fw-bold">Número de teléfono</label>
                                 <input type="tel" id="campoTelefonoRegistro" class="form-control"
-                                    placeholder="5212345678" required aria-required="true" style="min-height: 44px;">
+                                    placeholder="5212345678" required aria-required="true" 
+                                    aria-describedby="errorTelefonoRegistro" style="min-height: 44px;">
                                 <p id="errorTelefonoRegistro" class="mensaje-error text-danger small mt-1"></p>
                             </div>
 
@@ -74,7 +75,7 @@
                                 <label for="campoCorreoRegistro" class="form-label fw-bold">Correo electrónico</label>
                                 <input type="email" id="campoCorreoRegistro" class="form-control"
                                     placeholder="ejemplo@correo.com" required aria-required="true"
-                                    style="min-height: 44px;">
+                                    aria-describedby="errorEmailRegistro" style="min-height: 44px;">
                                 <p id="errorEmailRegistro" class="mensaje-error text-danger small mt-1"></p>
                             </div>
                         </div>
@@ -84,7 +85,7 @@
                             <label for="campoContrasena" class="form-label fw-bold">Contraseña</label>
                             <input type="password" id="campoContrasena" class="form-control"
                                 placeholder="Mínimo 6 caracteres" required aria-required="true"
-                                style="min-height: 44px;">
+                                aria-describedby="errorContrasena" style="min-height: 44px;">
                             <p id="errorContrasena" class="contrasena-error text-danger small mt-1"></p>
                         </div>
 
@@ -94,7 +95,7 @@
                                 contraseña</label>
                             <input type="password" id="campoConfirmarContrasena" class="form-control"
                                 placeholder="Repite tu contraseña" required aria-required="true"
-                                style="min-height: 44px;">
+                                aria-describedby="errorConfirmarContrasena" style="min-height: 44px;">
                             <p id="errorConfirmarContrasena" class="confirmarContrasena-error text-danger small mt-1">
                             </p>
                         </div>
@@ -102,7 +103,7 @@
                         <!-- Checkbox Aviso de privacidad -->
                         <div class="form-check mb-4 d-flex align-items-center gap-2">
                             <input class="form-check-input mt-0" type="checkbox" id="campoPrivacidad" required
-                                aria-required="true"
+                                aria-required="true" aria-describedby="errorPrivacidad"
                                 style="width: 18px !important; height: 18px !important; aspect-ratio: 1 / 1 !important; min-height: unset !important; padding: 0 !important;">
                             <label class="form-check-label small" for="campoPrivacidad">
                                 Acepto el <a href="#" class="text-dark fw-semibold">Aviso de privacidad</a>
