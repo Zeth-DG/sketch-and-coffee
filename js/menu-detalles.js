@@ -11,7 +11,7 @@ const IMG = "./imagenes/alimentos-menu";
 export const detallesPersonalizados = {
   "croissant salado": {
     descripcion: "Láminas doradas y crujientes de fino hojaldre artesanal, horneadas a la perfección para lograr una textura ligera, suave y esponjosa por dentro.",
-    imagen: `${IMG}/croissant-salado.jpeg`
+    imagen: `${IMG}/menu-croissant-salado.jpeg`
   },
   "americano": {
     descripcion: "Extracción limpia de grano recién molido con notas tostadas, aroma envolvente y un perfil suave pero con carácter.",
