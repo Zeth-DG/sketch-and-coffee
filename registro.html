@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuarios - Sketch & Coffee</title>
-    <!-- Enlace de Bootstrap y estilos de CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <!-- Enlace tipografía -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,10 +25,11 @@
         <div class="row justify-content-center g-4">
 
             <!-- FORMULARIO -->
-            <section class="col-lg-8 col-xl-7" aria-labelledby="titulo-formulario-registro">
+            <section class="col-12 col-lg-8 col-xl-7" aria-labelledby="titulo-formulario-registro">
                 <div class="tarjeta-boceto tarjeta-boceto-principal p-4 shadow-sm bg-light rounded">
                     <h2 id="titulo-formulario-registro" class="text-center mb-4"
-                        style="font-family: var(--fuente-titulo-principal); color: var(--color-magenta);">Regístrate
+                        style="font-family: var(--fuente-titulo-principal); color: var(--color-magenta);">
+                        Regístrate
                     </h2>
 
                     <!-- Contenedor para Alertas Dinámicas -->
@@ -42,41 +41,41 @@
                             Todos los campos marcados como obligatorios deben ser completados para registrarte.
                         </span>
 
-                        <!-- Actualizacion:  Nombre y Apellido (Separados en 2 inputs) -->
+                        <!-- Nombre y apellido -->
                         <div class="row g-3 mb-3">
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <label for="campoNombreRegistro" class="form-label fw-bold">Nombre</label>
                                 <input type="text" id="campoNombreRegistro" class="form-control"
                                     placeholder="Escribe tu nombre" required aria-required="true"
                                     aria-describedby="errorNombreRegistro" style="min-height: 44px;">
-                                <p id="errorNombreRegistro" class="mensaje-error text-danger small mt-1"></p>
+                                <p id="errorNombreRegistro" class="mensaje-error text-danger small mt-1 mb-0"></p>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <label for="campoApellidoRegistro" class="form-label fw-bold">Apellido</label>
                                 <input type="text" id="campoApellidoRegistro" class="form-control"
                                     placeholder="Escribe tu apellido" required aria-required="true"
                                     aria-describedby="errorApellidoRegistro" style="min-height: 44px;">
-                                <p id="errorApellidoRegistro" class="mensaje-error text-danger small mt-1"></p>
+                                <p id="errorApellidoRegistro" class="mensaje-error text-danger small mt-1 mb-0"></p>
                             </div>
                         </div>
 
-                        <!-- Teléfono y Correo electrónico -->
+                        <!-- Teléfono y correo -->
                         <div class="row g-3 mb-3">
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <label for="campoTelefonoRegistro" class="form-label fw-bold">Número de teléfono</label>
                                 <input type="tel" id="campoTelefonoRegistro" class="form-control"
-                                    placeholder="5212345678" required aria-required="true" 
+                                    placeholder="5212345678" required aria-required="true"
                                     aria-describedby="errorTelefonoRegistro" style="min-height: 44px;">
-                                <p id="errorTelefonoRegistro" class="mensaje-error text-danger small mt-1"></p>
+                                <p id="errorTelefonoRegistro" class="mensaje-error text-danger small mt-1 mb-0"></p>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <label for="campoCorreoRegistro" class="form-label fw-bold">Correo electrónico</label>
                                 <input type="email" id="campoCorreoRegistro" class="form-control"
                                     placeholder="ejemplo@correo.com" required aria-required="true"
                                     aria-describedby="errorEmailRegistro" style="min-height: 44px;">
-                                <p id="errorEmailRegistro" class="mensaje-error text-danger small mt-1"></p>
+                                <p id="errorEmailRegistro" class="mensaje-error text-danger small mt-1 mb-0"></p>
                             </div>
                         </div>
 
@@ -86,33 +85,33 @@
                             <input type="password" id="campoContrasena" class="form-control"
                                 placeholder="Mínimo 6 caracteres" required aria-required="true"
                                 aria-describedby="errorContrasena" style="min-height: 44px;">
-                            <p id="errorContrasena" class="contrasena-error text-danger small mt-1"></p>
+                            <p id="errorContrasena" class="mensaje-error text-danger small mt-1 mb-0"></p>
                         </div>
 
                         <!-- Confirmar contraseña -->
                         <div class="mb-3">
-                            <label for="campoConfirmarContrasena" class="form-label fw-bold">Confirmar
-                                contraseña</label>
+                            <label for="campoConfirmarContrasena" class="form-label fw-bold">Confirmar contraseña</label>
                             <input type="password" id="campoConfirmarContrasena" class="form-control"
                                 placeholder="Repite tu contraseña" required aria-required="true"
                                 aria-describedby="errorConfirmarContrasena" style="min-height: 44px;">
-                            <p id="errorConfirmarContrasena" class="confirmarContrasena-error text-danger small mt-1">
-                            </p>
+                            <p id="errorConfirmarContrasena" class="mensaje-error text-danger small mt-1 mb-0"></p>
                         </div>
 
                         <!-- Checkbox Aviso de privacidad -->
-                        <div class="form-check mb-4 d-flex align-items-center gap-2">
-                            <input class="form-check-input mt-0" type="checkbox" id="campoPrivacidad" required
-                                aria-required="true" aria-describedby="errorPrivacidad"
-                                style="width: 18px !important; height: 18px !important; aspect-ratio: 1 / 1 !important; min-height: unset !important; padding: 0 !important;">
-                            <label class="form-check-label small" for="campoPrivacidad">
-                                Acepto el <a href="#" class="text-dark fw-semibold">Aviso de privacidad</a>
-                            </label>
-                            <p id="errorPrivacidad" class="mensaje-error"></p>
+                        <div class="mb-4">
+                            <div class="form-check d-flex align-items-center gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="campoPrivacidad" required
+                                    aria-required="true" aria-describedby="errorPrivacidad"
+                                    style="width: 18px !important; height: 18px !important; aspect-ratio: 1 / 1 !important; min-height: unset !important; padding: 0 !important;">
+                                <label class="form-check-label small" for="campoPrivacidad">
+                                    Acepto el <a href="#" class="text-dark fw-semibold">Aviso de privacidad</a>
+                                </label>
+                            </div>
+                            <p id="errorPrivacidad" class="mensaje-error text-danger small mt-1 mb-0"></p>
                         </div>
 
                         <!-- reCAPTCHA y Botón -->
-                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-3">
                             <div class="caja-recaptcha border p-2 rounded bg-white text-muted small" role="region"
                                 aria-label="Verificación de seguridad anti-bot">
                                 <i class="bi bi-shield-check me-1 text-success" aria-hidden="true"></i> reCAPTCHA
@@ -120,10 +119,12 @@
                             <button id="btnEnviar" type="submit" class="btn btn-custom-magenta boton-magenta py-2 px-4"
                                 style="min-height: 44px;">Regístrate</button>
                         </div>
-
                     </form>
-
+                </div>
+            </section>
+        </div>
     </main>
+
     <!-- SECCIÓN NEWSLETTER SUSCRÍBETE -->
     <section class="section-newsletter text-center" aria-labelledby="newsletter-heading">
         <div class="container">
@@ -171,20 +172,14 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="./js/main.js" type="module"></script>
-    
     <script type="module" src="./js/registro.js"></script>
 
-
-    <!-- Botón -->
+    <!-- Botón subir -->
     <button type="button" class="btn btn-primary rounded-circle shadow-lg" id="btnSubir">
-
-        <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
                 d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z" />
-
         </svg>
-
     </button>
 </body>
 

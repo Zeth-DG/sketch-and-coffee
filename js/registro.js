@@ -1,136 +1,187 @@
 import {
-    validarNombreRegistro,
-    validarApellidoRegistro,
-    validarTelefonoRegistro,
-    validarCorreoRegistro,
-    validarContrasenaRegistro,
-    validarConfirmarContrasena,
+    validarNombre,
+    validarApellido,
+    validarTelefono,
+    validarCorreo,
+    validarContrasena,
+    validarCoincidenciaContrasenas,
     validarPrivacidad
-    
-} from './validaciones.js';
+} from "./validaciones.js";
 
-// inicio storage_inicioSecion.js
+import {
+    mostrarError,
+    configurarValidacionCampo,
+    actualizarErrorPrivacidad
+} from "./interfaz.js";
+
 import {
     seedInitialUsers,
     saveUserToStorage
-} from './storage_InicioSesion.js';
+} from "./storage_InicioSesion.js";
 
-
-// EJECUTAR LA FUNCION DE storage_inicioSecion.js
+// Crea el admin inicial (idempotente: solo si no hay usuarios)
 seedInitialUsers();
 
-// FIN DE storage storage_inicioSecion.js
+document.addEventListener("DOMContentLoaded", () => {
 
+    const formulario = document.getElementById("formularioContacto");
+    if (!formulario) return;
 
-const formulario =
-    document.getElementById("formularioContacto");
+    // ---------- Referencias del DOM ----------
+    const iptNombre     = document.getElementById("campoNombreRegistro");
+    const errorNombre   = document.getElementById("errorNombreRegistro");
 
+    const iptApellido   = document.getElementById("campoApellidoRegistro");
+    const errorApellido = document.getElementById("errorApellidoRegistro");
 
-function mostrarAlerta(mensaje, tipo) {
+    const iptTelefono   = document.getElementById("campoTelefonoRegistro");
+    const errorTelefono = document.getElementById("errorTelefonoRegistro");
 
-    const contenedor =
-        document.getElementById("alerta-registro");
+    const iptCorreo     = document.getElementById("campoCorreoRegistro");
+    const errorCorreo   = document.getElementById("errorEmailRegistro");
 
-    contenedor.innerHTML = `
-        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
-            ${mensaje}
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert">
-            </button>
-        </div>
-    `;
-}
+    const iptContrasena = document.getElementById("campoContrasena");
+    const errorContrasena = document.getElementById("errorContrasena");
 
+    const iptConfirmar  = document.getElementById("campoConfirmarContrasena");
+    const errorConfirmar = document.getElementById("errorConfirmarContrasena");
 
-if (formulario) {
-    formulario.addEventListener("submit", function(event) {
-        event.preventDefault();
+    const chkPrivacidad = document.getElementById("campoPrivacidad");
+    const errorPrivacidad = document.getElementById("errorPrivacidad");
 
-        // Obtener valores
-        const nombre =
-            document.getElementById("campoNombreRegistro").value;
+    const contenedorAlerta = document.getElementById("alerta-registro");
 
-        const apellido =
-            document.getElementById("campoApellidoRegistro").value;
+    // ---------- Helper: alerta global ----------
+    function mostrarAlerta(mensaje, tipo) {
+        contenedorAlerta.innerHTML = `
+            <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+                ${mensaje}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        `;
+    }
 
-        const telefono =
-            document.getElementById("campoTelefonoRegistro").value;
+    // ---------- Helper: mostrar error + aria-invalid ----------
+    // (interfaz.js sólo pinta el texto; aquí además marcamos aria-invalid
+    //  en el input para lectores de pantalla)
+    function pintarError(input, errorEl, resultado) {
+        mostrarError(errorEl, resultado);
+        if (input) input.setAttribute("aria-invalid", resultado.valido ? "false" : "true");
+    }
 
-        const correo =
-            document.getElementById("campoCorreoRegistro").value;
+    // ---------- Validación en vivo ----------
+    configurarValidacionCampo(iptNombre,   errorNombre,   validarNombre);
+    configurarValidacionCampo(iptApellido, errorApellido, validarApellido);
+    configurarValidacionCampo(iptTelefono, errorTelefono, validarTelefono);
+    configurarValidacionCampo(iptCorreo,   errorCorreo,   validarCorreo);
+    configurarValidacionCampo(iptContrasena, errorContrasena, validarContrasena);
 
-        const contrasena =
-            document.getElementById("campoContrasena").value;
+    // Para "Confirmar contraseña" necesitamos ambos valores.
+    // configurarValidacionCampo pasa el value del propio campo a la función,
+    // así que la envolvemos para capturar también la contraseña original.
+    const validarConfirmacion = (valorConfirmacion) =>
+        validarCoincidenciaContrasenas(iptContrasena.value, valorConfirmacion);
 
-        const confirmarContrasena =
-            document.getElementById("campoConfirmarContrasena").value;
+    configurarValidacionCampo(iptConfirmar, errorConfirmar, validarConfirmacion);
 
-        const privacidad =
-            document.getElementById("campoPrivacidad").checked;
+    // Si el usuario edita la contraseña, revalidamos la confirmación
+    // (solo si ya había escrito algo en "confirmar").
+    iptContrasena.addEventListener("input", () => {
+        if (iptConfirmar.value !== "") {
+            pintarError(
+                iptConfirmar,
+                errorConfirmar,
+                validarCoincidenciaContrasenas(iptContrasena.value, iptConfirmar.value)
+            );
+        }
+    });
 
+    // Checkbox de privacidad
+    chkPrivacidad.addEventListener("change", () => {
+        const resultado = validarPrivacidad(chkPrivacidad.checked);
+        mostrarError(errorPrivacidad, resultado);
+    });
 
-        // Validaciones
-        const validaciones = [
-            validarNombreRegistro(nombre),
-            validarApellidoRegistro(apellido), 
-            validarTelefonoRegistro(telefono),
-            validarCorreoRegistro(correo),
-            validarContrasenaRegistro(contrasena),
-            validarConfirmarContrasena(contrasena, confirmarContrasena), 
-            validarPrivacidad(privacidad)
-        ];
+    // ---------- Envío del formulario ----------
+    formulario.addEventListener("submit", (evento) => {
+        evento.preventDefault();
 
+        // 1) Leer valores
+        const nombre     = iptNombre.value;
+        const apellido   = iptApellido.value;
+        const telefono   = iptTelefono.value;
+        const correo     = iptCorreo.value;
+        const contrasena = iptContrasena.value;
+        const confirmar  = iptConfirmar.value;
+        const privacidad = chkPrivacidad.checked;
 
-        // Revisar si alguna falla
-        for (let resultado of validaciones) {
-            if (!resultado.valido) {
-                mostrarAlerta(
-                    resultado.mensaje,
-                    "danger"
-                );
-                return;
-            }
+        // 2) Validar
+        const rNombre     = validarNombre(nombre);
+        const rApellido   = validarApellido(apellido);
+        const rTelefono   = validarTelefono(telefono);
+        const rCorreo     = validarCorreo(correo);
+        const rContrasena = validarContrasena(contrasena);
+        const rConfirmar  = validarCoincidenciaContrasenas(contrasena, confirmar);
+        const rPrivacidad = validarPrivacidad(privacidad);
+
+        // 3) Mostrar todos los errores (para que el usuario los vea juntos)
+        pintarError(iptNombre,     errorNombre,     rNombre);
+        pintarError(iptApellido,   errorApellido,   rApellido);
+        pintarError(iptTelefono,   errorTelefono,   rTelefono);
+        pintarError(iptCorreo,     errorCorreo,     rCorreo);
+        pintarError(iptContrasena, errorContrasena, rContrasena);
+        pintarError(iptConfirmar,  errorConfirmar,  rConfirmar);
+        mostrarError(errorPrivacidad, rPrivacidad);
+
+        const todoValido =
+            rNombre.valido &&
+            rApellido.valido &&
+            rTelefono.valido &&
+            rCorreo.valido &&
+            rContrasena.valido &&
+            rConfirmar.valido &&
+            rPrivacidad.valido;
+
+        if (!todoValido) {
+            mostrarAlerta("Revisa los campos marcados en rojo.", "danger");
+            return;
         }
 
-        // Crear objeto JSON con los datos del usuario
+        // 4) Construir usuario (contraseña SIN trim: los espacios son válidos)
         const usuario = {
-            nombre: nombre,
-            apellido: apellido,
-            telefono: telefono,
-            correo: correo,
+            nombre:     nombre.trim(),
+            apellido:   apellido.trim(),
+            telefono:   telefono.trim(),
+            correo:     correo.trim().toLowerCase(),
             contrasena: contrasena
         };
 
-        // Guardar el usuario en LocalStorage
-        let registrado = saveUserToStorage(usuario);
+        // 5) Guardar (saveUserToStorage devuelve false si el correo ya existe)
+        const guardado = saveUserToStorage(usuario);
 
-         // Verificar si el correo ya existe
-        if (registrado === false) {
+        if (guardado === false) {
+            mostrarAlerta(
+                "Este correo ya está registrado. Intenta con otro o inicia sesión.",
+                "warning"
+            );
+            return;
+        }
 
+        // 6) Éxito
         mostrarAlerta(
-        "Este correo ya está registrado",
-        "danger"
-    );
-
-    return;
-}
-
-
-        // Mostrar JSON en consola
-        console.log("JSON FINAL:");
-        console.log(usuario);
-
-        // Alerta de éxito
-        mostrarAlerta(
-            "Registro completado correctamente",
+            "Registro completado correctamente. ¡Bienvenido a Sketch & Coffee!",
             "success"
         );
 
+        // 7) Limpiar formulario y errores
+        formulario.reset();
+        [
+            errorNombre, errorApellido, errorTelefono, errorCorreo,
+            errorContrasena, errorConfirmar, errorPrivacidad
+        ].forEach((el) => (el.textContent = ""));
 
-        
-
+        // 8) Reset de aria-invalid
+        [iptNombre, iptApellido, iptTelefono, iptCorreo, iptContrasena, iptConfirmar]
+            .forEach((el) => el.setAttribute("aria-invalid", "false"));
     });
-
-}
+});

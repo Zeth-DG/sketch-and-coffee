@@ -46,9 +46,7 @@ export function validarTelefono(telefono){
         }; 
     }//no dejar el campo vacío
 
-    //para quitar espacios, guiones y paréntesis entre números
     const telefonoSinSeparadores = telefonoLimpio.replace(/[\s()-]/g, "");
-    //para validar que el numero "limpio" solo son números y de 10 dígitos
     const numeroRegex = /^\d{10}$/; 
 
     if (!numeroRegex.test(telefonoSinSeparadores)){
@@ -90,9 +88,8 @@ export function validarMensaje(mensaje){
         }; 
     }//debe ser texto 
 
-    const mensajeLimpio = mensaje.trim(); //quitar espacios al inicio y al final
+    const mensajeLimpio = mensaje.trim();
     
-    //el mensaje esta vacío?
     if(mensajeLimpio === ""){
         return{
             valido: false, 
@@ -100,7 +97,6 @@ export function validarMensaje(mensaje){
         };
     }//if
     
-    //el mensaje es de menos de 10 caracteres?
     if(mensajeLimpio.length < 10){
         return{
             valido: false, 
@@ -108,7 +104,6 @@ export function validarMensaje(mensaje){
         };
     }//if
 
-    //el mensaje es muy largo?
     if(mensajeLimpio.length>1000){
         return{
             valido: false, 
@@ -116,13 +111,11 @@ export function validarMensaje(mensaje){
         };
     }//if
 
-    //paso todas las validaciones: 
     return{
         valido: true,
         mensaje: "El mensaje es válido"
     }//return
 }//funcion validar mensaje
-
 
 export function validarNombre (nombre){
     if(typeof nombre !== "string"){
@@ -132,25 +125,23 @@ export function validarNombre (nombre){
         }
     }//validar que sea un string
 
-    const nombreLimpio = nombre.trim();//quitar espacios al principio y al final
+    const nombreLimpio = nombre.trim();
 
-    //existe el dato nombre?
     if (nombreLimpio === "") {
         return {
             valido: false, 
             mensaje: "Escribe tu nombre."
         }; 
     }
-    // el nombre tiene una longitud mayor a 3 caracteres pero menor a 30?
+
     if (nombreLimpio.length < 3 || nombreLimpio.length > 100 ){
         return {
             valido: false,
             mensaje: "Tu nombre debe tener entre 3 y 100 caracteres."
         }; 
     }
-    const nameRegex = /^[\p{L}\s\.-]+$/u; //unicode se agrega que acepte puntos
+    const nameRegex = /^[\p{L}\s\.-]+$/u;
 
-    //tiene caracteres invalidos?
     if (!nameRegex.test(nombreLimpio)) {
         return {
             valido: false, 
@@ -186,7 +177,6 @@ export function validarPrivacidad(aceptada){
         };
     }//if
 
-    //el checkbox está vacío?
     if (!aceptada){
         return{
             valido: false, 
@@ -199,7 +189,6 @@ export function validarPrivacidad(aceptada){
         mensaje: "Aviso de privacidad aceptado correctamente."
     };
 }//funcion validarPrivacidad
-
 
 // Validar Nombre del producto Alexandra
 export function validarNombreProducto(nombre) {
@@ -285,30 +274,30 @@ export function validarPrecioProducto(precio) {
         return {
             valido: false,
             mensaje: "Introduce un precio válido para el producto."
-        };//return
+        };
 
-    }// if precio invalido
+    }
 
     if (precioNum <= 0) {
         return {
             valido: false,
             mensaje: "El precio debe ser mayor a cero."
-        };//return
+        };
 
-    }//if precio debe ser mayor a 0
+    }
 
     if (precioNum > 100000) {
         return {
             valido: false,
             mensaje: "El precio excede el límite máximo permitido."
-        };//return
+        };
 
-    }// if precio excede lo permitido
+    }
 
     return {
         valido: true,
         mensaje: "Precio del producto válido."
-    };//return
+    };
 
 }// validarPrecioProducto
 
@@ -321,13 +310,13 @@ export function validarCategoriaProducto(categoria) {
         return {
             valido: false,
             mensaje: "Selecciona una categoría válida del menú."
-        };// return
-    }//if
+        };
+    }
 
     return {
         valido: true,
         mensaje: "Categoría válida."
-    };//return
+    };
 }// validarCategoriaProducto
 
 
@@ -341,160 +330,55 @@ export function validarStockProducto(stock) {
         return {
             valido: false,
             mensaje: "Introduce un número entero válido para el stock."
-        };//return
+        };
 
-    }//if numero valido
+    }
 
     if (stockNum < 0) {
         return {
             valido: false,
             mensaje: "El stock no puede ser un valor negativo."
-        };//return
+        };
 
-    }//if no puede ser negativo
+    }
 
     if (stockNum > 10) {
         return {
             valido: false,
             mensaje: "El stock máximo permitido es de hasta 10 productos."
-        };//return
+        };
 
-    }//if maximo 10 productos
+    }
 
     return {
         valido: true,
         mensaje: "Stock válido."
-    };//return
+    };
 
 }//validarStockProducto
 
 //=============FIN VALIDACIONES MANUEL =======================================
 
+// ============================================================
+//   VALIDACIONES DEL FORMULARIO DE REGISTRO
+//   Reutilizan las funciones de arriba. Las versiones
+//   repetidas y que no cumplían los criterios necesarios 
+//   (validarNombreRegistro, validarTelefonoRegistro,
+//   validarCorreoRegistro, validarContrasenaRegistro,
+//   validarConfirmarContrasena, validarApellidoRegistro) se
+//   eliminaron porque eran más laxas.
+// ============================================================
 
-// Validación del campo Nombre y Apellido (Obligatoriedad) Alexandra
-export function validarNombreRegistro(nombre) {
-    const nombreLimpio = typeof nombre === "string" ? nombre.trim() : "";
-
-    if (nombreLimpio === "") {
+// Validar Apellido — misma lógica que validarNombre.
+export function validarApellido(apellido) {
+    if (typeof apellido !== "string") {
         return {
             valido: false,
-            mensaje: "Escribe tu nombre y apellido."
-        };
-    }//no dejar el campo vacío
-    return {
-        valido: true,
-        mensaje: "Nombre válido."
-    };
-}
-
-// Validación del campo Teléfono (Obligatoriedad)
-export function validarTelefonoRegistro(telefono) {
-    const telefonoLimpio = typeof telefono === "string" ? telefono.trim() : "";
-
-    if (telefonoLimpio === "") {
-        return {
-            valido: false,
-            mensaje: "Escribe tu número de teléfono."
-        };
-    }//no dejar el campo vacío
-
-    // 2. Validación de Fernando: longitud
-    if (telefonoLimpio.length !== 10) {
-        return {
-            valido: false,
-            mensaje: "El teléfono debe tener exactamente 10 dígitos."
+            mensaje: "Introduce texto"
         };
     }
 
-    // 3. Validación de Fernando: formato
-    const telefonoRegex = /^[0-9]{10}$/;
-
-    if (!telefonoRegex.test(telefonoLimpio)) {
-        return {
-            valido: false,
-            mensaje: "El teléfono debe contener únicamente números."
-        };
-    }
-
-    return {
-        valido: true,
-        mensaje: "Teléfono válido."
-    };
-
-}
-
-// Validación del campo Correo Electrónico (Obligatoriedad) (Laura)
-export function validarCorreoRegistro(correo) {
-    const correoLimpio = typeof correo === "string" ? correo.trim() : ""; 
-    
-    if (correoLimpio === "") {
-        return {
-            valido: false, 
-            mensaje: "Escribe tu correo electrónico." 
-        };
-    } 
-
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!regexCorreo.test(correoLimpio)) {
-        return {
-            valido: false,
-            mensaje: "El formato del correo electrónico no es válido."
-        };
-    }
-
-    return {
-        valido: true, 
-        mensaje: "Correo electrónico válido." 
-    }; 
-}
-
-// Validación del campo Contraseña (Obligatoriedad)
-export function validarContrasenaRegistro(password) {
-    const passwordLimpio = typeof password === "string" ? password.trim() : "";
-
-    if (passwordLimpio === "") {
-        return {
-            valido: false,
-            mensaje: "Escribe tu contraseña."
-        };
-    }
-    
-    return {
-        valido: true,
-        mensaje: "Contraseña válida."
-    };
-}
-
-// Validación del campo Confirmar Contraseña (Obligatoriedad)
-export function validarConfirmarContrasena(password, confirmPassword) {
-    // Nota: aquí NO usamos .trim() tal como se indicó en las notas de tu equipo
-    const confirmLimpio = typeof confirmPassword === "string" ? confirmPassword : "";
-
-    if (confirmLimpio === "") {
-        return {
-            valido: false,
-            mensaje: "Confirma tu contraseña."
-        };
-    }
-
-    // Comparamos si ambas contraseñas son exactamente iguales
-    if (password !== confirmPassword) {
-        return {
-            valido: false,
-            mensaje: "Las contraseñas no coinciden."
-        };
-    }
-
-    return {
-        valido: true,
-        mensaje: "Confirmación válida."
-    };
-}
-
-// Validación del campo Apellido (Obligatoriedad)
-export function validarApellidoRegistro(apellido) {
-    const apellidoLimpio = typeof apellido === "string" ? apellido.trim() : "";
+    const apellidoLimpio = apellido.trim();
 
     if (apellidoLimpio === "") {
         return {
@@ -502,71 +386,99 @@ export function validarApellidoRegistro(apellido) {
             mensaje: "Escribe tu apellido."
         };
     }
+
+    if (apellidoLimpio.length < 3 || apellidoLimpio.length > 100) {
+        return {
+            valido: false,
+            mensaje: "Tu apellido debe tener entre 3 y 100 caracteres."
+        };
+    }
+
+    const apellidoRegex = /^[\p{L}\s\.-]+$/u;
+
+    if (!apellidoRegex.test(apellidoLimpio)) {
+        return {
+            valido: false,
+            mensaje: "Usa solo letras, espacios, puntos o guiones. No uses números ni símbolos."
+        };
+    }
+
     return {
         valido: true,
         mensaje: "Apellido válido."
     };
 }
 
-/* OJO: `validarPrivacidad` ya estaba declarada en la linea 181.
-   Dos export con el mismo nombre son un error fatal y hacen que el
-   navegador NO cargue este archivo completo, asi que ninguna
-   validacion del sitio funciona. Por eso se quito esta segunda copia. */
+// Validar Contraseña — mínimo 6 caracteres (coincide con el placeholder).
+// OJO: NO usamos .trim() porque un espacio al inicio/final SÍ es parte
+// de la contraseña que el usuario escribió.
+export function validarContrasena(contrasena) {
+    if (typeof contrasena !== "string") {
+        return {
+            valido: false,
+            mensaje: "La contraseña debe recibirse como texto."
+        };
+    }
 
+    if (contrasena === "") {
+        return {
+            valido: false,
+            mensaje: "Escribe tu contraseña."
+        };
+    }
 
-//============validacion Alexandra===============================
+    if (contrasena.length < 6) {
+        return {
+            valido: false,
+            mensaje: `Tu contraseña debe tener al menos 6 caracteres (llevas ${contrasena.length}).`
+        };
+    }
 
-//========= VALIDACIÓN DE COINCIDENCIA DE CONTRASEÑAS (Gonzalo) =============
+    return {
+        valido: true,
+        mensaje: "Contraseña válida."
+    };
+}
 
-// Compara el campo "Contraseña" con el de "Confirmar contraseña".
-//
-// OJO con el trim(): aquí NO se usa, a diferencia de las demás validaciones.
-// Un espacio al final sí forma parte de la contraseña, así que si recortamos
-// los espacios antes de comparar le diríamos al usuario que las dos coinciden
-// cuando en realidad guardaría una contraseña distinta a la que cree.
+// Compara "Contraseña" con "Confirmar contraseña" (Gonzalo).
 export function validarCoincidenciaContrasenas(contrasena, confirmacion) {
     if (typeof contrasena !== "string" || typeof confirmacion !== "string") {
         return {
             valido: false,
             mensaje: "Las contraseñas deben recibirse como texto."
         };
-    }//las dos tienen que ser texto
+    }
 
     if (confirmacion === "") {
         return {
             valido: false,
             mensaje: "Vuelve a escribir tu contraseña para confirmarla."
         };
-    }//no dejar vacía la confirmación
+    }
 
     if (contrasena !== confirmacion) {
-        // Las tres pistas de abajo son para los errores más comunes.
-        // Sin ellas el usuario solo lee "no coinciden" y no sabe qué revisar.
-
         if (contrasena.trim() === confirmacion.trim()) {
             return {
                 valido: false,
-                mensaje: "Las contraseñas no coinciden: a una le sobra un espacio al inicio o al final."
+                mensaje: "Las contraseñas no coinciden: a una le sobran espacios al inicio o al final."
             };
-        }//difieren solo en espacios
+        }
 
         if (contrasena.toLowerCase() === confirmacion.toLowerCase()) {
             return {
                 valido: false,
-                mensaje: "Las contraseñas no coinciden: cambian las mayúsculas. Revisa si tienes activado Bloq Mayús."
+                mensaje: "Las contraseñas no coinciden: cambian las mayúsculas. Revisa si tienes Bloq Mayús activado."
             };
-        }//difieren solo en mayúsculas
+        }
 
         return {
             valido: false,
             mensaje: "Las contraseñas no coinciden. Revísalas e inténtalo de nuevo."
         };
-    }//son distintas
+    }
 
     return {
         valido: true,
         mensaje: "Las contraseñas coinciden."
     };
-}//función validarCoincidenciaContrasenas
-
-//============= FIN VALIDACIÓN DE CONTRASEÑAS (Gonzalo) =====================
+}
