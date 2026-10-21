@@ -1,3 +1,5 @@
+import { getStoredUsers } from './localStorage.js';
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // Selección de elementos del DOM
@@ -29,29 +31,64 @@ document.addEventListener("DOMContentLoaded", () => {
         if (usuarioVal === "") {
             mostrarErrorCampo(campoUsuario, errorUsuario, "El correo o nombre de usuario es obligatorio.");
             esValido = false;
+        } else if (usuarioVal.includes("@") && !usuarioVal.includes(".")) {
+            // Validación opcional rápida si ingresan un correo incompleto
+            mostrarErrorCampo(campoUsuario, errorUsuario, "Ingresa un correo electrónico válido.");
+            esValido = false;
         } else {
             marcarCampoValido(campoUsuario, errorUsuario);
         }// else
 
+            // Validación de contraseña
         if (contrasenaVal === "") {
             mostrarErrorCampo(campoContrasena, errorContrasena, "La contraseña es obligatoria.");
+            esValido = false;
+        } else if (contrasenaVal.length < 6) {
+            mostrarErrorCampo(campoContrasena, errorContrasena, "La contraseña debe tener al menos 6 caracteres.");
             esValido = false;
         } else {
             marcarCampoValido(campoContrasena, errorContrasena);
         }// else
 
+        /*=========================================================
+               GESTIÓN PROGRAMÁTICA DEL FOCO (Si hay errores)
+        =========================================================*/
+
+        if (!esValido) {
+            const primerCampoInvalido = formularioLogin.querySelector(".is-invalid");
+            if (primerCampoInvalido) {
+                primerCampoInvalido.focus(); 
+            }
+            return; // Detiene la ejecución
+        }
+
         // Si la estructura DOM y accesibilidad están listas y válidas:
         if (esValido) {
-            // Disparar evento personalizado o pasar control al módulo de autenticación con LocalStorage
-            console.log("Campos validados correctamente en DOM Listo para autenticar con LocalStorage.");
+           
+            /*=========================================================
+                   AUTENTICACIÓN CONTRA LOCALSTORAGE Y SESIÓN
+            =========================================================*/
+            const usuariosRegistrados = getStoredUsers();
 
-            // Emitir un evento para que el encargado de LocalStorage procese la validación de datos
-            document.dispatchEvent(new CustomEvent("solicitudLogin", {
-                detail: { usuario: usuarioVal, contrasena: contrasenaVal }
-            }));//new solicitudLogin
-        }//if
-    });//formularioLogin 
+            const usuarioEncontrado = usuariosRegistrados.find(
+                (u) => (u.correo === usuarioVal || u.usuario === usuarioVal) && u.contrasena === contrasenaVal
+            );
 
+            if (!usuarioEncontrado) {
+                if (alertaGeneral) {
+                    alertaGeneral.textContent = "Credenciales incorrectas. Verifica tus datos.";
+                    alertaGeneral.classList.remove("d-none");
+                    alertaGeneral.setAttribute("tabindex", "-1");
+                    alertaGeneral.focus(); // Foco alerta general de error
+                }
+                return;
+            }
+
+            // Crear sesión activa y redirigir
+            localStorage.setItem("app_authenticated_user", JSON.stringify(usuarioEncontrado));
+            window.location.href = "inicioSesion.html";
+        }
+    });//formularioLogin
 
     //Función para mostrar error y actualizar atributos ARIA
     /**Su objetivo principal es avisar visualmente y de manera accesible (para personas que usan lectores de pantalla)
@@ -102,4 +139,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }//input contenedorError
 
-}); // DOM 
+}); // DOM  

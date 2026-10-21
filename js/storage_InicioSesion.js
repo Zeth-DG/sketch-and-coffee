@@ -85,7 +85,7 @@ function guardarUsuario(nuevoUsuario) {
 }
 
 
-// EXPORTAR FUNCIONES PARA VANYA Y EL EQUIPO
+// EXPORTAR FUNCIONES PARA EL EQUIPO
 
 export {
     crearUsuariosIniciales as seedInitialUsers,
