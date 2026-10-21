@@ -1,2 +1,7 @@
 js/menu/
 menu-pruebas.html
+
+package-lock.json
+package.json
+
+node/modules
