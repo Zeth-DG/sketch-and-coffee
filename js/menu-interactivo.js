@@ -47,7 +47,7 @@ function normalizarItem(item) {
     }
     // Unificar sabores (array de objetos) → opcionesSabores (array de strings)
     if (item.sabores && !item.opcionesSabores) {
-        item.opcionesSabores = item.sabores.map(s => 
+        item.opcionesSabores = item.sabores.map(s =>
             typeof s === 'string' ? s : s.nombre
         );
     }
@@ -56,7 +56,7 @@ function normalizarItem(item) {
 
 async function cargarMenu() {
     try {
-        let respuesta = await fetch('./menu.json');
+        let respuesta = await fetch('/menu_interactivo/menu.json');
         if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
         menuData = await respuesta.json();
         //Normalizar estructura
@@ -316,4 +316,3 @@ function seleccionarCategoriaDesdeHero(categoriaId) {
         });
     }, 200);
 }
-

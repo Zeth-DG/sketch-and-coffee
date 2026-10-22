@@ -1,4 +1,3 @@
-// Estado temporal corregido
 let especialidadWizardState = {
     platillo: null,
     detallePersonalizacion: null,
