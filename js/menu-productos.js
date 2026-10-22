@@ -4,13 +4,25 @@ import { detallesPersonalizados } from './menu-detalles.js';
 export async function cargarProductosCatalogo() {
   const productosCatalogo = [];
 
+  // 1. NUEVO: Cargar el JSON de productos extra (Cafés y Postres)
+  try {
+    // Ajusta la ruta si guardaste el JSON en otra carpeta
+    const respuestaExtra = await fetch("../menu/JSON%20documentos/productos-extra.json");
+    if (respuestaExtra.ok) {
+      const productosExtra = await respuestaExtra.json();
+      productosCatalogo.push(...productosExtra);
+    }
+  } catch (error) {
+    console.warn("No se pudo cargar productos-extra.json:", error);
+  }
+
+  // 2. Cargar el menú original (el de Bistrosoft)
   try {
     const response = await fetch("../menu/JSON%20documentos/menu.json");
     if (!response.ok) throw new Error('No se pudo cargar el menú referencia');
     
     const rawData = await response.json();
 
-    // 1. Limpiar el JSON 
     const productosLimpios = Object.values(rawData.data).map(producto => ({
       nombre: producto.name || "Sin nombre",
       departamento: producto.department || "Sin departamento",
@@ -19,37 +31,19 @@ export async function cargarProductosCatalogo() {
       disponible: producto.isProductAvailable ?? false
     }));
 
-    // 2. Palabras clave del top 10
-     const palabrasClave = [
-      "croissant salado",
-      "chai latte",          // antes que "latte caliente"
-      "chocolate caliente",
-      "tisana pink blossom",
-      "enchiladas",
-      "chilaquiles",
-      "capuchino",
-      "americano",
-      "latte frio",
-      "latte caliente",
-      "crepa"
+    const palabrasClave = [
+      "croissant salado", "chai latte", "chocolate caliente", "tisana pink blossom",
+      "enchiladas", "chilaquiles", "capuchino", "americano", "latte frio", "latte caliente", "crepa"
     ];
 
-    // 3. Filtrar los productos asegurándonos de excluir el departamento de ingredientes
     const productosFiltrados = productosLimpios.filter(prod => {
       const nombreLower = prod.nombre.toLowerCase();
       const deptoLower = prod.departamento.toLowerCase();
-
-      // Regla A: No debe pertenecer al departamento de ingredientes
       const esIngrediente = deptoLower.includes("ingrediente");
-
-      // Regla B: Debe coincidir con alguna palabra clave del top
       const coincideClave = palabrasClave.some(termino => nombreLower.includes(termino));
-
-      // Se queda solo si coincide con el top Y NO es un ingrediente
       return coincideClave && !esIngrediente;
     });
 
-    // 4. CRUCE DE DATOS: Agregar descripción e imagen
     const productosDelMenu = productosFiltrados.map(prod => {
       const claveEncontrada = palabrasClave.find(termino => prod.nombre.toLowerCase().includes(termino));
       const infoExtra = claveEncontrada ? detallesPersonalizados[claveEncontrada] : null;
@@ -65,6 +59,7 @@ export async function cargarProductosCatalogo() {
     console.error("No se pudo cargar el menú de referencia:", error);
   }
 
+  // 3. Cargar los productos que el usuario agregue manualmente (LocalStorage)
   try {
     const productosGuardados = JSON.parse(localStorage.getItem("productos_agregados") || "[]");
     const productosNuevos = productosGuardados.map(producto => ({

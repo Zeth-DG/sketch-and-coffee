@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });//forEach
 
     // --- 2. APLICAR FILTROS AVANZADOS (CHECKBOXES, RANGO DE PRECIO) Y ORDENAMIENTO ---
+    // --- 2. APLICAR FILTROS AVANZADOS (CHECKBOXES, RANGO DE PRECIO) Y ORDENAMIENTO ---
     function aplicarFiltrosYOrden() {
         let resultado = [...productosOriginales];
 
@@ -211,10 +212,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             resultado = resultado.filter(prod => {
                 const nombre = prod.nombre.toLowerCase();
                 const depto = prod.departamento.toLowerCase();
-                if (categoriaActiva === 'grano') return nombre.includes('grano') || depto.includes('grano');
-                if (categoriaActiva === 'bebidas') return depto.includes('bebida') || nombre.includes('latte') || nombre.includes('capuchino') || nombre.includes('chocolate') || nombre.includes('tisana') || nombre.includes('americano');
-                if (categoriaActiva === 'snack') return depto.includes('snack') || nombre.includes('chilaquiles') || nombre.includes('enchiladas') || nombre.includes('croissant');
-                if (categoriaActiva === 'postres') return depto.includes('postre') || nombre.includes('crepa');
+                
+                // Si el departamento dice "postre" o "snack", lo protegemos de la categoría bebidas
+                const esPostreOSnack = depto.includes('postre') || depto.includes('snack');
+
+                if (categoriaActiva === 'grano') {
+                    return nombre.includes('grano') || depto.includes('grano');
+                }
+                
+                if (categoriaActiva === 'bebidas') {
+                    if (esPostreOSnack) return false; 
+                    return depto.includes('bebida') || nombre.includes('latte') || nombre.includes('capuchino') || nombre.includes('chocolate') || nombre.includes('tisana') || nombre.includes('americano');
+                }
+                
+                if (categoriaActiva === 'snack') {
+                    return depto.includes('snack') || nombre.includes('chilaquiles') || nombre.includes('enchiladas') || nombre.includes('croissant');
+                }
+                
+                if (categoriaActiva === 'postres') {
+                    // Agregamos 'pastel', 'brownie' y 'cheesecake' para mayor seguridad
+                    return depto.includes('postre') || nombre.includes('crepa') || nombre.includes('pastel') || nombre.includes('brownie') || nombre.includes('cheesecake');
+                }
+                
                 return true;
             });// prod =>
         }// if categoriaActiva
