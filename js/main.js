@@ -22,6 +22,4 @@ if (emailjsDisponible) {
 }
 
 cargarHeader();
-
-// IFooter
 cargarFooter();
