@@ -232,30 +232,59 @@ function loadProduct(productId, shouldScroll = true) {
   document.getElementById("tab-envio").textContent = product.envio;
 
 // ==========================================
-  // NUEVO: Lógica dinámica para molienda y gramaje
+  //    Logica dinamica para molienda y gramaje
   // ==========================================
   const grupoMolienda = document.getElementById("grupoMolienda");
   const grupoGramaje = document.getElementById("grupoGramaje");
+  const botonesTamano = document.querySelectorAll(".btn-tamano");
+  const labelGramaje = grupoGramaje ? grupoGramaje.querySelector(".option-label") : null;
 
-  // Verificamos si el producto actual es café o incluye grano
-  const esCafe = product.name.toLowerCase().includes("cafe") || 
-                 product.name.toLowerCase().includes("americano") || 
-                 product.name.toLowerCase().includes("latte") || 
-                 product.name.toLowerCase().includes("capuchino"); 
-                 // (O puedes agregar una propiedad de categoría en tu objeto `products`)
+  const nombreLower = product.name.toLowerCase();
 
-  if (grupoMolienda && grupoGramaje) {
-    if (!esCafe) {
-      // Si no es un grano de café puro que requiera molienda, ocultamos los bloques
-      grupoMolienda.classList.add("d-none");
-      grupoGramaje.classList.add("d-none");
-    } else {
-      // Si es café, los mostramos
-      grupoMolienda.classList.remove("d-none");
-      grupoGramaje.classList.remove("d-none");
-    }
+  const esCafeGrano = nombreLower.includes("grano") || nombreLower.includes("americano");
+
+  const esBebida = nombreLower.includes("latte") || 
+                  nombreLower.includes("capuchino") || 
+                  nombreLower.includes("chai") || 
+                  nombreLower.includes("chocolate") || 
+                  nombreLower.includes("tisana") || 
+                  nombreLower.includes("americano");
+
+  if (grupoMolienda) {
+      if (esCafeGrano) {
+        grupoMolienda.classList.remove("d-none");
+      } else {
+        grupoMolienda.classList.add("d-none");
+      }
+  }
+
+  if (grupoGramaje) {
+      if (esBebida || esCafeGrano) {
+        grupoGramaje.classList.remove("d-none");
+        
+        if (labelGramaje) {
+          labelGramaje.textContent = esBebida ? "Tamaño de bebida" : "Tamaño / gramaje";
+        }
+
+        // Cambiamos los textos de los botones dinámicamente
+        if (botonesTamano.length >= 3) {
+          if (esBebida) {
+            botonesTamano[0].textContent = "Chico";
+            botonesTamano[1].textContent = "Mediano";
+            botonesTamano[2].textContent = "Grande";
+          } else {
+            botonesTamano[0].textContent = "250 g";
+            botonesTamano[1].textContent = "500 g";
+            botonesTamano[2].textContent = "1 kg";
+          }
+        }
+
+      } else {
+        grupoGramaje.classList.add("d-none");
+      }
   }
   // ==========================================
+
 
   if (shouldScroll) {
     document.querySelector(".product-detail-grid").scrollIntoView({
