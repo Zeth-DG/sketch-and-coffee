@@ -231,6 +231,32 @@ function loadProduct(productId, shouldScroll = true) {
   document.getElementById("tab-prep").textContent = product.prep;
   document.getElementById("tab-envio").textContent = product.envio;
 
+// ==========================================
+  // NUEVO: Lógica dinámica para molienda y gramaje
+  // ==========================================
+  const grupoMolienda = document.getElementById("grupoMolienda");
+  const grupoGramaje = document.getElementById("grupoGramaje");
+
+  // Verificamos si el producto actual es café o incluye grano
+  const esCafe = product.name.toLowerCase().includes("cafe") || 
+                 product.name.toLowerCase().includes("americano") || 
+                 product.name.toLowerCase().includes("latte") || 
+                 product.name.toLowerCase().includes("capuchino"); 
+                 // (O puedes agregar una propiedad de categoría en tu objeto `products`)
+
+  if (grupoMolienda && grupoGramaje) {
+    if (!esCafe) {
+      // Si no es un grano de café puro que requiera molienda, ocultamos los bloques
+      grupoMolienda.classList.add("d-none");
+      grupoGramaje.classList.add("d-none");
+    } else {
+      // Si es café, los mostramos
+      grupoMolienda.classList.remove("d-none");
+      grupoGramaje.classList.remove("d-none");
+    }
+  }
+  // ==========================================
+
   if (shouldScroll) {
     document.querySelector(".product-detail-grid").scrollIntoView({
       behavior: "smooth",
