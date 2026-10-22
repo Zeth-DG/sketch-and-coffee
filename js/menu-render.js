@@ -2,7 +2,7 @@
 // Genera las tarjetas del catálogo a partir de los datos del JSON.
 import { cargarMenuTop } from './menu-productos.js';
 
-const grilla = document.getElementById('grilla-productos');
+const grilla = document.getElementById('grilla-productos'); 
 const subtitulo = document.getElementById('subtitulo-catalogo');
 
 function crearTarjeta(prod, indice) {

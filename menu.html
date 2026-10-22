@@ -118,9 +118,11 @@
                     <div id="grupo-filtro-precio" class="grupo-filtro" role="group" aria-labelledby="etiqueta-precio">
                         <h3 id="etiqueta-precio">Rango de precio</h3>
                         <div class="d-flex justify-content-between fw-bold small mb-2">
-                            <span id="precio-minimo" aria-label="Precio mínimo de 80 pesos mexicanos">$80</span>
-                            <span id="precio-maximo" aria-label="Precio máximo de 650 pesos mexicanos">$650</span>
+                            <span id="precio-minimo" aria-label="Precio mínimo de 50 pesos mexicanos">$50</span>
+                            <span id="precio-maximo" aria-label="Precio máximo seleccionado">$650</span>
                         </div>
+                        <input type="range" class="form-range" id="rango-precio" min="50" max="650" step="10"
+                            value="650" aria-label="Filtrar por precio máximo">
                     </div>
 
                     <!--Botones filtros-->
@@ -139,7 +141,7 @@
                 aria-label="Listado principal de productos del catálogo">
                 <div id="barra-control-productos"
                     class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-                    <span id="texto-contador-productos" aria-live="polite" aria-atomic="true">Mostrando 1 a 9 de 10
+                    <span id="texto-contador-productos" aria-live="polite" aria-atomic="true">Mostrando 9 de 13
                         productos</span>
                     <div class="d-flex align-items-center gap-2">
                         <label for="desplegable-ordenamiento" class="visually-hidden">Ordenar lista de productos
@@ -159,7 +161,7 @@
 
                 <div id="grilla-productos" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" role="list"
                     aria-label="Productos del menú en formato de tarjetas">
-                     
+
                 </div>
 
                 <!--Navegación de páginas falta agregar el href correspondiente-->
@@ -216,6 +218,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./js/menu-filtros.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
     <script src="./js/formulario.js" type="module"></script>
     <script src="./js/menu-render.js" type="module"></script>
