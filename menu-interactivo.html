@@ -1,55 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sketch & Coffee - Menú</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>¿hambre? ve nuestro menú</title>
+    <link rel="icon" type="image/png" href="./imagenes/favicon.ico">
+    <!--enlace de bootstrap y estilos de css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <!-- Tipografías Google Fonts -->
+    <!--enlace tipografía-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400..700&family=Homemade+Apple&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
+
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-centrada py-2 sticky-top">
-        <div class="container-fluid">
-            <!-- Logo a la izquierda -->
-            <a class="navbar-brand" href="#hero">
-                <img src="./images/logo-fondo-negro.jpg" alt="logo sketch and coffee" class="brand-logo"
-                    style="height: 40px; width: auto;">
-            </a>
-
-            <!-- Botón hamburguesa -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Contenido desplegable -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Botón de Pedido / Carrito empujado a la derecha -->
-                <div class="d-flex align-items-center ms-auto">
-                    <button class="btn btn-outline-light btn-sm rounded-pill px-3 position-relative"
-                        data-bs-toggle="modal" data-bs-target="#modalCarrito">
-                        <i class="bi bi-cart3 me-1"></i> Mi Pedido
-                        <span id="contador-carrito"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!--Encabezado y menu - Liz-->
+    <!--el header se mueve a un archivo especifico para importarse en cada página-->
+    <header id="header-global"></header>
 
     <!-- HERO (Asimétrico: 1 destacada + 3 secundarias) -->
     <section id="hero" class="container-fluid hero-section text-center d-flex flex-column justify-content-center">
@@ -64,77 +38,87 @@
 
         <div class="container">
             <div class="row g-3 justify-content-center align-items-stretch">
+                <!--hero-->
+                <div class="row g-3 justify-content-center align-items-stretch" style="max-height: 450px;">
 
-                <!-- 🟣 TARJETA DESTACADA: Bebidas -->
-                <div class="col-12 col-md-6 col-lg-5">
-                    <div class="card bg-dark text-white h-100 shadow-sm card-hero card-hero-destacada"
-                        onclick="seleccionarCategoriaDesdeHero('bebidas')">
-                        <img src="./images/bebidas.jpg" class="card-img-top card-hero-img"
-                            alt="Latte con arte de oso de Sketch and Coffee">
-                        <div class="card-body d-flex flex-column justify-content-end py-3">
-                            <span class="badge bg-danger align-self-start mb-2 badge-destacada">Lo más pedido</span>
-                            <div class="d-flex justify-content-between align-items-center">
+                    <!-- Tarjeta Izquierda: Bebidas -->
+                    <div class="col-12 col-md-6 mb-3 mb-lg-0" style="height: 450px;">
+                        <div class="card bg-dark text-white h-100 shadow-sm card-hero card-hero-secundaria overflow-hidden position-relative"
+                            onclick="seleccionarCategoriaDesdeHero('bebidas')">
+
+                            <img src="./imagenes/menu-interactivo/bebidas.jpg"
+                                class="card-hero-img-fondo w-100 h-100 object-fit-cover position-absolute top-0 start-0 z-0"
+                                alt="Latte con arte de oso">
+                            <div class="card-hero-overlay position-absolute top-0 start-0 w-100 h-100 z-0"></div>
+
+                            <div
+                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-4 d-flex justify-content-between align-items-end z-1">
                                 <div class="text-start">
-                                    <h5 class="card-title m-0 fs-4">Bebidas</h5>
+                                    <span class="badge bg-danger mb-2">Lo más pedido</span>
+                                    <h5 class="card-title m-0 fs-3">Bebidas</h5>
                                     <small class="text-white-50">Cafés, frappés, tés y más</small>
                                 </div>
-                                <i class="bi bi-arrow-right-circle fs-4 icono-click"></i>
+                                <i class="bi bi-arrow-right-circle fs-3"></i>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- COLUMNA DERECHA: 3 tarjetas apiladas -->
-                <div class="col-12 col-md-6 col-lg-5">
-                    <div class="d-flex flex-column gap-3 h-100">
+                    <!-- Columna Derecha: 3 Tarjetas apiladas -->
+                    <div class="col-12 col-md-6" style="height: 450px;">
+                        <div class="d-flex flex-column gap-3 h-100">
 
-                        <!-- Platillos -->
-                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
-                            onclick="seleccionarCategoriaDesdeHero('platillos')">
-                            <img src="./images/paquetes.jpeg" class="card-hero-img-fondo" alt="Croissant en paquete">
-                            <div class="card-hero-overlay"></div>
-                            <div
-                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
-                                <div class="text-start">
-                                    <h6 class="card-title m-0">Platillos</h6>
-                                    <small class="text-white-50">Chilaquiles, molletes y más</small>
+                            <!-- Platillos -->
+                            <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill overflow-hidden position-relative"
+                                onclick="seleccionarCategoriaDesdeHero('platillos')">
+                                <img src="./imagenes/menu-interactivo/paquetes.jpeg"
+                                    class="card-hero-img-fondo w-100 h-100 object-fit-cover position-absolute top-0 start-0 z-0"
+                                    alt="Croissant">
+                                <div class="card-hero-overlay position-absolute top-0 start-0 w-100 h-100 z-0"></div>
+                                <div
+                                    class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end z-1">
+                                    <div class="text-start">
+                                        <h6 class="card-title m-0 fs-5">Platillos</h6>
+                                        <small class="text-white-50">Chilaquiles, molletes y más</small>
+                                    </div>
+                                    <i class="bi bi-arrow-right-circle fs-5"></i>
                                 </div>
-                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
                             </div>
-                        </div>
 
-                        <!-- Crepas y Waffles -->
-                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
-                            onclick="seleccionarCategoriaDesdeHero('crepas-waffles')">
-                            <img src="./images/crepas.jpg" class="card-hero-img-fondo"
-                                alt="Crepa de nutella con fresas">
-                            <div class="card-hero-overlay"></div>
-                            <div
-                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
-                                <div class="text-start">
-                                    <h6 class="card-title m-0">Crepas y waffles</h6>
-                                    <small class="text-white-50">Ármalos a tu gusto</small>
+                            <!-- Crepas y waffles -->
+                            <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill overflow-hidden position-relative"
+                                onclick="seleccionarCategoriaDesdeHero('crepas-waffles')">
+                                <img src="./imagenes/menu-interactivo/crepas.jpg"
+                                    class="card-hero-img-fondo w-100 h-100 object-fit-cover position-absolute top-0 start-0 z-0"
+                                    alt="Crepa">
+                                <div class="card-hero-overlay position-absolute top-0 start-0 w-100 h-100 z-0"></div>
+                                <div
+                                    class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end z-1">
+                                    <div class="text-start">
+                                        <h6 class="card-title m-0 fs-5">Crepas y waffles</h6>
+                                        <small class="text-white-50">Ármalos a tu gusto</small>
+                                    </div>
+                                    <i class="bi bi-arrow-right-circle fs-5"></i>
                                 </div>
-                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
                             </div>
-                        </div>
 
-                        <!-- Postres -->
-                        <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill"
-                            onclick="seleccionarCategoriaDesdeHero('postres')">
-                            <img src="./images/postres2.jpg" class="card-hero-img-fondo"
-                                alt="Postres de Sketch and Coffee">
-                            <div class="card-hero-overlay"></div>
-                            <div
-                                class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end">
-                                <div class="text-start">
-                                    <h6 class="card-title m-0">Postres</h6>
-                                    <small class="text-white-50">Panqué, brownie, flan y más</small>
+                            <!-- Postres -->
+                            <div class="card bg-dark text-white shadow-sm card-hero card-hero-secundaria flex-fill overflow-hidden position-relative"
+                                onclick="seleccionarCategoriaDesdeHero('postres')">
+                                <img src="./imagenes/menu-interactivo/postres2.jpg"
+                                    class="card-hero-img-fondo w-100 h-100 object-fit-cover position-absolute top-0 start-0 z-0"
+                                    alt="Postres">
+                                <div class="card-hero-overlay position-absolute top-0 start-0 w-100 h-100 z-0"></div>
+                                <div
+                                    class="card-body-hero position-absolute bottom-0 start-0 end-0 p-3 d-flex justify-content-between align-items-end z-1">
+                                    <div class="text-start">
+                                        <h6 class="card-title m-0 fs-5">Postres</h6>
+                                        <small class="text-white-50">Panqué, brownie, flan y más</small>
+                                    </div>
+                                    <i class="bi bi-arrow-right-circle fs-5"></i>
                                 </div>
-                                <i class="bi bi-arrow-right-circle fs-5 icono-click"></i>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
@@ -167,10 +151,6 @@
     </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-dark text-white text-center py-4">
-        <p class="mb-0">&copy; 2026 Sketch and Coffee. Todos los derechos reservados.</p>
-    </footer>
 
     <!-- MODAL PARA CARRITO / RESUMEN DE PEDIDO -->
     <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
@@ -331,15 +311,45 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5 JS Bundle -->
+    <footer id="footer-global" role="contentinfo">
+        <div class="site-footer">
+            <div class="footer-container">
+                <!-- Información de derechos de autor y marca -->
+                <p>&copy; 2026 Sketch & Coffee. Todos los derechos reservados.</p>
+
+                <!-- Navegación de enlaces legales -->
+                <nav class="footer-legal-nav" aria-label="Enlaces legales">
+                    <ul>
+                        <li>
+                            <a href="terminos.html" title="Ver Términos y Condiciones de Uso">Términos y Condiciones</a>
+                        </li>
+                        <li>
+                            <a href="aviso.html" title="Ver Aviso de Privacidad">Aviso de Privacidad</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/newsletter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <!-- Scripts modulares -->
-    <script src="./js/menu.js"></script>
-    <script src="./js/modales.js"></script>
-    <script src="./js/especialidades.js"></script>
-    <script src="./js/carrito.js"></script>
+
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/menu-interactivo.js"></script>
+    <script src="./js/modales-menu-interactivo.js"></script>
+    <script src="./js/especialidades-menu-interactivo.js"></script>
+    <script src="./js/carrito-menu-interactivo.js"></script>
+    <!-- Botón -->
+    <button type="button" class="btn btn-primary rounded-circle shadow-lg" id="btnSubir">
+        <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z" />
+        </svg>
+    </button>
+
 </body>
 
 </html>
