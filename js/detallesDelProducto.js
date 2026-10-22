@@ -44,19 +44,29 @@ function updateQty(val) {
 }
 
 /**
- * Suma la cantidad seleccionada al badge del carrito en el Header
+ * Agrega al carrito global el producto que se está viendo,
+ * respetando la cantidad elegida en el selector.
  */
-let cartCount = 0;
+let productoActualId = 1;
 function addToCart() {
-  const input = document.getElementById('qty-input');
-  const cartBadge = document.getElementById('cart-count');
+  const producto = products[productoActualId];
+  if (!producto) return;
 
-  const qty = input ? (parseInt(input.value) || 1) : 1;
-  cartCount += qty;
-
-  if (cartBadge) {
-    cartBadge.innerText = cartCount;
+  if (typeof window.agregarAlCarrito !== "function") {
+    console.warn("El carrito global todavía no está disponible.");
+    return;
   }
+
+  const input = document.getElementById('qty-input');
+  const qty = input ? (parseInt(input.value) || 1) : 1;
+  const precio = Number(String(producto.price).replace(/[^\d.]/g, "")) || 0;
+
+  agregarAlCarrito({
+    id: `detalle-${productoActualId}`,
+    nombre: producto.name,
+    precio: precio,
+    cantidad: qty
+  });
 }
 
 /**
@@ -188,6 +198,8 @@ const products = {
 function loadProduct(productId, shouldScroll = true) {
   const product = products[productId];
   if (!product) return;
+
+  productoActualId = Number(productId) || productoActualId;
 
   const mainImage = document.getElementById("main-product-img");
   const title = document.getElementById("product-title");

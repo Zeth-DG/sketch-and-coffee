@@ -140,13 +140,11 @@ function seleccionarBaseCrepa(baseObj) {
     const contenedor = document.getElementById("menu-contenedor");
 
     let htmlIngredientes = catCrepas.listaIngredientes.map((ing, idx) => `
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="selector-sabor-item">
-                <input type="checkbox" class="ing-wizard-incluido" value="${ing}" id="wizard_inc_${idx}" onchange="validarIngredientesIncluidosWizard(this)">
-                <label class="btn-sabor-option text-center" for="wizard_inc_${idx}">
-                    ${ing}
-                </label>
-            </div>
+        <div class="col-6 col-md-4 col-lg-3 mb-2">
+            <input type="checkbox" class="btn-check ing-wizard-incluido" value="${ing}" id="wizard_inc_${idx}" onchange="validarIngredientesIncluidosWizard(this)" autocomplete="off">
+            <label class="btn btn-sabor-option w-100 py-3 rounded-3 text-wrap" for="wizard_inc_${idx}">
+                ${ing}
+            </label>
         </div>
     `).join('');
 
@@ -192,13 +190,11 @@ function avanzarPasoExtras() {
     const contenedor = document.getElementById("menu-contenedor");
 
     let htmlExtras = catCrepas.listaIngredientes.map((ing, idx) => `
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="selector-sabor-item">
-                <input type="checkbox" class="ing-wizard-extra" value="${ing}" id="wizard_ext_${idx}" onchange="actualizarPrecioTotalWizard()">
-                <label class="btn-sabor-option text-center" for="wizard_ext_${idx}">
-                    ${ing} <span class="small opacity-75">(+$15)</span>
-                </label>
-            </div>
+        <div class="col-6 col-md-4 col-lg-3 mb-2">
+            <input type="checkbox" class="btn-check ing-wizard-extra" value="${ing}" id="wizard_ext_${idx}" onchange="actualizarPrecioTotalWizard()" autocomplete="off">
+            <label class="btn btn-sabor-option w-100 py-3 rounded-3 text-wrap" for="wizard_ext_${idx}">
+                ${ing} <span class="small d-block mt-1 opacity-75">(+$15)</span>
+            </label>
         </div>
     `).join('');
 

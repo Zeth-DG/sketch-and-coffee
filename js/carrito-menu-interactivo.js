@@ -1,12 +1,13 @@
 let carrito = JSON.parse(localStorage.getItem('carrito_sketch')) || [];
 
 function agregarAlCarrito(item) {
-    if (item.opcionesSabores && item.opcionesSabores.length > 0) {
+    if (item.opcionesSabores && item.opcionesSabores.length > 0 && typeof abrirModalSabor === "function") {
         productoSaborTemp = item;
         abrirModalSabor(item);
         return;
     }
 
+    let cantidad = Number(item.cantidad) > 0 ? Number(item.cantidad) : 1;
     let precioFinal = item.precio;
     let nombreFinal = item.nombre;
 
@@ -25,12 +26,12 @@ function agregarAlCarrito(item) {
         id: item.id + (checkAdd?.checked ? '_add' : '') + (checkPaq?.checked ? '_paq' : ''),
         nombre: nombreFinal,
         precio: precioFinal,
-        cantidad: 1
+        cantidad: cantidad
     };
 
     let existente = carrito.find(p => p.id === productoEnCarrito.id);
     if (existente) {
-        existente.cantidad++;
+        existente.cantidad += cantidad;
     } else {
         carrito.push(productoEnCarrito);
     }
@@ -184,3 +185,18 @@ function mostrarToastNotificacion(mensaje) {
         toast.show();
     }
 }
+
+// Listener delegado: cualquier botón con data-agregar-carrito agrega su producto.
+// Se usa así para no repetir onclick con JSON en cada plantilla HTML.
+document.addEventListener("click", (evento) => {
+    const boton = evento.target.closest("[data-agregar-carrito]");
+    if (!boton) return;
+
+    agregarAlCarrito({
+        id: boton.dataset.id || `producto_${Date.now()}`,
+        nombre: boton.dataset.nombre || "Producto",
+        precio: Number(boton.dataset.precio) || 0,
+        descripcion: boton.dataset.descripcion || "",
+        cantidad: Number(boton.dataset.cantidad) || 1
+    });
+});

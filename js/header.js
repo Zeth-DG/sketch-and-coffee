@@ -23,8 +23,44 @@ export async function cargarHeader() {
 
     configurarSesion(contenedorHeader);
     marcarEnlaceActivo();
+    await cargarCarritoGlobal();
   } catch (error) {
     console.error("Error al cargar el header:", error);
+  }
+}
+
+/**
+ * Carga el modal y la lógica del carrito una sola vez por página.
+ * En menu-interactivo.html el script ya viene incluido, por eso se comprueba
+ * que la API no exista antes de inyectarlo de nuevo.
+ */
+async function cargarCarritoGlobal() {
+  try {
+    if (typeof window.agregarAlCarrito !== "function") {
+      const respuesta = await fetch("./componentes/carrito.html");
+      if (!respuesta.ok) {
+        throw new Error("No se pudo cargar el componente del carrito.");
+      }
+
+      document.body.insertAdjacentHTML("beforeend", await respuesta.text());
+
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = new URL("../js/carrito-menu-interactivo.js", import.meta.url).href;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("No se pudo cargar carrito-menu-interactivo.js"));
+        document.body.appendChild(script);
+      });
+    }
+
+    if (typeof window.actualizarContadorCarrito === "function") {
+      window.actualizarContadorCarrito();
+    }
+    if (typeof window.renderizarModalCarrito === "function") {
+      window.renderizarModalCarrito();
+    }
+  } catch (error) {
+    console.error("Error al cargar el carrito:", error);
   }
 }
 

@@ -56,7 +56,7 @@ function normalizarItem(item) {
 
 async function cargarMenu() {
     try {
-        let respuesta = await fetch('/menu_interactivo/menu.json');
+        let respuesta = await fetch('./menu_interactivo/menu.json');
         if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
         menuData = await respuesta.json();
         //Normalizar estructura
@@ -120,26 +120,6 @@ function renderizarCategoria(categoriaId) {
             });
         }
     }
-}
-
-function abrirModalSabor(item) {
-    document.getElementById("tituloModalSabor").textContent = item.nombre;
-    const contenedor = document.getElementById("contenedor-sabores-radio");
-    contenedor.innerHTML = "";
-
-    item.opcionesSabores.forEach((sabor, idx) => {
-        contenedor.innerHTML += `
-            <div class="selector-sabor-item">
-                <input type="radio" name="saborBebida" id="sabor_${idx}" value="${sabor}" ${idx === 0 ? 'checked' : ''}>
-                <label class="btn-sabor-option" for="sabor_${idx}">
-                    ${sabor}
-                </label>
-            </div>
-        `;
-    });
-
-    let modal = new bootstrap.Modal(document.getElementById('modalSaborBebida'));
-    modal.show();
 }
 
 // Wizard de Bebidas - Paso 1
