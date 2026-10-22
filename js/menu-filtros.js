@@ -197,7 +197,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });//forEach
 
     // --- 2. APLICAR FILTROS AVANZADOS (CHECKBOXES, RANGO DE PRECIO) Y ORDENAMIENTO ---
-    // --- 2. APLICAR FILTROS AVANZADOS (CHECKBOXES, RANGO DE PRECIO) Y ORDENAMIENTO ---
     function aplicarFiltrosYOrden() {
         let resultado = [...productosOriginales];
 
@@ -352,4 +351,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Aplicar filtros iniciales y renderizar al cargar la página
     aplicarFiltrosYOrden();
+
+    // --- 5. LEER PARÁMETRO URL PARA CATEGORÍA AUTOMÁTICA ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoriaURL = urlParams.get('cat');
+
+    if (categoriaURL) {
+        // Busca el botón de la píldora según el parámetro (ej. 'categoria-grano')
+        const botonCategoria = document.getElementById(`categoria-${categoriaURL}`);
+        if (botonCategoria) {
+            // Simula un clic en el botón. Esto hace que se ilumine y filtre los productos.
+            botonCategoria.click(); 
+        }
+    } else {
+        // Si no hay parámetro, aplica los filtros normales por defecto
+        aplicarFiltrosYOrden();
+    }
 });//DOM
