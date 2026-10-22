@@ -82,9 +82,13 @@
                         <!-- Contraseña -->
                         <div class="mb-3">
                             <label for="campoContrasena" class="form-label fw-bold">Contraseña</label>
-                            <input type="password" id="campoContrasena" class="form-control"
-                                placeholder="Mínimo 6 caracteres" required aria-required="true"
-                                aria-describedby="errorContrasena" style="min-height: 44px;">
+                            <div class="input-grupo">
+                                <input type="password" id="campoContrasena" class="form-control"
+                                    placeholder="Mínimo 6 caracteres" required aria-required="true"
+                                    aria-describedby="errorContrasena" style="min-height: 44px;">
+                                <button type="button" id="btnVerContrasena" class="btn-ver-password"
+                                    aria-label="Mostrar contraseña">Ver</button>
+                            </div>
                             <p id="errorContrasena" class="mensaje-error text-danger small mt-1 mb-0"></p>
                         </div>
 
@@ -92,9 +96,13 @@
                         <div class="mb-3">
                             <label for="campoConfirmarContrasena" class="form-label fw-bold">Confirmar
                                 contraseña</label>
-                            <input type="password" id="campoConfirmarContrasena" class="form-control"
-                                placeholder="Repite tu contraseña" required aria-required="true"
-                                aria-describedby="errorConfirmarContrasena" style="min-height: 44px;">
+                            <div class="input-grupo">
+                                <input type="password" id="campoConfirmarContrasena" class="form-control"
+                                    placeholder="Repite tu contraseña" required aria-required="true"
+                                    aria-describedby="errorConfirmarContrasena" style="min-height: 44px;">
+                                <button type="button" id="btnVerConfirmarContrasena" class="btn-ver-password"
+                                    aria-label="Mostrar contraseña">Ver</button>
+                            </div>
                             <p id="errorConfirmarContrasena" class="mensaje-error text-danger small mt-1 mb-0"></p>
                         </div>
 

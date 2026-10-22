@@ -1,94 +1,111 @@
-// Persistencia de usuarios con LocalStorage
-
 const claveUsuarios = "usuarios_registrados";
 
+async function crearHash(contrasena) {
+    const datos = new TextEncoder().encode(contrasena);
+    const resultado = await crypto.subtle.digest("SHA-256", datos);
+    return Array.from(new Uint8Array(resultado))
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+}
 
-// FUNCION 1: CREAR USUARIO ADMINISTRADOR
+function obtenerUsuarios() {
+    return JSON.parse(localStorage.getItem(claveUsuarios) || "[]");
+}
 
-function crearUsuariosIniciales() { 
-
-    let datosGuardados = localStorage.getItem(claveUsuarios);
-
-    // Si no existen usuarios, creamos el administrador
-    if (datosGuardados === null) {
-
-        let usuarios = [
-            {
-                id: 1,
-                nombre: "Administrador",
-                usuario: "administrador",
-                correo: "admin@ejemplo.com",
-                contrasena: "123456789",
-                rol: "administrador"
-            }
-        ];// array usuario
-
-        // Convertir el arreglo a JSON y guardarlo
-        localStorage.setItem(claveUsuarios, JSON.stringify(usuarios));
-
-        console.log("Administrador creado correctamente");
-    }//if
-}//datosGuardados
-
-
-// FUNCION 2: OBTENER USUARIOS GUARDADOS
-
-function obtenerUsuariosGuardados() {
-
-    // Obtener los datos del navegador
-    let datosGuardados = localStorage.getItem(claveUsuarios);
-
-    // Si no existen usuarios, regresar arreglo vacío
-    if (datosGuardados === null) {
-        return [];
-    }//if
-
-    // Convertir JSON a arreglo de objetos
-    let usuarios = JSON.parse(datosGuardados);
-
-    return usuarios;
-}//obtenerUsuariosGuardados
-
-
-// FUNCION 3: GUARDAR NUEVO USUARIO
-
-function guardarUsuario(nuevoUsuario) {
-
-    // Obtener los usuarios registrados
-    let usuarios = obtenerUsuariosGuardados();
-
-    // Revisar si el correo ya existe
-    for (let i = 0; i < usuarios.length; i++) {
-
-        if (usuarios[i].correo === nuevoUsuario.correo) {
-
-            console.log("Este correo ya está registrado");
-
-            return false;
-        }//if
-    }//for
-
-    // Asignar datos al usuario nuevo
-    nuevoUsuario.id = usuarios.length + 1;
-    nuevoUsuario.usuario = nuevoUsuario.correo;
-    nuevoUsuario.rol = "usuario";
-
-    // Agregar el usuario al arreglo
-    usuarios.push(nuevoUsuario);
-
-    // Convertir a JSON y guardar en LocalStorage
+function guardarUsuarios(usuarios) {
     localStorage.setItem(claveUsuarios, JSON.stringify(usuarios));
+}
 
-    console.log("Usuario guardado correctamente");
+async function crearUsuarioAdministrador() {
+    const usuarios = obtenerUsuarios();
 
+    if (usuarios.length === 0) {
+        usuarios.push({
+            id: 1,
+            nombre: "Administrador",
+            usuario: "administrador",
+            correo: "admin@ejemplo.com",
+            contrasenaHash: await crearHash("123456789"),
+            rol: "administrador"
+        });
+    }
+
+    for (const usuario of usuarios) {
+        if (typeof usuario.contrasena === "string") {
+            usuario.contrasenaHash = await crearHash(usuario.contrasena);
+            delete usuario.contrasena;
+        }
+    }
+
+    const correoAdminNuevo = "admin2@ejemplo.com";
+    const cuentaExistente = usuarios.find(
+        (usuario) => usuario.correo.toLowerCase() === correoAdminNuevo
+    );
+
+    if (!cuentaExistente) {
+        const siguienteId = Math.max(0, ...usuarios.map((usuario) => Number(usuario.id) || 0)) + 1;
+        usuarios.push({
+            id: siguienteId,
+            nombre: "Administradora",
+            usuario: correoAdminNuevo,
+            correo: correoAdminNuevo,
+            contrasenaHash: await crearHash("123456789"),
+            rol: "administrador"
+        });
+    } else if (cuentaExistente.rol !== "administrador") {
+        console.warn(`No se creó el perfil administrador: ${correoAdminNuevo} ya pertenece a un usuario.`);
+    }
+
+    guardarUsuarios(usuarios);
+
+    const sesion = JSON.parse(localStorage.getItem("app_authenticated_user") || "null");
+    if (sesion) {
+        delete sesion.contrasena;
+        delete sesion.contrasenaHash;
+        delete sesion.contrasenaSalt;
+        localStorage.setItem("app_authenticated_user", JSON.stringify(sesion));
+    }
+}
+
+async function guardarUsuario(nuevoUsuario) {
+    const usuarios = obtenerUsuarios();
+    const correo = nuevoUsuario.correo.trim().toLowerCase();
+
+    if (usuarios.some((usuario) => usuario.correo.toLowerCase() === correo)) {
+        return false;
+    }
+
+    const { contrasena, ...datosUsuario } = nuevoUsuario;
+    usuarios.push({
+        ...datosUsuario,
+        id: usuarios.length + 1,
+        correo,
+        usuario: correo,
+        contrasenaHash: await crearHash(contrasena),
+        rol: "usuario"
+    });
+    guardarUsuarios(usuarios);
     return true;
-}// guardarUsuario
+}
 
+async function autenticarUsuario(correo, contrasena) {
+    const dato = correo.trim().toLowerCase();
+    const usuario = obtenerUsuarios().find(
+        (actual) =>
+            actual.correo.toLowerCase() === dato ||
+            actual.usuario.toLowerCase() === dato
+    );
 
-// EXPORTAR FUNCIONES PARA EL EQUIPO
+    if (!usuario || usuario.contrasenaHash !== await crearHash(contrasena)) {
+        return null;
+    }
+
+    const { contrasenaHash, ...usuarioSinContrasena } = usuario;
+    return usuarioSinContrasena;
+}
 
 export {
-    crearUsuariosIniciales as seedInitialUsers,
-    obtenerUsuariosGuardados as getStoredUsers,
-    guardarUsuario as saveUserToStorage
-};//export
+    crearUsuarioAdministrador as seedInitialUsers,
+    guardarUsuario as saveUserToStorage,
+    autenticarUsuario as authenticateStoredUser
+};

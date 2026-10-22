@@ -1,6 +1,9 @@
-import { getStoredUsers } from './storage_InicioSesion.js';
+import {
+    authenticateStoredUser,
+    seedInitialUsers
+} from './storage_InicioSesion.js';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     // Selección de elementos del DOM
     const formularioLogin = document.querySelector("#formularioLogin");
@@ -13,6 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnOlvidaste = document.querySelector("#btnOlvidastePassword");
 
     if (!formularioLogin) return;
+
+    try {
+        await seedInitialUsers();
+    } catch (error) {
+        console.error("No se pudo preparar el almacenamiento seguro de usuarios:", error);
+        if (alertaGeneral) {
+            alertaGeneral.className = "alert alert-danger";
+            alertaGeneral.textContent = "No se pudo preparar el inicio de sesión en este navegador.";
+            alertaGeneral.classList.remove("d-none");
+        }
+        return;
+    }
 
     /*=========================================================
         RECUPERACIÓN RÁPIDA DE CONTRASEÑA (Opción 3)
@@ -72,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }// btnolvidaste
 
     // Captura del evento submit evitando la recarga de página
-    formularioLogin.addEventListener("submit", (e) => {
+    formularioLogin.addEventListener("submit", async (e) => {
         e.preventDefault(); // Evita recarga por defecto
 
         // Limpiar estados previos
@@ -81,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (alertaGeneral) alertaGeneral.classList.add("d-none");
 
         const usuarioVal = campoUsuario.value.trim();
-        const contrasenaVal = campoContrasena.value.trim();
+        const contrasenaVal = campoContrasena.value;
 
         let esValido = true;
 
@@ -127,11 +142,18 @@ document.addEventListener("DOMContentLoaded", () => {
             /*=========================================================
                 AUTENTICACIÓN CONTRA LOCALSTORAGE Y SESIÓN
             =========================================================*/
-            const usuariosRegistrados = getStoredUsers();
-
-            const usuarioEncontrado = usuariosRegistrados.find(
-                (u) => (u.correo === usuarioVal || u.usuario === usuarioVal) && u.contrasena === contrasenaVal
-            );
+            let usuarioEncontrado;
+            try {
+                usuarioEncontrado = await authenticateStoredUser(usuarioVal, contrasenaVal);
+            } catch (error) {
+                console.error("No se pudo verificar la contraseña:", error);
+                if (alertaGeneral) {
+                    alertaGeneral.className = "alert alert-danger";
+                    alertaGeneral.textContent = "No se pudo verificar la contraseña en este navegador.";
+                    alertaGeneral.classList.remove("d-none");
+                }
+                return;
+            }
 
             if (!usuarioEncontrado) {
                 if (alertaGeneral) {
@@ -147,7 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Crear sesión activa y redirigir a la página de inicio
             localStorage.setItem("app_authenticated_user", JSON.stringify(usuarioEncontrado));
-            window.location.href = "index.html";
+            if (usuarioEncontrado.rol === "administrador") {
+                window.location.href = "creacion_de_producto.html";
+            } else {
+                window.location.href = "index.html";
+            }
         }//if
     }); //formularioLogin
 

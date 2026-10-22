@@ -198,7 +198,7 @@
 }
 
 /* Botones del hero */
-.hero-section button {
+.hero-section .row > div:first-child > button {
   background-color: var(--color-magenta-btn);
   color: var(--color-texto-inverso);
   border: 1.5px solid var(--color-negro);
@@ -212,7 +212,7 @@
   transition: var(--transicion);
 }
 
-.hero-section button:hover {
+.hero-section .row > div:first-child > button:hover {
   background-color: var(--color-magenta-hover);
   color: var(--color-texto-inverso);
   box-shadow: var(--sombra);
@@ -237,7 +237,7 @@
     margin-inline: auto;
   }
 
-  .hero-section button {
+  .hero-section .row > div:first-child > button {
     margin-right: var(--espaciado-xs);
     margin-bottom: var(--espaciado-xs);
   }
@@ -250,18 +250,20 @@
 /* ========== Diseño del carrusel del HERO - Vanya ==========*/
 
 /* Botones de navegación del carrusel */
-.carousel-control-prev,
-.carousel-control-next {
+#carouselSketchCoffee .carousel-control-prev,
+#carouselSketchCoffee .carousel-control-next {
   background: none !important;
   border: none !important;
-  width: auto;
+  width: 12%;
 }
 
 /* Íconos dentro de los botones */
-.carousel-control-prev i,
-.carousel-control-next i {
-  font-size: 2rem;
-  color:  #9E1E4C; /* color turquesa */
+#carouselSketchCoffee .carousel-control-prev i,
+#carouselSketchCoffee .carousel-control-next i {
+  font-size: 2.25rem;
+  color: #000;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9))
+          drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* Ajuste uniforme de imágenes en el carrusel */
@@ -271,6 +273,20 @@
   object-fit: cover;      /* recorta manteniendo proporción */
   border-radius: var(--radio);
   box-shadow: var(--sombra);
+}
+
+#carouselSketchCoffee .carousel-item:first-child img {
+  object-fit: contain;
+  background-color: #000;
+}
+
+#carouselSketchCoffee .carousel-indicators [data-bs-target] {
+  min-height: 0;
+  background-color: var(--color-magenta-tenue);
+}
+
+#carouselSketchCoffee .carousel-indicators .active {
+  background-color: var(--color-magenta);
 }
 
 /* ========== Fin de sección del diseño del carrusel del HERO - Vanya ==========*/
@@ -1416,6 +1432,10 @@
   border-radius: var(--radio-sm);
   padding: var(--espaciado-sm) var(--espaciado-md);
   transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+#desplegable-ordenamiento {
+  padding-right: 2.75rem;
 }
 
 .form-control:focus,

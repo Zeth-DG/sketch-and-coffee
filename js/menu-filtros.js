@@ -1,10 +1,17 @@
 // menu-filtros.js
 // Lógica modular para gestionar categorías, filtros avanzados, precio, ordenamiento, limpieza y paginación dinámica.
-import { cargarMenuTop } from './menu-productos.js';
+import { cargarProductosCatalogo } from './menu-productos.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
+    function normalizarTexto(texto) {
+        return texto
+            .toLocaleLowerCase('es')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
     // 1. Obtener los productos originales
-    const productosOriginales = await cargarMenuTop();
+    const productosOriginales = await cargarProductosCatalogo();
     if (!productosOriginales.length) return;
 
     let productosFiltrados = [...productosOriginales];
@@ -29,6 +36,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Estado actual de categoría seleccionada
     let categoriaActiva = 'todos';
+    let busquedaProducto = normalizarTexto(
+        new URLSearchParams(window.location.search).get('buscar') || ''
+    ).trim();
 
     // Función auxiliar para renderizar tarjetas con paginación
     function renderizarPagina() {
@@ -165,7 +175,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             // Determinar categoría según el ID del botón
             const idBoton = e.target.id;
-            if (idBoton === 'categoria-todos') categoriaActiva = 'todos';
+            if (idBoton === 'categoria-todos') {
+                categoriaActiva = 'todos';
+                busquedaProducto = '';
+
+                const campoBusqueda = document.getElementById('buscar-producto');
+                if (campoBusqueda) campoBusqueda.value = '';
+
+                const url = new URL(window.location.href);
+                url.searchParams.delete('buscar');
+                window.history.replaceState({}, '', url);
+            }
             else if (idBoton === 'categoria-grano') categoriaActiva = 'grano';
             else if (idBoton === 'categoria-bebidas') categoriaActiva = 'bebidas';
             else if (idBoton === 'categoria-reposteria') categoriaActiva = 'snack';
@@ -180,15 +200,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     function aplicarFiltrosYOrden() {
         let resultado = [...productosOriginales];
 
+        if (busquedaProducto) {
+            resultado = resultado.filter(prod =>
+                normalizarTexto(prod.nombre).includes(busquedaProducto)
+            );
+        }
+
         // Filtrar por categoría de píldora
         if (categoriaActiva !== 'todos') {
             resultado = resultado.filter(prod => {
                 const nombre = prod.nombre.toLowerCase();
                 const depto = prod.departamento.toLowerCase();
                 if (categoriaActiva === 'grano') return nombre.includes('grano') || depto.includes('grano');
-                if (categoriaActiva === 'bebidas') return nombre.includes('latte') || nombre.includes('capuchino') || nombre.includes('chocolate') || nombre.includes('tisana') || nombre.includes('americano');
-                if (categoriaActiva === 'snack') return nombre.includes('chilaquiles') || nombre.includes('enchiladas') || nombre.includes('croissant');
-                if (categoriaActiva === 'postres') return nombre.includes('crepa');
+                if (categoriaActiva === 'bebidas') return depto.includes('bebida') || nombre.includes('latte') || nombre.includes('capuchino') || nombre.includes('chocolate') || nombre.includes('tisana') || nombre.includes('americano');
+                if (categoriaActiva === 'snack') return depto.includes('snack') || nombre.includes('chilaquiles') || nombre.includes('enchiladas') || nombre.includes('croissant');
+                if (categoriaActiva === 'postres') return depto.includes('postre') || nombre.includes('crepa');
                 return true;
             });// prod =>
         }// if categoriaActiva
@@ -287,6 +313,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 botonTodos.setAttribute('aria-pressed', 'true');
             }//if botonTodos
             categoriaActiva = 'todos';
+
+            busquedaProducto = '';
+            const campoBusqueda = document.getElementById('buscar-producto');
+            if (campoBusqueda) campoBusqueda.value = '';
+            const url = new URL(window.location.href);
+            url.searchParams.delete('buscar');
+            window.history.replaceState({}, '', url);
 
             // Restablecer select de orden
             if (selectOrden) selectOrden.value = 'relevancia';

@@ -16,10 +16,42 @@ export async function cargarHeader() {
 
     contenedorHeader.innerHTML = headerHTML;
 
+    const campoBusqueda = contenedorHeader.querySelector("#buscar-producto");
+    if (campoBusqueda) {
+      campoBusqueda.value = new URLSearchParams(window.location.search).get("buscar") || "";
+    }
+
+    configurarSesion(contenedorHeader);
     marcarEnlaceActivo();
   } catch (error) {
     console.error("Error al cargar el header:", error);
   }
+}
+
+function configurarSesion(header) {
+  const botonCuenta = header.querySelector("#btnCuenta");
+  const enlacePanel = header.querySelector("#btnPanelAdmin");
+  const botonCerrarSesion = header.querySelector("#btnCerrarSesion");
+  let usuario = null;
+
+  try {
+    usuario = JSON.parse(localStorage.getItem("app_authenticated_user") || "null");
+  } catch (error) {
+    console.error("No se pudo leer la sesión:", error);
+  }
+
+  if (!usuario) return;
+
+  if (botonCuenta) botonCuenta.classList.add("d-none");
+  if (botonCerrarSesion) botonCerrarSesion.classList.remove("d-none");
+  if (usuario.rol === "administrador" && enlacePanel) {
+    enlacePanel.classList.remove("d-none");
+  }
+
+  botonCerrarSesion?.addEventListener("click", () => {
+    localStorage.removeItem("app_authenticated_user");
+    window.location.replace("index.html");
+  });
 }
 
 export function marcarEnlaceActivo() {
@@ -39,4 +71,3 @@ export function marcarEnlaceActivo() {
     }
   });
 }
-

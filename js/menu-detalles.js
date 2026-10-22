@@ -11,7 +11,7 @@ const IMG = "./imagenes/alimentos-menu";
 export const detallesPersonalizados = {
   "croissant salado": {
     descripcion: "Láminas doradas y crujientes de fino hojaldre artesanal, horneadas a la perfección para lograr una textura ligera, suave y esponjosa por dentro.",
-    imagen: `${IMG}/menu-croissant-salado.jpeg`
+    imagen: "./imagenes/fotosComidaTop10/Sketch&Coffee_croissant%20salado.png"
   },
   "americano": {
     descripcion: "Extracción limpia de grano recién molido con notas tostadas, aroma envolvente y un perfil suave pero con carácter.",
@@ -39,7 +39,7 @@ export const detallesPersonalizados = {
   },
   "latte caliente": {
     descripcion: "Un balance armonioso entre la intensidad del espresso de especialidad y una nube de leche al vapor suave y cremosa.",
-    imagen: `${IMG}/latte-caliente.jpeg`
+    imagen: "./imagenes/fotosComidaTop10/Sketch&Coffe_Latte.jpg"
   },
   "chilaquiles": {
     descripcion: "Totopos crujientes bañados con salsa especiada, enriquecidos con crema ácida, queso espolvoreado y el punto exacto de picor.",
