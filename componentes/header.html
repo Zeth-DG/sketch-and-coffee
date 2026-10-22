@@ -28,7 +28,12 @@
                     </form>
 
                     <!--<button id="btnCambiarIdioma" class="btn" type="button">Idioma</button>-->
-                    <button id="btnVerCarrito" class="btn" type="button">Carrito</button>
+                    <button id="btnVerCarrito" class="btn position-relative" type="button"
+                        data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        Carrito
+                        <span id="contador-carrito"
+                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+                    </button>
                     <a href="inicio-sesion.html" id="btnCuenta" class="btn" role="button">Mi cuenta</a>
                     <a href="creacion_de_producto.html" id="btnPanelAdmin" class="btn d-none">Panel admin</a>
                     <button id="btnCerrarSesion" class="btn d-none" type="button">Cerrar sesión</button>

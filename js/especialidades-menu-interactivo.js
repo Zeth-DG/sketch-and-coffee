@@ -85,13 +85,11 @@ function seleccionarPlatilloEspecialidad(platilloObj) {
             : " (Incluido)";
 
         return `
-        <div class="col-6 col-md-4">
-            <div class="selector-sabor-item">
-                <input type="radio" name="opcionPersonalizada" value='${opString}' id="op_${idx}" ${idx === 0 ? 'checked' : ''}>
-                <label class="btn-sabor-option text-center" for="op_${idx}">
-                    ${opcionObj.nombre} <br><small class="text-muted">${textoPrecio}</small>
-                </label>
-            </div>
+        <div class="col-12 col-md-4 mb-2">
+            <input type="radio" class="btn-check" name="opcionPersonalizada" value='${opString}' id="op_${idx}" ${idx === 0 ? 'checked' : ''} autocomplete="off">
+            <label class="btn btn-outline-dark w-100 py-3 rounded-3 text-wrap" for="op_${idx}">
+                ${opcionObj.nombre} <span class="small text-muted d-block mt-1">${textoPrecio}</span>
+            </label>
         </div>
     `;
     }).join('');
@@ -221,16 +219,12 @@ function mostrarPasoComplementosPaquete() {
                 <label class="form-label fw-bold text-dark">Fruta de temporada:</label>
                 <div class="row g-2">
                     <div class="col-6">
-                        <div class="selector-sabor-item">
-                            <input type="radio" name="frutaPaq" id="frutaPapaya" value="Papaya" checked>
-                            <label class="btn-sabor-option text-center" for="frutaPapaya">Papaya</label>
-                        </div>
+                        <input type="radio" class="btn-check" name="frutaPaq" id="frutaPapaya" value="Papaya" checked autocomplete="off">
+                        <label class="btn btn-outline-dark w-100 py-2 rounded-3" for="frutaPapaya">Papaya</label>
                     </div>
                     <div class="col-6">
-                        <div class="selector-sabor-item">
-                            <input type="radio" name="frutaPaq" id="frutaManzana" value="Manzana">
-                            <label class="btn-sabor-option text-center" for="frutaManzana">Manzana</label>
-                        </div>
+                        <input type="radio" class="btn-check" name="frutaPaq" id="frutaManzana" value="Manzana" autocomplete="off">
+                        <label class="btn btn-outline-dark w-100 py-2 rounded-3" for="frutaManzana">Manzana</label>
                     </div>
                 </div>
             </div>
@@ -262,24 +256,60 @@ function actualizarSubopcionesBebida() {
         contenedorSabores.innerHTML = `
             <label class="form-label fw-bold text-dark small">Elige el sabor de tu refresco (335 ml):</label>
             <div class="row g-2">
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_orig" value="Coca-Cola original" checked><label class="btn-sabor-option text-center" for="ref_orig">Coca-Cola original</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_light" value="Coca-Cola light"><label class="btn-sabor-option text-center" for="ref_light">Coca-Cola light</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_zero" value="Coca-Cola zero"><label class="btn-sabor-option text-center" for="ref_zero">Coca-Cola zero</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_fanta" value="Fanta"><label class="btn-sabor-option text-center" for="ref_fanta">Fanta</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_mundet" value="Sidral mundet"><label class="btn-sabor-option text-center" for="ref_mundet">Sidral mundet</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_fresca" value="Fresca"><label class="btn-sabor-option text-center" for="ref_fresca">Fresca</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_jnar" value="Jarrito naranja"><label class="btn-sabor-option text-center" for="ref_jnar">Jarrito naranja</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_jpin" value="Jarrito piña"><label class="btn-sabor-option text-center" for="ref_jpin">Jarrito piña</label></div></div>
-                <div class="col-6 col-md-4"><div class="selector-sabor-item"><input type="radio" name="saborRefresco" id="ref_jlim" value="Jarrito limón"><label class="btn-sabor-option text-center" for="ref_jlim">Jarrito limón</label></div></div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_orig" value="Coca-Cola original" checked autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_orig">Coca-Cola original</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_light" value="Coca-Cola light" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_light">Coca-Cola light</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_zero" value="Coca-Cola zero" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_zero">Coca-Cola zero</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_fanta" value="Fanta" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_fanta">Fanta</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_mundet" value="Sidral mundet" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_mundet">Sidral mundet</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_fresca" value="Fresca" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_fresca">Fresca</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_jnar" value="Jarrito naranja" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jnar">Jarrito naranja</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_jpin" value="Jarrito piña" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jpin">Jarrito piña</label>
+                </div>
+                <div class="col-6 col-md-4">
+                    <input type="radio" class="btn-check" name="saborRefresco" id="ref_jlim" value="Jarrito limón" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jlim">Jarrito limón</label>
+                </div>
             </div>
         `;
     } else if (seleccion === "Jugo del Valle") {
         contenedorSabores.innerHTML = `
             <label class="form-label fw-bold text-dark small">Elige el sabor de tu jugo (355 ml):</label>
             <div class="row g-2">
-                <div class="col-4"><div class="selector-sabor-item"><input type="radio" name="saborJugo" id="jug_mango" value="Mango" checked><label class="btn-sabor-option text-center" for="jug_mango">Mango</label></div></div>
-                <div class="col-4"><div class="selector-sabor-item"><input type="radio" name="saborJugo" id="jug_manzana" value="Manzana"><label class="btn-sabor-option text-center" for="jug_manzana">Manzana</label></div></div>
-                <div class="col-4"><div class="selector-sabor-item"><input type="radio" name="saborJugo" id="jug_durazno" value="Durazno"><label class="btn-sabor-option text-center" for="jug_durazno">Durazno</label></div></div>
+                <div class="col-4">
+                    <input type="radio" class="btn-check" name="saborJugo" id="jug_mango" value="Mango" checked autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_mango">Mango</label>
+                </div>
+                <div class="col-4">
+                    <input type="radio" class="btn-check" name="saborJugo" id="jug_manzana" value="Manzana" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_manzana">Manzana</label>
+                </div>
+                <div class="col-4">
+                    <input type="radio" class="btn-check" name="saborJugo" id="jug_durazno" value="Durazno" autocomplete="off">
+                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_durazno">Durazno</label>
+                </div>
             </div>
         `;
     } else {

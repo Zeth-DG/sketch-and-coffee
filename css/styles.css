@@ -3372,3 +3372,66 @@ main.tarjeta-contenedor h1.titulo-seccion {
 }
 
 /* ===== FIN DEL BLOQUE DE ACCESIBILIDAD ================================== */
+
+
+/* ==========================================================================
+   SELECTORES TIPO BOTÓN — WIZARD DE CREPAS/WAFFLES Y MODAL DE SABORES
+   --------------------------------------------------------------------------
+   El input (.btn-check) queda oculto y el estado visual lo pinta el label.
+   Se recupera el color magenta de la marca en lugar del azul/oscuro de
+   Bootstrap. No se fija padding ni border-radius en el label para no pisar
+   las utilidades w-100 / py-3 / rounded-3.
+   ========================================================================== */
+
+/* Modal de sabores: input + label dentro de .selector-sabor-item */
+.selector-sabor-item .btn-sabor-option {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transicion);
+}
+
+/* Wizard de crepas y waffles: input.btn-check + label.btn */
+.btn-check + .btn-sabor-option {
+  border: 2px solid var(--color-gris-borde);
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 500;
+  transition: background-color var(--transicion),
+              border-color var(--transicion),
+              color var(--transicion),
+              box-shadow var(--transicion);
+}
+
+.selector-sabor-item .btn-sabor-option:hover,
+.btn-check + .btn-sabor-option:hover {
+  border-color: var(--color-magenta);
+  background-color: #FBF4F7;
+}
+
+/* Estado seleccionado (radio y checkbox) */
+.selector-sabor-item input[type="radio"]:checked + .btn-sabor-option,
+.selector-sabor-item input[type="checkbox"]:checked + .btn-sabor-option,
+.btn-check:checked + .btn-sabor-option {
+  border-color: var(--color-magenta);
+  background-color: var(--color-magenta);
+  color: var(--color-blanco-puro);
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(158, 30, 76, 0.25);
+}
+
+/* Foco visible para navegación con teclado */
+.btn-check:focus-visible + .btn-sabor-option,
+.selector-sabor-item input:focus-visible + .btn-sabor-option {
+  outline: 3px solid var(--color-magenta-tenue);
+  outline-offset: 2px;
+}
+

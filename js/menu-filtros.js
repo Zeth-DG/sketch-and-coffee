@@ -69,6 +69,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                           <span class="indicador-gris" aria-hidden="true"></span>
                           <button class="btn boton-anadir${prod.disponible ? ' activo' : ''}"
                                   data-sku="${prod.sku}" ${prod.disponible ? '' : 'disabled'}
+                                  data-agregar-carrito data-id="catalogo-${prod.sku}"
+                                  data-nombre="${prod.nombre}" data-precio="${prod.precio}"
                                   aria-label="Añadir ${prod.nombre} al carrito de compras">
                             ${prod.disponible ? 'Añadir' : 'Agotado'}
                           </button>
