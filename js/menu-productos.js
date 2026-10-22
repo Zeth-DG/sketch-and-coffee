@@ -1,9 +1,9 @@
 // menu-productos.js
 import { detallesPersonalizados } from './menu-detalles.js';
 
-export let menuTopEnriquecido = [];
+export async function cargarProductosCatalogo() {
+  const productosCatalogo = [];
 
-export async function cargarMenuTop() {
   try {
     const response = await fetch("../menu/JSON%20documentos/menu.json");
     if (!response.ok) throw new Error('No se pudo cargar el menú referencia');
@@ -50,7 +50,7 @@ export async function cargarMenuTop() {
     });
 
     // 4. CRUCE DE DATOS: Agregar descripción e imagen
-    menuTopEnriquecido = productosFiltrados.map(prod => {
+    const productosDelMenu = productosFiltrados.map(prod => {
       const claveEncontrada = palabrasClave.find(termino => prod.nombre.toLowerCase().includes(termino));
       const infoExtra = claveEncontrada ? detallesPersonalizados[claveEncontrada] : null;
 
@@ -60,12 +60,29 @@ export async function cargarMenuTop() {
         imagen: infoExtra ? infoExtra.imagen : "./img/default.jpg"
       };
     });
-
-    console.log("Menú filtrado (sin ingredientes) y enriquecido:", menuTopEnriquecido);
-    return menuTopEnriquecido;
-
+    productosCatalogo.push(...productosDelMenu);
   } catch (error) {
-    console.error("Error procesando el menú:", error);
-    return [];
+    console.error("No se pudo cargar el menú de referencia:", error);
   }
+
+  try {
+    const productosGuardados = JSON.parse(localStorage.getItem("productos_agregados") || "[]");
+    const productosNuevos = productosGuardados.map(producto => ({
+      nombre: producto.nombre,
+      departamento: producto.categoria,
+      categoria: producto.categoria,
+      precio: producto.precio,
+      sku: `local-${producto.id}`,
+      disponible: true,
+      descripcion: producto.descripcion,
+      imagen: producto.imagen
+    }));
+
+    productosCatalogo.push(...productosNuevos);
+  } catch (error) {
+    console.error("No se pudieron cargar los productos guardados:", error);
+  }
+
+  console.info(`Catálogo cargado con ${productosCatalogo.length} productos.`);
+  return productosCatalogo;
 }

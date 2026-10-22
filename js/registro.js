@@ -19,9 +19,6 @@ import {
     saveUserToStorage
 } from "./storage_InicioSesion.js";
 
-// Crea el admin inicial (idempotente: solo si no hay usuarios)
-seedInitialUsers();
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const formulario = document.getElementById("formularioContacto");
@@ -42,14 +39,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const iptContrasena = document.getElementById("campoContrasena");
     const errorContrasena = document.getElementById("errorContrasena");
+    const btnVerContrasena = document.getElementById("btnVerContrasena");
 
     const iptConfirmar = document.getElementById("campoConfirmarContrasena");
     const errorConfirmar = document.getElementById("errorConfirmarContrasena");
+    const btnVerConfirmarContrasena = document.getElementById("btnVerConfirmarContrasena");
 
     const chkPrivacidad = document.getElementById("campoPrivacidad");
     const errorPrivacidad = document.getElementById("errorPrivacidad");
 
     const contenedorAlerta = document.getElementById("alerta-registro");
+
+    btnVerContrasena.addEventListener("click", () => {
+        if (iptContrasena.type === "password") {
+            iptContrasena.type = "text";
+            btnVerContrasena.textContent = "Ocultar";
+            btnVerContrasena.setAttribute("aria-label", "Ocultar contraseña");
+        } else {
+            iptContrasena.type = "password";
+            btnVerContrasena.textContent = "Ver";
+            btnVerContrasena.setAttribute("aria-label", "Mostrar contraseña");
+        }
+    });
+
+    btnVerConfirmarContrasena.addEventListener("click", () => {
+        if (iptConfirmar.type === "password") {
+            iptConfirmar.type = "text";
+            btnVerConfirmarContrasena.textContent = "Ocultar";
+            btnVerConfirmarContrasena.setAttribute("aria-label", "Ocultar contraseña");
+        } else {
+            iptConfirmar.type = "password";
+            btnVerConfirmarContrasena.textContent = "Ver";
+            btnVerConfirmarContrasena.setAttribute("aria-label", "Mostrar contraseña");
+        }
+    });
 
     // ---------- Helper: alerta global ----------
     function mostrarAlerta(mensaje, tipo) {
@@ -103,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ---------- Envío del formulario ----------
-    formulario.addEventListener("submit", (evento) => {
+    formulario.addEventListener("submit", async (evento) => {
         evento.preventDefault();
 
         // 1) Leer valores
@@ -157,7 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         // 5) Guardar (saveUserToStorage devuelve false si el correo ya existe)
-        const guardado = saveUserToStorage(usuario);
+        let guardado;
+        try {
+            await seedInitialUsers();
+            guardado = await saveUserToStorage(usuario);
+        } catch (error) {
+            console.error("No se pudo guardar el usuario de forma segura:", error);
+            mostrarAlerta("No se pudo guardar el registro en este navegador. Inténtalo de nuevo.", "danger");
+            return;
+        }
 
         if (guardado === false) {
             mostrarAlerta(

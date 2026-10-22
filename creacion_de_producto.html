@@ -36,7 +36,8 @@
             <section class="seccion-formulario">
                 <h2>Detalles del producto</h2>
 
-                <form id="formulario-producto" novalidate>
+                    <p id="mensaje-producto" role="status" aria-live="polite"></p>
+                    <form id="formulario-producto" novalidate>
                     <!-- Campo: Nombre -->
                     <div class="campo-grupo">
                         <label for="nombre">Nombre del producto *</label>
@@ -65,9 +66,9 @@
                         <label for="categoria">Categoría *</label>
                         <select id="categoria" name="categoria" required>
                             <option value="" selected disabled>Selecciona una categoría</option>
-                            <option value="Bebida">Bebida</option>
-                            <option value="Comida">Comida</option>
-                            <option value="Postre">Postre</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="snack">Snack</option>
+                            <option value="postres">Postres</option>
                         </select>
                         <span class="error-mensaje" id="error-categoria"></span>
                     </div>
@@ -89,7 +90,7 @@
 
             <!-- SECCIÓN DERECHA: Vista Previa en Vivo -->
             <aside class="seccion-vista-previa">
-                <h2>Vista Previa en Vivo</h2>
+                <h2>Vista Previa</h2>
                 <p>Así se verá tu producto en el catálogo:</p>
 
                 <article class="tarjeta-producto">
@@ -174,7 +175,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="./js/main.js" type="module"></script>
-    <script src="./js/agregar-prodcto.js" type="module"></script>
+    <script src="./js/agregar-producto.js" type="module"></script>
 
     <!-- Botón -->
     <button type="button" class="btn btn-primary rounded-circle shadow-lg" id="btnSubir">

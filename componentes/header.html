@@ -21,15 +21,17 @@
                     </li>
                 </ul>
                 <div class="d-flex gap-3 align-items-center">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search"/>
+                    <form class="d-flex" role="search" action="menu.html" method="get">
+                        <input class="form-control me-2" id="buscar-producto" name="buscar" type="search"
+                            placeholder="Buscar producto" aria-label="Buscar por nombre de producto"/>
                         <button class="btn" type="submit">Buscar</button>
                     </form>
 
                     <!--<button id="btnCambiarIdioma" class="btn" type="button">Idioma</button>-->
                     <button id="btnVerCarrito" class="btn" type="button">Carrito</button>
-                    <!-- <button id="btnCuenta" class="btn" type="button">Mi cuenta</button> -->
                     <a href="inicio-sesion.html" id="btnCuenta" class="btn" role="button">Mi cuenta</a>
+                    <a href="creacion_de_producto.html" id="btnPanelAdmin" class="btn d-none">Panel admin</a>
+                    <button id="btnCerrarSesion" class="btn d-none" type="button">Cerrar sesión</button>
                 </div>       
             </div>
         </div>
