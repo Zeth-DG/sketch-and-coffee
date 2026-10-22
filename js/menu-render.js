@@ -1,8 +1,8 @@
 // menu-render.js
 // Genera las tarjetas del catálogo a partir de los datos del JSON.
-import { cargarMenuTop } from './menu-productos.js';
+import { cargarProductosCatalogo } from './menu-productos.js';
 
-const grilla = document.getElementById('grilla-productos');
+const grilla = document.getElementById('grilla-productos'); 
 const subtitulo = document.getElementById('subtitulo-catalogo');
 
 function crearTarjeta(prod, indice) {
@@ -30,7 +30,7 @@ function crearTarjeta(prod, indice) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const productos = await cargarMenuTop();
+  const productos = await cargarProductosCatalogo();
 
   if (!productos.length) {
     grilla.innerHTML = '<p class="col-12">No se pudieron cargar los productos.</p>';

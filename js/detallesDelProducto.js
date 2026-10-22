@@ -9,20 +9,14 @@
  * @param {string} newSrc - Ruta local de la imagen (ej. './assets/img/foto1.jpg')
  */
 function changeImage(element, newSrc) {
-  // 1. Localiza el cuadro de la imagen grande
   const mainImg = document.getElementById('main-product-img');
-  
-  if (mainImg) {
-    // 2. Reemplaza la ruta de la imagen grande por la de la miniatura clickeada
-    mainImg.src = newSrc;
-  }
+  if (!mainImg) return;
 
-  // 3. Quita el borde activo de todas las miniaturas
+  mainImg.src = newSrc;
+  mainImg.alt = `Vista del ${document.getElementById('product-title').textContent}`;
   document.querySelectorAll('.thumb-item').forEach(item => {
     item.classList.remove('active');
   });
-
-  // 4. Marca la miniatura clickeada con el borde activo (var(--color-magenta))
   element.classList.add('active');
 }
 
@@ -50,19 +44,29 @@ function updateQty(val) {
 }
 
 /**
- * Suma la cantidad seleccionada al badge del carrito en el Header
+ * Agrega al carrito global el producto que se está viendo,
+ * respetando la cantidad elegida en el selector.
  */
-let cartCount = 0;
+let productoActualId = 1;
 function addToCart() {
-  const input = document.getElementById('qty-input');
-  const cartBadge = document.getElementById('cart-count');
+  const producto = products[productoActualId];
+  if (!producto) return;
 
-  const qty = input ? (parseInt(input.value) || 1) : 1;
-  cartCount += qty;
-
-  if (cartBadge) {
-    cartBadge.innerText = cartCount;
+  if (typeof window.agregarAlCarrito !== "function") {
+    console.warn("El carrito global todavía no está disponible.");
+    return;
   }
+
+  const input = document.getElementById('qty-input');
+  const qty = input ? (parseInt(input.value) || 1) : 1;
+  const precio = Number(String(producto.price).replace(/[^\d.]/g, "")) || 0;
+
+  agregarAlCarrito({
+    id: `detalle-${productoActualId}`,
+    nombre: producto.name,
+    precio: precio,
+    cantidad: qty
+  });
 }
 
 /**
@@ -89,177 +93,217 @@ function openTab(evt, tabName) {
 // ==========================================================================
 
 const products = {
-
   1: {
     name: "LATTE",
     price: "$ 85.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/latte-caliente.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffe_Latte.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffe_Latte_2.png", "./imagenes/fotosComidaTop10/Sketch&Coffe_Latte_3.png"],
     desc: "Espresso de altura coronado con una densa capa de microespuma de leche de tu preferencia.",
     cata: "Perfil suave, cremoso y equilibrado.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir caliente para disfrutar el equilibrio del espresso con la leche vaporizada.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   2: {
-    name: "CAPUCCINO",
+    name: "CAPUCHINO",
     price: "$ 90.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/capuchino.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_IA_Capuchino1.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_Capuchino2.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_Capuchino3.jpg"],
     desc: "Un balance armonioso entre la intensidad del espresso de especialidad y una nube de leche al vapor suave y cremosa.",
     cata: "Notas dulces y achocolatadas.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir caliente, con su capa de espuma de leche.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   3: {
     name: "CHAI LATTE",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/chai-latte.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_IA_ChaiLatte1.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_ChaiLatte2.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_ChaiLatte3.jpg"],
     desc: "Infusión aromática de tés negros con cardamomo, canela y jengibre.",
     cata: "Perfil especiado y dulce.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir caliente para resaltar sus especias y aromas.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   4: {
-    name: "CROISSANT",
+    name: "CROISSANT SALADO",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/croissant-salado.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_croissant salado.png", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_croissant salado2.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_croissant salado3.jpg"],
     desc: "Láminas doradas y crujientes de fino hojaldre artesanal, horneadas a la perfección para lograr una textura ligera, suave y esponjosa por dentro.",
     cata: "Perfil crujiente y sabroso.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Disfrutar recién horneado, ideal como opción salada.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   5: {
     name: "ENCHILADAS",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/enquiladas.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_Enchiladas_gratinadas.png", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_Enchiladas_gratinadas2.jpg", "./imagenes/fotosComidaTop10/Sketch&Coffee_IA_Enchiladas_gratinadas3.jpg"],
     desc: "Tortillas artesanales con pechuga de pollo bañadas en deliciosa crema y salsa de la casa, queso, cebolla fresca y cilantro recién cortado, listas para deleitar tu paladar.",
     cata: "Perfil picante y sabroso.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir calientes para disfrutar la salsa y el queso gratinado.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   6: {
     name: "CHILAQUILES",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/chilaquiles.jpg",
-    desc: "Totopos crujientes bañados con salsa especiada, enriquesidos con crema ácida, queso espolvoreado y el punto exacto de picor.",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_Chilaquiles.png", "./imagenes/vistas-productos/chilaquiles-vista-2.jpg", "./imagenes/vistas-productos/chilaquiles-vista-3.jpg"],
+    desc: "Totopos crujientes bañados con salsa especiada, enriquecidos con crema ácida, queso espolvoreado y el punto exacto de picor.",
     cata: "Perfil picante y sabroso.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir calientes para conservar el contraste de texturas.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   7: {
     name: "AMERICANO",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/americano.jpg",
+    images: ["./imagenes/alimentos-menu/americano.jpeg", "./imagenes/vistas-productos/americano-vista-2.jpg", "./imagenes/vistas-productos/americano-vista-3.jpg"],
     desc: "Extracción limpia de grano recién molido con notas tostadas, aroma envolvente y un perfil suave pero con carácter.",
-    cata: "Perfil fuerte y afrutado.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    cata: "Notas tostadas y aroma envolvente, con un perfil suave pero con carácter.",
+    prep: "Servir caliente para apreciar el aroma del café recién extraído.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   8: {
     name: "CHOCOLATE CALIENTE",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/chocolate-caliente.jpg",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_Chocolate.png", "./imagenes/vistas-productos/chocolate-caliente-vista-2.jpg", "./imagenes/vistas-productos/chocolate-caliente-vista-3.jpg"],
     desc: "Cacao puro fundido en leche entera, logrando una bebida rica, espesa y con el dulzor perfecto para reconfortar el alma.",
     cata: "Perfil dulce y cremoso.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Servir caliente para disfrutar su textura cremosa.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   9: {
     name: "TISANA PINK BLOSSOM",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/tisana-pink-blossom.jpg",
-    desc: "Infusión frutal de notas florales y matices rosados vibrantes; un elixir fresco, ligero y naturalmente dulce. ",
+    images: ["./imagenes/fotosComidaTop10/Sketch&Coffee_Tisana_Pink_Blossom.png", "./imagenes/vistas-productos/tisana-pink-blossom-vista-2.jpg", "./imagenes/vistas-productos/tisana-pink-blossom-vista-3.jpg"],
+    desc: "Infusión frutal de notas florales y matices rosados vibrantes, fresca, ligera y naturalmente dulce.",
     cata: "Perfil especiado y dulce.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
+    prep: "Se puede disfrutar caliente o fría.",
+    envio: "Disponible para recoger en sucursal."
   },
-
   10: {
     name: "CREPA CON NUTELLA Y PHILADELPHIA",
     price: "$ 95.00 MXN",
     rating: "★★★★★",
-    image: "./imagenes/alimentos-menu/crepa-nutella-philadelphia.jpg",
-    desc: "Fina crepa artesanal dorada a la plancha, rebozante de suave queso crema y abundante crema de avellana y cacao.",
-    cata: "Perfil especiado y dulce.",
-    prep: "Servir caliente.",
-    envio: "Disponible en sucursal."
-  },
-
+    images: ["./menu_interactivo/images/crepas.jpg", "./imagenes/vistas-productos/crepa-nutella-philadelphia-vista-2.jpg", "./imagenes/vistas-productos/crepa-nutella-philadelphia-vista-3.jpg"],
+    desc: "Fina crepa artesanal dorada a la plancha, rellena de queso crema y crema de avellana y cacao.",
+    cata: "Textura suave con notas dulces de avellana y cacao.",
+    prep: "Servir recién preparada.",
+    envio: "Disponible para recoger en sucursal."
+  }
 };
 
-function loadProduct(productId) {
-
+function loadProduct(productId, shouldScroll = true) {
   const product = products[productId];
-
   if (!product) return;
 
-  // Imagen principal
-  const mainImage =
-    document.getElementById("main-product-img");
+  productoActualId = Number(productId) || productoActualId;
+
+  const mainImage = document.getElementById("main-product-img");
+  const title = document.getElementById("product-title");
+  const price = document.getElementById("product-price");
+  const rating = document.getElementById("product-rating");
+  const thumbnails = document.getElementById("product-thumbnails");
 
   if (mainImage) {
-    mainImage.src = product.image;
+    mainImage.src = product.images[0];
     mainImage.alt = product.name;
   }
+  if (title) title.textContent = product.name;
+  if (price) price.textContent = product.price;
+  if (rating) rating.textContent = `CALIFICACIÓN • ${product.rating}`;
 
-  // Nombre
-  const title =
-    document.getElementById("product-title");
+  if (thumbnails) {
+    thumbnails.replaceChildren();
+    product.images.forEach((image, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `thumb-item${index === 0 ? " active" : ""}`;
+      button.setAttribute("aria-label", `Ver imagen ${index + 1} de ${product.name}`);
+      button.addEventListener("click", () => changeImage(button, image));
 
-  if (title) {
-    title.textContent = product.name;
+      const thumbnail = document.createElement("img");
+      thumbnail.src = image;
+      thumbnail.alt = "";
+      thumbnail.addEventListener("error", () => {
+        button.disabled = true;
+        button.classList.add("thumb-item-placeholder");
+        button.setAttribute("aria-label", `Vista ${index + 1} pendiente de imagen de ${product.name}`);
+        button.textContent = `Vista ${index + 1}`;
+      }, { once: true });
+      button.append(thumbnail);
+      thumbnails.append(button);
+    });
   }
 
-  // Precio
-  const price =
-    document.getElementById("product-price");
+  document.getElementById("tab-desc").textContent = product.desc;
+  document.getElementById("tab-cata").textContent = product.cata;
+  document.getElementById("tab-prep").textContent = product.prep;
+  document.getElementById("tab-envio").textContent = product.envio;
 
-  if (price) {
-    price.innerHTML = product.price;
+// ==========================================
+  //    Logica dinamica para molienda y gramaje
+  // ==========================================
+  const grupoMolienda = document.getElementById("grupoMolienda");
+  const grupoGramaje = document.getElementById("grupoGramaje");
+  const botonesTamano = document.querySelectorAll(".btn-tamano");
+  const labelGramaje = grupoGramaje ? grupoGramaje.querySelector(".option-label") : null;
+
+  const nombreLower = product.name.toLowerCase();
+
+  const esCafeGrano = nombreLower.includes("grano") || nombreLower.includes("americano");
+
+  const esBebida = nombreLower.includes("latte") || 
+                  nombreLower.includes("capuchino") || 
+                  nombreLower.includes("chai") || 
+                  nombreLower.includes("chocolate") || 
+                  nombreLower.includes("tisana") || 
+                  nombreLower.includes("americano");
+
+  if (grupoMolienda) {
+      if (esCafeGrano) {
+        grupoMolienda.classList.remove("d-none");
+      } else {
+        grupoMolienda.classList.add("d-none");
+      }
   }
 
-  // Calificación
-  const rating =
-    document.getElementById("product-rating");
+  if (grupoGramaje) {
+      if (esBebida || esCafeGrano) {
+        grupoGramaje.classList.remove("d-none");
+        
+        if (labelGramaje) {
+          labelGramaje.textContent = esBebida ? "Tamaño de bebida" : "Tamaño / gramaje";
+        }
 
-  if (rating) {
-    rating.innerHTML =
-      `CALIFICACION • ${product.rating}`;
+        // Cambiamos los textos de los botones dinámicamente
+        if (botonesTamano.length >= 3) {
+          if (esBebida) {
+            botonesTamano[0].textContent = "Chico";
+            botonesTamano[1].textContent = "Mediano";
+            botonesTamano[2].textContent = "Grande";
+          } else {
+            botonesTamano[0].textContent = "250 g";
+            botonesTamano[1].textContent = "500 g";
+            botonesTamano[2].textContent = "1 kg";
+          }
+        }
+
+      } else {
+        grupoGramaje.classList.add("d-none");
+      }
   }
+  // ==========================================
 
-  // Tabs
-  document.getElementById("tab-desc").textContent =
-    product.desc;
 
-  document.getElementById("tab-cata").textContent =
-    product.cata;
-
-  document.getElementById("tab-prep").textContent =
-    product.prep;
-
-  document.getElementById("tab-envio").textContent =
-    product.envio;
-
-  // Llevar al usuario al producto
-  document
-    .querySelector(".product-detail-grid")
-    .scrollIntoView({
+  if (shouldScroll) {
+    document.querySelector(".product-detail-grid").scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
+  }
 }
+
+loadProduct(1, false);

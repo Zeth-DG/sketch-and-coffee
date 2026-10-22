@@ -198,7 +198,7 @@
 }
 
 /* Botones del hero */
-.hero-section button {
+.hero-section .row > div:first-child > button {
   background-color: var(--color-magenta-btn);
   color: var(--color-texto-inverso);
   border: 1.5px solid var(--color-negro);
@@ -212,7 +212,7 @@
   transition: var(--transicion);
 }
 
-.hero-section button:hover {
+.hero-section .row > div:first-child > button:hover {
   background-color: var(--color-magenta-hover);
   color: var(--color-texto-inverso);
   box-shadow: var(--sombra);
@@ -237,7 +237,7 @@
     margin-inline: auto;
   }
 
-  .hero-section button {
+  .hero-section .row > div:first-child > button {
     margin-right: var(--espaciado-xs);
     margin-bottom: var(--espaciado-xs);
   }
@@ -250,18 +250,20 @@
 /* ========== Diseño del carrusel del HERO - Vanya ==========*/
 
 /* Botones de navegación del carrusel */
-.carousel-control-prev,
-.carousel-control-next {
+#carouselSketchCoffee .carousel-control-prev,
+#carouselSketchCoffee .carousel-control-next {
   background: none !important;
   border: none !important;
-  width: auto;
+  width: 12%;
 }
 
 /* Íconos dentro de los botones */
-.carousel-control-prev i,
-.carousel-control-next i {
-  font-size: 2rem;
-  color:  #9E1E4C; /* color turquesa */
+#carouselSketchCoffee .carousel-control-prev i,
+#carouselSketchCoffee .carousel-control-next i {
+  font-size: 2.25rem;
+  color: #000;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9))
+          drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* Ajuste uniforme de imágenes en el carrusel */
@@ -271,6 +273,20 @@
   object-fit: cover;      /* recorta manteniendo proporción */
   border-radius: var(--radio);
   box-shadow: var(--sombra);
+}
+
+#carouselSketchCoffee .carousel-item:first-child img {
+  object-fit: contain;
+  background-color: #000;
+}
+
+#carouselSketchCoffee .carousel-indicators [data-bs-target] {
+  min-height: 0;
+  background-color: var(--color-magenta-tenue);
+}
+
+#carouselSketchCoffee .carousel-indicators .active {
+  background-color: var(--color-magenta);
 }
 
 /* ========== Fin de sección del diseño del carrusel del HERO - Vanya ==========*/
@@ -1416,6 +1432,10 @@
   border-radius: var(--radio-sm);
   padding: var(--espaciado-sm) var(--espaciado-md);
   transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+#desplegable-ordenamiento {
+  padding-right: 2.75rem;
 }
 
 .form-control:focus,
@@ -3157,6 +3177,166 @@ select.is-invalid:focus-visible {
   border: 2px solid var(--color-exito);
 }
 
+/* ==========================================================================
+                    ESTILOS TARJETA LOGIN
+   ========================================================================== */
+body {
+  background-color: var(--color-gris-perla);
+}
+
+main.tarjeta-contenedor {
+  background-color: var(--color-blanco-puro);
+  border: 2.5px solid var(--color-negro);
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: 6px 6px 0px var(--color-purpura-oscuro);
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto; /* Centrado vertical y horizontal con margen */
+}
+
+/* Marca superior dentro del login */
+.logo-seccion {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo-seccion span {
+  font-family: var(--fuente-titulo-principal);
+  font-size: 1.25rem;
+  font-weight: var(--peso-negrita);
+  color: var(--color-magenta);
+  letter-spacing: 1px;
+}
+
+/* Título de la tarjeta */
+main.tarjeta-contenedor h1.titulo-seccion {
+  font-family: var(--fuente-titulo-principal);
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  color: var(--color-magenta);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: var(--peso-negrita);
+  border-bottom: 3px solid var(--color-negro);
+  padding-bottom: 0.5rem;
+}
+
+/* Agrupador para el campo de contraseña y botón ver/ocultar */
+.input-grupo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-grupo .form-control {
+  padding-right: 3.5rem;
+}
+
+/* Botón interno "Ver / Ocultar" contraseña */
+.btn-ver-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gris-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-auxiliar);
+  font-weight: var(--peso-seminegrita);
+  padding: 4px 8px;
+  transition: color var(--transicion);
+  z-index: 5;
+}
+
+.btn-ver-password:hover {
+  color: var(--color-magenta);
+}
+
+/* Opciones extra (Recuérdame y enlace de recuperar) */
+.opciones-formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--tamano-auxiliar);
+  margin-bottom: 1.5rem;
+  color: var(--color-texto);
+}
+
+.opciones-formulario a {
+  color: var(--color-magenta);
+  text-decoration: underline;
+  transition: color var(--transicion);
+}
+
+.opciones-formulario a:hover {
+  color: var(--color-magenta-hover);
+}
+
+/* Botón principal de acceso */
+.btn-submit {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-boton);
+  font-weight: var(--peso-negrita);
+  background-color: var(--color-magenta);
+  color: var(--color-texto-inverso);
+  border: 1px solid var(--color-purpura-oscuro);
+  border-radius: var(--radio-sm);
+  padding: 0.6rem 1rem;
+  width: 100%;
+  min-height: 48px;
+  transition: var(--transicion);
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+.btn-submit:hover {
+  background-color: var(--color-magenta-hover);
+  color: var(--color-texto-inverso);
+  box-shadow: var(--sombra-boton);
+  transform: translateY(-2px);
+}
+
+/* Enlace inferior de registro */
+.enlace-registro {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-auxiliar);
+  color: var(--color-texto);
+}
+
+.enlace-registro a {
+  color: var(--color-magenta);
+  font-weight: var(--peso-seminegrita);
+  text-decoration: underline;
+}
+
+.enlace-registro a:hover {
+  color: var(--color-magenta-hover);
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radio-sm, 6px);
+  margin-bottom: 20px;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--tamano-auxiliar);
+  border: 1px solid transparent;
+}
+
+.alert-danger {
+  background-color: #f8d7da !important;
+  color: #721c24 !important;
+  border-color: #f5c6cb !important;
+}
+
+.alert-success {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border-color: #c3e6cb !important;
+}
+/*===============================================================================*/
 
 /* --------------------------------------------------------------------------
    E. DOS AJUSTES QUE LA NORMA EXIGE Y NO ESTABAN
@@ -3192,3 +3372,66 @@ select.is-invalid:focus-visible {
 }
 
 /* ===== FIN DEL BLOQUE DE ACCESIBILIDAD ================================== */
+
+
+/* ==========================================================================
+   SELECTORES TIPO BOTÓN — WIZARD DE CREPAS/WAFFLES Y MODAL DE SABORES
+   --------------------------------------------------------------------------
+   El input (.btn-check) queda oculto y el estado visual lo pinta el label.
+   Se recupera el color magenta de la marca en lugar del azul/oscuro de
+   Bootstrap. No se fija padding ni border-radius en el label para no pisar
+   las utilidades w-100 / py-3 / rounded-3.
+   ========================================================================== */
+
+/* Modal de sabores: input + label dentro de .selector-sabor-item */
+.selector-sabor-item .btn-sabor-option {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--color-gris-borde);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transicion);
+}
+
+/* Wizard de crepas y waffles: input.btn-check + label.btn */
+.btn-check + .btn-sabor-option {
+  border: 2px solid var(--color-gris-borde);
+  background-color: var(--color-blanco-puro);
+  color: var(--color-marron-purpura-oscuro);
+  font-weight: 500;
+  transition: background-color var(--transicion),
+              border-color var(--transicion),
+              color var(--transicion),
+              box-shadow var(--transicion);
+}
+
+.selector-sabor-item .btn-sabor-option:hover,
+.btn-check + .btn-sabor-option:hover {
+  border-color: var(--color-magenta);
+  background-color: #FBF4F7;
+}
+
+/* Estado seleccionado (radio y checkbox) */
+.selector-sabor-item input[type="radio"]:checked + .btn-sabor-option,
+.selector-sabor-item input[type="checkbox"]:checked + .btn-sabor-option,
+.btn-check:checked + .btn-sabor-option {
+  border-color: var(--color-magenta);
+  background-color: var(--color-magenta);
+  color: var(--color-blanco-puro);
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(158, 30, 76, 0.25);
+}
+
+/* Foco visible para navegación con teclado */
+.btn-check:focus-visible + .btn-sabor-option,
+.selector-sabor-item input:focus-visible + .btn-sabor-option {
+  outline: 3px solid var(--color-magenta-tenue);
+  outline-offset: 2px;
+}
+

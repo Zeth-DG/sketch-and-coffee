@@ -15,6 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
             this.etiquetaTipo = datos.etiquetaTipo;
         }//constructor
 
+        // Identificador y precio numérico para el carrito global
+        get idCarrito() {
+            return "promo-" + this.titulo
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-|-$/g, "");
+        }//idCarrito
+
+        get precioCarrito() {
+            return Number(String(this.precioActual).replace(/[^\d.]/g, "")) || 0;
+        }//precioCarrito
+
         renderizar() {
             throw new Error("El método renderizar debe ser implementado por la subclase.");
         }//renderizar
@@ -46,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="precio-actual h4 fw-bold m-0" style="color: var(--color-magenta);">${this.precioActual}</span>
                                 ${precioAnteriorHTML}
                             </div>
-                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto" aria-label="Añadir ${this.titulo} al carrito">
+                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto"
+                                data-agregar-carrito data-id="${this.idCarrito}"
+                                data-nombre="${this.titulo}" data-precio="${this.precioCarrito}"
+                                aria-label="Añadir ${this.titulo} al carrito">
                                 Añadir al carrito
                             </button>
                         </div>
@@ -81,7 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="precio-actual h4 fw-bold m-0" style="color: var(--color-magenta);">${this.precioActual}</span>
                                 ${precioAnteriorHTML}
                             </div>
-                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto" aria-label="Añadir ${this.titulo} al carrito">
+                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto"
+                                data-agregar-carrito data-id="${this.idCarrito}"
+                                data-nombre="${this.titulo}" data-precio="${this.precioCarrito}"
+                                aria-label="Añadir ${this.titulo} al carrito">
                                 Añadir al carrito
                             </button>
                         </div>
@@ -116,7 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="precio-actual h4 fw-bold m-0" style="color: var(--color-magenta);">${this.precioActual}</span>
                                 ${precioAnteriorHTML}
                             </div>
-                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto" aria-label="Agregar ${this.titulo} al carrito">
+                            <button type="button" class="btn btn-custom-magenta w-100 mt-auto"
+                                data-agregar-carrito data-id="${this.idCarrito}"
+                                data-nombre="${this.titulo}" data-precio="${this.precioCarrito}"
+                                aria-label="Agregar ${this.titulo} al carrito">
                                 Agregar al carrito
                             </button>
                         </div>

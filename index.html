@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio</title>
+  <link rel="icon" type="image/png" href="./imagenes/favicon.ico">
   <!--enlace de bootstrap y estilos de css-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -50,11 +51,11 @@
         </p>
 
         <!-- Botones -->
-        <button
-          type="button"
-          onclick="window.open('https://mx.borders.bistrosoft.com/menu?commerceId=52001536&menuUUID=839e8780-e7b7-4890-aaed-fb1269561b2b', '_blank', 'noopener,noreferrer')">
-          Ver el menú
-        </button>
+<button
+  type="button"
+  onclick="window.location.href='./menu-interactivo.html'">
+  Ver el menú
+</button>
 
         <button
           type="button"
@@ -108,31 +109,31 @@
           <div class="carousel-inner">
 
             <div class="carousel-item active">
-              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_Barra.png"
+              <img src="./imagenes/logo/logo-fondo-negro.jpg"
                    class="d-block w-100"
                    alt="Sketch&Coffee_Barra">
             </div>
 
             <div class="carousel-item">
-              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_Fachada4.png"
+              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada8.png"
                    class="d-block w-100"
                    alt="Sketch&Coffee_Fachada4">
             </div>
 
             <div class="carousel-item">
-              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_Fachada5.png"
+              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada4.png"
                    class="d-block w-100"
                    alt="Sketch&Coffee_Fachada5">
             </div>
 
             <div class="carousel-item">
-              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada2.png"
+              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada3.png"
                    class="d-block w-100"
                    alt="Sketch&Coffee_Fachada2">
             </div>
 
             <div class="carousel-item">
-              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada3.png"
+              <img src="./imagenes/cafeteria_spot/Sketch&Coffee_fachada2.png"
                    class="d-block w-100"
                    alt="Sketch&Coffee_Fachada3">
             </div>
@@ -174,9 +175,7 @@
       <h2 class="solo-lectores" id="gv-titulo-estrella">Productos estrella</h2>
 
       <div class="gv-seccion__cabecera">
-        <a class="gv-seccion__enlace"
-          href="./detalles_del_producto.html"
-          target="_blank" rel="noopener noreferrer">Ver todos</a>
+            <a class="gv-seccion__enlace" href="./detalles_del_producto.html">Ver todos</a>
       </div>
       <div class="row row-cols-2 row-cols-lg-4 g-3">
 
@@ -192,7 +191,8 @@
               <h3 class="gv-producto__nombre">Café Americano</h3>
               <p class="gv-producto__precio">$55 MXN</p>
             </div>
-            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button">
+            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button"
+              data-agregar-carrito data-id="index-americano" data-nombre="Café Americano" data-precio="55">
               Añadir al carrito
             </button>
           </article>
@@ -210,7 +210,8 @@
               <h3 class="gv-producto__nombre">Chilaquiles</h3>
               <p class="gv-producto__precio">$130 MXN</p>
             </div>
-            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button">
+            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button"
+              data-agregar-carrito data-id="index-chilaquiles" data-nombre="Chilaquiles" data-precio="130">
               Añadir al carrito
             </button>
           </article>
@@ -228,7 +229,8 @@
               <h3 class="gv-producto__nombre">Chapata Hawaiana</h3>
               <p class="gv-producto__precio">$110 MXN</p>
             </div>
-            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button">
+            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button"
+              data-agregar-carrito data-id="index-chapata" data-nombre="Chapata Hawaiana" data-precio="110">
               Añadir al carrito
             </button>
           </article>
@@ -245,7 +247,8 @@
               <h3 class="gv-producto__nombre">Berry Dream Soda It</h3>
               <p class="gv-producto__precio">$100 MXN</p>
             </div>
-            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button">
+            <button class="gv-btn gv-btn--primario gv-btn--bloque" type="button"
+              data-agregar-carrito data-id="index-berry-soda" data-nombre="Berry Dream Soda It" data-precio="100">
               Añadir al carrito
             </button>
           </article>
