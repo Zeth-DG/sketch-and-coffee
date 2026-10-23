@@ -37,12 +37,14 @@ CREATE TABLE categorias (
 );
 
 INSERT INTO categorias (id, nombre, descripcion) VALUES
-    (1, 'Bebidas calientes', 'Bebidas calientes preparadas al momento.'),
-    (2, 'Bebidas frías', 'Bebidas frías preparadas al momento.'),
-    (3, 'Frappés', 'Bebidas frappé del menú.'),
-    (4, 'Snacks', 'Platillos y snacks salados.'),
-    (5, 'Café en grano', 'Café de especialidad en distintas presentaciones.'),
-    (6, 'Postres', 'Postres y panadería artesanal.');
+    (1, 'Bebidas frías', 'Bebidas frías del menú interactivo.'),
+    (2, 'Bebidas calientes', 'Bebidas calientes del menú interactivo.'),
+    (3, 'Otras bebidas', 'Aguas, refrescos, jugos y otras bebidas.'),
+    (4, 'Postres', 'Postres y productos de panadería.'),
+    (5, 'Platillos', 'Alimentos salados del menú.'),
+    (6, 'Crepas y Waffles', 'Crepas y waffles personalizables.'),
+    (7, 'Café en grano', 'Café de especialidad en distintas presentaciones.');
+
 
 
 -- Nombre de la tabla: Productos
@@ -56,10 +58,7 @@ CREATE TABLE productos (
     imagen VARCHAR(255) NULL,
     existencias INT NOT NULL DEFAULT 0,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
-    CONSTRAINT fk_productos_categoria FOREIGN KEY (categoria_id) 
-    REFERENCES categorias(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+   
 );
 
 -- Productos que aparecen actualmente en el catálogo del menú (pendiente acomodar json para agregaro los productos)
