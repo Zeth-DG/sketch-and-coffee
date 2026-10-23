@@ -48,7 +48,7 @@
     "id": 6,
     "nombre": "Administrador",
     "apellido": "Sistema",
-    "telefono": "",
+    "telefono": "0000000006",
     "correo": "admin@ejemplo.com",
     "rol": "administrador",
     "activo": true
@@ -57,7 +57,7 @@
     "id": 7,
     "nombre": "Administradora",
     "apellido": "Sistema",
-    "telefono": "",
+    "telefono": "0000000007",
     "correo": "admin2@ejemplo.com",
     "rol": "administrador",
     "activo": true
