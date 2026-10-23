@@ -37,8 +37,8 @@ CREATE TABLE categorias (
 );
 
 INSERT INTO categorias (id, nombre, descripcion) VALUES
-    (1, 'Bebidas frías', 'Bebidas frías del menú interactivo.'),
-    (2, 'Bebidas calientes', 'Bebidas calientes del menú interactivo.'),
+    (1, 'Bebidas calientes', 'Bebidas calientes del menú interactivo.'),
+    (2, 'Bebidas frías', 'Bebidas frías del menú interactivo.'),
     (3, 'Otras bebidas', 'Aguas, refrescos, jugos y otras bebidas.'),
     (4, 'Postres', 'Postres y productos de panadería.'),
     (5, 'Platillos', 'Alimentos salados del menú.'),
