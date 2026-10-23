@@ -13,10 +13,20 @@ CREATE TABLE usuario (
     apellido VARCHAR(50) NOT NULL,
     telefono VARCHAR(20) NULL,
     correo VARCHAR(100) NOT NULL UNIQUE,
-    rol ENUM('cliente', 'admin') DEFAULT 'cliente',
+    rol ENUM('cliente', 'administrador') DEFAULT 'cliente',
     activo BOOLEAN DEFAULT TRUE,
     password_hash VARCHAR(255) NULL
 );
+
+-- Usuarios de prueba del archivo usuarios.json; las contrasenas no se guardan en texto plano
+INSERT INTO usuario (Id, nombre, apellido, telefono, correo, rol, activo) VALUES
+    (1, 'Usuario Demo 01', 'Prueba', '0000000001', 'usuario01@ejemplo.com', 'cliente', TRUE),
+    (2, 'Usuario Demo 02', 'Prueba', '0000000002', 'usuario02@ejemplo.com', 'cliente', TRUE),
+    (3, 'Usuario Demo 03', 'Prueba', '0000000003', 'usuario03@ejemplo.com', 'cliente', TRUE),
+    (4, 'Usuario Demo 04', 'Prueba', '0000000004', 'usuario04@ejemplo.com', 'cliente', TRUE),
+    (5, 'Usuario Demo 05', 'Prueba', '0000000005', 'usuario05@ejemplo.com', 'cliente', TRUE),
+    (6, 'Administrador', 'Sistema', '0000000006', 'admin@ejemplo.com', 'administrador', TRUE),
+    (7, 'Administradora', 'Sistema', '0000000007', 'admin2@ejemplo.com', 'administrador', TRUE);
 
 
 -- Nombre de la tabla: Categorias
@@ -39,10 +49,11 @@ INSERT INTO categorias (id, nombre, descripcion) VALUES
 CREATE TABLE productos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     categoria_id INT NOT NULL,
-    sku VARCHAR(30) NOT NULL,
+    sku VARCHAR(30) NOT NULL UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT NULL,
     precio DECIMAL(10, 2) NOT NULL,
+    imagen VARCHAR(255) NULL,
     existencias INT NOT NULL DEFAULT 0,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
     CONSTRAINT fk_productos_categoria FOREIGN KEY (categoria_id) 
@@ -51,6 +62,11 @@ CREATE TABLE productos (
     ON UPDATE CASCADE
 );
 
+-- Productos que aparecen actualmente en el catálogo del menú (pendiente acomodar json para agregaro los productos)
+INSERT INTO productos
+    (categoria_id, sku, nombre, descripcion, precio, imagen, existencias, activo)
+VALUES
+    
 
 -- Nombre de la tabla: Pedidos
 CREATE TABLE pedidos ( 
