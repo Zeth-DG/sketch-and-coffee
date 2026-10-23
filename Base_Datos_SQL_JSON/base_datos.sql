@@ -91,3 +91,4 @@ INSERT INTO pedidos (usuario_id, fecha, estado, total) VALUES
 
 
 -- Nombre de la tabla: Detalles_pedido
+
