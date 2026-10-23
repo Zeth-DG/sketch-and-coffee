@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnEnviar = document.getElementById("btnEnviar"); 
   const privacidad = document.getElementById("campoPrivacidad");
 
+  // menu.html también carga este archivo, pero no tiene el formulario de contacto.
+  if (!contactForm) return;
+
   contactForm.addEventListener("submit", (evento) => {
     evento.preventDefault(); 
     

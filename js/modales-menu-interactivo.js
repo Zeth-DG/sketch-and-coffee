@@ -1,16 +1,22 @@
 let productoSaborTemp = null;
 
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 // Lógica del Selector de Sabores para Bebidas
 function abrirModalSabor(item) {
-    document.getElementById("tituloModalSabor").textContent = item.nombre;
+    document.getElementById("tituloModalSabor").textContent = formatearNombre(item.nombre);
     const contenedor = document.getElementById("contenedor-sabores-radio");
     contenedor.innerHTML = "";
 
     item.opcionesSabores.forEach((sabor, idx) => {
         contenedor.innerHTML += `
-            <div class="selector-sabor-item">
-                <input type="radio" name="saborBebida" id="sabor_${idx}" value="${sabor}" ${idx === 0 ? 'checked' : ''}>
-                <label class="btn-sabor-option" for="sabor_${idx}">
+            <div class="col-12 col-sm-6 mb-2">
+                <input type="radio" class="btn-check" name="saborBebida" id="sabor_${idx}" value="${sabor}" ${idx === 0 ? 'checked' : ''} autocomplete="off">
+                <label class="btn btn-sabor-option w-100 py-3 rounded-3 text-wrap" for="sabor_${idx}">
                     ${sabor}
                 </label>
             </div>
@@ -25,7 +31,7 @@ function confirmarSaborYBebida() {
     let saborSeleccionado = document.querySelector('input[name="saborBebida"]:checked');
     if (!saborSeleccionado || !productoSaborTemp) return;
 
-    let nombreConSabor = `${productoSaborTemp.nombre} (${saborSeleccionado.value})`;
+    let nombreConSabor = formatearNombre(`${productoSaborTemp.nombre} (${saborSeleccionado.value})`);
 
     let productoEnCarrito = {
         id: productoSaborTemp.id + '_' + saborSeleccionado.value.toLowerCase().replace(/\s+/g, ''),
@@ -107,7 +113,7 @@ function seleccionarTipoCrepa(tipo) {
     let htmlBases = basesFiltradas.map((base, idx) => `
         <div class="col-12 col-md-5">
             <div class="card h-100 p-4 text-center border-0 shadow-sm cursor-pointer card-wizard" onclick='seleccionarBaseCrepa(${JSON.stringify(base)})'>
-                <h5 class="fw-bold m-0">${base.nombre}</h5>
+                <h5 class="fw-bold m-0">${formatearNombre(base.nombre)}</h5>
                 <p class="text-dark fw-bold mt-2 mb-0">$${base.precioBase} MXN</p>
             </div>
         </div>
@@ -156,7 +162,7 @@ function seleccionarBaseCrepa(baseObj) {
         </div>
         <div class="col-12 text-center mb-3">
             <h4 class="fw-bold">3. Elige tus 2 ingredientes incluidos</h4>
-            <p class="text-muted small">${crepaWizardState.tipo} de <strong>${baseObj.nombre}</strong> ($${baseObj.precioBase} MXN)</p>
+            <p class="text-muted small">${crepaWizardState.tipo} de <strong>${formatearNombre(baseObj.nombre)}</strong> ($${baseObj.precioBase} MXN)</p>
         </div>
         <div class="col-12 mb-4">
             <div class="row g-2 justify-content-center">
@@ -214,7 +220,7 @@ function avanzarPasoExtras() {
             </div>
         </div>
         <div class="col-12 text-center p-4 rounded-3 border">
-            <h5 class="fw-bold mb-2">Resumen: <span class="text-dark">${crepaWizardState.tipo} de ${crepaWizardState.base.nombre}</span></h5>
+            <h5 class="fw-bold mb-2">Resumen: <span class="text-dark">${crepaWizardState.tipo} de ${formatearNombre(crepaWizardState.base.nombre)}</span></h5>
             <h3 class="fw-bold text-dark mb-3" id="precio-total-wizard-display">$${crepaWizardState.base.precioBase} MXN</h3>
             <button class="btn btn-dark btn-lg rounded-pill px-5 shadow" onclick="finalizarAgregarCrepaAlCarrito()">
                 <i class="bi bi-cart-plus me-2"></i> Agregar al pedido
@@ -235,7 +241,7 @@ function finalizarAgregarCrepaAlCarrito() {
 
     let precioTotal = crepaWizardState.base.precioBase + (extrasSeleccionados.length * 15);
 
-    let descripcionDetallada = `Masa: ${crepaWizardState.base.nombre} | Incluye: ${crepaWizardState.incluidos.join(', ') || 'Ninguno'}`;
+    let descripcionDetallada = `Masa: ${formatearNombre(crepaWizardState.base.nombre)} | Incluye: ${crepaWizardState.incluidos.join(', ') || 'Ninguno'}`;
     if (extrasSeleccionados.length > 0) {
         descripcionDetallada += ` | Extras: ${extrasSeleccionados.join(', ')}`;
     }

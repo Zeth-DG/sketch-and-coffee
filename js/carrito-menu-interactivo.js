@@ -1,5 +1,11 @@
 let carrito = JSON.parse(localStorage.getItem('carrito_sketch')) || [];
 
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 function agregarAlCarrito(item) {
     if (item.opcionesSabores && item.opcionesSabores.length > 0 && typeof abrirModalSabor === "function") {
         productoSaborTemp = item;
@@ -9,7 +15,7 @@ function agregarAlCarrito(item) {
 
     let cantidad = Number(item.cantidad) > 0 ? Number(item.cantidad) : 1;
     let precioFinal = item.precio;
-    let nombreFinal = item.nombre;
+    let nombreFinal = formatearNombre(item.nombre);
 
     let checkAdd = document.getElementById(`add_${item.id}`);
     if (checkAdd && checkAdd.checked) {
@@ -22,6 +28,9 @@ function agregarAlCarrito(item) {
         precioFinal += 45;
         nombreFinal += ` (En paquete)`;
     }
+
+    nombreFinal = formatearNombre(nombreFinal);
+
     let productoEnCarrito = {
         id: item.id + (checkAdd?.checked ? '_add' : '') + (checkPaq?.checked ? '_paq' : ''),
         nombre: nombreFinal,
@@ -72,14 +81,14 @@ function renderizarModalCarrito() {
         totalContainer.textContent = "$0 MXN";
 
         // Deshabilitar el botón "Mostrar al mesero" si no hay items
-        let btnMostrar = document.querySelector('#modalCarrito .btn-cta-magenta');
+        let btnMostrar = document.getElementById('btnMostrarMesero');
         if (btnMostrar) btnMostrar.disabled = true;
 
         return;
     }
 
     // Si hay items, aseguramos que el botón esté habilitado
-    let btnMostrar = document.querySelector('#modalCarrito .btn-cta-magenta');
+    let btnMostrar = document.getElementById('btnMostrarMesero');
     if (btnMostrar) btnMostrar.disabled = false;
 
     let total = 0;
@@ -91,7 +100,7 @@ function renderizarModalCarrito() {
         div.className = "list-group-item d-flex justify-content-between align-items-center py-3";
         div.innerHTML = `
             <div>
-                <h6 class="mb-0 fw-bold">${item.nombre}</h6>
+                <h6 class="mb-0 fw-bold">${formatearNombre(item.nombre)}</h6>
                 ${item.descripcion ? `<small class="text-muted d-block">${item.descripcion}</small>` : ''}
                 <small class="text-muted">$${item.precio} c/u</small>
             </div>
@@ -170,8 +179,27 @@ function mostrarAlertaRestaurar() {
     listaContainer.prepend(alertaDiv);
 }
 
+// Al cerrar el carrito desde "Mostrar a Mesero", abrimos el modal de confirmación.
+let mostrarPedidoListoAlCerrar = false;
+
+document.addEventListener("click", (evento) => {
+    if (evento.target.closest("#btnMostrarMesero")) {
+        mostrarPedidoListoAlCerrar = true;
+    }
+});
+
 document.getElementById('modalCarrito')?.addEventListener('show.bs.modal', () => {
     renderizarModalCarrito();
+});
+
+document.getElementById('modalCarrito')?.addEventListener('hidden.bs.modal', () => {
+    if (!mostrarPedidoListoAlCerrar) return;
+
+    mostrarPedidoListoAlCerrar = false;
+    const modalPedidoListo = document.getElementById('modalPedidoListo');
+    if (modalPedidoListo && window.bootstrap) {
+        bootstrap.Modal.getOrCreateInstance(modalPedidoListo).show();
+    }
 });
 
 // Función para mostrar la notificación flotante (Toast)

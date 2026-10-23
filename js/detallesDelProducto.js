@@ -3,6 +3,12 @@
 // ARCHIVO: ./js/script.js
 // ==========================================================================
 
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+  if (!texto) return "";
+  return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 /**
  * Cambia la imagen principal cuando el usuario hace clic en una miniatura
  * @param {HTMLElement} element - La miniatura (div) que recibió el clic
@@ -63,7 +69,7 @@ function addToCart() {
 
   agregarAlCarrito({
     id: `detalle-${productoActualId}`,
-    nombre: producto.name,
+    nombre: formatearNombre(producto.name),
     precio: precio,
     cantidad: qty
   });
@@ -207,11 +213,13 @@ function loadProduct(productId, shouldScroll = true) {
   const rating = document.getElementById("product-rating");
   const thumbnails = document.getElementById("product-thumbnails");
 
+  const nombreFormateado = formatearNombre(product.name);
+
   if (mainImage) {
     mainImage.src = product.images[0];
-    mainImage.alt = product.name;
+    mainImage.alt = nombreFormateado;
   }
-  if (title) title.textContent = product.name;
+  if (title) title.textContent = nombreFormateado;
   if (price) price.textContent = product.price;
   if (rating) rating.textContent = `CALIFICACIÓN • ${product.rating}`;
 
@@ -221,7 +229,7 @@ function loadProduct(productId, shouldScroll = true) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = `thumb-item${index === 0 ? " active" : ""}`;
-      button.setAttribute("aria-label", `Ver imagen ${index + 1} de ${product.name}`);
+      button.setAttribute("aria-label", `Ver imagen ${index + 1} de ${nombreFormateado}`);
       button.addEventListener("click", () => changeImage(button, image));
 
       const thumbnail = document.createElement("img");
@@ -230,7 +238,7 @@ function loadProduct(productId, shouldScroll = true) {
       thumbnail.addEventListener("error", () => {
         button.disabled = true;
         button.classList.add("thumb-item-placeholder");
-        button.setAttribute("aria-label", `Vista ${index + 1} pendiente de imagen de ${product.name}`);
+        button.setAttribute("aria-label", `Vista ${index + 1} pendiente de imagen de ${nombreFormateado}`);
         button.textContent = `Vista ${index + 1}`;
       }, { once: true });
       button.append(thumbnail);

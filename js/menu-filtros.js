@@ -2,6 +2,12 @@
 // Lógica modular para gestionar categorías, filtros avanzados, precio, ordenamiento, limpieza y paginación dinámica.
 import { cargarProductosCatalogo } from './menu-productos.js';
 
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
     function normalizarTexto(texto) {
         return texto
@@ -57,21 +63,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             grilla.innerHTML = productosPagina.map((prod, indice) => {
                 const id = `producto-${inicio + indice + 1}`;
                 const precio = Number(prod.precio).toFixed(2);
+                const nombreFormateado = formatearNombre(prod.nombre);
                 return `
                     <div class="col" role="listitem">
                       <article id="${id}" class="tarjeta-producto" aria-labelledby="nombre-${id}">
                         <div class="contenedor-imagen-producto">
-                          <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
+                          <img src="${prod.imagen}" alt="${nombreFormateado}" loading="lazy">
                         </div>
-                        <h3 id="nombre-${id}" class="titulo-producto">${prod.nombre}</h3>
+                        <h3 id="nombre-${id}" class="titulo-producto">${nombreFormateado}</h3>
                         <div class="precio-producto" aria-label="Precio: ${precio} pesos mexicanos">$${precio} MXN</div>
                         <div class="pie-tarjeta-producto">
                           <span class="indicador-gris" aria-hidden="true"></span>
                           <button class="btn boton-anadir${prod.disponible ? ' activo' : ''}"
                                   data-sku="${prod.sku}" ${prod.disponible ? '' : 'disabled'}
                                   data-agregar-carrito data-id="catalogo-${prod.sku}"
-                                  data-nombre="${prod.nombre}" data-precio="${prod.precio}"
-                                  aria-label="Añadir ${prod.nombre} al carrito de compras">
+                                  data-nombre="${nombreFormateado}" data-precio="${prod.precio}"
+                                  aria-label="Añadir ${nombreFormateado} al carrito de compras">
                             ${prod.disponible ? 'Añadir' : 'Agotado'}
                           </button>
                         </div>
