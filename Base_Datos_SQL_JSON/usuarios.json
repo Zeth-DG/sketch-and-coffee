@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "nombre": "Usuario Demo 01",
+    "apellido": "Prueba",
+    "telefono": "0000000001",
+    "correo": "usuario01@ejemplo.com",
+    "rol": "cliente",
+    "activo": true
+  },
+  {
+    "id": 2,
+    "nombre": "Usuario Demo 02",
+    "apellido": "Prueba",
+    "telefono": "0000000002",
+    "correo": "usuario02@ejemplo.com",
+    "rol": "cliente",
+    "activo": true
+  },
+  {
+    "id": 3,
+    "nombre": "Usuario Demo 03",
+    "apellido": "Prueba",
+    "telefono": "0000000003",
+    "correo": "usuario03@ejemplo.com",
+    "rol": "cliente",
+    "activo": true
+  },
+  {
+    "id": 4,
+    "nombre": "Usuario Demo 04",
+    "apellido": "Prueba",
+    "telefono": "0000000004",
+    "correo": "usuario04@ejemplo.com",
+    "rol": "cliente",
+    "activo": true
+  },
+  {
+    "id": 5,
+    "nombre": "Usuario Demo 05",
+    "apellido": "Prueba",
+    "telefono": "0000000005",
+    "correo": "usuario05@ejemplo.com",
+    "rol": "cliente",
+    "activo": true
+  },
+  {
+    "id": 6,
+    "nombre": "Administrador",
+    "apellido": "Sistema",
+    "telefono": "",
+    "correo": "admin@ejemplo.com",
+    "rol": "administrador",
+    "activo": true
+  },
+  {
+    "id": 7,
+    "nombre": "Administradora",
+    "apellido": "Sistema",
+    "telefono": "",
+    "correo": "admin2@ejemplo.com",
+    "rol": "administrador",
+    "activo": true
+  }
+]
