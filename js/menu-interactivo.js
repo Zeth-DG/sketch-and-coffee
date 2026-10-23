@@ -1,6 +1,12 @@
 let menuData = { categorias: [] };
 let temperaturaSeleccionadaActual = '';
 
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     cargarMenu();
     if (typeof actualizarContadorCarrito === 'function') {
@@ -261,7 +267,7 @@ function crearTarjetaProducto(item, esPostre = false) {
             <div class="card-body d-flex flex-column justify-content-between">
                 <div>
                     <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="card-title fw-bold mb-0">${item.nombre}</h5>
+                        <h5 class="card-title fw-bold mb-0">${formatearNombre(item.nombre)}</h5>
                         <span class="badge bg-dark fs-6">$${item.precio} MXN</span>
                     </div>
                     <p class="card-text text-muted small">${item.descripcion || ''}</p>

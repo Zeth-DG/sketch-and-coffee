@@ -1,11 +1,24 @@
+// Formato "Oración": primera letra en mayúscula y el resto en minúsculas.
+function formatearNombre(texto) {
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
 let especialidadWizardState = {
     platillo: null,
     detallePersonalizacion: null,
     esPaquete: false,
-    precioPaqueteExtra: 60, // Costo fijo por hacerlo paquete
+    precioPaqueteExtra: 60, // Fallback; el precio real se lee de menu.json.
     bebidaPaquete: 'Café Americano (Incluido)',
     frutaPaquete: 'Papaya'
 };
+
+// El precio del paquete vive en menu.json (categoría "platillos").
+function obtenerPrecioPaquete() {
+    const categoriaPlatillos = menuData?.categorias?.find(c => c.id === "platillos");
+    const precio = Number(categoriaPlatillos?.precioPaquete);
+    return Number.isFinite(precio) && precio >= 0 ? precio : 60;
+}
 
 // PASO 1: Platillos Principales 
 function iniciarWizardEspecialidades() {
@@ -13,7 +26,7 @@ function iniciarWizardEspecialidades() {
         platillo: null,
         detallePersonalizacion: null,
         esPaquete: false,
-        precioPaqueteExtra: 60,
+        precioPaqueteExtra: obtenerPrecioPaquete(),
         bebidaPaquete: 'Café Americano (Incluido)',
         frutaPaquete: 'Papaya'
     };
@@ -26,7 +39,7 @@ function iniciarWizardEspecialidades() {
     let htmlPlatillos = catPlatillos.items.map(item => `
         <div class="col-12 col-md-4">
             <div class="card h-100 p-3 text-center border-0 shadow-sm cursor-pointer card-wizard" onclick='seleccionarPlatilloEspecialidad(${JSON.stringify(item)})'>
-                <h5 class="fw-bold mb-1">${item.nombre}</h5>
+                <h5 class="fw-bold mb-1">${formatearNombre(item.nombre)}</h5>
                 ${item.descripcion ? `<p class="text-muted small mb-2">${item.descripcion}</p>` : ''}
                 <span class="fw-bold text-dark">$${item.precio} MXN</span>
             </div>
@@ -46,53 +59,19 @@ function iniciarWizardEspecialidades() {
     `;
 }
 
-// PASO 2: Personalizaciones Específicas
+// PASO 1: Elegir platillo
+// Todos los platillos pasan primero por la pregunta del paquete.
 function seleccionarPlatilloEspecialidad(platilloObj) {
     especialidadWizardState.platillo = platilloObj;
+    especialidadWizardState.detallePersonalizacion = null;
+    preguntarSiEsPaquete();
+}
 
-    // Si el platillo no requiere elegir variedad, avanzamos directo al paquete
-    if (!platilloObj.opcionesPersonalizacion || platilloObj.opcionesPersonalizacion.length === 0) {
-        especialidadWizardState.detallePersonalizacion = null;
-        preguntarSiEsPaquete();
-        return;
-    }
-
+// PASO 2: ¿Hacerlo paquete?
+function preguntarSiEsPaquete() {
     const contenedor = document.getElementById("menu-contenedor");
-
-    let tituloPersonalizacion = "Personaliza tu platillo";
-    if (platilloObj.tipoPersonalizacion === 'preparacion') tituloPersonalizacion = "¿Cómo prefieres tus huevos?";
-    if (platilloObj.tipoPersonalizacion === 'sabor') tituloPersonalizacion = "Elige el sabor de tu chapata";
-    if (platilloObj.tipoPersonalizacion === 'extras') tituloPersonalizacion = "Elige la presentación de tus molletes";
-
-    // Mapeamos las opciones considerando que ahora son objetos con .nombre y .precioAdicional
-    // Normalizamos las opciones: si son strings, las convertimos a objetos {nombre, precioAdicional}
-    let htmlOpciones = platilloObj.opcionesPersonalizacion.map((op, idx) => {
-        let opcionObj;
-        if (typeof op === 'string') {
-            // Chapata, Huevos: string plano
-            opcionObj = { nombre: op, precioAdicional: 0 };
-        } else {
-            // Molletes: objeto con nombre y precioAdicional
-            opcionObj = {
-                nombre: op.nombre,
-                precioAdicional: op.precioAdicional || 0
-            };
-        }
-
-        const opString = JSON.stringify(opcionObj);
-        let textoPrecio = opcionObj.precioAdicional > 0
-            ? ` (+$${opcionObj.precioAdicional})`
-            : " (Incluido)";
-
-        return `
-        <div class="col-12 col-md-4 mb-2">
-            <input type="radio" class="btn-check" name="opcionPersonalizada" value='${opString}' id="op_${idx}" ${idx === 0 ? 'checked' : ''} autocomplete="off">
-            <label class="btn btn-outline-dark w-100 py-3 rounded-3 text-wrap" for="op_${idx}">
-                ${opcionObj.nombre} <span class="small text-muted d-block mt-1">${textoPrecio}</span>
-            </label>
-        </div>
-    `;
-    }).join('');
+    const precioPaquete = obtenerPrecioPaquete();
+    especialidadWizardState.precioPaqueteExtra = precioPaquete;
 
     contenedor.innerHTML = `
         <div class="col-12 mb-3">
@@ -101,57 +80,8 @@ function seleccionarPlatilloEspecialidad(platilloObj) {
             </button>
         </div>
         <div class="col-12 text-center mb-4">
-            <h4 class="fw-bold">2. ${tituloPersonalizacion}</h4>
-            <p class="text-muted small">Para tu <strong>${platilloObj.nombre}</strong> (Base: $${platilloObj.precio})</p>
-        </div>
-        <div class="col-12 mb-4">
-            <div class="row g-2 justify-content-center">
-                ${htmlOpciones}
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <button class="btn btn-dark btn-lg rounded-pill px-5 shadow" onclick="guardarPersonalizacionYContinuar()">
-                Continuar a Paquete ➡
-            </button>
-        </div>
-    `;
-}
-
-function guardarPersonalizacionYContinuar() {
-    let seleccion = document.querySelector('input[name="opcionPersonalizada"]:checked');
-
-    if (seleccion) {
-        try {
-            // Parseamos el JSON: ahora siempre será un objeto {nombre, precioAdicional}
-            especialidadWizardState.detallePersonalizacion = JSON.parse(seleccion.value);
-        } catch (e) {
-            // Fallback por si algo sale mal: guardamos el value crudo como nombre
-            especialidadWizardState.detallePersonalizacion = {
-                nombre: seleccion.value,
-                precioAdicional: 0
-            };
-        }
-    } else {
-        especialidadWizardState.detallePersonalizacion = null;
-    }
-
-    preguntarSiEsPaquete();
-}
-
-// PASO 3: ¿Hacerlo paquete? (+$45 MXN)
-function preguntarSiEsPaquete() {
-    const contenedor = document.getElementById("menu-contenedor");
-    let tienePasoPrevio = especialidadWizardState.platillo.opcionesPersonalizacion && especialidadWizardState.platillo.opcionesPersonalizacion.length > 0;
-
-    contenedor.innerHTML = `
-        <div class="col-12 mb-3">
-            <button class="btn btn-sm btn-dark rounded-pill px-3 shadow-sm mb-2" onclick="${tienePasoPrevio ? "seleccionarPlatilloEspecialidad(especialidadWizardState.platillo)" : "iniciarWizardEspecialidades()"}">
-                <i class="bi bi-arrow-left me-1"></i> ${tienePasoPrevio ? 'Volver a opciones' : 'Volver a especialidades'}
-            </button>
-        </div>
-        <div class="col-12 text-center mb-4">
-            <h4 class="fw-bold">3. ¿Deseas hacerlo paquete?</h4>
-            <p class="text-muted small">Incluye bebida, fruta de temporada y papas saladas (+$45 MXN)</p>
+            <h4 class="fw-bold">2. ¿Deseas hacerlo paquete?</h4>
+            <p class="text-muted small">Incluye bebida, fruta de temporada y papas saladas (+$${precioPaquete} MXN)</p>
         </div>
         <div class="col-12">
             <div class="row g-3 justify-content-center">
@@ -159,7 +89,7 @@ function preguntarSiEsPaquete() {
                     <div class="card h-100 p-4 text-center border-0 shadow-sm cursor-pointer card-wizard" onclick="definirPaquete(true)">
                         <div class="fs-1 mb-2">🍽️ + ☕</div>
                         <h5 class="fw-bold m-0">Sí, hacerlo paquete</h5>
-                        <p class="text-muted small m-0 mt-1">Añade bebida + fruta + papas por +$45 MXN</p>
+                        <p class="text-muted small m-0 mt-1">Añade bebida + fruta + papas por +$${precioPaquete} MXN</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-5">
@@ -176,16 +106,125 @@ function preguntarSiEsPaquete() {
 
 function definirPaquete(esPaq) {
     especialidadWizardState.esPaquete = esPaq;
+
     if (esPaq) {
         mostrarPasoComplementosPaquete();
     } else {
-        finalizarAgregarEspecialidadAlCarrito();
+        mostrarPasoExtrasSinPaquete();
     }
 }
 
-// PASO 4: Complementos del paquete con desglose claro de bebidas
-function mostrarPasoComplementosPaquete() {
+// Devuelve los extras opcionales de un platillo, sin la opción base ("Solos"/"Sencillos").
+function obtenerExtrasOpcionales(platilloObj) {
+    if (!platilloObj || platilloObj.tipoPersonalizacion !== 'extras') return [];
+    if (!Array.isArray(platilloObj.opcionesPersonalizacion)) return [];
+
+    return platilloObj.opcionesPersonalizacion
+        .slice(1)
+        .map(op => {
+            if (typeof op === 'string') return { nombre: op, precioAdicional: 0 };
+            return { nombre: op.nombre, precioAdicional: op.precioAdicional || 0 };
+        })
+        .filter(op => op.nombre);
+}
+
+// "Con Jamón" → "Jamón" para el texto del botón y del carrito.
+function nombreExtraCorto(nombre) {
+    return String(nombre).replace(/^con\s+/i, '').trim();
+}
+
+// Normaliza las opciones de personalización que se eligen con radio buttons.
+function obtenerOpcionesRadio(platilloObj) {
+    if (!platilloObj || !Array.isArray(platilloObj.opcionesPersonalizacion)) return [];
+
+    return platilloObj.opcionesPersonalizacion
+        .map(op => {
+            if (typeof op === 'string') return { nombre: op, precioAdicional: 0 };
+            return { nombre: op.nombre, precioAdicional: op.precioAdicional || 0 };
+        })
+        .filter(op => op.nombre);
+}
+
+// Renderiza únicamente los controles de personalización del platillo.
+function htmlOpcionesPersonalizacion(platilloObj) {
+    if (!platilloObj) return '';
+
+    // Molletes: extras opcionales con checkbox (la opción base "Solos" no se muestra).
+    if (platilloObj.tipoPersonalizacion === 'extras') {
+        const extras = obtenerExtrasOpcionales(platilloObj);
+        if (extras.length === 0) return '';
+
+        const botones = extras.map((extra, idx) => {
+            const valor = JSON.stringify(extra).replace(/'/g, '&#39;');
+            const precioTexto = extra.precioAdicional > 0 ? ` (+$${extra.precioAdicional})` : '';
+            return `
+                <div class="col-12 col-md-6 mb-2">
+                    <input type="checkbox" class="btn-check" name="extraPlatillo" value='${valor}' id="extra_${idx}" autocomplete="off">
+                    <label class="btn btn-sabor-option w-100 py-3 rounded-3 text-wrap" for="extra_${idx}">
+                        + ${nombreExtraCorto(extra.nombre)}${precioTexto}
+                    </label>
+                </div>
+            `;
+        }).join('');
+
+        return `<div class="row g-2 justify-content-center">${botones}</div>`;
+    }
+
+    // Chapata (sabor) y Huevos (preparación): una sola opción con radio buttons.
+    const opciones = obtenerOpcionesRadio(platilloObj);
+    if (opciones.length === 0) return '';
+
+    const botones = opciones.map((opcion, idx) => {
+        const valor = JSON.stringify(opcion).replace(/'/g, '&#39;');
+        const precioTexto = opcion.precioAdicional > 0
+            ? `<span class="small d-block mt-1 opacity-75">(+$${opcion.precioAdicional})</span>`
+            : '';
+
+        return `
+            <div class="col-12 col-md-4 mb-2">
+                <input type="radio" class="btn-check" name="opcionPersonalizada" value='${valor}' id="op_${idx}" ${idx === 0 ? 'checked' : ''} autocomplete="off">
+                <label class="btn btn-sabor-option w-100 py-3 rounded-3 text-wrap" for="op_${idx}">
+                    ${formatearNombre(opcion.nombre)}
+                    ${precioTexto}
+                </label>
+            </div>
+        `;
+    }).join('');
+
+    return `<div class="row g-2 justify-content-center">${botones}</div>`;
+}
+
+// Sección completa con título, usada en la vista con paquete.
+function htmlSeccionPersonalizacion(platilloObj, titulo) {
+    const opcionesHtml = htmlOpcionesPersonalizacion(platilloObj);
+    if (!opcionesHtml) return '';
+
+    const nombrePlatillo = formatearNombre(platilloObj.nombre).trim();
+    const subtitulo = platilloObj.tipoPersonalizacion === 'extras'
+        ? 'Elige los extras que quieras agregar; se suman al total.'
+        : 'Elige una opción.';
+
+    return `
+        <div class="text-center mb-3">
+            <h5 class="fw-bold mb-1">${titulo || `Personaliza tu ${nombrePlatillo}`}</h5>
+            <p class="text-muted small mb-0">${subtitulo}</p>
+        </div>
+        ${opcionesHtml}
+    `;
+}
+
+// PASO 3 sin paquete: solo personalización del platillo.
+function mostrarPasoExtrasSinPaquete() {
     const contenedor = document.getElementById("menu-contenedor");
+    const platillo = especialidadWizardState.platillo;
+    const nombrePlatillo = formatearNombre(platillo.nombre).trim();
+    const opcionesHtml = htmlOpcionesPersonalizacion(platillo);
+
+    const subtitulo = !opcionesHtml
+        ? 'Este platillo no requiere personalización.'
+        : platillo.tipoPersonalizacion === 'extras'
+            ? 'Elige los extras que quieras agregar; se suman al total.'
+            : 'Elige una opción para tu platillo.';
 
     contenedor.innerHTML = `
         <div class="col-12 mb-3">
@@ -194,11 +233,42 @@ function mostrarPasoComplementosPaquete() {
             </button>
         </div>
         <div class="col-12 text-center mb-4">
-            <h4 class="fw-bold">4. Personaliza los complementos de tu paquete</h4>
+            <h4 class="fw-bold">3. Personaliza tu ${nombrePlatillo}</h4>
+            <p class="text-muted small mb-0">${subtitulo}</p>
+        </div>
+        ${opcionesHtml ? `<div class="col-12 mb-4">${opcionesHtml}</div>` : ''}
+        <div class="col-12 text-center">
+            <button class="btn btn-dark btn-lg rounded-pill px-5 shadow" onclick="finalizarAgregarEspecialidadAlCarrito()">
+                <i class="bi bi-cart-plus me-2"></i> Agregar al carrito
+            </button>
+        </div>
+    `;
+}
+
+// PASO 3 con paquete: complementos + personalización del platillo.
+function mostrarPasoComplementosPaquete() {
+    const contenedor = document.getElementById("menu-contenedor");
+    const platillo = especialidadWizardState.platillo;
+    const nombrePlatillo = formatearNombre(platillo.nombre).trim();
+    const seccionPersonalizacion = htmlSeccionPersonalizacion(
+        platillo,
+        `Personaliza tu ${nombrePlatillo}`
+    );
+
+    contenedor.innerHTML = `
+        <div class="col-12 mb-3">
+            <button class="btn btn-sm btn-dark rounded-pill px-3 shadow-sm mb-2" onclick="preguntarSiEsPaquete()">
+                <i class="bi bi-arrow-left me-1"></i> Volver
+            </button>
+        </div>
+        <div class="col-12 text-center mb-4">
+            <h4 class="fw-bold">3. Personaliza tu paquete</h4>
             <p class="text-muted small">Elige una bebida y fruta para acompañar.</p>
         </div>
-        
+
         <div class="col-12 col-md-8 mx-auto p-4 rounded-3 border shadow-sm">
+            ${seccionPersonalizacion ? `<div class="mb-4 pb-4 border-bottom">${seccionPersonalizacion}</div>` : ''}
+
             <!-- Selección de Bebida -->
             <div class="mb-4">
                 <label class="form-label fw-bold text-dark">Elige una bebida:</label>
@@ -220,11 +290,11 @@ function mostrarPasoComplementosPaquete() {
                 <div class="row g-2">
                     <div class="col-6">
                         <input type="radio" class="btn-check" name="frutaPaq" id="frutaPapaya" value="Papaya" checked autocomplete="off">
-                        <label class="btn btn-outline-dark w-100 py-2 rounded-3" for="frutaPapaya">Papaya</label>
+                        <label class="btn btn-sabor-option w-100 py-2 rounded-3" for="frutaPapaya">Papaya</label>
                     </div>
                     <div class="col-6">
                         <input type="radio" class="btn-check" name="frutaPaq" id="frutaManzana" value="Manzana" autocomplete="off">
-                        <label class="btn btn-outline-dark w-100 py-2 rounded-3" for="frutaManzana">Manzana</label>
+                        <label class="btn btn-sabor-option w-100 py-2 rounded-3" for="frutaManzana">Manzana</label>
                     </div>
                 </div>
             </div>
@@ -258,39 +328,39 @@ function actualizarSubopcionesBebida() {
             <div class="row g-2">
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_orig" value="Coca-Cola original" checked autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_orig">Coca-Cola original</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_orig">Coca-Cola original</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_light" value="Coca-Cola light" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_light">Coca-Cola light</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_light">Coca-Cola light</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_zero" value="Coca-Cola zero" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_zero">Coca-Cola zero</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_zero">Coca-Cola zero</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_fanta" value="Fanta" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_fanta">Fanta</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_fanta">Fanta</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_mundet" value="Sidral mundet" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_mundet">Sidral mundet</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_mundet">Sidral mundet</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_fresca" value="Fresca" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_fresca">Fresca</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_fresca">Fresca</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_jnar" value="Jarrito naranja" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jnar">Jarrito naranja</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_jnar">Jarrito naranja</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_jpin" value="Jarrito piña" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jpin">Jarrito piña</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_jpin">Jarrito piña</label>
                 </div>
                 <div class="col-6 col-md-4">
                     <input type="radio" class="btn-check" name="saborRefresco" id="ref_jlim" value="Jarrito limón" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="ref_jlim">Jarrito limón</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="ref_jlim">Jarrito limón</label>
                 </div>
             </div>
         `;
@@ -300,15 +370,15 @@ function actualizarSubopcionesBebida() {
             <div class="row g-2">
                 <div class="col-4">
                     <input type="radio" class="btn-check" name="saborJugo" id="jug_mango" value="Mango" checked autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_mango">Mango</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="jug_mango">Mango</label>
                 </div>
                 <div class="col-4">
                     <input type="radio" class="btn-check" name="saborJugo" id="jug_manzana" value="Manzana" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_manzana">Manzana</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="jug_manzana">Manzana</label>
                 </div>
                 <div class="col-4">
                     <input type="radio" class="btn-check" name="saborJugo" id="jug_durazno" value="Durazno" autocomplete="off">
-                    <label class="btn btn-outline-dark w-100 py-2 rounded-3 text-wrap" for="jug_durazno">Durazno</label>
+                    <label class="btn btn-sabor-option w-100 py-2 rounded-3 text-wrap" for="jug_durazno">Durazno</label>
                 </div>
             </div>
         `;
@@ -324,16 +394,58 @@ function finalizarAgregarEspecialidadAlCarrito() {
     let precioTotal = p.platillo.precio;
     let descripcionDetallada = "";
 
-    // ✅ Manejo correcto del detalle de personalización
+    // Opción única elegida con radio buttons (sabor de chapata o preparación de huevos).
+    const opcionSeleccionada = document.querySelector('input[name="opcionPersonalizada"]:checked');
+    if (opcionSeleccionada) {
+        try {
+            p.detallePersonalizacion = JSON.parse(opcionSeleccionada.value);
+        } catch (e) {
+            p.detallePersonalizacion = {
+                nombre: opcionSeleccionada.value,
+                precioAdicional: 0
+            };
+        }
+    } else if (p.platillo.tipoPersonalizacion !== 'extras') {
+        p.detallePersonalizacion = null;
+    }
+
     if (p.detallePersonalizacion) {
         let nombreOpcion = p.detallePersonalizacion.nombre || p.detallePersonalizacion;
         let precioExtra = p.detallePersonalizacion.precioAdicional || 0;
-        
+
         precioTotal += precioExtra;
-        descripcionDetallada += `Opción: ${nombreOpcion}`;
+
+        let etiquetaOpcion = 'Opción';
+        if (p.platillo.tipoPersonalizacion === 'sabor') etiquetaOpcion = 'Sabor';
+        if (p.platillo.tipoPersonalizacion === 'preparacion') etiquetaOpcion = 'Preparación';
+
+        descripcionDetallada += `${etiquetaOpcion}: ${formatearNombre(nombreOpcion)}`;
         if (precioExtra > 0) {
             descripcionDetallada += ` (+$${precioExtra})`;
         }
+    }
+
+    // ✅ Extras opcionales marcados con checkbox (Molletes, etc.)
+    let extrasSeleccionados = [];
+    if (p.platillo.tipoPersonalizacion === 'extras') {
+        extrasSeleccionados = Array.from(document.querySelectorAll('input[name="extraPlatillo"]:checked'))
+            .map(input => {
+                try { return JSON.parse(input.value); }
+                catch (e) { return null; }
+            })
+            .filter(Boolean);
+    }
+
+    let precioExtras = extrasSeleccionados.reduce((total, extra) => total + (extra.precioAdicional || 0), 0);
+    precioTotal += precioExtras;
+
+    let nombresExtras = extrasSeleccionados.map(extra => nombreExtraCorto(extra.nombre));
+
+    if (extrasSeleccionados.length > 0) {
+        let detalleExtras = extrasSeleccionados
+            .map(extra => `${nombreExtraCorto(extra.nombre)}${extra.precioAdicional > 0 ? ` (+$${extra.precioAdicional})` : ''}`)
+            .join(', ');
+        descripcionDetallada += (descripcionDetallada ? " | " : "") + `Extras: ${detalleExtras}`;
     }
 
     if (p.esPaquete) {
@@ -360,9 +472,18 @@ function finalizarAgregarEspecialidadAlCarrito() {
             + `Paquete: ${bebidaSel}${saborBebida}, Fruta: ${frutaSel}, Papas saladas`;
     }
 
+    let nombreProducto = p.platillo.nombre.trim();
+    if (nombresExtras.length > 0) {
+        nombreProducto += ` con ${nombresExtras.join(' y ')}`;
+    }
+    if (p.esPaquete) {
+        nombreProducto += ' (Paquete)';
+    }
+    nombreProducto = formatearNombre(nombreProducto);
+
     let productoFinal = {
         id: 'platillo_' + Date.now(),
-        nombre: `${p.platillo.nombre} ${p.esPaquete ? '(Paquete)' : ''}`,
+        nombre: nombreProducto,
         precio: precioTotal,
         cantidad: 1,
         descripcion: descripcionDetallada

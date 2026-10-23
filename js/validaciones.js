@@ -47,23 +47,16 @@ export function validarTelefono(telefono){
     }//no dejar el campo vacío
 
     const telefonoSinSeparadores = telefonoLimpio.replace(/[\s()-]/g, "");
-    const numeroRegex = /^\d{10}$/; 
 
-    if (!numeroRegex.test(telefonoSinSeparadores)){
+    // 10 dígitos exactos y sin 3 (o más) números iguales consecutivos (ej. 888, 111).
+    const regexTelefono = /^(?!.*(\d)\1{2})\d{10}$/;
+
+    if (!regexTelefono.test(telefonoSinSeparadores)){
         return {
             valido: false, 
-            mensaje: "Escribe 10 dígitos. Ej: 5512345678. Puedes separarlos con espacios o guiones."
-        }; 
-    }//if numero sin 10 dígitos
-
-    const todosIguales = /^(\d)\1+$/.test(telefonoSinSeparadores); 
-
-    if (todosIguales){
-        return {
-            valido: false, 
-            mensaje: "El número no puede tener todos los dígitos iguales (ej. 5555555555)."
+            mensaje: "Ingresa un teléfono válido de 10 dígitos (sin números repetidos 3 veces seguidas)"
         };
-    }//if todos los numeros son iguales
+    }//if longitud incorrecta o números repetidos 3+ veces seguidas
 
     const primerDigito = telefonoSinSeparadores[0];
 

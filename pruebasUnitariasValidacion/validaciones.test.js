@@ -239,6 +239,21 @@ test("si se ingresan 10 dígitos, es un número teléfonico válido", ()=> {
     expect(resultado.valido).toBeTruthy(); 
 });
 
+test("si el número tiene 3 dígitos iguales seguidos (888), NO es válido", ()=> {
+    const resultado = funciones.validarTelefono("8881234567");
+    expect(resultado.valido).toBeFalsy();
+});
+
+test("si el número tiene 3 dígitos iguales seguidos en medio (111 y 9999), NO es válido", ()=> {
+    const resultado = funciones.validarTelefono("5511199999");
+    expect(resultado.valido).toBeFalsy();
+});
+
+test("si solo hay pares repetidos (5512234567), el número SÍ es válido", ()=> {
+    const resultado = funciones.validarTelefono("5512234567");
+    expect(resultado.valido).toBeTruthy();
+});
+
 
 /**VALIDACIONES MENSAJE */
 test("si se ingresan espacios, no es un mensaje válido", () => {
