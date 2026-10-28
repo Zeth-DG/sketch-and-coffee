@@ -1,65 +1,52 @@
 [
   {
     "id": 1,
-    "nombre": "Usuario Demo 01",
-    "apellido": "Prueba",
-    "telefono": "0000000001",
-    "correo": "usuario01@ejemplo.com",
+    "nombre": "Ana",
+    "apellido": "Ramírez",
+    "telefono": "7641000001",
+    "correo": "ana.ramirez@ejemplo.com",
     "rol": "cliente",
-    "activo": true
+    "activo": true,
+    "password_hash": null
   },
   {
     "id": 2,
-    "nombre": "Usuario Demo 02",
-    "apellido": "Prueba",
-    "telefono": "0000000002",
-    "correo": "usuario02@ejemplo.com",
+    "nombre": "Carlos",
+    "apellido": "Mendoza",
+    "telefono": "7641000002",
+    "correo": "carlos.mendoza@ejemplo.com",
     "rol": "cliente",
-    "activo": true
+    "activo": true,
+    "password_hash": null
   },
   {
     "id": 3,
-    "nombre": "Usuario Demo 03",
-    "apellido": "Prueba",
-    "telefono": "0000000003",
-    "correo": "usuario03@ejemplo.com",
+    "nombre": "Daniela",
+    "apellido": "Ortiz",
+    "telefono": "7641000003",
+    "correo": "daniela.ortiz@ejemplo.com",
     "rol": "cliente",
-    "activo": true
+    "activo": true,
+    "password_hash": null
   },
   {
     "id": 4,
-    "nombre": "Usuario Demo 04",
-    "apellido": "Prueba",
-    "telefono": "0000000004",
-    "correo": "usuario04@ejemplo.com",
+    "nombre": "Miguel",
+    "apellido": "Hernández",
+    "telefono": "7641000004",
+    "correo": "miguel.hernandez@ejemplo.com",
     "rol": "cliente",
-    "activo": true
+    "activo": false,
+    "password_hash": null
   },
   {
     "id": 5,
-    "nombre": "Usuario Demo 05",
-    "apellido": "Prueba",
-    "telefono": "0000000005",
-    "correo": "usuario05@ejemplo.com",
-    "rol": "cliente",
-    "activo": true
-  },
-  {
-    "id": 6,
-    "nombre": "Administrador",
-    "apellido": "Sistema",
-    "telefono": "0000000006",
-    "correo": "admin@ejemplo.com",
-    "rol": "administrador",
-    "activo": true
-  },
-  {
-    "id": 7,
-    "nombre": "Administradora",
-    "apellido": "Sistema",
-    "telefono": "0000000007",
-    "correo": "admin2@ejemplo.com",
-    "rol": "administrador",
-    "activo": true
+    "nombre": "Sketch",
+    "apellido": "Admin",
+    "telefono": "7641000005",
+    "correo": "admin@sketchandcoffee.mx",
+    "rol": "admin",
+    "activo": true,
+    "password_hash": null
   }
 ]
