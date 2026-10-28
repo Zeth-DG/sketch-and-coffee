@@ -62,7 +62,7 @@ function normalizarItem(item) {
 
 async function cargarMenu() {
     try {
-        let respuesta = await fetch('./menu_interactivo/menu.json');
+        let respuesta = await fetch('./menu_interactivo/menu_interactivo.json');
         if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
         menuData = await respuesta.json();
         //Normalizar estructura
