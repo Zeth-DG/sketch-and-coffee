@@ -327,7 +327,6 @@ test("si el checkbox tiene undefined, no es válido", ()=> {
     expect(resultado.valido).toBeFalsy(); 
 });//undefined
 
-/** VALIDACIONES CATEGORÍA DE PRODUCTO */
 test.each([
     "Bebidas calientes",
     "Bebidas frías",
