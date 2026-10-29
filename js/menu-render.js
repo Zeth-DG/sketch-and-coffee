@@ -23,6 +23,7 @@ function crearTarjeta(prod, indice) {
           <img src="${prod.imagen}" alt="${nombreFormateado}" loading="lazy">
         </div>
         <h3 id="nombre-${id}" class="titulo-producto">${nombreFormateado}</h3>
+        <p class="descripcion-producto">${prod.descripcion || 'Una opción deliciosa para disfrutar en Sketch & Coffee.'}</p>
         <div class="precio-producto" aria-label="Precio: ${precio} pesos mexicanos">$${precio} MXN</div>
         <div class="pie-tarjeta-producto">
           <span class="indicador-gris" aria-hidden="true"></span>

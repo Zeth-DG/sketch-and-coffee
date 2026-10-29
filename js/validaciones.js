@@ -297,7 +297,13 @@ export function validarPrecioProducto(precio) {
 //==============================================================================
 // Validar Categoria del producto (Manuel)
 export function validarCategoriaProducto(categoria) {
-    const categoriasPermitidas = ["bebidas", "snack", "postres"];
+    const categoriasPermitidas = [
+        "Bebidas calientes",
+        "Bebidas frías",
+        "Postres",
+        "Platillos",
+        "Café en grano"
+    ];
     
     if (!categoria || !categoriasPermitidas.includes(categoria.trim())) {
         return {

@@ -1,6 +1,20 @@
 // menu-productos.js
 import { detallesPersonalizados } from './menu-detalles.js';
 
+const descripcionesBreves = {
+  "croissant salado": "Croissant hojaldrado con relleno salado.",
+  "chai latte": "Té especiado con leche cremosa.",
+  "chocolate caliente": "Chocolate caliente, espeso y reconfortante.",
+  "tisana pink blossom": "Infusión frutal con notas florales.",
+  "enchiladas": "Tortillas con pollo, salsa y crema.",
+  "chilaquiles": "Totopos con salsa, crema y queso.",
+  "capuchino": "Espresso con leche y espuma cremosa.",
+  "americano": "Café espresso de sabor suave y tostado.",
+  "latte frio": "Espresso con leche fría y hielo.",
+  "latte caliente": "Espresso mezclado con leche vaporizada.",
+  "crepa": "Crepa dulce con crema de avellana y queso."
+};
+
 export async function cargarProductosCatalogo() {
   const productosCatalogo = [];
 
@@ -50,7 +64,7 @@ export async function cargarProductosCatalogo() {
 
       return {
         ...prod,
-        descripcion: infoExtra ? infoExtra.descripcion : "Próximamente descripción disponible.",
+        descripcion: infoExtra?.descripcion || descripcionesBreves[claveEncontrada] || "Una opción deliciosa para disfrutar en Sketch & Coffee.",
         imagen: infoExtra ? infoExtra.imagen : "./img/default.jpg"
       };
     });

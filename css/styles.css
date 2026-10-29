@@ -1766,7 +1766,7 @@ h1, h2, h3, h4 {
 .contenedor-imagen-producto img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -2770,7 +2770,14 @@ button, .btn, input, select {
 .contenedor-imagen-producto video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.descripcion-producto {
+  color: var(--color-texto-secundario, #6c757d);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
 }
 
 .insignia-descuento {
@@ -3434,4 +3441,3 @@ main.tarjeta-contenedor h1.titulo-seccion {
   outline: 3px solid var(--color-magenta-tenue);
   outline-offset: 2px;
 }
-

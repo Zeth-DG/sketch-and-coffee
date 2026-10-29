@@ -326,3 +326,20 @@ test("si el checkbox tiene undefined, no es válido", ()=> {
     const resultado = funciones.validarPrivacidad("undefined");
     expect(resultado.valido).toBeFalsy(); 
 });//undefined
+
+/** VALIDACIONES CATEGORÍA DE PRODUCTO */
+test.each([
+    "Bebidas calientes",
+    "Bebidas frías",
+    "Postres",
+    "Platillos",
+    "Café en grano"
+])("la categoría %s es válida", (categoria) => {
+    const resultado = funciones.validarCategoriaProducto(categoria);
+    expect(resultado.valido).toBeTruthy();
+});
+
+test("una categoría antigua o no seleccionada no es válida", () => {
+    expect(funciones.validarCategoriaProducto("bebidas").valido).toBeFalsy();
+    expect(funciones.validarCategoriaProducto("").valido).toBeFalsy();
+});
